@@ -29,8 +29,10 @@ This project is a client-facing retail web-portal that is designed to allow a us
 ***This application does not allow for checkout and several other key features necessary for a functioning front-end web portal. Find improvements deferred for future release [here][4]:***
 
 ## Installation #
-`Include some kind of instructions to fork+clone, as well as install dependencies`
-
+`Include some kind of instructions to fork+clone, as well as install dependencies`\
+This project uses [Webpack][webpack], the bundler for components in React. This allows the program to serve a bundled file that contains all of our components, so that we reduce multiple request cycles. 
+Before getting your server started, get Webpack up and running by executing the following npm script provided: `npm run build`.
+This installs Webpack, saves executables locally into node_modules/.bin, and runs Webpack to automatically listen for inputs.
 ## Usage #
 This project is meant to update outdated client-facing retail web-portals. It uses the following libraries, with how-tos linked respectively:\
 `<< list libraries here >>`
@@ -66,3 +68,4 @@ This project is meant to update outdated client-facing retail web-portals. It us
 [4.1]: https://github.com/Black-Clover-FEC/black-clover-FEC/edit/main/README.md#related-projects
 [4.2]: https://github.com/Black-Clover-FEC/black-clover-FEC/edit/main/README.md#future-enhancements
 [4.3]: https://github.com/Black-Clover-FEC/black-clover-FEC/edit/main/README.md#team-members
+[webpack]: https://webpack.js.org/
