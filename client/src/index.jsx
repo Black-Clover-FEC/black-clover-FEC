@@ -1,0 +1,1 @@
+// where we will call react-dom to render app.jsx
