@@ -53,7 +53,7 @@ This project is meant to update outdated client-facing retail web-portals. It us
 
 
 ### Team Members
-* Product Owner: *Brandon Woods*
+* Project Manager: *Brandon Woods*
 * Excalidraw Expert: *Johnathan Simeroth*
 * Global State Manager: *Noah Clouthier*
 * ReadMe Author: *Yale Yang*
