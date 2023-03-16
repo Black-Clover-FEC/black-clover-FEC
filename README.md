@@ -30,7 +30,7 @@ This project is a client-facing retail web-portal that is designed to allow a us
 
 ## Installation #
 `Include some kind of instructions to fork+clone, as well as install dependencies`\
-This project uses [Webpack][webpack], the bundler for components in React. This allows the program to serve a bundled file that contains all of our components, so that we reduce multiple request cycles.
+This project uses [Webpack][webpack], the bundler for components in React. This allows the program to serve a bundled file that contains all of our components, so that we reduce multiple request cycles. 
 Before getting your server started, get Webpack up and running by executing the `npm start` script provided.
 This installs Webpack, saves executables locally into node_modules/.bin, and runs Webpack to automatically listen for inputs.
 ## Usage #
