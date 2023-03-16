@@ -30,8 +30,8 @@ This project is a client-facing retail web-portal that is designed to allow a us
 
 ## Installation #
 `Include some kind of instructions to fork+clone, as well as install dependencies`\
-This project uses [Webpack][webpack], the bundler for components in React. This allows the program to serve a bundled file that contains all of our components, so that we reduce multiple request cycles. 
-Before getting your server started, get Webpack up and running by executing the following npm script provided: `npm run build`.
+This project uses [Webpack][webpack], the bundler for components in React. This allows the program to serve a bundled file that contains all of our components, so that we reduce multiple request cycles.
+Before getting your server started, get Webpack up and running by executing the `npm start` script provided.
 This installs Webpack, saves executables locally into node_modules/.bin, and runs Webpack to automatically listen for inputs.
 ## Usage #
 This project is meant to update outdated client-facing retail web-portals. It uses the following libraries, with how-tos linked respectively:\
@@ -53,7 +53,7 @@ This project is meant to update outdated client-facing retail web-portals. It us
 
 
 ### Team Members
-* Product Owner: *Brandon Woods*
+* Project Manager: *Brandon Woods*
 * Excalidraw Expert: *Johnathan Simeroth*
 * Global State Manager: *Noah Clouthier*
 * ReadMe Author: *Yale Yang*
