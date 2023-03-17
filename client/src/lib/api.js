@@ -1,6 +1,10 @@
 import axios from 'axios';
 import config from '../env/config.js';
 
+
+// This first section contains helper/template functions to keep our other functions
+// simple and DRY. Reuse them! But please don't edit them without team buy-in, because all
+// of our individual API functions rely on them.
 const api = {};
 
 const url = `https://app-hrsei-api.herokuapp.com/api/fec2/${config.CAMPUS_CODE}`;
@@ -53,22 +57,6 @@ api.reportReview = (review_id) => {
   return put(`reviews/${review_id}/report`);
 };
 
-// api.listProducts = (params) => {
-//   return axios.get(`${url}/products/`, {headers: {Authorization: config.AUTH}, params: params})
-//     .then(results => results.data)
-//     .catch(err => console.error('Error getting the reviews from server: ' + err));
-// }
 
-// api.getReviews = (params) => {
-//   return axios.get(`${url}/reviews/`, {headers: {Authorization: config.AUTH}, params: params})
-//     .then(results => results.data)
-//     .catch(err => console.error('Error getting the reviews from server: ' + err));
-// }
-
-// how to use this code in your other files:
-// import api from '../lib/api.js';
-// api.getReviews({product_id: 40344}) // example passing one parameter: product id
-//   .then(data => console.log(data))
-//   .catch(err=> console.error(err));
 
 export default api;
