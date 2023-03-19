@@ -1,0 +1,14 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.filled-star {
+  color: #2E4552;
+}
+
+.unfilled-star {
+  color: #D5D5D5;
+}

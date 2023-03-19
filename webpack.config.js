@@ -20,15 +20,17 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /nodeModules/,
-        use: {
-          loader: "babel-loader",
-        },
+        use: {loader: "babel-loader",},
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
 
   plugins: [
-    new HtmlWebpackPlugin({template: 'client/src/index.html'})
+    new HtmlWebpackPlugin({ template: 'client/src/index.html' })
   ],
 
   stats: {
