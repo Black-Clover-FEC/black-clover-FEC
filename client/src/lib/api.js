@@ -1,5 +1,6 @@
 import axios from 'axios';
 import config from '../env/config.js';
+import path from 'path';
 
 
 // This first section contains helper/template functions to keep our other functions
@@ -34,6 +35,9 @@ api.listProducts = (params) => {
   return get('products/', params);
 };
 
+api.getProductId = (params, productId) => {
+  return get(`products/?id=${productId}`, params);
+}
 
 
 // REVIEWS
