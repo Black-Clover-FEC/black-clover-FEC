@@ -35,8 +35,16 @@ api.listProducts = (params) => {
   return get('products/', params);
 };
 
-api.getProductId = (params, productId) => {
-  return get(`products/?id=${productId}`, params);
+api.getProductId = (params) => {
+  return get(`products/:product_id`, params);
+}
+
+api.getStyles = (params) => {
+  return get('products/:product_id/styles', params)
+}
+
+api.getStyles = (params) => {
+  return get('products/:product_id/related', params)
 }
 
 
