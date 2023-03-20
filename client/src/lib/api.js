@@ -29,6 +29,8 @@ const put = (endpoint, data = {}, params = {}) => {
 
 
 
+// FOR ALL BELOW FUNCTIONS, SEE ATELIER DOCS (ON LEARN) FOR LIST OF RELEVANT PARAMS TO PASS IN
+
 // PRODUCTS
 api.listProducts = (params) => {
   return get('products', params);
@@ -38,7 +40,8 @@ api.listProducts = (params) => {
 
 // REVIEWS
 api.listReviews = (params) => {
-  return get('reviews', params);
+  return get('reviews', params)
+    .then(data => data.results);
 };
 
 api.getReviewsMetadata = (params) => {

@@ -1,22 +1,50 @@
 import React from 'react';
 import StyleLib from '../../assets/Stylesheet.jsx';
 import Stars from '../../assets/Stars.jsx';
+import ReviewAndQuestionList from '../../assets/ReviewAndQuestionList.jsx';
+import api from '../../lib/api.js';
+
+// const emptyReview = {
+//   review_id: 0,
+//   rating: 5,
+//   summary: null,
+//   recommend: false,
+//   response: null,
+//   date: "2023-01-27T00:00:00.000Z",
+//   helpfulness: 0,
+
+// }
 
 const ReviewsModule = () => {
+  const [reviews, setReviews] = React.useState([]);
+  React.useEffect(() => { listAndSetReviews(40344) }, []);
+
+  // api.listProducts({page: 1, count: 10})
+  //   .then(data => console.log(data))
+  //   .catch(err => console.log(err));
+
+  const listAndSetReviews = (p_id) => {
+    return api.listReviews({ product_id: p_id })
+      .then(data => {
+        console.log(data)
+        setReviews(data);
+      })
+      .catch(err => console.log(err));
+  }
+
 
   return (
     <div>
       <StyleLib.h2>Ratings and Reviews</StyleLib.h2>
       <StyleLib.h4>248 reviews, sorted by relevance</StyleLib.h4>
-      <StyleLib.h4>Review title: this product is ballin'!</StyleLib.h4>
-      <StyleLib.p>Here's some example text input from a user that would be what you see in the review body.</StyleLib.p>
+      {reviews.length !== 0 && <ReviewAndQuestionList reviews={reviews} />}
       <StyleLib.button>More Reviews</StyleLib.button>
       <StyleLib.dropdown>
         <option value="option1">option 1</option>
         <option value="option2">option 2</option>
         <option value="option3">option 3</option>
       </StyleLib.dropdown>
-      <Stars rating={3.65} />
+
     </div>
   )
 }

@@ -57,6 +57,15 @@ const StyleLib = {
   text-transform: none;
   `,
 
+  small: styled.small`
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 300;
+  font-size: 0.8em;
+  text-align: left;
+  color: #424242;
+  text-transform: none;
+  `,
+
   button: styled.button`
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
@@ -88,7 +97,15 @@ const StyleLib = {
 
   spanTrimLeft: styled.span`
   clip-path: inset(0 0 0 ${props => props.percentage}%);
-`
+`,
+
+  tile: styled.li`
+  list-style: none;
+  border: solid;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 10px;
+  `
 
 };
 
