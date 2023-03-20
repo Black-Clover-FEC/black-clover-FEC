@@ -27,6 +27,7 @@ const ReviewAndQuestionTile = ({review}) => {
       <StyleLib.p>{review.body}</StyleLib.p>
       {review.recommend && <StyleLib.p><FontAwesomeIcon icon={faCheck} /> I recommend this product </StyleLib.p>}
       {review.response && <Response response={review.response} />}
+      <StyleLib.small>Helpful? <StyleLib.linkButton>Yes</StyleLib.linkButton>({review.helpfulness})</StyleLib.small>
     </StyleLib.tile>
   );
 }
