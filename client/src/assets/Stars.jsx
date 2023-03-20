@@ -3,24 +3,16 @@ import {faStar} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import StyleLib from './Stylesheet.jsx';
 import styled from 'styled-components';
-import MaterialIcon from 'material-icons-react';
 
 
-// const Star = ({className}) => <FontAwesomeIcon className={className} icon={faStar} />;
+const Star = ({className}) => <FontAwesomeIcon className={className} icon={faStar} />;
 
-// const FilledStar = styled(Star)`
-// color: #2E4552;
-// `
-// const UnfilledStar = styled(Star)`
-// color: #D5D5D5;
-// `
-
-const Star = (color) => <MaterialIcon icon="star" color={color}/>;
-
-const FilledStar = () => Star('#2E4552');
-
-const UnfilledStar = () => Star('#D5D5D5');
-
+const FilledStar = styled(Star)`
+color: #E7A66C;
+`
+const UnfilledStar = styled(Star)`
+color: #D5D5D5;
+`
 
 const PartialStar = ({percentage, key}) => (
   <span key={key}>

@@ -19,6 +19,7 @@ const Response = ({response}) => (
 
 const ReviewAndQuestionTile = ({review}) => {
   review.response = 'This is a fake response';
+  review.rating = 3.25;
   return (
     <StyleLib.tile>
       <Stars rating={review.rating} />
