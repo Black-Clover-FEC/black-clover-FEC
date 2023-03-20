@@ -31,7 +31,7 @@ const put = (endpoint, data = {}, params = {}) => {
 
 // PRODUCTS
 api.listProducts = (params) => {
-  return get('products/', params);
+  return get('products', params);
 };
 
 
