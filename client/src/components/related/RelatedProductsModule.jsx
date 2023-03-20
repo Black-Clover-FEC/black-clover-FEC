@@ -1,10 +1,24 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import RelatedProductList from './lists/RelatedProductList.jsx';
 import YourOutfitList from './lists/YourOutfitList.jsx';
+import api from '../../../../client/src/lib/api.js';
 
 const RelatedProductsModule = () => {
-  let testData = [{id: 40304, name: 'shoe'},{id: 40305, name: 'shirt'}, {id: 40306, name: 'pants'}]
-  const [relatedItems, setRelatedItems] = useState(testData);
+  const [relatedItems, setRelatedItems] = useState(['No related Items']);
+  const [outfitList, setOutfitList] = useState([]);
+
+  const getProductList = (err, result) => {
+    api.listProducts()
+    .then((res) => {
+      setRelatedItems(res);
+      console.log('results from api' , res);
+    })
+    .catch((err) => {
+      console.log('get product failed', err);
+    })
+  }
+
+  useEffect(getProductList, []);
 
 
   return (

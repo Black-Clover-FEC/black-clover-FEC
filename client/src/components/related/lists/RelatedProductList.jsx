@@ -11,7 +11,7 @@ const RelatedProductList = ({relatedItems}) => {
       <StyleLib.h2>Related Products</StyleLib.h2>
       <div>
         {relatedItems.map((item) => {
-          return <RelatedProductCard />;
+          return <RelatedProductCard key={item.id}/>;
         })}
       </div>
     </section>
