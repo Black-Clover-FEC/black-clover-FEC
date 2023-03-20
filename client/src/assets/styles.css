@@ -5,6 +5,11 @@ html {
   box-sizing: inherit;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  }
+
 .filled-star {
   color: #2E4552;
 }

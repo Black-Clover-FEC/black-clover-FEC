@@ -32,9 +32,9 @@ const Stars = ({rating}) => {
   }
 
   return (
-    <div>
+    <span>
       {stars}
-    </div>
+    </span>
   );
 }
 

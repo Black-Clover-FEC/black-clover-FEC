@@ -19,10 +19,6 @@ const ReviewsModule = () => {
   const [reviews, setReviews] = React.useState([]);
   React.useEffect(() => { listAndSetReviews(40344) }, []);
 
-  // api.listProducts({page: 1, count: 10})
-  //   .then(data => console.log(data))
-  //   .catch(err => console.log(err));
-
   const listAndSetReviews = (p_id) => {
     return api.listReviews({ product_id: p_id })
       .then(data => {

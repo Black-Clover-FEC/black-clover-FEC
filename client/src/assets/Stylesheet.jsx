@@ -49,6 +49,15 @@ const StyleLib = {
   text-transform: uppercase;
   `,
 
+  h6: styled.h6`
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 1em;
+  text-align: left;
+  color: #E7A66C;
+  text-transform: none;
+  `,
+
   p: styled.p`
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
@@ -101,10 +110,18 @@ const StyleLib = {
 
   tile: styled.li`
   list-style: none;
-  border: solid;
-  border-radius: 20px;
+  border: none;
+  border-bottom-style: solid;
+  // border-radius: 20px;
   padding: 20px;
-  margin: 10px;
+  // margin: 10px;
+  // background-color: #2A9D8F;
+  `,
+
+  coloredDiv: styled.div`
+  background-color: #2E4552;
+  // border-radius: 20px;
+  padding: 20px;
   `
 
 };
