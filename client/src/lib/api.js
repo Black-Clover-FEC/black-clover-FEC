@@ -69,7 +69,6 @@ api.getReviewsMetadata = (params) => {
       data.reviewsCount = totalCount;
       data.averageRating = totalScore / totalCount;
       data.recRate = data.recommended.true / totalCount;
-      console.log(data);
       return data;
   })
   .catch(err => console.error(err));

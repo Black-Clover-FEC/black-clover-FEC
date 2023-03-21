@@ -26,7 +26,6 @@ const Factor = ({factor, value}) => {
 
   value = Number.parseFloat(value).toFixed(1)
   const left = Math.round((value / maxScore) * 100);
-  console.log(left);
 
   return (
     <div>
