@@ -46,8 +46,38 @@ api.getRelatedProducts = (product_id) => {
   return get(`products/${product_id}/related`);
 }
 
+// QUESTIONS AND ANSWERS
+api.listQuestions = (params) => {
+  return get('/qa/questions', params);
+}
 
+api.listAnswers = (question_id) => {
+  return get(`/qa/questions/${question_id}/answers`, params);
+}
 
+api.addQuestion = (params) => {
+  return post('/qa/questions', params);
+}
+
+api.addAnswer = (question_id) => {
+  return post(`/qa/questions/${question_id}/answers`, params);
+}
+
+api.markQuestionHelpful = (question_id) => {
+  return put(`/qa/questions/${question_id}/helpful`, params);
+}
+
+api.reportQuesion = (question_id) => {
+  return put(`/qa/questions/${question_id}/report`, params)
+}
+
+api.markAnswerHelpful = (answer_id) => {
+  return put(`/qa/answers/${answer_id}/helpful`, params)
+}
+
+api.reportAnswer = (answer_id) => {
+  return put(`/qa/answers/${answer_id}/report`, params)
+}
 // REVIEWS
 api.listReviews = (params) => {
   return get('reviews', params);
