@@ -34,18 +34,6 @@ api.listProducts = (params) => {
   return get('products', params);
 };
 
-api.getProductId = (product_id) => {
-  return get(`products/${product_id}`);
-}
-
-api.getProductStyles = (product_id) => {
-  return get(`products/${product_id}/styles`);
-}
-
-api.getRelatedProducts = (product_id) => {
-  return get(`products/${product_id}/related`);
-}
-
 
 
 // REVIEWS
@@ -67,6 +55,20 @@ api.markReviewHelpful = (review_id) => {
 
 api.reportReview = (review_id) => {
   return put(`reviews/${review_id}/report`);
+};
+
+// CART
+api.addCart = (item) => {
+  return post('cart', item);
+};
+
+api.getCart = (params) => {
+  return post('cart', params);
+};
+
+// INTERACTIONS
+api.reportReview = (interaction) => {
+  return post('iteraction', interaction);
 };
 
 
