@@ -7,6 +7,12 @@ import styled from 'styled-components';
 
 const Star = ({className}) => <FontAwesomeIcon className={className} icon={faStar} />;
 
+const StarsDiv = styled.div`
+position: relative;
+height: 1em;
+display: inline-block;
+`
+
 const FilledStar = styled(Star)`
 color: #E7A66C;
 `
@@ -47,9 +53,9 @@ const Stars = ({rating}) => {
   }
 
   return (
-    <span>
+    <StarsDiv>
       {stars}
-    </span>
+    </StarsDiv>
   );
 }
 
