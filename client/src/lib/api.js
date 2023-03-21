@@ -31,8 +31,20 @@ const put = (endpoint, data = {}, params = {}) => {
 
 // PRODUCTS
 api.listProducts = (params) => {
-  return get('products/', params);
+  return get('products', params);
 };
+
+api.getProductId = (product_id) => {
+  return get(`products/${product_id}`);
+}
+
+api.getProductStyles = (product_id) => {
+  return get(`products/${product_id}/styles`);
+}
+
+api.getRelatedProducts = (product_id) => {
+  return get(`products/${product_id}/related`);
+}
 
 
 
