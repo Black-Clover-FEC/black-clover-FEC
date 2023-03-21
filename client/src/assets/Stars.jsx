@@ -2,11 +2,32 @@ import React from 'react';
 import {faStar} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import StyleLib from './Stylesheet.jsx';
+import styled from 'styled-components';
+
+
+const Star = ({className}) => <FontAwesomeIcon className={className} icon={faStar} />;
+
+const StarsDiv = styled.div`
+position: relative;
+height: 1em;
+display: inline-block;
+`
+
+const FilledStar = styled(Star)`
+color: #E7A66C;
+`
+const UnfilledStar = styled(Star)`
+color: #D5D5D5;
+`
 
 const PartialStar = ({percentage, key}) => (
   <span key={key}>
-    <StyleLib.spanTrimRight percentage={(100 - percentage).toString()}><FontAwesomeIcon className='filled-star' icon={faStar} /></StyleLib.spanTrimRight>
-    <StyleLib.spanTrimLeft percentage={percentage}><FontAwesomeIcon className='unfilled-star' icon={faStar} /></StyleLib.spanTrimLeft>
+    <StyleLib.spanTrimRight percentage={(100 - percentage).toString()}>
+      <FilledStar/>
+    </StyleLib.spanTrimRight>
+    <StyleLib.spanTrimLeft percentage={percentage}>
+      <UnfilledStar />
+    </StyleLib.spanTrimLeft>
   </span>
 );
 
@@ -19,7 +40,7 @@ const Stars = ({rating}) => {
   let stars = [];
   let key = 0;
   for (let i = 0; i < intRating; i++) {
-    stars.push(<FontAwesomeIcon key={key} icon={faStar} className="filled-star" />);
+    stars.push(<FilledStar key={key} />);
     key++;
   }
   if (roundedPercent > 0) {
@@ -27,14 +48,14 @@ const Stars = ({rating}) => {
     key++;
   }
   for (let i = 0; i < unfilledStars; i++) {
-    stars.push(<FontAwesomeIcon key={key} icon={faStar} className="unfilled-star" />);
+    stars.push(<UnfilledStar key={key} />);
     key++;
   }
 
   return (
-    <div>
+    <StarsDiv>
       {stars}
-    </div>
+    </StarsDiv>
   );
 }
 
