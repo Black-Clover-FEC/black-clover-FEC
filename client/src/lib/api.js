@@ -29,6 +29,8 @@ const put = (endpoint, data = {}, params = {}) => {
 
 
 
+// FOR ALL BELOW FUNCTIONS, SEE ATELIER DOCS (ON LEARN) FOR LIST OF RELEVANT PARAMS TO PASS IN
+
 // PRODUCTS
 api.listProducts = (params) => {
   return get('products', params);
@@ -50,11 +52,26 @@ api.getRelatedProducts = (product_id) => {
 
 // REVIEWS
 api.listReviews = (params) => {
-  return get('reviews', params);
+  return get('reviews', params)
+    .then(data => data.results);
 };
 
 api.getReviewsMetadata = (params) => {
-  return get('reviews/meta', params);
+  return get('reviews/meta', params)
+    .then(data => {
+      let totalCount = 0;
+      let totalScore = 0;
+      for (let rating in data.ratings) {
+        const count = parseInt(data.ratings[rating]);
+        totalCount += count;
+        totalScore += rating * count;
+      }
+      data.reviewsCount = totalCount;
+      data.averageRating = totalScore / totalCount;
+      data.recRate = data.recommended.true / totalCount;
+      return data;
+  })
+  .catch(err => console.error(err));
 };
 
 api.addReview = (review) => {
