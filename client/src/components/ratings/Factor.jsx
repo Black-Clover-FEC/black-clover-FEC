@@ -2,13 +2,12 @@ import React from 'react';
 import StyleLib from '../../assets/Stylesheet.jsx';
 import styled from 'styled-components';
 
-const width = 10; // units: em;
 const maxScore = 5;
 
 const StyledDiv = styled.div`
 background-color: #D5D5D5;
 height: 0.7em;
-width: 10em;
+width: 80%;
 position: relative;
 `
 

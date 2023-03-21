@@ -19,6 +19,19 @@ const AvgRating = styled.span`
   text-transform: none;
 `
 
+const GridContainer = styled.section`
+display: grid;
+grid-template-columns: 2fr 5fr;
+`
+
+const GridCol1 = styled.aside`
+grid-column: 1;
+`
+
+const GridCol2 = styled.section`
+grid-column: 2;
+`
+
 
 const ReviewsModule = () => {
   // REACT HOOKS
@@ -58,21 +71,27 @@ const ReviewsModule = () => {
   return (
     <section>
       <StyleLib.h2>Ratings and Reviews</StyleLib.h2>
-      <AvgRating>{averageRating.toFixed(1)}</AvgRating>
-      <Stars rating={averageRating}/>
-      <StyleLib.p>{percentRecommended.toFixed(0)}% recommend this product</StyleLib.p>
+      <GridContainer>
+        <GridCol1>
+          <AvgRating>{averageRating.toFixed(1)}</AvgRating>
+          <Stars rating={averageRating}/>
+          <StyleLib.p>{percentRecommended.toFixed(0)}% recommend this product</StyleLib.p>
 
-      <RatingFiltersList ratings={ratingBreakdown}/>
-      <FactorsList characteristics={characteristics}/>
+          <RatingFiltersList ratings={ratingBreakdown}/>
+          <FactorsList characteristics={characteristics}/>
+        </GridCol1>
 
-      <StyleLib.h4>{reviewsCount} reviews, sorted by relevance</StyleLib.h4>
-      {reviews.length !== 0 && <ReviewAndQuestionList reviews={reviews} />}
-      <StyleLib.button>More Reviews</StyleLib.button>
-      <StyleLib.dropdown>
-        <option value="option1">option 1</option>
-        <option value="option2">option 2</option>
-        <option value="option3">option 3</option>
-      </StyleLib.dropdown>
+        <GridCol2>
+          <StyleLib.h4>{reviewsCount} reviews, sorted by relevance</StyleLib.h4>
+          {reviews.length !== 0 && <ReviewAndQuestionList reviews={reviews} />}
+          <StyleLib.button>More Reviews</StyleLib.button>
+          <StyleLib.dropdown>
+            <option value="option1">option 1</option>
+            <option value="option2">option 2</option>
+            <option value="option3">option 3</option>
+          </StyleLib.dropdown>
+        </GridCol2>
+      </GridContainer>
     </section>
   )
 }
