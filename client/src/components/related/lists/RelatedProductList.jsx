@@ -8,8 +8,9 @@ const RelatedProductList = ({relatedItems}) => {
     <section>
       <StyleLib.h2>Related Products</StyleLib.h2>
       <div>
-        {relatedItems.map((item) => {
-          return <RelatedProductCard key={item.id}/>;
+        {relatedItems.map((productId) => {
+          // for each item, utilize function calls to populate card
+          return <RelatedProductCard key={productId}/>;
         })}
       </div>
     </section>
