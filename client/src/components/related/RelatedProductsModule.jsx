@@ -16,11 +16,9 @@ const RelatedProductsModule = () => {
     .catch((err) => {
       console.log('get product failed', err);
     })
-
   }
 
   useEffect(getProductList, []);
-
 
   return (
     <div>

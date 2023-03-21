@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const RelatedLib = {
 
-
   card: styled.div`
   display: inline-block;
   width: 200px;
