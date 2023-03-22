@@ -1,28 +1,31 @@
 import React from 'react';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import StyleLib from './Stylesheet.jsx';
-import Stars from './Stars.jsx';
 import StarsInput from './StarsInput.jsx';
 import styled from 'styled-components';
 import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
 
-// const StarRadio = ({starNum}) => {
-//   const starName = `star-${starNum}`
-//   return (
-//     <>
-//       <input type='radio' id={starName} name='rating' value={starNum} />
-//       <label htmlFor={starName} >☆</label>
-//     </>
-//   )
-// }
-
-
-
 const FormModal = ({ productInfo, isOpen, onClose, onSubmit }) => {
-  console.log(productInfo.productName);
+
+  const emptyStar = '☆';
+  const fullStar = '★';
+  const [stars, setStars] = React.useState(new Array(5).fill(emptyStar));
+
+  const updateRating = (index) => {
+    let newStars = [];
+    let key = 0;
+    for (let i = 0; i < 5; i++) {
+      if (i <= index){
+        newStars.push(fullStar);
+      } else {
+        newStars.push(emptyStar);
+      }
+    }
+    setStars(newStars);
+  }
+
+
   return (
     <Modal
       isOpen={isOpen}
@@ -32,15 +35,7 @@ const FormModal = ({ productInfo, isOpen, onClose, onSubmit }) => {
       <StyleLib.h2>Write your review</StyleLib.h2>
       <StyleLib.h5>about {productInfo.productName}</StyleLib.h5>
       <form>
-          <StarsInput />
-        {/* <StyleLib.starRating>
-          <StyleLib.p>Overall rating:</StyleLib.p>
-          <StarRadio starNum='1' />
-          <StarRadio starNum='2' />
-          <StarRadio starNum='3' />
-          <StarRadio starNum='4' />
-          <StarRadio starNum='5' />
-        </StyleLib.starRating> */}
+        <StarsInput stars={stars} handleClick={updateRating} />
         <StyleLib.blockLabel>
           Would you recommend this product? <StyleLib.input name='recommend' value='yes' type='radio' />
         </StyleLib.blockLabel>
