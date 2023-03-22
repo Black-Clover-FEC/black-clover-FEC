@@ -72,9 +72,27 @@ api.markQuestionHelpful = (question_id) => {
 api.reportQuesion = (question_id) => {
   return put(`/qa/questions/${question_id}/report`, params)
 }
+// AGGREGATE DETAILS, STYLES, AND META DATA FOR PRODUCT
+api.collectProductInfo = (id) => {
+  let product = {};
 
 api.markAnswerHelpful = (answer_id) => {
   return put(`/qa/answers/${answer_id}/helpful`, params)
+}
+  return api.getProductId(id)
+  .then((data) => {
+    product.details = data;
+    return api.getProductStyles(id);
+  })
+  .then((data) => {
+    product.styles = data;
+    return api.getReviewsMetadata({product_id: id});
+  })
+  .then((data) => {
+    product.reviewsMeta = data;
+    return product;
+  })
+  .catch(err => console.log(err));
 }
 
 api.reportAnswer = (answer_id) => {
@@ -114,6 +132,20 @@ api.markReviewHelpful = (review_id) => {
 
 api.reportReview = (review_id) => {
   return put(`reviews/${review_id}/report`);
+};
+
+// CART
+api.addCart = (item) => {
+  return post('cart', item);
+};
+
+api.getCart = (params) => {
+  return post('cart', params);
+};
+
+// INTERACTIONS
+api.reportReview = (interaction) => {
+  return post('iteraction', interaction);
 };
 
 
