@@ -6,7 +6,7 @@ import DetailsLib from './assets/Stylesheet.jsx';
 const Header = () => {
 
   return (
-    <DetailsLib.header style={{padding: '10px'}}>
+    <DetailsLib.header>
       <div style={{float: 'left', display: 'inline-block'}}>
         Logo
       </div>

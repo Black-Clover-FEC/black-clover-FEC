@@ -6,7 +6,7 @@ import DetailsLib from './assets/Stylesheet.jsx';
 const AddToBag = () => {
 
   return (
-    <StyleLib.button style={{width: '80%', float: 'left'}}>Add To Bag</StyleLib.button>
+    <DetailsLib.addToBagButton>Add To Bag</DetailsLib.addToBagButton>
   )
 }
 

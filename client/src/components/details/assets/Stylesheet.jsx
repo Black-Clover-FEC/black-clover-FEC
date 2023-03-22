@@ -1,6 +1,12 @@
 import styled from 'styled-components';
+import StyleLib from '../../../assets/Stylesheet.jsx';
 
 const DetailsLib = {
+
+  addToBagButton: styled(StyleLib.button)`
+  width: 80%;
+  float: left;
+  `,
 
   header: styled.div`
   display: block;
