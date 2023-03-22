@@ -7,12 +7,12 @@ const Header = () => {
 
   return (
     <DetailsLib.header>
-      <div style={{float: 'left', display: 'inline-block'}}>
+      <DetailsLib.logo>
         Logo
-      </div>
-      <div style={{float: 'right', display: 'inline-block'}}>
+      </DetailsLib.logo>
+      <DetailsLib.searchBar>
         Search Bar
-      </div>
+      </DetailsLib.searchBar>
     </DetailsLib.header>
   )
 }

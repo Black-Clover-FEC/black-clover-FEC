@@ -5,11 +5,11 @@ import DetailsLib from './assets/Stylesheet.jsx';
 const StyleListItem = ({item, index}) => {
 
   return (
-    <div style={{display: 'inline-block', padding: '7px'}}>
+    <DetailsLib.styleList>
       <DetailsLib.styleListItem>
         {'Item ' + String(index + 1)}
       </DetailsLib.styleListItem>
-    </div>
+    </DetailsLib.styleList>
   )
 }
 

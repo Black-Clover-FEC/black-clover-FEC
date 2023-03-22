@@ -6,7 +6,7 @@ import DetailsLib from './assets/Stylesheet.jsx';
 const Favorite = () => {
 
   return (
-    <StyleLib.button style={{width: '15%', float: 'right'}}>*</StyleLib.button>
+    <DetailsLib.favoriteButton>*</DetailsLib.favoriteButton>
   )
 }
 

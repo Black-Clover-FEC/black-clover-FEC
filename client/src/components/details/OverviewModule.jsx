@@ -22,10 +22,12 @@ const OverviewModule = () => {
       <StyleLib.h2>
         Product Overview
       </StyleLib.h2>
-      <div>
+
+      <DetailsLib.cols>
         <Image />
         <ProductInformation styleList={styleList}/>
-      </div>
+      </DetailsLib.cols>
+
       <Description />
     </div>
   )

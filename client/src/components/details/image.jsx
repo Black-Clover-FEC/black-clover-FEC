@@ -6,9 +6,9 @@ import DetailsLib from './assets/Stylesheet.jsx';
 const Image = () => {
 
   return (
-    <DetailsLib.image>
+    <DetailsLib.col1>
       Image
-    </DetailsLib.image>
+    </DetailsLib.col1>
   )
 }
 

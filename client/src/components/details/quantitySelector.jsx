@@ -6,13 +6,13 @@ import DetailsLib from './assets/Stylesheet.jsx';
 const QuantitySelector = () => {
 
   return (
-    <StyleLib.dropdown style={{width: '35%', float: 'right'}}>
+    <DetailsLib.quantity>
         <option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
-    </StyleLib.dropdown>
+    </DetailsLib.quantity>
   )
 }
 

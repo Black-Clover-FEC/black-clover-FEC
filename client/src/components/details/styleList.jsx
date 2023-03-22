@@ -1,12 +1,15 @@
 import React from 'react';
 import StyleLib from '../../assets/Stylesheet.jsx';
 import StyleListItem from './styleListItem.jsx';
+import DetailsLib from './assets/Stylesheet.jsx';
 
 const StyleList = ({styleList}) => {
 
   return (
     <div>
-      <StyleLib.h2 style={{fontSize: 'small'}}><strong>STYLE > </strong>SELECTED STYLE</StyleLib.h2>
+      <DetailsLib.selectedStyle>
+        <b>STYLE ></b> SELECTED STYLE
+      </DetailsLib.selectedStyle>
       <div>
         {styleList.map((item, index) => {
           return <StyleListItem key={item.id} item={item} index={index}/>;

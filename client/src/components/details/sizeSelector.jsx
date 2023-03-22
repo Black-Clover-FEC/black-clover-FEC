@@ -6,11 +6,11 @@ import DetailsLib from './assets/Stylesheet.jsx';
 const SizeSelector = () => {
 
   return (
-    <StyleLib.dropdown style={{width: '60%', float: 'left'}}>
+    <DetailsLib.size>
         <option value="small">Small</option>
         <option value="medium">Medium</option>
         <option value="large">Large</option>
-    </StyleLib.dropdown>
+    </DetailsLib.size>
   )
 }
 

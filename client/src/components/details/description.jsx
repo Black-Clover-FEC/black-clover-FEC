@@ -9,9 +9,10 @@ const Description = () => {
     <DetailsLib.description>
       <div>
         <strong>Product Slogan.</strong>
-        <div style={{fontSize: 'small'}}>
+        <br/>
+        <StyleLib.small>
           Ice cream ice cream GUMMIES
-        </div>
+        </StyleLib.small>
       </div>
     </DetailsLib.description>
   )

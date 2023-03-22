@@ -12,34 +12,36 @@ import Favorite from './favorite.jsx';
 const ProductInformation = ({styleList}) => {
 
   return (
-    <DetailsLib.productInfo>
+    <DetailsLib.col2>
       <br/>
-      <div style={{display: 'flex', justifyContent: 'space-between'}}>
+      <DetailsLib.rating>
         Average Rating: <Stars rating={3.65} />
-        <StyleLib.p style={{fontSize: 'x-small', textDecoration: 'underline'}} >Read All Reviews</StyleLib.p>
-      </div>
-
-      <StyleLib.p style={{fontSize: 'small', margin: '0px'}}>Category</StyleLib.p>
+        <DetailsLib.smallUnderline>Read All Reviews</DetailsLib.smallUnderline>
+      </DetailsLib.rating>
       <br/>
-      <StyleLib.h4 style={{fontSize: 'x-large', margin: '0px'}}>Expanded Product Name</StyleLib.h4>
+      <StyleLib.small>Category</StyleLib.small>
       <br/>
-      <StyleLib.p style={{fontSize: 'small', margin: '0px'}}>$1000</StyleLib.p>
+      <br/>
+      <StyleLib.h3>Expanded Product Name</StyleLib.h3>
+      <br/>
+      <StyleLib.small>$1000</StyleLib.small>
+      <br/>
       <br/>
       <StyleList styleList={styleList}/>
       <br/>
-      <div style={{textAlign: 'center'}}>
+      <DetailsLib.center>
         <SizeSelector />
         <QuantitySelector />
-      </div>
+      </DetailsLib.center>
       <br/>
       <br/>
       <br/>
-      <div style={{textAlign: 'center'}}>
+      <DetailsLib.center>
         <AddToBag />
         <Favorite />
-      </div>
+      </DetailsLib.center>
 
-    </DetailsLib.productInfo>
+    </DetailsLib.col2>
   )
 }
 
