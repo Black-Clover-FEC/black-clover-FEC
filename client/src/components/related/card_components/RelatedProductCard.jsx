@@ -6,8 +6,6 @@ import Stars from '../../../assets/Stars.jsx'
 
 const RelatedProductCard = ({product}) => {
 
-console.log(product);
-
  // HELPER FUNCTIONS
  const returnDefaultStyle = (style) => {
   if (style['default?']) {

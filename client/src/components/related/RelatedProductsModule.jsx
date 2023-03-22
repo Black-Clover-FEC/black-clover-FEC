@@ -9,23 +9,20 @@ const RelatedProductsModule = () => {
   // TODO - outfit list not used yet
   const [outfitList, setOutfitList] = useState([]);
   const [relatedItems, setRelatedItems] = useState([]);
+  const [relatedProductIds, setRelatedProductIds] = useState([]);
 
-  // GET LIST OF RELATED PRODUCTS
-  const getRelatedIds = (productId) => {
-    api.getRelatedProducts(productId)
-    .then((data) => {
-      setRelatedItemId(data);
-    })
-    .catch((err) => {
-      console.log('failed to get related product ids', err);
-    })
+  // GET RELATED ITEM ID'S
+  const getRelatedIds = (id) => {
+    api.getRelatedProducts(id)
+    .then(data => setRelatedProductIds(data))
+    .catch(err => console.log(err));
   }
 
   // GET DETAILS, STYLES, AND META DATA
   const collectProductInfo = (id) => {
     let product = {};
 
-    api.getProductId(id)
+    return api.getProductId(id)
     .then((data) => {
       product.details = data;
       return api.getProductStyles(id);
@@ -36,12 +33,31 @@ const RelatedProductsModule = () => {
     })
     .then((data) => {
       product.reviewsMeta = data;
-      setRelatedItems(relatedItems.concat(product));
+      return product;
+      // setRelatedItems(relatedItems.concat(product));
     })
     .catch(err => console.log(err));
   }
 
-  useEffect(() => {collectProductInfo(testCurrentProduct)}, []);
+
+  // POPULATE LIST OF RELATED PRODUCTS
+  const populateRelatedItems = (productIds) => {
+    // iterate over ids and create an array of objects
+    let list = [];
+    productIds.map((id) => {
+      collectProductInfo(id)
+      .then((item) => {
+        console.log(item);
+        list.push(item);
+      })
+      .catch(err => console.log(err));
+    })
+    // set relatedItems to new array
+    setRelatedItems(list);
+  }
+
+  useEffect(() => {populateRelatedItems(relatedProductIds)}, [relatedProductIds]);
+  useEffect(() => {getRelatedIds(testCurrentProduct)}, []);
 
   return (
     <div>
