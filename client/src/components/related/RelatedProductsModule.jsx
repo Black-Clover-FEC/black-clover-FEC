@@ -18,34 +18,12 @@ const RelatedProductsModule = () => {
     .catch(err => console.log(err));
   }
 
-  // GET DETAILS, STYLES, AND META DATA
-  const collectProductInfo = (id) => {
-    let product = {};
-
-    return api.getProductId(id)
-    .then((data) => {
-      product.details = data;
-      return api.getProductStyles(id);
-    })
-    .then((data) => {
-      product.styles = data;
-      return api.getReviewsMetadata({product_id: id});
-    })
-    .then((data) => {
-      product.reviewsMeta = data;
-      return product;
-      // setRelatedItems(relatedItems.concat(product));
-    })
-    .catch(err => console.log(err));
-  }
-
-
   // POPULATE LIST OF RELATED PRODUCTS
   const populateRelatedItems = (productIds) => {
     // iterate over ids and create an array of objects
     let list = [];
     productIds.map((id) => {
-      collectProductInfo(id)
+      api.collectProductInfo(id)
       .then((item) => {
         console.log(item);
         list.push(item);
