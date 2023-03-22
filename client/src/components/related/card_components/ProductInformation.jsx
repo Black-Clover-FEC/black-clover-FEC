@@ -8,14 +8,12 @@ const ProductInfo = ({details, styles}) => {
  // HELPER FUNCTIONS
   const returnDefaultStyle = (style) => {
     if (style['default?']) {
-      console.log('found default: ', style)
       return style;
     }
   }
 
   const findDefault = (styles) => {
     for (let i = 0; i < styles.length; i++) {
-      // console.log(styles[i]);
       return returnDefaultStyle(styles[i]);
     }
   }
@@ -24,7 +22,6 @@ const ProductInfo = ({details, styles}) => {
     if (style.sale_price) {
       return '$' + style.sale_price;
     } else {
-      console.log('price: ', style.original_price)
       return '$' + style.original_price;
     }
   }

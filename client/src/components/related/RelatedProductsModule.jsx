@@ -10,12 +10,7 @@ const RelatedProductsModule = () => {
   const [outfitList, setOutfitList] = useState([]);
   const [relatedItems, setRelatedItems] = useState([]);
 
-  // States for each api call
-  const [relatedItemId, setRelatedItemId] = useState(['placeholder']);
-  const [itemStyle, setItemStyle] = useState();
-  const [itemDetails, setItemDetails] = useState([]);
-
-  // get list of related products by id
+  // GET LIST OF RELATED PRODUCTS
   const getRelatedIds = (productId) => {
     api.getRelatedProducts(productId)
     .then((data) => {
@@ -26,29 +21,7 @@ const RelatedProductsModule = () => {
     })
   }
 
-  // get details for product
-  const getDetails = (productId) => {
-    return api.getProductId(productId)
-    .then((data) => {
-      // setItemDetails(data);
-      console.log('details', data);
-      return data;
-    })
-    .catch(err => console.log(err))
-  }
-
-  // get styles for product
-  const getStyles = (productId) => {
-   return api.getProductStyles(productId)
-    .then((data) => {
-      // setItemStyle(data);
-      console.log('styles', data);
-      return data;
-    })
-    .catch(err => console.log(err))
-  }
-
-  // use api calls to aggregate data in to object
+  // GET DETAILS, STYLES, AND META DATA
   const collectProductInfo = (id) => {
     let product = {};
 
@@ -64,7 +37,6 @@ const RelatedProductsModule = () => {
     .then((data) => {
       product.reviewsMeta = data;
       setRelatedItems(relatedItems.concat(product));
-      console.log('product: ', product);
     })
     .catch(err => console.log(err));
   }
