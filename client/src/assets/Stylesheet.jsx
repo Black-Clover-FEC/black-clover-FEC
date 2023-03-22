@@ -164,7 +164,48 @@ const StyleLib = {
   border-radius: 10px;
   height: 4em;
   margin: 0 .2em 0 .2em;
-  `
+  `,
+
+  blockLabel: styled.label`
+  display: block;
+  border-bottom: 2px #D5D5D5 solid;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  // margin-bottom: 10px;
+  `,
+
+  input: styled.input`
+  display: block;
+  `,
+
+  textarea: styled.textarea`
+  display: block;
+  `,
+
+  // starRating: styled.div`
+
+  // input[type='radio'] {
+  //   display: none;
+  // }
+
+  // cursor: pointer;
+
+  // label {
+  //   cursor: pointer;
+  //   color: black;
+  // }
+
+  // :hover label {
+  //   color: red;
+  // }
+
+  // label:hover ~ label {
+  //   color: black;
+  // }
+
+  // input[type='radio']:checked ~ label {
+  //   color: black;
+  // `
 
 };
 

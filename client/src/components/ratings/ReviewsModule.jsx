@@ -34,7 +34,8 @@ grid-column: 2;
 `
 
 
-const ReviewsModule = () => {
+const ReviewsModule = (productInfo) => {
+  productInfo = {p_id: 40399, productName: 'Ultradark shades'};
   // REACT HOOKS
   const [reviews, setReviews] = React.useState([]);
   const [reviewsCount, setReviewsCount] = React.useState(0);
@@ -63,6 +64,7 @@ const ReviewsModule = () => {
   const getAndSetMetadata = (p_id) => {
     return api.getReviewsMetadata({product_id: p_id})
     .then(data => {
+      console.log(data);
       setReviewsCount(data.reviewsCount);
       setAverageRating(data.averageRating);
       setRatingBreakdown(Object.values(data.ratings).map(value => parseInt(value)));
@@ -103,7 +105,7 @@ const ReviewsModule = () => {
             </StyleLib.button>
         </GridCol2>
       </GridContainer>
-      <FormModal isOpen={modalIsOpen} onClose={closeModal} />
+      <FormModal productInfo={productInfo} isOpen={modalIsOpen} onClose={closeModal} />
     </section>
   )
 }
