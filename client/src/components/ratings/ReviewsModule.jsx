@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import StyleLib from '../../assets/Stylesheet.jsx';
 import Stars from '../../assets/Stars.jsx';
 import ReviewAndQuestionList from '../../assets/ReviewAndQuestionList.jsx';
+import FormModal from '../../assets/FormModal.jsx';
 import RatingFiltersList from './RatingFiltersList.jsx';
 import FactorsList from './FactorsList.jsx';
 import api from '../../lib/api.js';
@@ -42,6 +43,10 @@ const ReviewsModule = () => {
   const [percentRecommended, setPercentRecommended] = React.useState(0);
   const [characteristics, setCharacteristics] = React.useState([]);
   React.useEffect(() => refreshReviewData(40399), []);
+
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
 
   // HELPER FUNCTIONS
   const refreshReviewData = (p_id) => {
@@ -82,16 +87,21 @@ const ReviewsModule = () => {
         </GridCol1>
 
         <GridCol2>
-          <StyleLib.h4>{reviewsCount} reviews, sorted by relevance</StyleLib.h4>
+          <StyleLib.h4>{reviewsCount} reviews, sorted by
+            <StyleLib.dropdown>
+              <option value="Relevance">Relevance</option>
+              <option value="option2">option 2</option>
+              <option value="option3">option 3</option>
+            </StyleLib.dropdown>
+          </StyleLib.h4>
           {reviews.length !== 0 && <ReviewAndQuestionList reviews={reviews} />}
           <StyleLib.button>More Reviews</StyleLib.button>
-          <StyleLib.dropdown>
-            <option value="option1">option 1</option>
-            <option value="option2">option 2</option>
-            <option value="option3">option 3</option>
-          </StyleLib.dropdown>
+          <StyleLib.button onClick={openModal}>
+            Add a Review
+            </StyleLib.button>
         </GridCol2>
       </GridContainer>
+      <FormModal isOpen={modalIsOpen} onClose={closeModal} />
     </section>
   )
 }
