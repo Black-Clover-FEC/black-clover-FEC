@@ -7,15 +7,17 @@ import Stars from '../../../assets/Stars.jsx'
 const RelatedProductCard = ({product}) => {
 
  // HELPER FUNCTIONS
- const returnDefaultStyle = (style) => {
+ const findDefault = (style) => {
   if (style['default?']) {
-    return style;
+    return true;
   }
 }
 
-const findDefault = (styles) => {
+const returnDefaultStyle = (styles) => {
   for (let i = 0; i < styles.length; i++) {
-    return returnDefaultStyle(styles[i]);
+    if (findDefault(styles[i])) {
+      return styles[i];
+    }
   }
 }
 
@@ -30,19 +32,28 @@ const formatPrice = (style) => {
 
   // Returns product price
   const getPrice = (styles) => {
-    let prodefault = findDefault(styles);
-    return formatPrice(prodefault);
+    let prodefault = returnDefaultStyle(styles);
+    if (prodefault) {
+      return formatPrice(prodefault);
+    }
   }
 
   // PHOTO
   const getPhoto = (styles) => {
-    let prodefault = findDefault(styles);
-    return prodefault.photos[0].url;
+    let prodefault = returnDefaultStyle(styles);
+    console.log('item picked: ', prodefault)
+    if (prodefault) {
+      return prodefault.photos[0].url;
+    }
+
   }
 
   const getStyleName = (styles) => {
-    let prodefault = findDefault(styles);
-    return prodefault.name;
+    let prodefault = returnDefaultStyle(styles);
+    if (prodefault) {
+      return prodefault.name;
+    }
+
   }
 
   return (

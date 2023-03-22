@@ -4,7 +4,7 @@ import RelatedProductCard from '../card_components/RelatedProductCard.jsx';
 
 const RelatedProductList = ({relatedItems}) => {
 
-  // console.log(relatedItems);
+  // console.log('related items in list component: ', relatedItems);
 
   return (
     <section>

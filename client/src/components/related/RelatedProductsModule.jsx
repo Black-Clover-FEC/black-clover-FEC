@@ -18,24 +18,39 @@ const RelatedProductsModule = () => {
     .catch(err => console.log(err));
   }
 
+  // // POPULATE LIST OF RELATED PRODUCTS
+  // async function populateRelatedItems (productIds) {
+  //   // iterate over ids and create an array of objects
+  //   let list = [];
+  //   await Promise.all(
+  //     productIds.map(async (id) => {
+  //     const product = await api.collectProductInfo(id);
+  //     console.log('product in async: ', product);
+  //   })
+  //   )
+  //   .then((list) => {
+  //     console.log('list:', list)}
+  //     )
+  //   .catch(err => console.log(err));
+  //   // set relatedItems to new array
+  //   // setRelatedItems(list);
+  // }
+
+  // for loop method
   // POPULATE LIST OF RELATED PRODUCTS
-  const populateRelatedItems = (productIds) => {
+  async function populateRelatedItems (productIds) {
     // iterate over ids and create an array of objects
-    let list = [];
-    productIds.map((id) => {
-      api.collectProductInfo(id)
-      .then((item) => {
-        console.log(item);
-        list.push(item);
-      })
-      .catch(err => console.log(err));
-    })
-    // set relatedItems to new array
+    let list = []
+    for (let id of productIds) {
+      const product = await api.collectProductInfo(id);
+      list.push(product);
+    }
     setRelatedItems(list);
   }
 
-  useEffect(() => {populateRelatedItems(relatedProductIds)}, [relatedProductIds]);
+  // TODO - revisit and set relatedId refresh off change in current product
   useEffect(() => {getRelatedIds(testCurrentProduct)}, []);
+  useEffect(() => {populateRelatedItems(relatedProductIds)}, [relatedProductIds]);
 
   return (
     <div>
