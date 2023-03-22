@@ -9,7 +9,6 @@ import Modal from 'react-modal';
 Modal.setAppElement('#root');
 
 const FormModal = ({isOpen, onClose, onSubmit}) => {
-  console.log('im here')
 
   return (
     <Modal

@@ -89,11 +89,13 @@ const ReviewsModule = () => {
         <GridCol2>
           <StyleLib.h4>{reviewsCount} reviews, sorted by
             <StyleLib.dropdown>
-              <option value="Relevance">Relevance</option>
-              <option value="option2">option 2</option>
-              <option value="option3">option 3</option>
+              <option value="relevance">relevance</option>
+              <option value="recent">recency</option>
+              <option value="helpful">helpfulness</option>
             </StyleLib.dropdown>
+
           </StyleLib.h4>
+          <StyleLib.searchBar placeholder='Search reviews'/>
           {reviews.length !== 0 && <ReviewAndQuestionList reviews={reviews} />}
           <StyleLib.button>More Reviews</StyleLib.button>
           <StyleLib.button onClick={openModal}>

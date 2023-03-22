@@ -109,15 +109,29 @@ const StyleLib = {
 
 
   dropdown: styled.select`
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  text-align: left;
+  color: #424242;
+  text-transform: inherit;
+  background-color: white;
+  border: none;
+  border-bottom: solid;
+  padding-left: 0;
+  `,
+
+  searchBar: styled.input`
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  text-align: center;
+  text-align: left;
   color: #424242;
-  text-transform: uppercase;
+  text-transform: none;
   background-color: white;
   border: solid;
   border-radius: 10px;
-  padding: 10px;
+  padding: 5px;
+  width: 20em;
   `,
 
   spanTrimRight: styled.span`
@@ -143,6 +157,13 @@ const StyleLib = {
   background-color: #2E4552;
   // border-radius: 20px;
   padding: 15px 20px 15px 20px;
+  `,
+
+  smallPhoto: styled.img`
+  border: none;
+  border-radius: 10px;
+  height: 4em;
+  margin: 0 .2em 0 .2em;
   `
 
 };
