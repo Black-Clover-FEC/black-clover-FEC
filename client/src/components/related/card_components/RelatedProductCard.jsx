@@ -6,7 +6,7 @@ import Stars from '../../../assets/Stars.jsx'
 
 const RelatedProductCard = ({product}) => {
 
-// console.log(product);
+console.log(product);
 
   return (
     <RelatedLib.card>
@@ -16,7 +16,7 @@ const RelatedProductCard = ({product}) => {
       </div>
       <ProductInfo details={product.details} styles={product.styles}/>
       {/* placeholder star rating */}
-      <Stars rating={3.50}/>
+      <Stars rating={product.reviewsMeta.averageRating}/>
     </RelatedLib.card>
   )
 }
