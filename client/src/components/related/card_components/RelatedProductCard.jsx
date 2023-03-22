@@ -4,8 +4,9 @@ import RelatedLib from '../assets/Stylesheet.jsx';
 import ProductInfo from './ProductInformation.jsx';
 import Stars from '../../../assets/Stars.jsx'
 
-const RelatedProductCard = () => {
+const RelatedProductCard = ({product}) => {
 
+// console.log(product);
 
   return (
     <RelatedLib.card>
@@ -13,7 +14,7 @@ const RelatedProductCard = () => {
       <div>
         <img alt='image'/>
       </div>
-      <ProductInfo />
+      <ProductInfo details={product.details} styles={product.styles}/>
       {/* placeholder star rating */}
       <Stars rating={3.50}/>
     </RelatedLib.card>
