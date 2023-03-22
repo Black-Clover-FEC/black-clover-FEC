@@ -1,14 +1,18 @@
 import styled from 'styled-components';
-
+import StyleLib from '../assets/Stylesheet.jsx'
 const RelatedLib = {
 
   card: styled.div`
   display: inline-block;
-  width: 200px;
-  height: 300px;
+  background-color: beige;
+  width: 205px;
+  height: 400px;
   border: solid;
-  padding: 5px;
-  `
+  `,
+  cardImg: styled.img`
+  display: block;
+  max-width: 200px;
+  height: auto;`
 }
 
 export default RelatedLib;

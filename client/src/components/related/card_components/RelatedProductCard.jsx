@@ -8,14 +8,54 @@ const RelatedProductCard = ({product}) => {
 
 console.log(product);
 
+ // HELPER FUNCTIONS
+ const returnDefaultStyle = (style) => {
+  if (style['default?']) {
+    return style;
+  }
+}
+
+const findDefault = (styles) => {
+  for (let i = 0; i < styles.length; i++) {
+    return returnDefaultStyle(styles[i]);
+  }
+}
+
+// TODO - revisit to format strikethrough original price when sales price active
+const formatPrice = (style) => {
+  if (style.sale_price) {
+    return 'on sale - $' + style.sale_price;
+  } else {
+    return '$' + style.original_price;
+  }
+}
+
+  // Returns product price
+  const getPrice = (styles) => {
+    let prodefault = findDefault(styles);
+    return formatPrice(prodefault);
+  }
+
+  // PHOTO
+  const getPhoto = (styles) => {
+    let prodefault = findDefault(styles);
+    return prodefault.photos[0].url;
+  }
+
+  const getStyleName = (styles) => {
+    let prodefault = findDefault(styles);
+    return prodefault.name;
+  }
+
   return (
     <RelatedLib.card>
-      <h4>Related Product Card</h4>
       <div>
-        <img alt='image'/>
+        <RelatedLib.cardImg  src={getPhoto(product.styles.results)} alt='product-image'/>
       </div>
-      <ProductInfo details={product.details} styles={product.styles}/>
-      {/* placeholder star rating */}
+      <ProductInfo
+      details={product.details}
+      price={getPrice(product.styles.results)}
+      styleName={getStyleName(product.styles.results)}/>
       <Stars rating={product.reviewsMeta.averageRating}/>
     </RelatedLib.card>
   )
