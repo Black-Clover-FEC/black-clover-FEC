@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import StyleLib from '../../assets/Stylesheet.jsx';
@@ -42,32 +42,38 @@ const ReviewsModule = (productInfo) => {
 
   // REACT HOOKS
 
-  // reviews display:
-  const [reviews, setReviews] = React.useState([]);
-  const [displayedReviews, setDisplayedReviews] = React.useState([]);
-  const [displayCount, setDisplayCount] = React.useState(2);
-  const [sortBy, setSortBy] = React.useState('relevant');
-  const [reviewsCount, setReviewsCount] = React.useState(0);
+  // reviews lists:
+  const [sorted, setSorted] = useState([]);
+  const [filtered, setFiltered] = useState([]);
+  const [displayed, setDisplayed] = useState([]);
+
+  // list variables
+  const [sortBy, setSortBy] = useState('relevant');
+  const [filterBy, setFilterBy] = useState(new Array(5).fill(true));
+  const [displayCount, setDisplayCount] = useState(2);
 
   // summary and metadata:
-  const [averageRating, setAverageRating] = React.useState(0);
-  const [ratingBreakdown, setRatingBreakdown] = React.useState([]);
-  const [percentRecommended, setPercentRecommended] = React.useState(0);
-  const [characteristics, setCharacteristics] = React.useState([]);
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [reviewsCount, setReviewsCount] = useState(0);
+  const [averageRating, setAverageRating] = useState(0);
+  const [ratingBreakdown, setRatingBreakdown] = useState([]);
+  const [percentRecommended, setPercentRecommended] = useState(0);
+  const [characteristics, setCharacteristics] = useState([]);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   // effects:
-  React.useEffect(() => refreshReviewData(), []);
-  // React.useEffect(() => )
+  useEffect(() => refreshReviewData(), []);
+  useEffect(() => getSortedReviews(), [sortBy]);
+  useEffect(() => filterReviews(), [sorted, filterBy]);
+  useEffect(() => displayReviews(), [filtered, displayCount]);
 
 
   // HELPER FUNCTIONS
   const refreshReviewData = () => {
-    getAndSetReviews(p_id, sortBy);
-    getAndSetMetadata(p_id);
+    getSortedReviews(p_id, sortBy);
+    getMetaData(p_id);
   }
 
-  const getAndSetReviews = async () => {
+  const getSortedReviews = () => {
     console.log('getting reviews from server');
     const queryParams = {
       product_id: p_id,
@@ -75,12 +81,14 @@ const ReviewsModule = (productInfo) => {
       count: 1000,
       page: 1
     };
-    setReviews(await api.listReviews(queryParams));
+    api.listReviews(queryParams)
+      .then(data => setSorted(data))
+      .catch(err => console.error(err));
   }
 
-  const getAndSetMetadata = () => {
+  const getMetaData = () => {
     console.log('getting metadata from server');
-    return api.getReviewsMetadata({ product_id: p_id })
+    api.getReviewsMetadata({ product_id: p_id })
       .then(data => {
         setReviewsCount(data.reviewsCount);
         setAverageRating(data.averageRating);
@@ -91,34 +99,42 @@ const ReviewsModule = (productInfo) => {
       .catch(err => console.error(err));
   }
 
-  const handleSortChange = (e) => {
-    const newSort = e.target.value;
-    setSortBy(newSort);
-  }
-
-  const sortReviews = () => {
-    console.log('sorting');
-    let sortFunc;
-    if (sortBy === 'relevant') {
-      sortFunc = (a, b) => a;
-    } else if (sortBy === 'helpful') {
-
-    } else if (sortBy === 'newest') {
-
-    } else {
-      console.error('Somerthing other than relevant, helpful, or newest was chosen as sort order')
-    }
-
-    const sortedReviews = [...reviews].sort(sortFunc)
-  }
-
   const filterReviews = () => {
     console.log('filtering');
+    setFiltered(sorted.filter(
+      review => filterBy[review.rating - 1]
+    ));
   }
 
+  const displayReviews = () => {
+    console.log('displaying');
+    setDisplayed(filtered.slice(0, displayCount));
+  }
+
+
+  // EVENT HANDLERS
+  const handleSortChange = (e) => setSortBy(e.target.value);
+  const handleShowMoreClick = (e) => setDisplayCount(displayCount + 2);
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
 
+  const handleFilterClick = (index) => {
+    let newFilterBy;
+
+    if (!filterBy.includes(false)) {
+      newFilterBy = new Array(5).fill(false);
+      newFilterBy[index] = true;
+      setFilterBy(newFilterBy);
+
+    } else if (filterBy.filter(bool => bool).length === 1 && filterBy.indexOf(true) === index) {
+      setFilterBy(new Array(5).fill(true));
+
+    } else {
+      newFilterBy = [...filterBy];
+      newFilterBy[index] = !newFilterBy[index];
+      setFilterBy(newFilterBy);
+    }
+  }
 
   // RENDER IT!
   return (
@@ -126,31 +142,44 @@ const ReviewsModule = (productInfo) => {
       <StyleLib.h2>Ratings and Reviews</StyleLib.h2>
       <GridContainer>
         <GridCol1>
+
           <AvgRating>{averageRating.toFixed(1)}</AvgRating>
+
           <Stars rating={averageRating} />
+
           <StyleLib.p>{percentRecommended.toFixed(0)}% recommend this product</StyleLib.p>
 
-          <RatingFiltersList ratings={ratingBreakdown} />
+          <RatingFiltersList ratings={ratingBreakdown} handleClick={handleFilterClick} />
+
           <FactorsList characteristics={characteristics} />
+
         </GridCol1>
 
         <GridCol2>
+
           <StyleLib.h4>{reviewsCount} reviews, sorted by
             <StyleLib.dropdown name='sort' onChange={handleSortChange} value={sortBy}>
               <option value="relevant">relevance</option>
               <option value="newest">recency</option>
               <option value="helpful">helpfulness</option>
             </StyleLib.dropdown>
-
           </StyleLib.h4>
+
           <StyleLib.searchBar placeholder='Search reviews' />
-          {reviews.length !== 0 && <ReviewAndQuestionList reviews={reviews} />}
-          <StyleLib.button>More Reviews</StyleLib.button>
+
+          {displayed.length !== 0 && <ReviewAndQuestionList reviews={displayed} />}
+
+          <StyleLib.button onClick={handleShowMoreClick}>
+            More Reviews
+          </StyleLib.button>
+
           <StyleLib.button onClick={openModal}>
             Add a Review
           </StyleLib.button>
+
         </GridCol2>
       </GridContainer>
+
       <FormModal
         productInfo={productInfo}
         isOpen={modalIsOpen}
