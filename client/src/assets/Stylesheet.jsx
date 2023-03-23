@@ -152,7 +152,6 @@ tile: styled.li`
 
   coloredDiv: styled.div`
   background-color: #2E4552;
-  // border-radius: 20px;
   padding: 15px 20px 15px 20px;
   `,
 
@@ -168,7 +167,6 @@ tile: styled.li`
   border-bottom: 2px #D5D5D5 solid;
   padding-bottom: 10px;
   padding-top: 10px;
-  // margin-bottom: 10px;
   `,
 
   input: styled.input`
