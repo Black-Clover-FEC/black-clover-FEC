@@ -67,7 +67,6 @@ const ReviewsModule = (productInfo) => {
   const getAndSetMetadata = (p_id) => {
     return api.getReviewsMetadata({product_id: p_id})
     .then(data => {
-      console.log(data);
       setReviewsCount(data.reviewsCount);
       setAverageRating(data.averageRating);
       setRatingBreakdown(Object.values(data.ratings).map(value => parseInt(value)));
