@@ -63,7 +63,7 @@ const FormModal = ({ productInfo, isOpen, onClose, submitFunc }) => {
         <StyleLib.blockLabel>
           Your email: <StyleLib.input type='email' name='email' />
         </StyleLib.blockLabel>
-        <StyleLib.button onClick={onClose}>Cancel</StyleLib.button>
+        <StyleLib.button type='button' onClick={onClose}>Cancel</StyleLib.button>
         <StyleLib.button type='submit'>Submit</StyleLib.button>
       </form>
     </Modal>

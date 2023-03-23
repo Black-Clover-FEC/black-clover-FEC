@@ -39,6 +39,7 @@ const ReviewsModule = (productInfo) => {
   productInfo = {p_id: 40399, productName: 'Ultradark shades'};
   const {p_id} = productInfo;
 
+
   // REACT HOOKS
   const [reviews, setReviews] = React.useState([]);
   const [reviewsCount, setReviewsCount] = React.useState(0);
@@ -46,22 +47,21 @@ const ReviewsModule = (productInfo) => {
   const [ratingBreakdown, setRatingBreakdown] = React.useState([]);
   const [percentRecommended, setPercentRecommended] = React.useState(0);
   const [characteristics, setCharacteristics] = React.useState([]);
+  const [modalIsOpen, setIsOpen] = React.useState(false);
   React.useEffect(() => refreshReviewData(40399), []);
 
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-  const openModal = () => setIsOpen(true);
-  const closeModal = () => setIsOpen(false);
 
   // HELPER FUNCTIONS
-  const refreshReviewData = (p_id) => {
-    getAndSetReviews(p_id);
+  const refreshReviewData = (p_id, sortOrder) => {
+    getAndSetReviews(p_id, sortOrder);
     getAndSetMetadata(p_id);
-   }
+  }
 
-   const getAndSetReviews = (p_id) => {
-     return api.listReviews({ product_id: p_id })
-       .then(data => setReviews(data))
-       .catch(err => console.log(err));
+  const getAndSetReviews = (p_id, sortOrder = 'relevant') => {
+    console.log(sortOrder);
+    return api.listReviews({ product_id: p_id, sort: sortOrder, count: 15, page: 1 })
+      .then(data => setReviews(data))
+      .catch(err => console.error(err));
    }
 
   const getAndSetMetadata = (p_id) => {
@@ -76,6 +76,15 @@ const ReviewsModule = (productInfo) => {
     })
     .catch(err => console.log(err));
   }
+
+  const sortReviews = (e) => {
+    e.preventDefault();
+    getAndSetReviews(p_id, e.target.value);
+  }
+
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
+
 
   // RENDER IT!
   return (
@@ -93,9 +102,9 @@ const ReviewsModule = (productInfo) => {
 
         <GridCol2>
           <StyleLib.h4>{reviewsCount} reviews, sorted by
-            <StyleLib.dropdown>
-              <option value="relevance">relevance</option>
-              <option value="recent">recency</option>
+            <StyleLib.dropdown onChange={sortReviews}>
+              <option value="relevant">relevance</option>
+              <option value="newest">recency</option>
               <option value="helpful">helpfulness</option>
             </StyleLib.dropdown>
 
@@ -105,7 +114,7 @@ const ReviewsModule = (productInfo) => {
           <StyleLib.button>More Reviews</StyleLib.button>
           <StyleLib.button onClick={openModal}>
             Add a Review
-            </StyleLib.button>
+          </StyleLib.button>
         </GridCol2>
       </GridContainer>
       <FormModal
