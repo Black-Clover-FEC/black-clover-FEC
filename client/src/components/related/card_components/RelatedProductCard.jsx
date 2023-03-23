@@ -5,7 +5,7 @@ import ProductInfo from './ProductInformation.jsx';
 import Stars from '../../../assets/Stars.jsx'
 import ActionBtn from '../assets/ActionBtn.jsx';
 
-const RelatedProductCard = ({product}) => {
+const RelatedProductCard = ({product, openComparison}) => {
 
  // HELPER FUNCTIONS
  const findDefault = (style) => {
@@ -52,7 +52,7 @@ const formatPrice = (style) => {
   return (
     <RelatedLib.card>
       <div>
-        <ActionBtn />
+        <ActionBtn openComparison={openComparison}/>
         <RelatedLib.cardImg src={getPhoto(product.styles.results)} alt='product-image'/>
       </div>
       <ProductInfo

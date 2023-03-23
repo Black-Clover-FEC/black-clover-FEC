@@ -1,21 +1,16 @@
 import React from 'react';
-import {faStar} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import styled from 'styled-components';
+// import {faStar} from '@fortawesome/free-solid-svg-icons';
+// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+// import styled from 'styled-components';
+import ActionStar from './star.jsx';
 
 // TODO - this is the action button for ProductInformationCards
 
-const ActionBtn = () => {
-
-  const ActionButton = () => <FontAwesomeIcon icon={faStar} />;
-
-  const FilledStar = styled(ActionButton)`
-  color: #E7A66C;
-  `
+const ActionBtn = ({openComparison}) => {
 
   return (
     <div>
-      <FilledStar />
+      <ActionStar onclick={openComparison}/>
     </div>
   )
 }

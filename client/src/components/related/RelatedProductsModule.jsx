@@ -13,9 +13,11 @@ const RelatedProductsModule = () => {
   const [outfitList, setOutfitList] = useState([]);
   const [relatedItems, setRelatedItems] = useState([]);
   const [relatedProductIds, setRelatedProductIds] = useState([]);
-  const [showComparison, setShowComparison] = useState(true);
+  const [comparisonView, setComparisonView] = useState(false);
   const [productsToCompare, setProductsToCompare] = useState([]);
 
+  const openComparison = () => setComparisonView(true);
+  const closeComparison = () => setComparisonView(false);
 
   // GET RELATED ITEM ID'S
   const getRelatedIds = (id) => {
@@ -45,8 +47,12 @@ const RelatedProductsModule = () => {
     <div>
       <div>
         {/* TODO - update related items prop after related product objects are formed */}
-        <RelatedProductList relatedItems={relatedItems} />
-        {showComparison && <ComparisonModal products={productsToCompare}/>}
+        <RelatedProductList relatedItems={relatedItems} openComparison={openComparison}/>
+        <ComparisonModal
+        products={productsToCompare}
+        isOpen={comparisonView}
+        onClose={closeComparison}
+        />
       </div>
       <div>
         <YourOutfitList />
