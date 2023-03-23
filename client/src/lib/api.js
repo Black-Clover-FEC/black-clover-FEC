@@ -48,6 +48,27 @@ api.getRelatedProducts = (product_id) => {
   return get(`products/${product_id}/related`);
 }
 
+
+// AGGREGATE DETAILS, STYLES, AND META DATA FOR PRODUCT
+api.collectProductInfo = (id) => {
+  let product = {};
+
+  return api.getProductId(id)
+  .then((data) => {
+    product.details = data;
+    return api.getProductStyles(id);
+  })
+  .then((data) => {
+    product.styles = data;
+    return api.getReviewsMetadata({product_id: id});
+  })
+  .then((data) => {
+    product.reviewsMeta = data;
+    return product;
+  })
+  .catch(err => console.log(err));
+}
+
 // QUESTIONS AND ANSWERS
 api.listQuestions = (params) => {
   return get('/qa/questions', params);
@@ -79,25 +100,6 @@ api.markAnswerHelpful = (answer_id) => {
 
 api.reportAnswer = (answer_id) => {
   return put(`/qa/answers/${answer_id}/report`)
-}
-
-// AGGREGATE DETAILS, STYLES, AND META DATA FOR PRODUCT
-api.collectProductInfo = (id) => {
-  let product = {};
-  return api.getProductId(id)
-  .then((data) => {
-    product.details = data;
-    return api.getProductStyles(id);
-  })
-  .then((data) => {
-    product.styles = data;
-    return api.getReviewsMetadata({product_id: id});
-  })
-  .then((data) => {
-    product.reviewsMeta = data;
-    return product;
-  })
-  .catch(err => console.log(err));
 }
 
 
