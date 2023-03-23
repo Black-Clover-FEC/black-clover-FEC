@@ -48,25 +48,6 @@ api.getRelatedProducts = (product_id) => {
   return get(`products/${product_id}/related`);
 }
 
-  // AGGREGATE DETAILS, STYLES, AND META DATA FOR PRODUCT
-  api.collectProductInfo = (id) => {
-    let product = {};
-
-    return api.getProductId(id)
-    .then((data) => {
-      product.details = data;
-      return api.getProductStyles(id);
-    })
-    .then((data) => {
-      product.styles = data;
-      return api.getReviewsMetadata({product_id: id});
-    })
-    .then((data) => {
-      product.reviewsMeta = data;
-      return product;
-    })
-    .catch(err => console.log(err));
-  }
 
 // AGGREGATE DETAILS, STYLES, AND META DATA FOR PRODUCT
 api.collectProductInfo = (id) => {
@@ -158,6 +139,7 @@ api.reportReview = (review_id) => {
   return put(`reviews/${review_id}/report`);
 };
 
+
 // CART
 api.addCart = (item) => {
   return post('cart', item);
@@ -167,8 +149,9 @@ api.getCart = (params) => {
   return post('cart', params);
 };
 
+
 // INTERACTIONS
-api.reportReview = (interaction) => {
+api.interact = (interaction) => {
   return post('iteraction', interaction);
 };
 
