@@ -18,25 +18,6 @@ const RelatedProductsModule = () => {
     .catch(err => console.log(err));
   }
 
-  // // POPULATE LIST OF RELATED PRODUCTS
-  // async function populateRelatedItems (productIds) {
-  //   // iterate over ids and create an array of objects
-  //   let list = [];
-  //   await Promise.all(
-  //     productIds.map(async (id) => {
-  //     const product = await api.collectProductInfo(id);
-  //     console.log('product in async: ', product);
-  //   })
-  //   )
-  //   .then((list) => {
-  //     console.log('list:', list)}
-  //     )
-  //   .catch(err => console.log(err));
-  //   // set relatedItems to new array
-  //   // setRelatedItems(list);
-  // }
-
-  // for loop method
   // POPULATE LIST OF RELATED PRODUCTS
   async function populateRelatedItems (productIds) {
     // iterate over ids and create an array of objects
