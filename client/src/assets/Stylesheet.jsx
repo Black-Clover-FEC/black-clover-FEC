@@ -129,14 +129,11 @@ const StyleLib = {
   clip-path: inset(0 0 0 ${props => props.percentage}%);
 `,
 
-  tile: styled.li`
+tile: styled.li`
   list-style: none;
   border: none;
   border-bottom-style: solid;
-  // border-radius: 20px;
   padding: 20px;
-  // margin: 10px;
-  // background-color: #2A9D8F;
   `,
 
   coloredDiv: styled.div`

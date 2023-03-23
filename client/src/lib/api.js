@@ -48,6 +48,78 @@ api.getRelatedProducts = (product_id) => {
   return get(`products/${product_id}/related`);
 }
 
+  // AGGREGATE DETAILS, STYLES, AND META DATA FOR PRODUCT
+  api.collectProductInfo = (id) => {
+    let product = {};
+
+    return api.getProductId(id)
+    .then((data) => {
+      product.details = data;
+      return api.getProductStyles(id);
+    })
+    .then((data) => {
+      product.styles = data;
+      return api.getReviewsMetadata({product_id: id});
+    })
+    .then((data) => {
+      product.reviewsMeta = data;
+      return product;
+    })
+    .catch(err => console.log(err));
+  }
+
+// AGGREGATE DETAILS, STYLES, AND META DATA FOR PRODUCT
+api.collectProductInfo = (id) => {
+  let product = {};
+
+  return api.getProductId(id)
+  .then((data) => {
+    product.details = data;
+    return api.getProductStyles(id);
+  })
+  .then((data) => {
+    product.styles = data;
+    return api.getReviewsMetadata({product_id: id});
+  })
+  .then((data) => {
+    product.reviewsMeta = data;
+    return product;
+  })
+  .catch(err => console.log(err));
+}
+
+// QUESTIONS AND ANSWERS
+api.listQuestions = (params) => {
+  return get('/qa/questions', params);
+}
+
+api.listAnswers = (question_id) => {
+  return get(`/qa/questions/${question_id}/answers`, params);
+}
+
+api.addQuestion = (params) => {
+  return post('/qa/questions', params);
+}
+
+api.addAnswer = (question_id) => {
+  return post(`/qa/questions/${question_id}/answers`, params);
+}
+
+api.markQuestionHelpful = (question_id) => {
+  return put(`/qa/questions/${question_id}/helpful`);
+}
+
+api.reportQuesion = (question_id) => {
+  return put(`/qa/questions/${question_id}/report`)
+}
+
+api.markAnswerHelpful = (answer_id) => {
+  return put(`/qa/answers/${answer_id}/helpful`)
+}
+
+api.reportAnswer = (answer_id) => {
+  return put(`/qa/answers/${answer_id}/report`)
+}
 
 
 // REVIEWS
@@ -84,6 +156,20 @@ api.markReviewHelpful = (review_id) => {
 
 api.reportReview = (review_id) => {
   return put(`reviews/${review_id}/report`);
+};
+
+// CART
+api.addCart = (item) => {
+  return post('cart', item);
+};
+
+api.getCart = (params) => {
+  return post('cart', params);
+};
+
+// INTERACTIONS
+api.reportReview = (interaction) => {
+  return post('iteraction', interaction);
 };
 
 
