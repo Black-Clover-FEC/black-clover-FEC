@@ -6,9 +6,12 @@ import UserPhotos from './UserPhotos.jsx';
 import Stars from './Stars.jsx';
 import styled from 'styled-components';
 
+
 const ResponseText = styled(StyleLib.p)`
 color: white;
 `;
+
+
 
 const Response = ({response}) => (
   <StyleLib.coloredDiv>

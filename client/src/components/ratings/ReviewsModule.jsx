@@ -47,7 +47,7 @@ const ReviewsModule = (productInfo) => {
   const [filtered, setFiltered] = useState([]);
   const [displayed, setDisplayed] = useState([]);
 
-  // list variables
+  // list variables:
   const [sortBy, setSortBy] = useState('relevant');
   const [filterBy, setFilterBy] = useState(new Array(5).fill(true));
   const [displayCount, setDisplayCount] = useState(2);
@@ -58,6 +58,8 @@ const ReviewsModule = (productInfo) => {
   const [ratingBreakdown, setRatingBreakdown] = useState([]);
   const [percentRecommended, setPercentRecommended] = useState(0);
   const [characteristics, setCharacteristics] = useState([]);
+
+  // modal:
   const [modalIsOpen, setIsOpen] = useState(false);
 
   // effects:
@@ -74,7 +76,6 @@ const ReviewsModule = (productInfo) => {
   }
 
   const getSortedReviews = () => {
-    console.log('getting reviews from server');
     const queryParams = {
       product_id: p_id,
       sort: sortBy,
@@ -87,7 +88,6 @@ const ReviewsModule = (productInfo) => {
   }
 
   const getMetaData = () => {
-    console.log('getting metadata from server');
     api.getReviewsMetadata({ product_id: p_id })
       .then(data => {
         setReviewsCount(data.reviewsCount);
@@ -99,17 +99,9 @@ const ReviewsModule = (productInfo) => {
       .catch(err => console.error(err));
   }
 
-  const filterReviews = () => {
-    console.log('filtering');
-    setFiltered(sorted.filter(
-      review => filterBy[review.rating - 1]
-    ));
-  }
+  const filterReviews = () => setFiltered(sorted.filter(review => filterBy[review.rating - 1]));
 
-  const displayReviews = () => {
-    console.log('displaying');
-    setDisplayed(filtered.slice(0, displayCount));
-  }
+  const displayReviews = () => setDisplayed(filtered.slice(0, displayCount));
 
 
   // EVENT HANDLERS

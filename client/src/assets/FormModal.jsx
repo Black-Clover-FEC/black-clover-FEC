@@ -41,7 +41,7 @@ const FormModal = ({ productInfo, isOpen, onClose, submitFunc }) => {
     <Modal
       isOpen={isOpen}
       onRequestClose={onClose}
-      contentLabel='Please fill out the form'
+      contentLabel='Please complete the form to review this product'
     >
       <StyleLib.h2>Write your review</StyleLib.h2>
       <StyleLib.h5>about {productInfo.productName}</StyleLib.h5>
