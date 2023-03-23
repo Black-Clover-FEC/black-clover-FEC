@@ -32,7 +32,17 @@ const RelatedLib = {
   productInfo: styled.div`
     display: block;
     vertical-align: bottom;
+  `,
+
+  modalHeader: styled.div`
+    display: grid;
+  `,
+
+  modalBody: styled.div`
+    display: grid;
   `
+
+
 }
 
 export default RelatedLib;

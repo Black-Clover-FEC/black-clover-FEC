@@ -2,6 +2,9 @@ import React, {useState, useEffect} from 'react';
 import RelatedProductList from './lists/RelatedProductList.jsx';
 import YourOutfitList from './lists/YourOutfitList.jsx';
 import api from '../../../../client/src/lib/api.js';
+import ComparisonModal from './modal/ComparisonModal.jsx';
+
+// ComparisonModal.setAppElement('#root');
 
 const RelatedProductsModule = () => {
   // represents a future state for current selected product
@@ -10,6 +13,9 @@ const RelatedProductsModule = () => {
   const [outfitList, setOutfitList] = useState([]);
   const [relatedItems, setRelatedItems] = useState([]);
   const [relatedProductIds, setRelatedProductIds] = useState([]);
+  const [showComparison, setShowComparison] = useState(true);
+  const [productsToCompare, setProductsToCompare] = useState([]);
+
 
   // GET RELATED ITEM ID'S
   const getRelatedIds = (id) => {
@@ -18,25 +24,6 @@ const RelatedProductsModule = () => {
     .catch(err => console.log(err));
   }
 
-  // // POPULATE LIST OF RELATED PRODUCTS
-  // async function populateRelatedItems (productIds) {
-  //   // iterate over ids and create an array of objects
-  //   let list = [];
-  //   await Promise.all(
-  //     productIds.map(async (id) => {
-  //     const product = await api.collectProductInfo(id);
-  //     console.log('product in async: ', product);
-  //   })
-  //   )
-  //   .then((list) => {
-  //     console.log('list:', list)}
-  //     )
-  //   .catch(err => console.log(err));
-  //   // set relatedItems to new array
-  //   // setRelatedItems(list);
-  // }
-
-  // for loop method
   // POPULATE LIST OF RELATED PRODUCTS
   async function populateRelatedItems (productIds) {
     // iterate over ids and create an array of objects
@@ -48,15 +35,18 @@ const RelatedProductsModule = () => {
     setRelatedItems(list);
   }
 
-  // TODO - revisit and set relatedId refresh off change in current product
+  // TODO - revisit and replace testCurrentProduct refresh off change in current product
   useEffect(() => {getRelatedIds(testCurrentProduct)}, []);
   useEffect(() => {populateRelatedItems(relatedProductIds)}, [relatedProductIds]);
+  // using dummy data - replace with current product and selected related product when available
+  useEffect(() => {setProductsToCompare([relatedItems[2], relatedItems[3]])}, [relatedItems]);
 
   return (
     <div>
       <div>
         {/* TODO - update related items prop after related product objects are formed */}
         <RelatedProductList relatedItems={relatedItems} />
+        {showComparison && <ComparisonModal products={productsToCompare}/>}
       </div>
       <div>
         <YourOutfitList />

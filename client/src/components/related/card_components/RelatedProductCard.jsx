@@ -3,6 +3,7 @@ import api from '../../../../../client/src/lib/api.js';
 import RelatedLib from '../assets/Stylesheet.jsx';
 import ProductInfo from './ProductInformation.jsx';
 import Stars from '../../../assets/Stars.jsx'
+import ActionBtn from '../assets/ActionBtn.jsx';
 
 const RelatedProductCard = ({product}) => {
 
@@ -51,6 +52,7 @@ const formatPrice = (style) => {
   return (
     <RelatedLib.card>
       <div>
+        <ActionBtn />
         <RelatedLib.cardImg src={getPhoto(product.styles.results)} alt='product-image'/>
       </div>
       <ProductInfo
