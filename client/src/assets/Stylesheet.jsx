@@ -179,31 +179,6 @@ tile: styled.li`
   display: block;
   `,
 
-  // starRating: styled.div`
-
-  // input[type='radio'] {
-  //   display: none;
-  // }
-
-  // cursor: pointer;
-
-  // label {
-  //   cursor: pointer;
-  //   color: black;
-  // }
-
-  // :hover label {
-  //   color: red;
-  // }
-
-  // label:hover ~ label {
-  //   color: black;
-  // }
-
-  // input[type='radio']:checked ~ label {
-  //   color: black;
-  // `
-
 };
 
 export default StyleLib;
