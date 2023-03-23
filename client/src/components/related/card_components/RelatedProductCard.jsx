@@ -19,6 +19,7 @@ const returnDefaultStyle = (styles) => {
       return styles[i];
     }
   }
+  return styles[0];
 }
 
 // TODO - revisit to format strikethrough original price when sales price active
@@ -33,33 +34,24 @@ const formatPrice = (style) => {
   // Returns product price
   const getPrice = (styles) => {
     let prodefault = returnDefaultStyle(styles);
-    if (prodefault) {
-      return formatPrice(prodefault);
-    }
+    return formatPrice(prodefault);
   }
 
   // PHOTO
   const getPhoto = (styles) => {
     let prodefault = returnDefaultStyle(styles);
-    console.log('item picked: ', prodefault)
-    if (prodefault) {
-      return prodefault.photos[0].url;
-    }
-
+    return prodefault.photos[0].thumbnail_url;
   }
 
   const getStyleName = (styles) => {
     let prodefault = returnDefaultStyle(styles);
-    if (prodefault) {
-      return prodefault.name;
-    }
-
+    return prodefault.name;
   }
 
   return (
     <RelatedLib.card>
       <div>
-        <RelatedLib.cardImg  src={getPhoto(product.styles.results)} alt='product-image'/>
+        <RelatedLib.cardImg src={getPhoto(product.styles.results)} alt='product-image'/>
       </div>
       <ProductInfo
       details={product.details}

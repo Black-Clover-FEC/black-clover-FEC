@@ -54,7 +54,6 @@ const RelatedProductsModule = () => {
 
   return (
     <div>
-      Hello World, this is where Related Products go!
       <div>
         {/* TODO - update related items prop after related product objects are formed */}
         <RelatedProductList relatedItems={relatedItems} />
