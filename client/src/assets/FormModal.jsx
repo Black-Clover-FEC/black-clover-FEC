@@ -7,30 +7,34 @@ import api from '../lib/api.js';
 
 Modal.setAppElement('#root');
 
-const FormModal = ({ productInfo, isOpen, onClose, onSubmit }) => {
+const FormModal = ({ productInfo, isOpen, onClose, submitFunc }) => {
 
   const [starRating, setStarRating] = React.useState(-1);
   const handleSubmit = (e) => {
     e.preventDefault();
     let formData = new FormData(e.target);
     formData = Object.fromEntries(formData.entries()); // converts from fromData object to JSON object.
-    formData.rating = starRating;
+    formData.rating = starRating + 1;
     formData.product_id = productInfo.p_id;
     formData.photos = [];
     formData.recommend = formData.recommend === 'yes';
+    // characteristics is hardcoded for now while I work on implementing user inputs for that
     formData.characteristics = {
       '135400': 5,
       '135401': 5,
       '135402': 5,
       '135403': 5
     }
+
     console.log(formData);
     api.addReview(formData)
-      .then(res => console.log(res))
-      .then(onClose())
-      .catch(err => console.log(err));
+      .then(res => console.log('this is the response: ' + res)) // here for now for debugging purposes
+      .then(() => {
+        onClose();
+        submitFunc();
+      })
+      .catch(err => console.error(err));
   }
-
 
 
   return (

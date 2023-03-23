@@ -35,7 +35,10 @@ grid-column: 2;
 
 
 const ReviewsModule = (productInfo) => {
+  // hard coding while waiting for product info to be populated and passed down upstream.
   productInfo = {p_id: 40399, productName: 'Ultradark shades'};
+  const {p_id} = productInfo;
+
   // REACT HOOKS
   const [reviews, setReviews] = React.useState([]);
   const [reviewsCount, setReviewsCount] = React.useState(0);
@@ -105,7 +108,14 @@ const ReviewsModule = (productInfo) => {
             </StyleLib.button>
         </GridCol2>
       </GridContainer>
-      <FormModal productInfo={productInfo} isOpen={modalIsOpen} onClose={closeModal} />
+      <FormModal
+        productInfo={productInfo}
+        isOpen={modalIsOpen}
+        onClose={closeModal}
+        submitFunc={() => {
+          getAndSetReviews(p_id);
+          getAndSetMetadata(p_id);
+          }} />
     </section>
   )
 }
