@@ -48,6 +48,7 @@ api.getRelatedProducts = (product_id) => {
   return get(`products/${product_id}/related`);
 }
 
+
 // AGGREGATE DETAILS, STYLES, AND META DATA FOR PRODUCT
 api.collectProductInfo = (id) => {
   let product = {};
@@ -67,6 +68,7 @@ api.collectProductInfo = (id) => {
   })
   .catch(err => console.log(err));
 }
+
 
 // REVIEWS
 api.listReviews = (params) => {
@@ -104,6 +106,7 @@ api.reportReview = (review_id) => {
   return put(`reviews/${review_id}/report`);
 };
 
+
 // CART
 api.addCart = (item) => {
   return post('cart', item);
@@ -113,8 +116,9 @@ api.getCart = (params) => {
   return post('cart', params);
 };
 
+
 // INTERACTIONS
-api.reportReview = (interaction) => {
+api.interact = (interaction) => {
   return post('iteraction', interaction);
 };
 
