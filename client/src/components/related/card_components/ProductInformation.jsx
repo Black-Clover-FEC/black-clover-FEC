@@ -1,16 +1,16 @@
 import React from 'react';
+import RelatedLib from '../assets/Stylesheet.jsx';
+import StyleLib from '../../../assets/Stylesheet.jsx'
 
-// TODO - product information for RelatedProductCards
+const ProductInfo = ({details, price, styleName}) => {
 
-const ProductInfo = () => {
 
   return (
-    <div>
-      <h5>Category</h5>
-      <h4>Expanded Product Name with Extra Text</h4>
-      <h4>Price</h4>
-
-    </div>
+    <RelatedLib.productInfo>
+      <StyleLib.h6>{details.category}</StyleLib.h6>
+      <StyleLib.p>{details.name + ' | ' + styleName}</StyleLib.p>
+      <h4>{price}</h4>
+    </RelatedLib.productInfo>
   )
 }
 

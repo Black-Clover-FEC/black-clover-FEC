@@ -69,6 +69,39 @@ api.collectProductInfo = (id) => {
   .catch(err => console.log(err));
 }
 
+// QUESTIONS AND ANSWERS
+api.listQuestions = (params) => {
+  return get('/qa/questions', params);
+}
+
+api.listAnswers = (question_id) => {
+  return get(`/qa/questions/${question_id}/answers`, params);
+}
+
+api.addQuestion = (params) => {
+  return post('/qa/questions', params);
+}
+
+api.addAnswer = (question_id) => {
+  return post(`/qa/questions/${question_id}/answers`, params);
+}
+
+api.markQuestionHelpful = (question_id) => {
+  return put(`/qa/questions/${question_id}/helpful`);
+}
+
+api.reportQuesion = (question_id) => {
+  return put(`/qa/questions/${question_id}/report`)
+}
+
+api.markAnswerHelpful = (answer_id) => {
+  return put(`/qa/answers/${answer_id}/helpful`)
+}
+
+api.reportAnswer = (answer_id) => {
+  return put(`/qa/answers/${answer_id}/report`)
+}
+
 
 // REVIEWS
 api.listReviews = (params) => {

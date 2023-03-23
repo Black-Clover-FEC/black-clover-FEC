@@ -143,7 +143,7 @@ const StyleLib = {
   clip-path: inset(0 0 0 ${props => props.percentage}%);
 `,
 
-  tile: styled.li`
+tile: styled.li`
   list-style: none;
   border: none;
   border-bottom-style: solid;
