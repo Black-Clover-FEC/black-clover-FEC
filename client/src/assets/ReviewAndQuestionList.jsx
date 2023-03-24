@@ -4,7 +4,7 @@ import ReviewAndQuestionTile from './ReviewAndQuestionTile.jsx';
 
 
 const ReviewAndQuestionList = ({reviews}) => {
-
+console.log(reviews);
 
   return (
     <ul>

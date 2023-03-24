@@ -4,27 +4,59 @@ import YourOutfitList from './lists/YourOutfitList.jsx';
 import api from '../../../../client/src/lib/api.js';
 
 const RelatedProductsModule = () => {
-  const [relatedItems, setRelatedItems] = useState(['no related products']);
+  // represents a future state for current selected product
+  let testCurrentProduct = 40344;
+  // TODO - outfit list not used yet
   const [outfitList, setOutfitList] = useState([]);
+  const [relatedItems, setRelatedItems] = useState([]);
+  const [relatedProductIds, setRelatedProductIds] = useState([]);
 
-  const getProductList = (err, result) => {
-    api.listProducts()
-    .then((res) => {
-      setRelatedItems(res);
-      console.log(res);
-    })
-    .catch((err) => {
-      console.log('get product failed', err);
-    })
+  // GET RELATED ITEM ID'S
+  const getRelatedIds = (id) => {
+    api.getRelatedProducts(id)
+    .then(data => setRelatedProductIds(data))
+    .catch(err => console.log(err));
   }
 
-  useEffect(getProductList, []);
+  // // POPULATE LIST OF RELATED PRODUCTS
+  // async function populateRelatedItems (productIds) {
+  //   // iterate over ids and create an array of objects
+  //   let list = [];
+  //   await Promise.all(
+  //     productIds.map(async (id) => {
+  //     const product = await api.collectProductInfo(id);
+  //     console.log('product in async: ', product);
+  //   })
+  //   )
+  //   .then((list) => {
+  //     console.log('list:', list)}
+  //     )
+  //   .catch(err => console.log(err));
+  //   // set relatedItems to new array
+  //   // setRelatedItems(list);
+  // }
+
+  // for loop method
+  // POPULATE LIST OF RELATED PRODUCTS
+  async function populateRelatedItems (productIds) {
+    // iterate over ids and create an array of objects
+    let list = []
+    for (let id of productIds) {
+      const product = await api.collectProductInfo(id);
+      list.push(product);
+    }
+    setRelatedItems(list);
+  }
+
+  // TODO - revisit and set relatedId refresh off change in current product
+  useEffect(() => {getRelatedIds(testCurrentProduct)}, []);
+  useEffect(() => {populateRelatedItems(relatedProductIds)}, [relatedProductIds]);
 
   return (
     <div>
-      Hello World, this is where Related Products go!
       <div>
-        <RelatedProductList relatedItems={relatedItems}/>
+        {/* TODO - update related items prop after related product objects are formed */}
+        <RelatedProductList relatedItems={relatedItems} />
       </div>
       <div>
         <YourOutfitList />
