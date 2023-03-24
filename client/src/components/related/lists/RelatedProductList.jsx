@@ -3,7 +3,7 @@ import RelatedLib from '../assets/Stylesheet.jsx';
 import StyleLib from '../../../assets/Stylesheet.jsx';
 import RelatedProductCard from '../card_components/RelatedProductCard.jsx';
 
-const RelatedProductList = ({relatedItems, openComparison}) => {
+const RelatedProductList = ({relatedItems, openComparison, sendToCompare}) => {
 
   // console.log('related items in list component: ', relatedItems);
 
@@ -16,6 +16,7 @@ const RelatedProductList = ({relatedItems, openComparison}) => {
           key={product.details.id}
           product={product}
           openComparison={openComparison}
+          sendToCompare={sendToCompare}
           />;
         })}
       </div>

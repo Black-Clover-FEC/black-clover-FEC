@@ -14,7 +14,7 @@ const RelatedProductsModule = () => {
   const [relatedItems, setRelatedItems] = useState([]);
   const [relatedProductIds, setRelatedProductIds] = useState([]);
   const [comparisonView, setComparisonView] = useState(false);
-  const [productsToCompare, setProductsToCompare] = useState([]);
+  const [featuresToCompare, setFeaturesToCompare] = useState([]);
 
   const openComparison = () => setComparisonView(true);
   const closeComparison = () => setComparisonView(false);
@@ -37,19 +37,29 @@ const RelatedProductsModule = () => {
     setRelatedItems(list);
   }
 
+  // helper function
+  const sendToCompare = (selected) => {
+    // placeholder until overview product available
+    let current = relatedItems[2].details.features;
+    setFeaturesToCompare([current, selected]);
+  }
+
   // TODO - revisit and replace testCurrentProduct refresh off change in current product
   useEffect(() => {getRelatedIds(testCurrentProduct)}, []);
   useEffect(() => {populateRelatedItems(relatedProductIds)}, [relatedProductIds]);
   // using dummy data - replace with current product and selected related product when available
-  useEffect(() => {setProductsToCompare([relatedItems[2], relatedItems[3]])}, [relatedItems]);
 
   return (
     <div>
       <div>
         {/* TODO - update related items prop after related product objects are formed */}
-        <RelatedProductList relatedItems={relatedItems} openComparison={openComparison}/>
+        <RelatedProductList
+        relatedItems={relatedItems}
+        openComparison={openComparison}
+        sendToCompare={sendToCompare}
+        />
         <ComparisonModal
-        products={productsToCompare}
+        features={featuresToCompare}
         isOpen={comparisonView}
         onClose={closeComparison}
         />

@@ -1,17 +1,18 @@
 import React from 'react';
 
-const Table = ({data}) => {
+const Table = () => {
 
-console.log('data received by table: ', data);
+// console.log('data received by table: ', data);
   return (
     <div>
       <table>
-        <tc>
-          <th>Current Product</th>
-          <th>Characteristics</th>
-          <th>Related Product</th>
-        </tc>
-
+        <thead>
+          <tr>
+            <th>Current Product</th>
+            <th>Characteristics</th>
+            <th>Related Product</th>
+          </tr>
+        </thead>
       </table>
     </div>
   )

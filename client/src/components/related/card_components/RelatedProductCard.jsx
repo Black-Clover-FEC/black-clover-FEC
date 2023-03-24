@@ -5,7 +5,7 @@ import ProductInfo from './ProductInformation.jsx';
 import Stars from '../../../assets/Stars.jsx'
 import ActionBtn from '../assets/ActionBtn.jsx';
 
-const RelatedProductCard = ({product, openComparison}) => {
+const RelatedProductCard = ({product, openComparison, sendToCompare}) => {
 
  // HELPER FUNCTIONS
  const findDefault = (style) => {
@@ -49,10 +49,19 @@ const formatPrice = (style) => {
     return prodefault.name;
   }
 
+  const getFeatures = (item) => {
+    sendToCompare(item.details.features);
+  }
+
   return (
     <RelatedLib.card>
       <div>
-        <ActionBtn openComparison={openComparison}/>
+        {/* replace star to continue testing table in module */}
+        <button onClick={() => {
+          getFeatures(product)
+          openComparison()
+          }}>test</button>
+        {/* <ActionBtn openComparison={openComparison}/> */}
         <RelatedLib.cardImg src={getPhoto(product.styles.results)} alt='product-image'/>
       </div>
       <ProductInfo
