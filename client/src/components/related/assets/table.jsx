@@ -1,37 +1,43 @@
-import React from 'react';
-import {useTable} from 'react-table';
+import React, { useState } from 'react';
 import api from '../../../lib/api.js';
 
-const Table = ({featureList}) => {
+const Table = ({currentProduct, selectedProduct, features}) => {
 
-  console.log('feature list: ', featureList);
+  // const [features, setFeatures] = useState([]);
 
-  const data = [
-    {
-      name: 'YEasy 350',
-      id: 40351,
-      Sole: 'Rubber',
-      Material: 'FullControlSkin',
-      Stitching: 'Double Stitch',
-    },
-    {
-      name: 'Morning Joggers',
-      id: 40346,
-      Fabric: '100% Cotton',
-      Cut: 'Skinny',
-    },
-  ]
+  console.log('feature list and products: ', currentProduct, selectedProduct, features);
+  // // const features = [...featureLists[0]];
+  // // console.log('set: ', [...featureLists[0]]);
+  // const getfeatures = () => {
+  //   if (!featureLists) {
+  //     return;
+  //   } else {
+  //     let list = [...featureLists[0]];
+  //     console.log(list);
+  //     setFeatures(list);
+  //   }
+  // }
+
 
   return (
     <div>
       <table >
-        <thead>headers go here!
+        <thead>
           <tr>
-            {featureList.map(list => <th>{list.name}</th>)}
+            <th>features</th>
+            {/* <th>{currentProduct.name}</th>
+            <th>{selectedProduct.name}</th> */}
           </tr>
         </thead>
         <tbody>
-          lists go here!
+          {features.map((feature, index) =>
+          <tr key={index}>
+            <td>{currentProduct.features[feature]}</td>
+            <td>{feature}</td>
+            <td>{selectedProduct.features[feature]}</td>
+          </tr>
+
+          )}
         </tbody>
       </table>
     </div>
