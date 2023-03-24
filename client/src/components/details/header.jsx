@@ -7,7 +7,7 @@ import DetailsLib from './assets/Stylesheet.jsx';
 const Header = () => {
   return (
     <DetailsLib.header>
-      <DetailsLib.logo onClick={() => console.log('click!')} src={'https://images.unsplash.com/photo-1679638561023-b27271e07e52?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2826&q=80'} />
+      <DetailsLib.logo src={'https://images.unsplash.com/photo-1679638561023-b27271e07e52?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2826&q=80'} />
       <DetailsLib.searchBarButton />
       <DetailsLib.searchBar placeholder={'Search...'}/>
     </DetailsLib.header>

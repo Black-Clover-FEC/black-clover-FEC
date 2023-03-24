@@ -217,13 +217,13 @@ const DetailsLib = {
   `,
 
   addToBagButton: styled(StyleLib.button)`
-  width: 85%;
+  width: 80%;
   float: left;
   cursor: pointer;
   `,
 
   favoriteButton: styled(StyleLib.button)`
-  width: 10%;
+  width: 15%;
   float: right;
   cursor: pointer;
   background-color: #CDCDCD;
