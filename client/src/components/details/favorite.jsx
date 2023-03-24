@@ -1,12 +1,10 @@
 import React from 'react';
 import StyleLib from '../../assets/Stylesheet.jsx';
 import DetailsLib from './assets/Stylesheet.jsx';
-import { FaRegStar } from 'react-icons/fa';
 
-const Favorite = () => {
-
+const Favorite = ({favorite, setFavorite}) => {
   return (
-    <DetailsLib.favoriteButton><FaRegStar /></DetailsLib.favoriteButton>
+    <DetailsLib.favoriteButton onClick={() => setFavorite(!favorite)}>{favorite ? <DetailsLib.faStarFavorite /> : <DetailsLib.faStarNotFavorite />}</DetailsLib.favoriteButton>
   )
 }
 

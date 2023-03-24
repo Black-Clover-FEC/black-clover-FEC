@@ -2,15 +2,15 @@ import React from 'react';
 import StyleLib from '../../assets/Stylesheet.jsx';
 import DetailsLib from './assets/Stylesheet.jsx';
 
-const Description = () => {
+const Description = ({product}) => {
 
   return (
     <DetailsLib.description>
       <div>
-        <strong>Product Slogan.</strong>
+        <strong>{product.details.slogan}</strong>
         <br/>
         <StyleLib.small>
-          Ice cream ice cream GUMMIES
+          {product.details.description}
         </StyleLib.small>
       </div>
     </DetailsLib.description>

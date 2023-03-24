@@ -141,18 +141,19 @@ api.reportReview = (review_id) => {
 
 
 // CART
-api.addCart = (item) => {
-  return post('cart', item);
+api.addCart = (sku_id) => {
+  return put(`cart/${sku_id}`);
+
 };
 
 api.getCart = (params) => {
-  return post('cart', params);
+  return get('cart', params);
 };
 
 
 // INTERACTIONS
-api.interact = (interaction) => {
-  return post('iteraction', interaction);
+api.interact = (params) => {
+  return post('iteraction', params);
 };
 
 

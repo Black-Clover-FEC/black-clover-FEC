@@ -6,9 +6,7 @@ const StyleListItem = ({item, index}) => {
 
   return (
     <DetailsLib.styleList>
-      <DetailsLib.styleListItem>
-        {'Item ' + String(index + 1)}
-      </DetailsLib.styleListItem>
+      <DetailsLib.styleListItem src={item.photos[0].thumbnail_url}/>
     </DetailsLib.styleList>
   )
 }
