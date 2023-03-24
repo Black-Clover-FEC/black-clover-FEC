@@ -159,6 +159,7 @@ const DetailsLib = {
   smallUnderline: styled(StyleLib.p)`
   font-size: x-small;
   text-decoration: underline;
+  cursor: pointer;
   `,
 
   selectedStyle: styled(StyleLib.h2)`
