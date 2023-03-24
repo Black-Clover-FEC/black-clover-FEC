@@ -8,13 +8,16 @@ import Table from '../assets/table.jsx';
 
 Modal.setAppElement('#root');
 
-const ComparisonModal = ({features, isOpen, onClose}) => {
-  // compare characteristics of list with characteristics for product - apply to both products
-  const [allFeatures, setAllFeatures] = useState([]);
-  // generate combined list of both feature lists, no duplicates
+const ComparisonModal = ({products, isOpen, onClose}) => {
+  const [featureList, setFeatureList] = useState([]);
 
-  const combineFeatureList = () => {
-    let combined = [...features[0], ...features[1]];
+  const combineFeatureLists = () => {
+    let currentProduct = products[0].details.features;
+    let selectedProduct = products[1].details.features;
+    let combined = [...currentProduct, ...selectedProduct];
+    let data = {name: 'allFeatures', id: 1};
+
+    // remove duplicates
     for (let k = 0; k < combined.length; k++) {
       for (let i = k + 1; i < combined.length; i++) {
         if (combined[k].feature === combined[i].feature) {
@@ -22,24 +25,38 @@ const ComparisonModal = ({features, isOpen, onClose}) => {
         }
       }
     }
-    setAllFeatures(combined);
+    data.features = combined;
+    return data;
   }
 
+  const formatData = (product) => {
+    let newDataFormat = {
+      'name': product.details.name,
+      'id': product.details.id,
+      'features': product.details.features
+    };
+    return newDataFormat;
+  }
+
+  const formatAll = (products) => {
+    let data = [];
+    data.push(combineFeatureLists());
+    for (let product of products) {
+      data.push(formatData(product));
+    }
+    setFeatureList(data);
+    console.log(data);
+  }
 
   return (
-
     <Modal
     isOpen={isOpen}
-    onAfterOpen={combineFeatureList}
+    onAfterOpen={() => formatAll(products)}
     onRequestClose={onClose}
     >
-
       <span>Comparing</span>
-      <div className='modal-header'>
-        <div>features go here</div>
-      </div>
       <div className='modal-body'>
-        <Table />
+        <Table featureList={featureList} />
       </div>
     </Modal>
   )
