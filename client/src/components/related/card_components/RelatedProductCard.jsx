@@ -49,16 +49,12 @@ const formatPrice = (style) => {
     return prodefault.name;
   }
 
-  const getFeatures = (item) => {
-    sendToCompare(item.details.features);
-  }
-
   return (
     <RelatedLib.card>
       <div>
         {/* replace star to continue testing table in module */}
         <button onClick={() => {
-          getFeatures(product)
+          sendToCompare(product)
           openComparison()
           }}>test</button>
         {/* <ActionBtn openComparison={openComparison}/> */}
