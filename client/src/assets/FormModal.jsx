@@ -8,7 +8,7 @@ import CharacteristicsInput from '../components/ratings/CharacteristicsInput.jsx
 
 Modal.setAppElement('#root');
 
-const FormModal = ({ productInfo, isOpen, onClose, submitFunc, factors }) => {
+const FormModal = ({ product, isOpen, onClose, submitFunc, factors }) => {
 
   const [starRating, setStarRating] = React.useState(-1);
 
@@ -25,10 +25,11 @@ const FormModal = ({ productInfo, isOpen, onClose, submitFunc, factors }) => {
     let formData = new FormData(e.target);
     formData = Object.fromEntries(formData.entries()); // converts from fromData object to JSON object.
     formData.rating = starRating + 1;
-    formData.product_id = productInfo.p_id;
+    formData.product_id = product.id;
     formData.recommend = formData.recommend === 'yes';
     formData.photos = [];
     formatCharacteristics(formData);
+    console.log(formData);
     api.addReview(formData)
       .then(res => console.log('this is the response: ' + res)) // here for now for debugging purposes
       .then(() => {
@@ -46,7 +47,7 @@ const FormModal = ({ productInfo, isOpen, onClose, submitFunc, factors }) => {
       contentLabel='Please complete the form to review this product'
     >
       <StyleLib.h2>Write your review</StyleLib.h2>
-      <StyleLib.h5>about {productInfo.productName}</StyleLib.h5>
+      <StyleLib.h5>about {product.name}</StyleLib.h5>
       <form onSubmit={handleSubmit} >
         <StyleLib.blockLabel>
           Please rate this product:
