@@ -34,11 +34,9 @@ grid-column: 2;
 `
 
 
-const ReviewsModule = (productInfo) => {
-  // hard coding while waiting for product info to be populated and passed down upstream.
-  productInfo = { p_id: 40399, productName: 'Ultradark shades' };
-  const { p_id } = productInfo;
-
+const ReviewsModule = ({product}) => {
+  // productInfo = { p_id: 40399, productName: 'Ultradark shades' };
+  const p_id = product.id;
 
   // REACT HOOKS
 
@@ -173,7 +171,7 @@ const ReviewsModule = (productInfo) => {
       </GridContainer>
 
       <FormModal
-        productInfo={productInfo}
+        product={product}
         isOpen={modalIsOpen}
         onClose={closeModal}
         submitFunc={refreshReviewData}
