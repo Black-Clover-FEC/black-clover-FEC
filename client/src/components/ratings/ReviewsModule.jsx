@@ -176,7 +176,12 @@ const ReviewsModule = (productInfo) => {
         productInfo={productInfo}
         isOpen={modalIsOpen}
         onClose={closeModal}
-        submitFunc={refreshReviewData} />
+        submitFunc={refreshReviewData}
+        factors={characteristics.map(([factorName, data]) => ({
+          id: data.id,
+          name: factorName
+          })
+        )} />
     </section>
   )
 }

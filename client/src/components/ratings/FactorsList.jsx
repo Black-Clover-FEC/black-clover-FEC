@@ -4,6 +4,7 @@ import Factor from './Factor.jsx';
 
 
 const FactorsList = ({characteristics}) => {
+  console.log(characteristics);
 
   return (
     <ul>
