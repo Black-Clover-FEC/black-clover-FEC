@@ -29,16 +29,6 @@ const FormModal = ({ productInfo, isOpen, onClose, submitFunc, factors }) => {
     formData.recommend = formData.recommend === 'yes';
     formData.photos = [];
     formatCharacteristics(formData);
-    console.log('formdata: ', formData);
-
-    // characteristics is hardcoded for now while I work on implementing user inputs for that
-    // formData.characteristics = {
-    //   '135400': 5,
-    //   '135401': 5,
-    //   '135402': 5,
-    //   '135403': 5
-    // }
-
     api.addReview(formData)
       .then(res => console.log('this is the response: ' + res)) // here for now for debugging purposes
       .then(() => {

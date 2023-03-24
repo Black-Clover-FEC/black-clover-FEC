@@ -159,7 +159,7 @@ const ReviewsModule = (productInfo) => {
 
           <StyleLib.searchBar placeholder='Search reviews' />
 
-          {displayed.length !== 0 && <ReviewAndQuestionList reviews={displayed} />}
+          {displayed.length !== 0 && <ReviewAndQuestionList reviews={displayed} helpReportCB={getSortedReviews} />}
 
           <StyleLib.button onClick={handleShowMoreClick}>
             More Reviews

@@ -5,6 +5,7 @@ import StyleLib from './Stylesheet.jsx';
 import UserPhotos from './UserPhotos.jsx';
 import Stars from './Stars.jsx';
 import styled from 'styled-components';
+import api from '../lib/api.js';
 
 
 const ResponseText = styled(StyleLib.p)`
@@ -21,7 +22,20 @@ const Response = ({response}) => (
 )
 
 
-const ReviewAndQuestionTile = ({review}) => {
+const ReviewAndQuestionTile = ({review, helpReportCB}) => {
+
+  const handleHelpful = (e) => {
+    return api.markReviewHelpful(review.review_id)
+      .then(res => helpReportCB())
+      .catch(err => console.error('error marking a review helpful: ' + err));
+  };
+
+  const handleReport = (e) => {
+    return api.reportReview(review.review_id)
+      .then(res => helpReportCB())
+      .catch(err => console.error('error reporting a review: ' + err));
+  }
+
   return (
     <StyleLib.tile>
       <Stars rating={review.rating} />
@@ -32,7 +46,7 @@ const ReviewAndQuestionTile = ({review}) => {
       {review.recommend && <StyleLib.p><FontAwesomeIcon icon={faCheck} /> I recommend this product </StyleLib.p>}
       {review.response && <Response response={review.response} />}
       <StyleLib.small>
-        Helpful? <StyleLib.linkButton>Yes</StyleLib.linkButton>({review.helpfulness}) | <StyleLib.linkButton>Report</StyleLib.linkButton>
+        Helpful? <StyleLib.linkButton onClick={handleHelpful}>Yes</StyleLib.linkButton>({review.helpfulness}) | <StyleLib.linkButton onClick={handleReport}>Report</StyleLib.linkButton>
 
       </StyleLib.small>
     </StyleLib.tile>

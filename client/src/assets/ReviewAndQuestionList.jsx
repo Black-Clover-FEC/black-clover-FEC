@@ -3,10 +3,10 @@ import StyleLib from './Stylesheet.jsx';
 import ReviewAndQuestionTile from './ReviewAndQuestionTile.jsx';
 
 
-const ReviewAndQuestionList = ({reviews}) => {
+const ReviewAndQuestionList = ({reviews, helpReportCB}) => {
   return (
     <ul>
-      {reviews.map(review => <ReviewAndQuestionTile key={review.review_id} review={review} />)}
+      {reviews.map(review => <ReviewAndQuestionTile key={review.review_id} review={review} helpReportCB={helpReportCB} />)}
     </ul>
   );
 }
