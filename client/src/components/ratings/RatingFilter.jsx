@@ -17,11 +17,11 @@ const StyledMeter = styled.meter`
   }
   `
 
-const RatingBreakdownFilter = ({score, barValue, barMax}) => {
+const RatingBreakdownFilter = ({score, barValue, barMax, handleClick}) => {
 
   return (
     // <li>{score} stars, {barValue} / {barMax}</li>
-    <li>
+    <li onClick={handleClick}>
       <StyleLib.linkButton >{score} stars</StyleLib.linkButton>
       <StyledMeter max={barMax} value={barValue} title="Stars"></StyledMeter>
       <StyleLib.linkButton >({barValue} reviews)</StyleLib.linkButton>

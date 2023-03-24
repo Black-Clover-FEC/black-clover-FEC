@@ -18,13 +18,13 @@ const get = (endpoint, params = {}) => {
 const post = (endpoint, data = {}, params = {}) => {
   return axios.post(`${url}/${endpoint}/`, data, {headers: {Authorization: config.AUTH}, params: params})
     .then(results => results.data)
-    .catch(err => console.error(`Error getting ${endpoint} from server:  ${err}`));
+    .catch(err => console.error(`Error posting ${endpoint} to server:  ${err}`));
 }
 
 const put = (endpoint, data = {}, params = {}) => {
   return axios.put(`${url}/${endpoint}/`, data, {headers: {Authorization: config.AUTH}, params: params})
     .then(results => results.data)
-    .catch(err => console.error(`Error getting ${endpoint} from server:  ${err}`));
+    .catch(err => console.error(`Error updating ${endpoint} on server:  ${err}`));
 }
 
 
