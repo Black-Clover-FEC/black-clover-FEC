@@ -11,8 +11,8 @@ const StyleList = ({styleList}) => {
         <b>STYLE ></b> SELECTED STYLE
       </DetailsLib.selectedStyle>
       <ul>
-        {styleList.map((item) => {
-          return <StyleListItem key={item.style_id} item={item}/>;
+        {styleList.map((item, index) => {
+          return <StyleListItem key={/*item.style_id*/index} item={item}/>;
         })}
       </ul>
     </div>
