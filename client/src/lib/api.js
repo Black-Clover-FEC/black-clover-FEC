@@ -2,27 +2,42 @@ import axios from 'axios';
 import config from '../env/config.js';
 
 
-// This first section contains helper/template functions to keep our other functions
+// This first section contains helper/template functions and constants to keep our other functions
 // simple and DRY. Reuse them! But please don't edit them without team buy-in, because all
 // of our individual API functions rely on them.
 const api = {};
 
-const url = `https://app-hrsei-api.herokuapp.com/api/fec2/${config.CAMPUS_CODE}`;
+// URLs
+const herokuUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/${config.CAMPUS_CODE}`;
+const unsplashOauthUrl = 'https://unsplash.com/oauth/';
+const unsplashApiUrl = 'https://api.unsplash.com/';
 
+// Headers
+const herokuHeaders = {Authorization: config.AUTH};
+const unsplashHeaders = {
+  'Authorization': `Client-ID ${config.UNSPLASH_ACCESS_KEY}`,
+  'Accept-Version': 'v1'
+};
+const unsplashTokenHeaders = {
+  'Authorization': `Client-ID ${config.UNSPLASH_ACCESS_KEY}, Bearer ${config.UNSPLASH_USER_TOKEN}`,
+  'Accept-Version': 'v1'
+};
+
+// Atelier helper functions
 const get = (endpoint, params = {}) => {
-  return axios.get(`${url}/${endpoint}/`, {headers: {Authorization: config.AUTH}, params: params})
+  return axios.get(`${herokuUrl}/${endpoint}/`, {headers: herokuHeaders, params: params})
     .then(results => results.data)
     .catch(err => console.error(`Error getting ${endpoint} from server:  ${err}`));
 }
 
 const post = (endpoint, data = {}, params = {}) => {
-  return axios.post(`${url}/${endpoint}/`, data, {headers: {Authorization: config.AUTH}, params: params})
+  return axios.post(`${herokuUrl}/${endpoint}/`, data, {headers: herokuHeaders, params: params})
     .then(results => results.data)
     .catch(err => console.error(`Error posting ${endpoint} to server:  ${err}`));
 }
 
 const put = (endpoint, data = {}, params = {}) => {
-  return axios.put(`${url}/${endpoint}/`, data, {headers: {Authorization: config.AUTH}, params: params})
+  return axios.put(`${herokuUrl}/${endpoint}/`, data, {headers: herokuHeaders, params: params})
     .then(results => results.data)
     .catch(err => console.error(`Error updating ${endpoint} on server:  ${err}`));
 }
@@ -156,6 +171,43 @@ api.interact = (params) => {
   return post('iteraction', params);
 };
 
+
+// --------- UNSPLASH --------------
+
+// oAuth
+
+api.authorizeUser = () => {
+
+  const params = {
+    client_id: config.UNSPLASH_ACCESS_KEY,
+    redirect_uri: 'urn:ietf:wg:oauth:2.0:oob',
+    response_type: 'code',
+    scope: 'public+read_photos+write_photos'
+  };
+
+  return axios.get(`${unsplashOauthUrl}authorize/`, {headers: unsplashHeaders, params: params})
+    .then(res => console.log(res))
+    .catch(err => console.error(err));
+};
+
+api.getToken = () => {
+
+  const params = {
+    client_id: config.UNSPLASH_ACCESS_KEY,
+    client_secret: config.UNSPLASH_SECRET_KEY,
+    redirect_uri: 'http://localhost:8080/',
+    code: config.UNSPLASH_USER_AUTH_CODE,
+    grant_type: 'authorization_code'
+  };
+
+  return axios.post(`${unsplashOauthUrl}token/`, params, {headers: unsplashHeaders})
+    .then(res => console.log(res))
+    .catch(err => console.error(err));
+};
+
+api.postPhoto = (photo) => {
+  return
+}
 
 
 export default api;
