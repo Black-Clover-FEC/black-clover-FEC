@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import StyleLib from '../../assets/Stylesheet.jsx';
@@ -34,36 +34,89 @@ grid-column: 2;
 `
 
 
-const ReviewsModule = (productInfo) => {
-  // hard coding while waiting for product info to be populated and passed down upstream.
-  productInfo = {p_id: 40399, productName: 'Ultradark shades'};
-  const {p_id} = productInfo;
+const ReviewsModule = ({product}) => {
+  // productInfo = { p_id: 40399, productName: 'Ultradark shades' };
+  const p_id = product.id;
 
   // REACT HOOKS
-  const [reviews, setReviews] = React.useState([]);
-  const [reviewsCount, setReviewsCount] = React.useState(0);
-  const [averageRating, setAverageRating] = React.useState(0);
-  const [ratingBreakdown, setRatingBreakdown] = React.useState([]);
-  const [percentRecommended, setPercentRecommended] = React.useState(0);
-  const [characteristics, setCharacteristics] = React.useState([]);
-  React.useEffect(() => refreshReviewData(40399), []);
 
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  // reviews lists:
+  const [sorted, setSorted] = useState([]);
+  const [filtered, setFiltered] = useState([]);
+  const [displayed, setDisplayed] = useState([]);
+
+  // list variables:
+  const [sortBy, setSortBy] = useState('relevant');
+  const [filterBy, setFilterBy] = useState(new Array(5).fill(true));
+  const [displayCount, setDisplayCount] = useState(2);
+
+  // summary and metadata:
+  const [reviewsCount, setReviewsCount] = useState(0);
+  const [averageRating, setAverageRating] = useState(0);
+  const [ratingBreakdown, setRatingBreakdown] = useState([]);
+  const [percentRecommended, setPercentRecommended] = useState(0);
+  const [characteristics, setCharacteristics] = useState([]);
+
+  // modal:
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  // effects:
+  useEffect(() => refreshReviewData(), []);
+  useEffect(() => getSortedReviews(), [sortBy]);
+  useEffect(() => filterReviews(), [sorted, filterBy]);
+  useEffect(() => displayReviews(), [filtered, displayCount]);
+
+
+  // HELPER FUNCTIONS
+  const refreshReviewData = () => {
+    getSortedReviews(p_id, sortBy);
+    getMetaData(p_id);
+  }
+
+  const getSortedReviews = () => {
+    const queryParams = {
+      product_id: p_id,
+      sort: sortBy,
+      count: 1000,
+      page: 1
+    };
+    api.listReviews(queryParams)
+      .then(data => setSorted(data))
+      .catch(err => console.error(err));
+  }
+
+  const getMetaData = () => {
+    api.getReviewsMetadata({ product_id: p_id })
+      .then(data => {
+        setReviewsCount(data.reviewsCount);
+        setAverageRating(data.averageRating);
+        setRatingBreakdown(Object.values(data.ratings).map(value => parseInt(value)));
+        setPercentRecommended(100 * data.recRate);
+        setCharacteristics(Object.entries(data.characteristics));
+      })
+      .catch(err => console.error(err));
+  }
+
+  const filterReviews = () => setFiltered(sorted.filter(review => filterBy[review.rating - 1]));
+
+  const displayReviews = () => setDisplayed(filtered.slice(0, displayCount));
+
+
+  // EVENT HANDLERS
+  const handleSortChange = (e) => setSortBy(e.target.value);
+  const handleShowMoreClick = (e) => setDisplayCount(displayCount + 2);
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
 
-  // HELPER FUNCTIONS
-  const refreshReviewData = (p_id) => {
-    getAndSetReviews(p_id);
-    getAndSetMetadata(p_id);
-   }
+  const handleFilterClick = (index) => {
+    let newFilterBy;
 
-   const getAndSetReviews = (p_id) => {
-     return api.listReviews({ product_id: p_id })
-       .then(data => setReviews(data))
-       .catch(err => console.log(err));
-   }
+    if (!filterBy.includes(false)) {
+      newFilterBy = new Array(5).fill(false);
+      newFilterBy[index] = true;
+      setFilterBy(newFilterBy);
 
+<<<<<<< HEAD
   const getAndSetMetadata = (p_id) => {
     return api.getReviewsMetadata({product_id: p_id})
     .then(data => {
@@ -74,6 +127,16 @@ const ReviewsModule = (productInfo) => {
       setCharacteristics(Object.entries(data.characteristics));
     })
     .catch(err => console.log(err));
+=======
+    } else if (filterBy.filter(bool => bool).length === 1 && filterBy.indexOf(true) === index) {
+      setFilterBy(new Array(5).fill(true));
+
+    } else {
+      newFilterBy = [...filterBy];
+      newFilterBy[index] = !newFilterBy[index];
+      setFilterBy(newFilterBy);
+    }
+>>>>>>> main
   }
 
   // RENDER IT!
@@ -82,39 +145,54 @@ const ReviewsModule = (productInfo) => {
       <StyleLib.h2>Ratings and Reviews</StyleLib.h2>
       <GridContainer>
         <GridCol1>
+
           <AvgRating>{averageRating.toFixed(1)}</AvgRating>
-          <Stars rating={averageRating}/>
+
+          <Stars rating={averageRating} />
+
           <StyleLib.p>{percentRecommended.toFixed(0)}% recommend this product</StyleLib.p>
 
-          <RatingFiltersList ratings={ratingBreakdown}/>
-          <FactorsList characteristics={characteristics}/>
+          <RatingFiltersList ratings={ratingBreakdown} handleClick={handleFilterClick} />
+
+          <FactorsList characteristics={characteristics} />
+
         </GridCol1>
 
         <GridCol2>
+
           <StyleLib.h4>{reviewsCount} reviews, sorted by
-            <StyleLib.dropdown>
-              <option value="relevance">relevance</option>
-              <option value="recent">recency</option>
+            <StyleLib.dropdown name='sort' onChange={handleSortChange} value={sortBy}>
+              <option value="relevant">relevance</option>
+              <option value="newest">recency</option>
               <option value="helpful">helpfulness</option>
             </StyleLib.dropdown>
-
           </StyleLib.h4>
-          <StyleLib.searchBar placeholder='Search reviews'/>
-          {reviews.length !== 0 && <ReviewAndQuestionList reviews={reviews} />}
-          <StyleLib.button>More Reviews</StyleLib.button>
+
+          <StyleLib.searchBar placeholder='Search reviews' />
+
+          {displayed.length !== 0 && <ReviewAndQuestionList reviews={displayed} helpReportCB={getSortedReviews} />}
+
+          <StyleLib.button onClick={handleShowMoreClick}>
+            More Reviews
+          </StyleLib.button>
+
           <StyleLib.button onClick={openModal}>
             Add a Review
-            </StyleLib.button>
+          </StyleLib.button>
+
         </GridCol2>
       </GridContainer>
+
       <FormModal
-        productInfo={productInfo}
+        product={product}
         isOpen={modalIsOpen}
         onClose={closeModal}
-        submitFunc={() => {
-          getAndSetReviews(p_id);
-          getAndSetMetadata(p_id);
-          }} />
+        submitFunc={refreshReviewData}
+        factors={characteristics.map(([factorName, data]) => ({
+          id: data.id,
+          name: factorName
+          })
+        )} />
     </section>
   )
 }

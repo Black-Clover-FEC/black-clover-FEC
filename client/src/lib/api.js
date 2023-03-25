@@ -18,13 +18,13 @@ const get = (endpoint, params = {}) => {
 const post = (endpoint, data = {}, params = {}) => {
   return axios.post(`${url}/${endpoint}/`, data, {headers: {Authorization: config.AUTH}, params: params})
     .then(results => results.data)
-    .catch(err => console.error(`Error getting ${endpoint} from server:  ${err}`));
+    .catch(err => console.error(`Error posting ${endpoint} to server:  ${err}`));
 }
 
 const put = (endpoint, data = {}, params = {}) => {
   return axios.put(`${url}/${endpoint}/`, data, {headers: {Authorization: config.AUTH}, params: params})
     .then(results => results.data)
-    .catch(err => console.error(`Error getting ${endpoint} from server:  ${err}`));
+    .catch(err => console.error(`Error updating ${endpoint} on server:  ${err}`));
 }
 
 
@@ -141,18 +141,19 @@ api.reportReview = (review_id) => {
 
 
 // CART
-api.addCart = (item) => {
-  return post('cart', item);
+api.addCart = (sku_id) => {
+  return put(`cart/${sku_id}`);
+
 };
 
 api.getCart = (params) => {
-  return post('cart', params);
+  return get('cart', params);
 };
 
 
 // INTERACTIONS
-api.interact = (interaction) => {
-  return post('iteraction', interaction);
+api.interact = (params) => {
+  return post('iteraction', params);
 };
 
 

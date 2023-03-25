@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useLoaderData } from "react-router-dom";
+import api from '../lib/api.js';
 
 import Overview from './details/OverviewModule.jsx';
 import RelatedProducts from './related/RelatedProductsModule.jsx';
@@ -12,15 +14,21 @@ max-width: 1500px;
 margin: auto;
 `
 
+export async function productLoader({ params }) {
+  const product = await api.getProductId(params.productId);
+  return { product };
+};
+
 const App = () => {
+  const {product} = useLoaderData();
+  console.log(product);
 
   return (
     <StyledDiv>
-      Hello World! This is from App.
-      <Overview />
-      <RelatedProducts />
-      <QA />
-      <Reviews />
+      <Overview product={product}/>
+      <RelatedProducts product={product}/>
+      <QA product={product}/>
+      <Reviews product={product}/>
     </StyledDiv>
   )
 }

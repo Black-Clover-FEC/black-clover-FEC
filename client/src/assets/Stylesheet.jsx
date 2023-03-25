@@ -143,7 +143,7 @@ const StyleLib = {
   clip-path: inset(0 0 0 ${props => props.percentage}%);
 `,
 
-tile: styled.li`
+  tile: styled.li`
   list-style: none;
   border: none;
   border-bottom-style: solid;
@@ -160,6 +160,11 @@ tile: styled.li`
   border-radius: 10px;
   height: 4em;
   margin: 0 .2em 0 .2em;
+  `,
+
+  bigPhoto: styled.img`
+  border: none;
+  height: 40em;
   `,
 
   blockLabel: styled.label`

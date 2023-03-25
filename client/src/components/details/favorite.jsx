@@ -1,12 +1,10 @@
 import React from 'react';
-import Stars from '../../assets/Stars.jsx';
 import StyleLib from '../../assets/Stylesheet.jsx';
 import DetailsLib from './assets/Stylesheet.jsx';
 
-const Favorite = () => {
-
+const Favorite = ({favorite, setFavorite}) => {
   return (
-    <DetailsLib.favoriteButton>*</DetailsLib.favoriteButton>
+    <DetailsLib.favoriteButton onClick={() => setFavorite(!favorite)}>{favorite ? <DetailsLib.faStarFavorite /> : <DetailsLib.faStarNotFavorite />}</DetailsLib.favoriteButton>
   )
 }
 
