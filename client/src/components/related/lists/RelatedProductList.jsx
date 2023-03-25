@@ -8,9 +8,9 @@ const RelatedProductList = ({relatedItems, openComparison, sendToCompare}) => {
   // console.log('related items in list component: ', relatedItems);
 
   return (
-    <RelatedLib.carousel>
+    <section>
       <StyleLib.h2>Related Products</StyleLib.h2>
-      <div>
+      <RelatedLib.carousel>
         {relatedItems.map((product) => {
           return <RelatedProductCard
           key={product.details.id}
@@ -19,8 +19,8 @@ const RelatedProductList = ({relatedItems, openComparison, sendToCompare}) => {
           sendToCompare={sendToCompare}
           />;
         })}
-      </div>
-    </RelatedLib.carousel>
+      </RelatedLib.carousel>
+    </section>
   )
 }
 

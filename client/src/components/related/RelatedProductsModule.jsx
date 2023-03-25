@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, Profiler} from 'react';
 import RelatedProductList from './lists/RelatedProductList.jsx';
 import YourOutfitList from './lists/YourOutfitList.jsx';
 import api from '../../../../client/src/lib/api.js';
@@ -6,12 +6,13 @@ import ComparisonModal from './ComparisonModal.jsx';
 
 // ComparisonModal.setAppElement('#root');
 
-const RelatedProductsModule = () => {
-  // placeholder until compoenent state routing available
-  let testCurrentProduct = 40344;
+const RelatedProductsModule = ({product}) => {
+
+  // represents a future state for current selected product
   // TODO - outfit list not used yet
   const [outfitList, setOutfitList] = useState([]);
   const [relatedItems, setRelatedItems] = useState([]);
+
   const [relatedProductIds, setRelatedProductIds] = useState([]);
   const [comparisonView, setComparisonView] = useState(false);
   const [productsToCompare, setProductsToCompare] = useState([]);
@@ -19,24 +20,24 @@ const RelatedProductsModule = () => {
   const openComparison = () => setComparisonView(true);
   const closeComparison = () => setComparisonView(false);
 
+
+
   // GET RELATED ITEM ID'S
-  const getRelatedIds = (id) => {
-    api.getRelatedProducts(id)
-    .then(data => setRelatedProductIds(data))
-    .catch(err => console.log(err));
+  const getAndSetRelatedProducts = (id) => {
+    return api.getRelatedProducts(id)
+      .then(relatedIds => getRelatedProducts(relatedIds))
+      .then(relatedProducts => setRelatedItems(relatedProducts))
+      .catch(err => console.log(err));
   }
 
   // POPULATE LIST OF RELATED PRODUCTS
-  async function populateRelatedItems (productIds) {
-    let list = []
-    for (let id of productIds) {
-      const product = await api.collectProductInfo(id);
-      list.push(product);
-    }
-    setRelatedItems(list);
+  const getRelatedProducts = (productIds) => {
+    return Promise.all(productIds.map(id => api.collectProductInfo(id)));
   }
 
-  // helper function
+  useEffect(() => {getAndSetRelatedProducts(product.id)}, []);
+
+  // helper function for Comparison Modal
   const sendToCompare = (selected) => {
     // placeholder until current product viewed in overview available
     let current = relatedItems[2];
@@ -44,28 +45,23 @@ const RelatedProductsModule = () => {
 
   }
 
-  // TODO - revisit and replace testCurrentProduct refresh off change in current product
-  useEffect(() => {getRelatedIds(testCurrentProduct)}, []);
-  useEffect(() => {populateRelatedItems(relatedProductIds)}, [relatedProductIds]);
-
   return (
     <div>
       <div>
-        {/* TODO - update related items prop after related product objects are formed */}
-        <RelatedProductList
+        {relatedItems.length !==0 && <RelatedProductList
         relatedItems={relatedItems}
         openComparison={openComparison}
         sendToCompare={sendToCompare}
-        />
-        <ComparisonModal
-        products={productsToCompare}
-        isOpen={comparisonView}
-        onClose={closeComparison}
-        />
+        />}
       </div>
       <div>
         <YourOutfitList />
       </div>
+      <ComparisonModal
+        products={productsToCompare}
+        isOpen={comparisonView}
+        onClose={closeComparison}
+        />
     </div>
   )
 }
