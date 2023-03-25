@@ -12,12 +12,12 @@ const RelatedLib = {
   card: styled.div`
   display: inline-block;
   vertical-align: top;
-  background-color: #D5D5D5;
-  width: 230px;
+  // background-color: #D5D5D5;
+  width: 231px;
   height: 470px;
   border-radius: 10px;
-  // border: solid;
-  // border-width: 1px;
+  border: solid;
+  border-width: 0.5px;
   margin: 5px;
   `,
 
