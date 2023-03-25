@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import StyleLib from '../../../assets/Stylesheet.jsx'
+import { FaRegStar } from 'react-icons/fa';
 
 const RelatedLib = {
 
@@ -19,6 +20,18 @@ const RelatedLib = {
   border: solid;
   border-width: 0.5px;
   margin: 5px;
+  `,
+
+  imgContainer: styled.div`
+  position: relative;
+  `,
+
+  compareStar: styled(FaRegStar)`
+  color: #E2C577;
+  position: absolute;
+  width: 10%;
+  left: 85%;
+  top: 15px;
   `,
 
   cardImg: styled.img`
