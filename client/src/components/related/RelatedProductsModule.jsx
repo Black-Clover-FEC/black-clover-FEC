@@ -4,13 +4,11 @@ import YourOutfitList from './lists/YourOutfitList.jsx';
 import api from '../../../../client/src/lib/api.js';
 import ComparisonModal from './ComparisonModal.jsx';
 
-// ComparisonModal.setAppElement('#root');
-
 const RelatedProductsModule = ({product}) => {
 
   // represents a future state for current selected product
   // TODO - outfit list not used yet
-  const [outfitList, setOutfitList] = useState([]);
+  const [outfits, setOutfits] = useState(['button']);
   const [relatedItems, setRelatedItems] = useState([]);
 
   const [relatedProductIds, setRelatedProductIds] = useState([]);
@@ -19,8 +17,6 @@ const RelatedProductsModule = ({product}) => {
 
   const openComparison = () => setComparisonView(true);
   const closeComparison = () => setComparisonView(false);
-
-
 
   // GET RELATED ITEM ID'S
   const getAndSetRelatedProducts = (id) => {
@@ -39,9 +35,8 @@ const RelatedProductsModule = ({product}) => {
 
   // helper function for Comparison Modal
   const sendToCompare = (selected) => {
-    // placeholder until current product viewed in overview available
-    let current = relatedItems[2];
-    setProductsToCompare([current, selected]);
+    let current = product;
+    setProductsToCompare([current, selected.details]);
 
   }
 
@@ -55,7 +50,7 @@ const RelatedProductsModule = ({product}) => {
         />}
       </div>
       <div>
-        <YourOutfitList />
+        <YourOutfitList outfits={outfits}/>
       </div>
       <ComparisonModal
         products={productsToCompare}
