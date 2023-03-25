@@ -45,18 +45,13 @@ useEffect(() => {setDefault(product.styles.results)}, [product]);
   return (
     <RelatedLib.card>
       <RelatedLib.imgContainer>
-        {/* replace star to continue testing table in module */}
         <RelatedLib.compareStar onClick={() => {
           sendToCompare(product)
           openComparison()
         }}></RelatedLib.compareStar>
         <RelatedLib.cardImg src={image} alt='product-image'/>
-
       </RelatedLib.imgContainer>
-      <ProductInfo
-      details={product.details}
-      price={price}
-      styleName={style}/>
+      <ProductInfo details={product.details} price={price} styleName={style}/>
       <Stars rating={product.reviewsMeta.averageRating}/>
     </RelatedLib.card>
   )
