@@ -116,18 +116,6 @@ const ReviewsModule = ({product}) => {
       newFilterBy[index] = true;
       setFilterBy(newFilterBy);
 
-<<<<<<< HEAD
-  const getAndSetMetadata = (p_id) => {
-    return api.getReviewsMetadata({product_id: p_id})
-    .then(data => {
-      setReviewsCount(data.reviewsCount);
-      setAverageRating(data.averageRating);
-      setRatingBreakdown(Object.values(data.ratings).map(value => parseInt(value)));
-      setPercentRecommended(100 * data.recRate);
-      setCharacteristics(Object.entries(data.characteristics));
-    })
-    .catch(err => console.log(err));
-=======
     } else if (filterBy.filter(bool => bool).length === 1 && filterBy.indexOf(true) === index) {
       setFilterBy(new Array(5).fill(true));
 
@@ -136,7 +124,6 @@ const ReviewsModule = ({product}) => {
       newFilterBy[index] = !newFilterBy[index];
       setFilterBy(newFilterBy);
     }
->>>>>>> main
   }
 
   // RENDER IT!
