@@ -14,7 +14,7 @@ const YourOutfitList = ({outfits, addOutfit}) => {
           if (outfit.button === 'addOutfit') {
             return <AddToOutfitCard key={index} addOutfit={addOutfit}/>
           } else {
-            return <ProductCard key={outfit.id} product={outfit}/>
+            return <ProductCard key={outfit.details.id} product={outfit}/>
           }
         })}
       </RelatedLib.carousel>

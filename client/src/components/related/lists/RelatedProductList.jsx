@@ -12,7 +12,6 @@ const RelatedProductList = ({relatedItems, openComparison, sendToCompare}) => {
       <StyleLib.h2>Related Products</StyleLib.h2>
       <RelatedLib.carousel>
         {relatedItems.map((product) => {
-          // console.log('product info sent to card: ', product);
           return <RelatedProductCard
           key={product.details.id}
           product={product}
