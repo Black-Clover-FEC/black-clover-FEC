@@ -3,20 +3,17 @@ import RelatedLib from '../assets/Stylesheet.jsx';
 import StyleLib from '../../../assets/Stylesheet.jsx'
 import styled from 'styled-components';
 
-const AddToOutfitCard = () => {
-
-  const AddOutfitText = styled(StyleLib.blockLabel)`
-    position: absolute;
-    top: 70%;
-    left: 17%;
-  `;
+const AddToOutfitCard = ({addOutfit}) => {
 
   return (
-    <RelatedLib.card>
+    <RelatedLib.card onClick={() => {
+      console.log('outfit added')
+      addOutfit();
+    }}>
       <RelatedLib.plus></RelatedLib.plus>
-      <AddOutfitText>
+      <RelatedLib.addOutfitText>
         <StyleLib.h3>Add to Outfit</StyleLib.h3>
-      </AddOutfitText>
+      </RelatedLib.addOutfitText>
     </RelatedLib.card>
   )
 }

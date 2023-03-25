@@ -36,6 +36,12 @@ const RelatedLib = {
   top: 40%;
   `,
 
+  addOutfitText: styled(StyleLib.blockLabel)`
+    position: absolute;
+    top: 70%;
+    left: 17%;
+  `,
+
   compareStar: styled(FaRegStar)`
   color: #E2C577;
   position: absolute;
