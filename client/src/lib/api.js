@@ -88,12 +88,10 @@ api.getRelatedProducts = (product_id) => {
 // }
 
 api.collectProductInfo = async (id) => {
-  console.time('productInfo')
   let product = {};
   product.details = await api.getProductId(id)
   product.styles = await api.getProductStyles(id);
-  product.reviewsMeta = await api.getReviewsMetadata({product_id: product.id});
-  console.timeEnd('productInfo');
+  product.reviewsMeta = await api.getReviewsMetadata({product_id: id});
   return product;
 }
 
