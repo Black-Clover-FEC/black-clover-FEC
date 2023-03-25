@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import RelatedLib from './Stylesheet.jsx'
+import StyleLib from '../../../assets/Stylesheet.jsx'
 
 const Table = ({currentProduct, selectedProduct, features}) => {
 
@@ -6,25 +8,24 @@ const Table = ({currentProduct, selectedProduct, features}) => {
 
   return (
     <div>
-      <table >
+      <RelatedLib.table>
         <thead>
-          <tr>
-            <th>features</th>
-            {/* <th>{currentProduct.name}</th>
-            <th>{selectedProduct.name}</th> */}
-          </tr>
+          <RelatedLib.tr>
+            <RelatedLib.th>Currently Viewed Product</RelatedLib.th>
+            <RelatedLib.th></RelatedLib.th>
+            <RelatedLib.th>Selected Related Product</RelatedLib.th>
+          </RelatedLib.tr>
         </thead>
         <tbody>
           {features.map((feature, index) =>
-          <tr key={index}>
-            <td>{currentProduct.features[feature]}</td>
-            <td>{feature}</td>
-            <td>{selectedProduct.features[feature]}</td>
-          </tr>
-
+          <RelatedLib.tr key={index}>
+            <RelatedLib.td>{currentProduct.features[feature]}</RelatedLib.td>
+            <RelatedLib.td>{feature}</RelatedLib.td>
+            <RelatedLib.td>{selectedProduct.features[feature]}</RelatedLib.td>
+          </RelatedLib.tr>
           )}
         </tbody>
-      </table>
+      </RelatedLib.table>
     </div>
   )
 }

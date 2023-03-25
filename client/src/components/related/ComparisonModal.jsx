@@ -53,8 +53,16 @@ const ComparisonModal = ({products, isOpen, onClose}) => {
     isOpen={isOpen}
     onAfterOpen={() => formatAll(products)}
     onRequestClose={onClose}
+    style={{
+      content: {
+        top: '200px',
+        left: '300px',
+        right: '300px',
+        bottom: '200px',
+      }
+    }}
     >
-      <span>Comparing</span>
+      <StyleLib.h5>Comparing</StyleLib.h5>
       <div className='modal-body'>
         <Table currentProduct={productList[0]} selectedProduct={productList[1]} features={features}/>
       </div>
