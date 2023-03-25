@@ -7,7 +7,6 @@ const RelatedLib = {
   display: block;
   padding-left: 100px;
   padding-right: 100px;
-  text-algin: center;
   `,
 
   card: styled.div`

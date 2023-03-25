@@ -2,12 +2,12 @@ import React, {useState, useEffect} from 'react';
 import RelatedProductList from './lists/RelatedProductList.jsx';
 import YourOutfitList from './lists/YourOutfitList.jsx';
 import api from '../../../../client/src/lib/api.js';
-import ComparisonModal from './modal/ComparisonModal.jsx';
+import ComparisonModal from './ComparisonModal.jsx';
 
 // ComparisonModal.setAppElement('#root');
 
 const RelatedProductsModule = () => {
-  // represents a future state for current selected product
+  // placeholder until compoenent state routing available
   let testCurrentProduct = 40344;
   // TODO - outfit list not used yet
   const [outfitList, setOutfitList] = useState([]);
@@ -28,7 +28,6 @@ const RelatedProductsModule = () => {
 
   // POPULATE LIST OF RELATED PRODUCTS
   async function populateRelatedItems (productIds) {
-    // iterate over ids and create an array of objects
     let list = []
     for (let id of productIds) {
       const product = await api.collectProductInfo(id);

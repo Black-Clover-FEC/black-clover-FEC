@@ -1,23 +1,8 @@
 import React, { useState } from 'react';
-import api from '../../../lib/api.js';
 
 const Table = ({currentProduct, selectedProduct, features}) => {
 
-  // const [features, setFeatures] = useState([]);
-
   console.log('feature list and products: ', currentProduct, selectedProduct, features);
-  // // const features = [...featureLists[0]];
-  // // console.log('set: ', [...featureLists[0]]);
-  // const getfeatures = () => {
-  //   if (!featureLists) {
-  //     return;
-  //   } else {
-  //     let list = [...featureLists[0]];
-  //     console.log(list);
-  //     setFeatures(list);
-  //   }
-  // }
-
 
   return (
     <div>
