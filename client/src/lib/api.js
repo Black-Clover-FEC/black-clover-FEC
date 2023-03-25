@@ -65,23 +65,36 @@ api.getRelatedProducts = (product_id) => {
 
 
 // AGGREGATE DETAILS, STYLES, AND META DATA FOR PRODUCT
-api.collectProductInfo = (id) => {
-  let product = {};
+// api.collectProductInfo = (id) => {
+//   console.time('productInfo')
+//   let product = {};
 
-  return api.getProductId(id)
-  .then((data) => {
-    product.details = data;
-    return api.getProductStyles(id);
-  })
-  .then((data) => {
-    product.styles = data;
-    return api.getReviewsMetadata({product_id: id});
-  })
-  .then((data) => {
-    product.reviewsMeta = data;
-    return product;
-  })
-  .catch(err => console.log(err));
+
+//   return api.getProductId(id)
+//   .then((data) => {
+//     product.details = data;
+//     return api.getProductStyles(id);
+//   })
+//   .then((data) => {
+//     product.styles = data;
+//     return api.getReviewsMetadata({product_id: id});
+//   })
+//   .then((data) => {
+//     product.reviewsMeta = data;
+//     console.timeEnd('productInfo')
+//     return product;
+//   })
+//   .catch(err => console.log(err));
+// }
+
+api.collectProductInfo = async (id) => {
+  console.time('productInfo')
+  let product = {};
+  product.details = await api.getProductId(id)
+  product.styles = await api.getProductStyles(id);
+  product.reviewsMeta = await api.getReviewsMetadata({product_id: product.id});
+  console.timeEnd('productInfo');
+  return product;
 }
 
 // QUESTIONS AND ANSWERS
