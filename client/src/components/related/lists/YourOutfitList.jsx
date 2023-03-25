@@ -11,10 +11,10 @@ const YourOutfitList = ({outfits, addOutfit}) => {
       <StyleLib.h2>Your Outfit</StyleLib.h2>
       <RelatedLib.carousel>
         {outfits.map((outfit, index) => {
-          if (outfit === 'button') {
+          if (outfit.button === 'addOutfit') {
             return <AddToOutfitCard key={index} addOutfit={addOutfit}/>
           } else {
-            <ProductCard key={outfit.id} outfit={outfit}/>
+            return <ProductCard key={outfit.id} product={outfit}/>
           }
         })}
       </RelatedLib.carousel>

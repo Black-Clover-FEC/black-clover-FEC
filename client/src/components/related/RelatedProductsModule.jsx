@@ -7,7 +7,7 @@ import ComparisonModal from './ComparisonModal.jsx';
 const RelatedProductsModule = ({product}) => {
 
   // LISTS
-  const [outfits, setOutfits] = useState(['button']);
+  const [outfits, setOutfits] = useState([{button: 'addOutfit'}]);
   const [relatedItems, setRelatedItems] = useState([]);
 
   // RELATED ITEMS AND COMPARISON
@@ -41,7 +41,6 @@ const RelatedProductsModule = ({product}) => {
 
   // ADD OUTFIT
   const addOutfit = async () => {
-    console.log('tried to add outfit');
     let outfit = await api.collectProductInfo(product.id);
     setOutfits(outfits.concat(outfit));
   }
