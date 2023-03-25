@@ -22,6 +22,10 @@ const unsplashTokenHeaders = {
   'Authorization': `Client-ID ${config.UNSPLASH_ACCESS_KEY}, Bearer ${config.UNSPLASH_USER_TOKEN}`,
   'Accept-Version': 'v1'
 };
+const imgurHeaders = {
+  'Authorization': `Client-ID ${config.IMGUR_CLIENT_ID}`,
+  'Content-Type': 'multipart/form-data'
+};
 
 // Atelier helper functions
 const get = (endpoint, params = {}) => {
@@ -65,27 +69,6 @@ api.getRelatedProducts = (product_id) => {
 
 
 // AGGREGATE DETAILS, STYLES, AND META DATA FOR PRODUCT
-// api.collectProductInfo = (id) => {
-//   console.time('productInfo')
-//   let product = {};
-
-
-//   return api.getProductId(id)
-//   .then((data) => {
-//     product.details = data;
-//     return api.getProductStyles(id);
-//   })
-//   .then((data) => {
-//     product.styles = data;
-//     return api.getReviewsMetadata({product_id: id});
-//   })
-//   .then((data) => {
-//     product.reviewsMeta = data;
-//     console.timeEnd('productInfo')
-//     return product;
-//   })
-//   .catch(err => console.log(err));
-// }
 
 api.collectProductInfo = async (id) => {
   let product = {};
@@ -217,8 +200,10 @@ api.getToken = () => {
 };
 
 api.postPhoto = (photo) => {
-  return
-}
+  return axios.post(`https://api.imgur.com/3/image`, photo, {headers: imgurHeaders})
+    .then(res => console.log(res))
+    .catch(err => console.error(err));
+};
 
 
 export default api;

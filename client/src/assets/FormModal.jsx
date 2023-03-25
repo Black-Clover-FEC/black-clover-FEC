@@ -24,10 +24,14 @@ const FormModal = ({ product, isOpen, onClose, submitFunc, factors }) => {
     e.preventDefault();
     let formData = new FormData(e.target);
     formData = Object.fromEntries(formData.entries()); // converts from fromData object to JSON object.
+    let photoForm = new FormData();
+
+    photoForm.append('image', formData.photos);
+    api.postPhoto(photoForm);
     formData.rating = starRating + 1;
     formData.product_id = product.id;
     formData.recommend = formData.recommend === 'yes';
-    formData.photos = [];
+    // formData.photos = [];
     formatCharacteristics(formData);
     console.log(formData);
     api.addReview(formData)
