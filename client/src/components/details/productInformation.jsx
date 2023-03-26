@@ -8,52 +8,22 @@ import SizeSelector from './sizeSelector.jsx';
 import QuantitySelector from './quantitySelector.jsx';
 import AddToBag from './addToBag.jsx';
 import Favorite from './favorite.jsx';
+import Reviews from './reviews.jsx';
+import StylePrice from './stylePrice.jsx';
 
 const ProductInformation = ({product, styleList, favorite, setFavorite, currentStyle, setCurrentStyle}) => {
-  // functions for conditional rendering: review/rating, price
-  const reviewsAndRatings = () => {
-    const hasReviews = product.reviewsMeta.reviewsCount > 0;
-    return (
-      hasReviews
-      ?
-      <DetailsLib.rating>
-      <StyleLib.small> Average Rating: </StyleLib.small> <Stars rating={product.reviewsMeta.averageRating} />
-        <DetailsLib.smallUnderline>{'Read All ' + product.reviewsMeta.reviewsCount + ' Reviews'}</DetailsLib.smallUnderline>
-      </DetailsLib.rating>
-      :
-      <DetailsLib.rating>
-      <StyleLib.small></StyleLib.small>
-        <DetailsLib.smallUnderline></DetailsLib.smallUnderline>
-      </DetailsLib.rating>
-    );
-  }
-
-  const stylePrice = () => {
-    const onSale = currentStyle.sale_price !== null;
-    return (
-      onSale
-      ?
-      <>
-        <DetailsLib.salePrice>{'$' + currentStyle.sale_price + '   '}</DetailsLib.salePrice>
-        <DetailsLib.origPriceCrossed>{'$' + currentStyle.original_price}</DetailsLib.origPriceCrossed>
-        <StyleLib.small>{'  SALE!'}</StyleLib.small>
-      </>
-      :
-      <StyleLib.small>{'$' + currentStyle.original_price}</StyleLib.small>
-    );
-  }
 
   return (
     <DetailsLib.col2>
       <br/>
-      {reviewsAndRatings()}
+      <Reviews product={product}/>
       <br/>
       <StyleLib.small>{product.details.category}</StyleLib.small>
       <br/>
       <br/>
       <StyleLib.h3>{product.details.name}</StyleLib.h3>
       <br/>
-      {stylePrice()}
+      <StylePrice currentStyle={currentStyle}/>
       <br/>
       <br/>
       {/*TODO: have styleList have currently selected style have checkmark on it*/}
