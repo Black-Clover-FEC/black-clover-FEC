@@ -80,6 +80,15 @@ const DetailsLib = {
   cursor: pointer;
   `,
 
+  salePrice: styled(StyleLib.small)`
+  color: red;
+  `,
+
+  origPriceCrossed: styled(StyleLib.small)`
+  text-decoration: line-through;
+  font-size: 0.6em;
+  `,
+
   selectedStyle: styled(StyleLib.h2)`
   font-size: small;
   `,

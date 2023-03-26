@@ -10,6 +10,21 @@ import AddToBag from './addToBag.jsx';
 import Favorite from './favorite.jsx';
 
 const ProductInformation = ({product, styleList, favorite, setFavorite, currentStyle, setCurrentStyle}) => {
+  const stylePrice = () => {
+    const onSale = currentStyle.sale_price !== null;
+    return (
+      onSale
+      ?
+      <>
+        <DetailsLib.salePrice>{'$' + currentStyle.sale_price + '   '}</DetailsLib.salePrice>
+        <DetailsLib.origPriceCrossed>{'$' + currentStyle.original_price}</DetailsLib.origPriceCrossed>
+        <StyleLib.small>{'  SALE!'}</StyleLib.small>
+      </>
+      :
+      <StyleLib.small>{'$' + currentStyle.original_price}</StyleLib.small>
+    );
+  }
+
   return (
     <DetailsLib.col2>
       <br/>
@@ -23,8 +38,7 @@ const ProductInformation = ({product, styleList, favorite, setFavorite, currentS
       <br/>
       <StyleLib.h3>{product.details.name}</StyleLib.h3>
       <br/>
-      {/*TODO: take note of sales on certain styles and include strikethrough if so*/}
-      <StyleLib.small>{'$' + product.details.default_price}</StyleLib.small>
+      {stylePrice()}
       <br/>
       <br/>
       {/*TODO: have styleList have currently selected style have checkmark on it*/}
@@ -45,7 +59,7 @@ const ProductInformation = ({product, styleList, favorite, setFavorite, currentS
       </DetailsLib.center>
 
     </DetailsLib.col2>
-  )
+  );
 }
 
 export default ProductInformation;

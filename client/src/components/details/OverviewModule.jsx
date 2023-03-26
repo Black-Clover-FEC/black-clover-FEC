@@ -15,21 +15,29 @@ const OverviewModule = (props) => {
   const [styleList, setStyleList] = React.useState(ProductInfoObject.styles.results);
   const [favorite, setFavorite] = React.useState(false);
   const [openModal, setOpenModal] = React.useState(false);
-  const [currentStyle, setCurrentStyle] = React.useState('SELECTED STYLE');
+  const [currentStyle, setCurrentStyle] = React.useState(ProductInfoObject.styles.results[0]);
 
   React.useEffect(() => refreshOverviewModule(props.product.id), []);
 
   const refreshOverviewModule = (p_id) => {
     api.collectProductInfo(p_id)
       .then(prod => {
-        console.log(prod)
+        console.log(prod);
         setProduct(prod);
         setStyleList(prod.styles.results);
-        setCurrentStyle(prod.styles.results[0].name);
+        var defaultStyle = prod.styles.results[0];
+        for (var i = 0; i < prod.styles.results.length; i++) {
+          if (prod.styles.results[i]['default?']) {
+            defaultStyle = prod.styles.results[i];
+          }
+        }
+        setCurrentStyle(defaultStyle);
         return;
       })
       .catch(err => console.log(err));
   }
+
+
 
   return (
     <div>
@@ -39,7 +47,7 @@ const OverviewModule = (props) => {
         Product Overview
       </StyleLib.h2>
       <DetailsLib.cols>
-        <Image styleList={styleList} setOpenModal={setOpenModal}/>
+        <Image currentStyle={currentStyle} styleList={styleList} setOpenModal={setOpenModal}/>
         <ProductInformation currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} product={product} styleList={styleList} favorite={favorite} setFavorite={setFavorite}/>
       </DetailsLib.cols>
       <Description product={product} />

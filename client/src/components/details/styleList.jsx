@@ -4,12 +4,10 @@ import StyleListItem from './styleListItem.jsx';
 import DetailsLib from './assets/Stylesheet.jsx';
 
 const StyleList = ({currentStyle, setCurrentStyle, styleList}) => {
-  console.log(currentStyle);
-
   return (
     <div>
       <DetailsLib.selectedStyle>
-        <b>STYLE ></b> {currentStyle}
+        <b>STYLE ></b> {currentStyle.name}
       </DetailsLib.selectedStyle>
       <ul>
         {styleList.map((item, index) => {
