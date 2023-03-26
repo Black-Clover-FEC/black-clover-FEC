@@ -61,7 +61,7 @@ const ReviewsModule = ({product}) => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
   // effects:
-  useEffect(() => refreshReviewData(), []);
+  useEffect(() => refreshReviewData(), [product]);
   useEffect(() => getSortedReviews(), [sortBy]);
   useEffect(() => filterReviews(), [sorted, filterBy]);
   useEffect(() => displayReviews(), [filtered, displayCount]);

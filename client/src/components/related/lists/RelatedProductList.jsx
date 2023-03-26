@@ -3,7 +3,7 @@ import RelatedLib from '../assets/Stylesheet.jsx';
 import StyleLib from '../../../assets/Stylesheet.jsx';
 import ProductCard from '../card_components/ProductCard.jsx';
 
-const RelatedProductList = ({relatedItems, openComparison, sendToCompare}) => {
+const RelatedProductList = ({relatedItems, openComparison, sendToCompare, changeProduct}) => {
 
   return (
     <section>
@@ -12,6 +12,7 @@ const RelatedProductList = ({relatedItems, openComparison, sendToCompare}) => {
         {relatedItems.map((product) => {
           return <ProductCard key={product.details.id} product={product}
           openComparison={openComparison} sendToCompare={sendToCompare}
+          changeProduct={changeProduct}
           />;
         })}
       </RelatedLib.carousel>

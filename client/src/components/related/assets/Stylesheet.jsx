@@ -12,6 +12,11 @@ const RelatedLib = {
   padding-right: 100px;
   `,
 
+  container: styled.div`
+  width: 100%;
+  padding: 5px;
+  `,
+
   imgContainer: styled.div`
   position: relative;
   width: 230px;
@@ -28,6 +33,11 @@ const RelatedLib = {
   border: solid;
   border-width: 0.5px;
   margin: 5px;
+  cursor: pointer;
+  &: hover {
+    background-color: #D5D5D5;
+    border-color: #D87659;
+  }
   `,
 
   cardImg: styled.img`
@@ -62,7 +72,11 @@ const RelatedLib = {
   height: 20px;
   left: 85%;
   top: 15px;
-  color: red;
+  color: #E7A66C;
+  cursor: pointer;
+  &: hover {
+    color: red;
+  }
   `,
 
   compareStar: styled(FaRegStar)`
@@ -72,6 +86,10 @@ const RelatedLib = {
   height: 20px;
   left: 85%;
   top: 15px;
+  cursor: pointer;
+  &: hover {
+    color: yellow;
+  }
   `,
 
   table: styled.table`

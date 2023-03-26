@@ -17,7 +17,7 @@ const OverviewModule = (props) => {
   const [openModal, setOpenModal] = React.useState(false);
   const [currentStyle, setCurrentStyle] = React.useState(ProductInfoObject.styles.results[0]);
 
-  React.useEffect(() => refreshOverviewModule(props.product.id), []);
+  React.useEffect(() => refreshOverviewModule(props.product.id), [props]);
 
   const refreshOverviewModule = (p_id) => {
     api.collectProductInfo(p_id)
