@@ -9,7 +9,7 @@ import QuantitySelector from './quantitySelector.jsx';
 import AddToBag from './addToBag.jsx';
 import Favorite from './favorite.jsx';
 
-const ProductInformation = ({product, styleList, favorite, setFavorite}) => {
+const ProductInformation = ({product, styleList, favorite, setFavorite, currentStyle, setCurrentStyle}) => {
   return (
     <DetailsLib.col2>
       <br/>
@@ -23,12 +23,12 @@ const ProductInformation = ({product, styleList, favorite, setFavorite}) => {
       <br/>
       <StyleLib.h3>{product.details.name}</StyleLib.h3>
       <br/>
-      {/*TODO: take note of sales and include strikethrough if so*/}
+      {/*TODO: take note of sales on certain styles and include strikethrough if so*/}
       <StyleLib.small>{'$' + product.details.default_price}</StyleLib.small>
       <br/>
       <br/>
       {/*TODO: have styleList have currently selected style have checkmark on it*/}
-      <StyleList styleList={styleList}/>
+      <StyleList currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} styleList={styleList}/>
       <br/>
       <DetailsLib.center>
         {/*TODO: have sizes reflect on currently selected style, quantity depends on size*/}
