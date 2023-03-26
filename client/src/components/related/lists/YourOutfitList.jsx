@@ -4,7 +4,7 @@ import RelatedLib from '../assets/Stylesheet.jsx';
 import AddToOutfitCard from '../card_components/AddToOutfitCard.jsx';
 import ProductCard from '../card_components/ProductCard.jsx';
 
-const YourOutfitList = ({outfits, addOutfit, product}) => {
+const YourOutfitList = ({outfits, addOutfit, product, removeOutfit}) => {
 
   return (
     <section>
@@ -12,9 +12,9 @@ const YourOutfitList = ({outfits, addOutfit, product}) => {
       <RelatedLib.carousel>
         {outfits.map((outfit, index) => {
           if (outfit.details.id === 'button') {
-            return <AddToOutfitCard key={index} addOutfit={addOutfit} product={product}/>
+            return <AddToOutfitCard key={index} addOutfit={addOutfit} product={product} />
           } else {
-            return <ProductCard key={outfit.details.id} product={outfit}/>
+            return <ProductCard key={outfit.details.id} product={outfit} removeBtn={true} removeOutfit={removeOutfit}/>
           }
         })}
       </RelatedLib.carousel>

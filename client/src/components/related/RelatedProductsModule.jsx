@@ -41,26 +41,35 @@ const RelatedProductsModule = ({product}) => {
 
   // ADD OUTFIT
   const addOutfit = async (product) => {
-    for (let outfit of outfits) {
+    outfits.forEach(outfit => {
       if (product.id === outfit.details.id) {
         return;
       }
-    }
+    });
     let outfit = await api.collectProductInfo(product.id);
     setOutfits(outfits.concat(outfit));
+  }
+
+  const removeOutfit = (product_id) => {
+    outfits.forEach((outfit, i) => {
+      if (product_id === outfit.details.id) {
+        setOutfits(outfits.splice(i - 1, 1));
+        return;
+      }
+    })
   }
 
   return (
     <div>
       <div>
-        {relatedItems.length !==0 && <RelatedProductList
+        {relatedItems.length !== 0 && <RelatedProductList
         relatedItems={relatedItems}
         openComparison={openComparison}
         sendToCompare={sendToCompare}
         />}
       </div>
       <div>
-        <YourOutfitList outfits={outfits} product={product} addOutfit={addOutfit}/>
+        <YourOutfitList outfits={outfits} product={product} addOutfit={addOutfit} removeOutfit={removeOutfit}/>
       </div>
       <ComparisonModal
         products={productsToCompare}

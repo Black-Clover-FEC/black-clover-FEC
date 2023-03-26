@@ -4,10 +4,11 @@ import RelatedLib from '../assets/Stylesheet.jsx';
 import ProductInfo from './ProductInformation.jsx';
 import Stars from '../../../assets/Stars.jsx'
 
-const ProductCard = ({product, openComparison, sendToCompare}) => {
+const ProductCard = ({product, openComparison, sendToCompare, removeBtn, removeOutfit}) => {
   const [image, setImage] = useState('No Image Available');
   const [style, setStyle] = useState('No Style Available');
   const [price, setPrice] = useState('No Price Available');
+  // const [removeBtn, setRemoveBtn] = useState(false);
 
   const findDefault = (style) => {
     if (style['default?']) {
@@ -42,13 +43,21 @@ useEffect(() => {setDefault(product.styles.results)}, [product]);
     }
   }
 
+  const handleRemove = (product) => {
+    removeOutfit(product.details.id);
+  }
+
   return (
     <RelatedLib.card>
       <RelatedLib.imgContainer>
+        {removeBtn ?
+        <RelatedLib.times onClick={() => {
+          handleRemove(product)
+        }}/> :
         <RelatedLib.compareStar onClick={() => {
-          sendToCompare(product)
-          openComparison()
-        }}></RelatedLib.compareStar>
+          sendToCompare(product);
+          openComparison();
+        }}/>}
         <RelatedLib.cardImg src={image} alt='product-image'/>
       </RelatedLib.imgContainer>
       <ProductInfo details={product.details} price={price} styleName={style}/>

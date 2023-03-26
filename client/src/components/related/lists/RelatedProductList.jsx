@@ -5,8 +5,6 @@ import ProductCard from '../card_components/ProductCard.jsx';
 
 const RelatedProductList = ({relatedItems, openComparison, sendToCompare}) => {
 
-  // console.log('related items in list component: ', relatedItems);
-
   return (
     <section>
       <StyleLib.h2>Related Products</StyleLib.h2>

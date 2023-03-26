@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import StyleLib from '../../../assets/Stylesheet.jsx'
 import { FaRegStar } from 'react-icons/fa';
 import { FaPlus } from 'react-icons/fa';
+import { FaTimesCircle } from 'react-icons/fa';
 
 const RelatedLib = {
 
@@ -13,6 +14,7 @@ const RelatedLib = {
 
   imgContainer: styled.div`
   position: relative;
+  width: 230px;
   `,
 
   card: styled.div`
@@ -20,12 +22,21 @@ const RelatedLib = {
   display: inline-block;
   vertical-align: top;
   // background-color: #D5D5D5;
-  width: 231px;
+  width: 231.5px;
   height: 470px;
   border-radius: 10px;
   border: solid;
   border-width: 0.5px;
   margin: 5px;
+  `,
+
+  times: styled(FaTimesCircle)`
+  position: absolute;
+  width: 10%;
+  height: 20px;
+  left: 85%;
+  top: 15px;
+  color: red;
   `,
 
   plus: styled(FaPlus)`
@@ -46,6 +57,7 @@ const RelatedLib = {
   color: #E2C577;
   position: absolute;
   width: 10%;
+  height: 20px;
   left: 85%;
   top: 15px;
   `,
