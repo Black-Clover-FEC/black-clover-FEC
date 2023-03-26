@@ -24,10 +24,14 @@ const FormModal = ({ product, isOpen, onClose, submitFunc, factors }) => {
     e.preventDefault();
     let formData = new FormData(e.target);
     formData = Object.fromEntries(formData.entries()); // converts from fromData object to JSON object.
+    let photoForm = new FormData();
+
+    photoForm.append('image', formData.photos);
+    api.postPhoto(photoForm);
     formData.rating = starRating + 1;
     formData.product_id = product.id;
     formData.recommend = formData.recommend === 'yes';
-    formData.photos = [];
+    // formData.photos = [];
     formatCharacteristics(formData);
     console.log(formData);
     api.addReview(formData)
@@ -67,10 +71,10 @@ const FormModal = ({ product, isOpen, onClose, submitFunc, factors }) => {
         </div>
 
         <StyleLib.blockLabel>
-          Review summary: <StyleLib.input name='summary' />
+          Review summary: <StyleLib.input name='summary' maxlength='60'/>
         </StyleLib.blockLabel>
         <StyleLib.blockLabel>
-          Review body: <StyleLib.textarea name='body' rows='5' cols='30' />
+          Review body: <StyleLib.textarea name='body' rows='5' cols='30' minlength='50' maxlength='1000' required={true}/>
         </StyleLib.blockLabel>
 
         {/* <StyleLib.button >Upload Photos</StyleLib.button> */}
@@ -80,10 +84,10 @@ const FormModal = ({ product, isOpen, onClose, submitFunc, factors }) => {
         </StyleLib.blockLabel>
 
         <StyleLib.blockLabel>
-          Your nickname: <StyleLib.input name='name' />
+          Your nickname: <StyleLib.input name='name' maxlength='60' required={true}/>
         </StyleLib.blockLabel>
         <StyleLib.blockLabel>
-          Your email: <StyleLib.input type='email' name='email' />
+          Your email: <StyleLib.input type='email' name='email' maxlength='60' required={true}/>
         </StyleLib.blockLabel>
         <StyleLib.button type='button' onClick={onClose}>Cancel</StyleLib.button>
         <StyleLib.button type='submit'>Submit</StyleLib.button>

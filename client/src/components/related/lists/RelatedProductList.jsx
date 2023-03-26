@@ -3,19 +3,24 @@ import RelatedLib from '../assets/Stylesheet.jsx';
 import StyleLib from '../../../assets/Stylesheet.jsx';
 import RelatedProductCard from '../card_components/RelatedProductCard.jsx';
 
-const RelatedProductList = ({relatedItems}) => {
+const RelatedProductList = ({relatedItems, openComparison, sendToCompare}) => {
 
   // console.log('related items in list component: ', relatedItems);
 
   return (
-    <RelatedLib.carousel>
+    <section>
       <StyleLib.h2>Related Products</StyleLib.h2>
-      <div>
+      <RelatedLib.carousel>
         {relatedItems.map((product) => {
-          return <RelatedProductCard key={product.details.id} product={product}/>;
+          return <RelatedProductCard
+          key={product.details.id}
+          product={product}
+          openComparison={openComparison}
+          sendToCompare={sendToCompare}
+          />;
         })}
-      </div>
-    </RelatedLib.carousel>
+      </RelatedLib.carousel>
+    </section>
   )
 }
 
