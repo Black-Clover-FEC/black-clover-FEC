@@ -2,7 +2,7 @@ import React from 'react';
 import StyleLib from '../../../assets/Stylesheet.jsx';
 import RelatedLib from '../assets/Stylesheet.jsx';
 import AddToOutfitCard from '../card_components/AddToOutfitCard.jsx';
-import ProductCard from '../card_components/RelatedProductCard.jsx';
+import ProductCard from '../card_components/ProductCard.jsx';
 
 const YourOutfitList = ({outfits, addOutfit, product}) => {
 

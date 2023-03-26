@@ -47,7 +47,6 @@ const RelatedProductsModule = ({product}) => {
       }
     }
     let outfit = await api.collectProductInfo(product.id);
-    // return p;
     setOutfits(outfits.concat(outfit));
   }
 

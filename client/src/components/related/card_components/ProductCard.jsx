@@ -4,7 +4,7 @@ import RelatedLib from '../assets/Stylesheet.jsx';
 import ProductInfo from './ProductInformation.jsx';
 import Stars from '../../../assets/Stars.jsx'
 
-const RelatedProductCard = ({product, openComparison, sendToCompare}) => {
+const ProductCard = ({product, openComparison, sendToCompare}) => {
   const [image, setImage] = useState('No Image Available');
   const [style, setStyle] = useState('No Style Available');
   const [price, setPrice] = useState('No Price Available');
@@ -57,4 +57,4 @@ useEffect(() => {setDefault(product.styles.results)}, [product]);
   )
 }
 
-export default RelatedProductCard;
+export default ProductCard;
