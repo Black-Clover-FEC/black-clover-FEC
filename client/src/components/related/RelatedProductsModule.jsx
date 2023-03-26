@@ -7,7 +7,7 @@ import ComparisonModal from './ComparisonModal.jsx';
 const RelatedProductsModule = ({product}) => {
 
   // LISTS
-  const [outfits, setOutfits] = useState([{button: 'addOutfit'}]);
+  const [outfits, setOutfits] = useState([{details: {id: 'button'}}]);
   const [relatedItems, setRelatedItems] = useState([]);
 
   // RELATED ITEMS AND COMPARISON
@@ -40,8 +40,14 @@ const RelatedProductsModule = ({product}) => {
   }
 
   // ADD OUTFIT
-  const addOutfit = async () => {
+  const addOutfit = async (product) => {
+    for (let outfit of outfits) {
+      if (product.id === outfit.details.id) {
+        return;
+      }
+    }
     let outfit = await api.collectProductInfo(product.id);
+    // return p;
     setOutfits(outfits.concat(outfit));
   }
 
@@ -55,7 +61,7 @@ const RelatedProductsModule = ({product}) => {
         />}
       </div>
       <div>
-        <YourOutfitList outfits={outfits} addOutfit={addOutfit}/>
+        <YourOutfitList outfits={outfits} product={product} addOutfit={addOutfit}/>
       </div>
       <ComparisonModal
         products={productsToCompare}

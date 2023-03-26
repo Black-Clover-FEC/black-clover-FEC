@@ -3,10 +3,10 @@ import RelatedLib from '../assets/Stylesheet.jsx';
 import StyleLib from '../../../assets/Stylesheet.jsx'
 import styled from 'styled-components';
 
-const AddToOutfitCard = ({addOutfit}) => {
+const AddToOutfitCard = ({addOutfit, product}) => {
 
   return (
-    <RelatedLib.card onClick={() => addOutfit()}>
+    <RelatedLib.card onClick={() => addOutfit(product)}>
       <RelatedLib.plus></RelatedLib.plus>
       <RelatedLib.addOutfitText>
         <StyleLib.h3>Add to Outfit</StyleLib.h3>
