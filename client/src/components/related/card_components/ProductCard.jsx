@@ -8,7 +8,6 @@ const ProductCard = ({product, openComparison, sendToCompare, removeBtn, removeO
   const [image, setImage] = useState('No Image Available');
   const [style, setStyle] = useState('No Style Available');
   const [price, setPrice] = useState('No Price Available');
-  // const [removeBtn, setRemoveBtn] = useState(false);
 
   const findDefault = (style) => {
     if (style['default?']) {

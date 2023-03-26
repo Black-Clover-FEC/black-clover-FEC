@@ -10,11 +10,8 @@ const RelatedProductList = ({relatedItems, openComparison, sendToCompare}) => {
       <StyleLib.h2>Related Products</StyleLib.h2>
       <RelatedLib.carousel>
         {relatedItems.map((product) => {
-          return <ProductCard
-          key={product.details.id}
-          product={product}
-          openComparison={openComparison}
-          sendToCompare={sendToCompare}
+          return <ProductCard key={product.details.id} product={product}
+          openComparison={openComparison} sendToCompare={sendToCompare}
           />;
         })}
       </RelatedLib.carousel>

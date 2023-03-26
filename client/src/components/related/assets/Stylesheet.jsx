@@ -30,13 +30,16 @@ const RelatedLib = {
   margin: 5px;
   `,
 
-  times: styled(FaTimesCircle)`
-  position: absolute;
-  width: 10%;
-  height: 20px;
-  left: 85%;
-  top: 15px;
-  color: red;
+  cardImg: styled.img`
+  display: block;
+  border-radius: 10px;
+  max-width: 230px;
+  height: auto;
+  `,
+
+  productInfo: styled.div`
+    display: block;
+    vertical-align: bottom;
   `,
 
   plus: styled(FaPlus)`
@@ -53,6 +56,15 @@ const RelatedLib = {
     left: 17%;
   `,
 
+  times: styled(FaTimesCircle)`
+  position: absolute;
+  width: 10%;
+  height: 20px;
+  left: 85%;
+  top: 15px;
+  color: red;
+  `,
+
   compareStar: styled(FaRegStar)`
   color: #E2C577;
   position: absolute;
@@ -62,21 +74,16 @@ const RelatedLib = {
   top: 15px;
   `,
 
-  cardImg: styled.img`
-  display: block;
-  border-radius: 10px;
-  max-width: 230px;
-  height: auto;
-  `,
-
-  productInfo: styled.div`
-    display: block;
-    vertical-align: bottom;
-  `,
-
   table: styled.table`
     width: 100%;
   `,
+
+  tr: styled.tr`
+  border: 1px solid;
+  border-color: #D5D5D5;
+  margin-bottom: 5px;
+  // background-color: #D5D5D5;
+`,
 
   // Apply StyledLib.h6 to th elements
   th: styled.th`
@@ -98,15 +105,6 @@ const RelatedLib = {
   text-transform: none;
   padding-bottom: 5px;
   `,
-
-  tr: styled.tr`
-  border: 1px solid;
-  border-color: #D5D5D5;
-  margin-bottom: 5px;
-  // background-color: #D5D5D5;
-`,
-
-
 }
 
 export default RelatedLib;

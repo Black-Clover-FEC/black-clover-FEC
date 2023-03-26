@@ -39,13 +39,13 @@ const RelatedProductsModule = ({product}) => {
     setProductsToCompare([current, selected.details]);
   }
 
-  // ADD OUTFIT
+  // ADD AND REMOVE OUTFIT
   const addOutfit = async (product) => {
-    outfits.forEach(outfit => {
+    for (let outfit of outfits) {
       if (product.id === outfit.details.id) {
         return;
       }
-    });
+    }
     let outfit = await api.collectProductInfo(product.id);
     setOutfits(outfits.concat(outfit));
   }
@@ -69,7 +69,8 @@ const RelatedProductsModule = ({product}) => {
         />}
       </div>
       <div>
-        <YourOutfitList outfits={outfits} product={product} addOutfit={addOutfit} removeOutfit={removeOutfit}/>
+        <YourOutfitList outfits={outfits} product={product}
+        addOutfit={addOutfit} removeOutfit={removeOutfit}/>
       </div>
       <ComparisonModal
         products={productsToCompare}
