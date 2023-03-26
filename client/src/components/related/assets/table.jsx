@@ -4,8 +4,6 @@ import StyleLib from '../../../assets/Stylesheet.jsx'
 
 const Table = ({currentProduct, selectedProduct, features}) => {
 
-  console.log('feature list and products: ', currentProduct, selectedProduct, features);
-
   return (
     <div>
       <RelatedLib.table>

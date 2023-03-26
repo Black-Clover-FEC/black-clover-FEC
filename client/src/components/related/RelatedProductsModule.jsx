@@ -4,23 +4,19 @@ import YourOutfitList from './lists/YourOutfitList.jsx';
 import api from '../../../../client/src/lib/api.js';
 import ComparisonModal from './ComparisonModal.jsx';
 
-// ComparisonModal.setAppElement('#root');
-
 const RelatedProductsModule = ({product}) => {
 
-  // represents a future state for current selected product
-  // TODO - outfit list not used yet
-  const [outfitList, setOutfitList] = useState([]);
+  // LISTS
+  const [outfits, setOutfits] = useState([{details: {id: 'button'}}]);
   const [relatedItems, setRelatedItems] = useState([]);
 
+  // RELATED ITEMS AND COMPARISON
   const [relatedProductIds, setRelatedProductIds] = useState([]);
   const [comparisonView, setComparisonView] = useState(false);
   const [productsToCompare, setProductsToCompare] = useState([]);
 
   const openComparison = () => setComparisonView(true);
   const closeComparison = () => setComparisonView(false);
-
-
 
   // GET RELATED ITEM ID'S
   const getAndSetRelatedProducts = (id) => {
@@ -39,23 +35,42 @@ const RelatedProductsModule = ({product}) => {
 
   // helper function for Comparison Modal
   const sendToCompare = (selected) => {
-    // placeholder until current product viewed in overview available
-    let current = relatedItems[2];
-    setProductsToCompare([current, selected]);
+    let current = product;
+    setProductsToCompare([current, selected.details]);
+  }
 
+  // ADD AND REMOVE OUTFIT
+  const addOutfit = async (product) => {
+    for (let outfit of outfits) {
+      if (product.id === outfit.details.id) {
+        return;
+      }
+    }
+    let outfit = await api.collectProductInfo(product.id);
+    setOutfits(outfits.concat(outfit));
+  }
+
+  const removeOutfit = (product_id) => {
+    outfits.forEach((outfit, i) => {
+      if (product_id === outfit.details.id) {
+        setOutfits(outfits.splice(i - 1, 1));
+        return;
+      }
+    })
   }
 
   return (
     <div>
       <div>
-        {relatedItems.length !==0 && <RelatedProductList
+        {relatedItems.length !== 0 && <RelatedProductList
         relatedItems={relatedItems}
         openComparison={openComparison}
         sendToCompare={sendToCompare}
         />}
       </div>
       <div>
-        <YourOutfitList />
+        <YourOutfitList outfits={outfits} product={product}
+        addOutfit={addOutfit} removeOutfit={removeOutfit}/>
       </div>
       <ComparisonModal
         products={productsToCompare}

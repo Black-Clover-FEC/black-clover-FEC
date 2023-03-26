@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import StyleLib from '../../../assets/Stylesheet.jsx'
 import { FaRegStar } from 'react-icons/fa';
+import { FaPlus } from 'react-icons/fa';
+import { FaTimesCircle } from 'react-icons/fa';
 
 const RelatedLib = {
 
@@ -10,28 +12,22 @@ const RelatedLib = {
   padding-right: 100px;
   `,
 
+  imgContainer: styled.div`
+  position: relative;
+  width: 230px;
+  `,
+
   card: styled.div`
+  position: relative;
   display: inline-block;
   vertical-align: top;
   // background-color: #D5D5D5;
-  width: 231px;
+  width: 231.5px;
   height: 470px;
   border-radius: 10px;
   border: solid;
   border-width: 0.5px;
   margin: 5px;
-  `,
-
-  imgContainer: styled.div`
-  position: relative;
-  `,
-
-  compareStar: styled(FaRegStar)`
-  color: #E2C577;
-  position: absolute;
-  width: 10%;
-  left: 85%;
-  top: 15px;
   `,
 
   cardImg: styled.img`
@@ -46,9 +42,48 @@ const RelatedLib = {
     vertical-align: bottom;
   `,
 
+  plus: styled(FaPlus)`
+  position: absolute;
+  color: black;
+  width: 100%;
+  height: 10%;
+  top: 40%;
+  `,
+
+  addOutfitText: styled(StyleLib.blockLabel)`
+    position: absolute;
+    top: 70%;
+    left: 17%;
+  `,
+
+  times: styled(FaTimesCircle)`
+  position: absolute;
+  width: 10%;
+  height: 20px;
+  left: 85%;
+  top: 15px;
+  color: red;
+  `,
+
+  compareStar: styled(FaRegStar)`
+  color: #E2C577;
+  position: absolute;
+  width: 10%;
+  height: 20px;
+  left: 85%;
+  top: 15px;
+  `,
+
   table: styled.table`
     width: 100%;
   `,
+
+  tr: styled.tr`
+  border: 1px solid;
+  border-color: #D5D5D5;
+  margin-bottom: 5px;
+  // background-color: #D5D5D5;
+`,
 
   // Apply StyledLib.h6 to th elements
   th: styled.th`
@@ -70,15 +105,6 @@ const RelatedLib = {
   text-transform: none;
   padding-bottom: 5px;
   `,
-
-  tr: styled.tr`
-  border: 1px solid;
-  border-color: #D5D5D5;
-  margin-bottom: 5px;
-  // background-color: #D5D5D5;
-`,
-
-
 }
 
 export default RelatedLib;
