@@ -4,7 +4,7 @@ import { useLoaderData } from "react-router-dom";
 import api from '../lib/api.js';
 
 import Overview from './details/OverviewModule.jsx';
-import RelatedProducts from './related/RelatedProductsModule.jsx';
+import RelatedProductsModule from './related/RelatedProductsModule.jsx';
 import QA from './questions/QAModule.jsx';
 import Reviews from './ratings/ReviewsModule.jsx';
 
@@ -25,7 +25,7 @@ const App = () => {
   return (
     <StyledDiv>
       <Overview product={product}/>
-      <RelatedProducts product={product}/>
+      <RelatedProductsModule product={product}/>
       <QA product={product}/>
       <Reviews product={product}/>
     </StyledDiv>
