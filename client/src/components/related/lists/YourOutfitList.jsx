@@ -4,11 +4,13 @@ import RelatedLib from '../assets/Stylesheet.jsx';
 import AddToOutfitCard from '../card_components/AddToOutfitCard.jsx';
 import ProductCard from '../card_components/ProductCard.jsx';
 
+// TODO - CONVERT TO CAROUSEL
 const YourOutfitList = ({outfits, addOutfit, product, removeOutfit}) => {
 
   return (
     <section>
       <StyleLib.h2>Your Outfit</StyleLib.h2>
+      <RelatedLib.leftArrow/>
       <RelatedLib.carousel>
         {outfits.map((outfit, index) => {
           if (outfit.details.id === 'button') {
@@ -19,6 +21,7 @@ const YourOutfitList = ({outfits, addOutfit, product, removeOutfit}) => {
           }
         })}
       </RelatedLib.carousel>
+      <RelatedLib.rightArrow/>
     </section>
   )
 

@@ -1,15 +1,31 @@
 import styled from 'styled-components';
 import StyleLib from '../../../assets/Stylesheet.jsx'
-import { FaRegStar } from 'react-icons/fa';
-import { FaPlus } from 'react-icons/fa';
-import { FaTimesCircle } from 'react-icons/fa';
+import { FaRegStar, FaArrowLeft, FaArrowRight, FaPlus, FaTimesCircle } from 'react-icons/fa';
 
 const RelatedLib = {
 
   carousel: styled.section`
-  display: block;
-  padding-left: 100px;
-  padding-right: 100px;
+  display: inline-block;
+  padding-left: 50px;
+  padding-right: 50px;
+  `,
+
+  leftArrow: styled(FaArrowLeft)`
+    position: relative;
+    top: 235px;
+    font-size: 40px;
+    &: hover {
+      color: #E7A66C;
+    }
+  `,
+
+  rightArrow: styled(FaArrowRight)`
+    position: relative;
+    top: 235px;
+    font-size: 40px;
+    &: hover {
+      color: #E7A66C;
+    }
   `,
 
   container: styled.div`
