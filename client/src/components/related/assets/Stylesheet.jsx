@@ -10,6 +10,16 @@ const RelatedLib = {
   padding-right: 50px;
   `,
 
+  carouselItem: styled.div`
+    display: flex;
+    height: 20rem;
+    min-width: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    transition: 1s cubic-bezier(0.39, 0.575, 0.565, 1);
+  `,
+
   leftArrow: styled(FaArrowLeft)`
     position: relative;
     top: 235px;

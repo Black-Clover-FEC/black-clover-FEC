@@ -59,11 +59,27 @@ const RelatedProductsModule = ({product, changeProduct}) => {
     })
   }
 
+  // NAVIGATE LISTS
+  const [relatedViewIndex, setRelatedViewIndex] = useState(0);
+
+  const navigateRight = () => {
+    // select next product card
+    setRelatedViewIndex(relatedViewIndex + 1)
+    return;
+    // dismount left product card
+  }
+
+  const navigateLeft = () => {
+    // select previous product card
+    // dismount right product card
+  }
+
   return (
     <div>
       <div>
         {relatedItems.length !== 0 && <RelatedProductList
         relatedItems={relatedItems}
+        relatedViewIndex={relatedViewIndex}
         openComparison={openComparison}
         sendToCompare={sendToCompare}
         changeProduct={changeProduct}
