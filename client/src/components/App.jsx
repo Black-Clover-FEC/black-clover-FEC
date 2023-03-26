@@ -21,7 +21,6 @@ export async function productLoader({ params }) {
 
 const App = () => {
   const {product} = useLoaderData();
-  // console.log(product);
 
   return (
     <StyledDiv>
