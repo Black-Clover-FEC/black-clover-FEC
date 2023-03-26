@@ -65,7 +65,7 @@ const DetailsLib = {
   grid-column: 2;
   padding: 10px;
   text-align: left;
-  min-width: 300px;
+  min-width: 325px;
   min-height: 500px;
   `,
 

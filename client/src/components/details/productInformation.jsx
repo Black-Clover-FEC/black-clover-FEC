@@ -10,6 +10,24 @@ import AddToBag from './addToBag.jsx';
 import Favorite from './favorite.jsx';
 
 const ProductInformation = ({product, styleList, favorite, setFavorite, currentStyle, setCurrentStyle}) => {
+  // functions for conditional rendering: review/rating, price
+  const reviewsAndRatings = () => {
+    const hasReviews = product.reviewsMeta.reviewsCount > 0;
+    return (
+      hasReviews
+      ?
+      <DetailsLib.rating>
+      <StyleLib.small> Average Rating: </StyleLib.small> <Stars rating={product.reviewsMeta.averageRating} />
+        <DetailsLib.smallUnderline>{'Read All ' + product.reviewsMeta.reviewsCount + ' Reviews'}</DetailsLib.smallUnderline>
+      </DetailsLib.rating>
+      :
+      <DetailsLib.rating>
+      <StyleLib.small></StyleLib.small>
+        <DetailsLib.smallUnderline></DetailsLib.smallUnderline>
+      </DetailsLib.rating>
+    );
+  }
+
   const stylePrice = () => {
     const onSale = currentStyle.sale_price !== null;
     return (
@@ -28,10 +46,7 @@ const ProductInformation = ({product, styleList, favorite, setFavorite, currentS
   return (
     <DetailsLib.col2>
       <br/>
-      <DetailsLib.rating>
-      <StyleLib.small> Average Rating: </StyleLib.small> <Stars rating={product.reviewsMeta.averageRating} />
-        <DetailsLib.smallUnderline>{'Read All ' + product.reviewsMeta.reviewsCount + ' Reviews'}</DetailsLib.smallUnderline>
-      </DetailsLib.rating>
+      {reviewsAndRatings()}
       <br/>
       <StyleLib.small>{product.details.category}</StyleLib.small>
       <br/>

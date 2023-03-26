@@ -22,7 +22,7 @@ const OverviewModule = (props) => {
   const refreshOverviewModule = (p_id) => {
     api.collectProductInfo(p_id)
       .then(prod => {
-        console.log(prod);
+        // console.log(prod);
         setProduct(prod);
         setStyleList(prod.styles.results);
         var defaultStyle = prod.styles.results[0];
