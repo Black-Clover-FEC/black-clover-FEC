@@ -65,8 +65,8 @@ const DetailsLib = {
   grid-column: 2;
   padding: 10px;
   text-align: left;
-  min-width: 325px;
-  min-height: 500px;
+  width: 325px;
+  height: 500px;
   `,
 
   rating: styled.div`
@@ -101,8 +101,8 @@ const DetailsLib = {
 
   styleListItem: styled.img`
   background-color: #fefbd8;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   display: block;
   align-items: center;
