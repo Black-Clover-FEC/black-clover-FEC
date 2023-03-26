@@ -13,8 +13,8 @@ const ComparisonModal = ({products, isOpen, onClose}) => {
   const getAllFeatures = (product1, product2) => {
     let features = new Set();
     let combined = [
-      ...products[0].details.features,
-      ...products[1].details.features
+      ...product1.features,
+      ...product2.features
     ];
     for (let feat of combined) {
       features.add(feat.feature)
@@ -24,8 +24,8 @@ const ComparisonModal = ({products, isOpen, onClose}) => {
 
   const formatData = (product) => {
     let newDataFormat = {
-      'name': product.details.name,
-      'id': product.details.id,
+      'name': product.name,
+      'id': product.id,
       'features': getCharacteristics(product)
     };
     return newDataFormat;
@@ -33,7 +33,7 @@ const ComparisonModal = ({products, isOpen, onClose}) => {
 
   const getCharacteristics = (product) => {
     let characteristics = {};
-    for (let feat of product.details.features) {
+    for (let feat of product.features) {
       characteristics[feat.feature] = feat.value;
     }
     return characteristics;
