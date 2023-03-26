@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import StyleLib from '../../../assets/Stylesheet.jsx';
-import { FaExpand, FaSearch, FaStar, FaCheckCircle } from 'react-icons/fa';
+import { FaExpand, FaSearch, FaStar, FaCheckCircle, FaWindowClose } from 'react-icons/fa';
 
 const DetailsLib = {
   header: styled.div`
@@ -61,7 +61,19 @@ const DetailsLib = {
   cursor: pointer;
   `,
 
+  closeModalBtn: styled(FaWindowClose)`
+  background-color: white;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 1%;
+  right: 1%;
+  cursor: pointer;
+  `,
+
   col2: styled.section`
+  position: absolute;
+  right: 50px;
   grid-column: 2;
   padding: 10px;
   text-align: left;
