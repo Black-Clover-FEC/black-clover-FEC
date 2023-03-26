@@ -16,7 +16,6 @@ margin: auto;
 
 export async function productLoader({ params }) {
   const product = await api.getProductId(params.productId);
-  // console.log(product);
   return { product };
 };
 
@@ -26,7 +25,6 @@ const App = () => {
   const [currentProduct, setCurrentProduct] = useState(product);
 
   const changeProduct = (newProduct) => {
-    console.log('product received from click: ', newProduct);
     setCurrentProduct(newProduct);
   }
 
