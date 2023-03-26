@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import StyleLib from '../../../assets/Stylesheet.jsx';
-import { FaExpand } from 'react-icons/fa';
-import { FaSearch } from 'react-icons/fa';
-import { FaStar } from 'react-icons/fa';
+import { FaExpand, FaSearch, FaStar, FaCheckCircle } from 'react-icons/fa';
 
 const DetailsLib = {
   header: styled.div`
@@ -13,10 +11,6 @@ const DetailsLib = {
   height: 75px;
   vertical-align: top;
   `,
-
-  //border: solid #2A9D8F 1px;
-  //background-color: #D3D3D3;
-  //padding: 10px;
 
   logo: styled.img`
   float: left;
@@ -50,13 +44,6 @@ const DetailsLib = {
   margin-left: auto;
   margin-right: auto;
   `,
-  // border: solid #2A9D8F 1px;
-  // padding: 10px;
-
-  // display: flex;
-  // justify-content: space-between;
-
-  /* Style the button and place it in the middle of the container/image */
 
   defaultImage: styled.img`
   width: auto;
@@ -74,82 +61,13 @@ const DetailsLib = {
   cursor: pointer;
   `,
 
-  // modalBackground: styled.div`
-  // width: 100%;
-  // height: 100%;
-  // background-color: #D3D3D3;
-  // position: fixed;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
-  // `,
-
-  // modalContainer: styled.div`
-  // width: 500px;
-  // height: 500px;
-  // border-radius: 12px;
-  // background-color: white;
-  // box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  // display: flex;
-  // flex-direction: column;
-  // padding: 25px;
-  // `,
-
-  // modalCloseBtnContainer: styled.div`
-  // display: flex;
-  // justify-content: flex-end;
-  // `,
-
-  // modalCloseBtn: styled.button`
-  // background-color: transparent;
-  // border: none;
-  // font-size: 25px;
-  // cursor: pointer;
-  // `,
-
-  // modalTitle: styled.div`
-  // display: inline-block;
-  // text-align: center;
-  // margin-top: 10px;
-  // `,
-
-  // modalBody: styled.div`
-  // flex: 50%;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
-  // font-size: 1.7rem;
-  // text-align: center;
-  // `,
-
-  // modalFooter: styled.div`
-  // flex: 20%;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
-  // `,
-
-  // modalFooterButton: styled.button`
-  // width: 150px;
-  // height: 45px;
-  // margin: 10px;
-  // border: none;
-  // background-color: #2A9D8F;
-  // color: white;
-  // border-radius: 8px;
-  // font-size: 20px;
-  // cursor: pointer;
-  // `,
-
   col2: styled.section`
   grid-column: 2;
-
   padding: 10px;
   text-align: left;
-  min-width: 300px;
-  min-height: 500px;
+  width: 325px;
+  height: 500px;
   `,
-  //  border: solid #2A9D8F 1px;
 
   rating: styled.div`
   display: flex;
@@ -162,25 +80,41 @@ const DetailsLib = {
   cursor: pointer;
   `,
 
+  salePrice: styled(StyleLib.small)`
+  color: red;
+  `,
+
+  origPriceCrossed: styled(StyleLib.small)`
+  text-decoration: line-through;
+  font-size: 0.6em;
+  `,
+
   selectedStyle: styled(StyleLib.h2)`
   font-size: small;
   `,
 
   styleList: styled.div`
+  position: relative;
   display: inline-block;
   padding: 7px;
   `,
 
   styleListItem: styled.img`
   background-color: #fefbd8;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  display: flex;
+  display: block;
   align-items: center;
   text-align: center;
   font-size: small;
   cursor: pointer;
+  `,
+
+  checkmark: styled(FaCheckCircle)`
+  position: absolute;
+  top: 1%;
+  right: 1%;
   `,
 
   center: styled.div`
@@ -250,7 +184,6 @@ const DetailsLib = {
   padding: 10px;
   vertical-align: top;
   `
-  //border: solid #2A9D8F 1px;
 }
 
 export default DetailsLib;
