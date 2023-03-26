@@ -4,7 +4,7 @@ import RelatedLib from '../assets/Stylesheet.jsx';
 import ProductInfo from './ProductInformation.jsx';
 import Stars from '../../../assets/Stars.jsx'
 
-const ProductCard = ({product, openComparison, sendToCompare, removeBtn, removeOutfit}) => {
+const ProductCard = ({product, openComparison, sendToCompare, removeBtn, removeOutfit, changeProduct}) => {
   const [image, setImage] = useState('No Image Available');
   const [style, setStyle] = useState('No Style Available');
   const [price, setPrice] = useState('No Price Available');
@@ -46,8 +46,12 @@ useEffect(() => {setDefault(product.styles.results)}, [product]);
     removeOutfit(product.details.id);
   }
 
+  const handleCardClick = (product) => {
+    changeProduct(product.details);
+  }
+
   return (
-    <RelatedLib.card>
+    <RelatedLib.card onClick={() => handleCardClick(product)}>
       <RelatedLib.imgContainer>
         {removeBtn ?
         <RelatedLib.times onClick={() => {
@@ -59,8 +63,10 @@ useEffect(() => {setDefault(product.styles.results)}, [product]);
         }}/>}
         <RelatedLib.cardImg src={image} alt='product-image'/>
       </RelatedLib.imgContainer>
-      <ProductInfo details={product.details} price={price} styleName={style}/>
-      <Stars rating={product.reviewsMeta.averageRating}/>
+      <RelatedLib.container>
+        <ProductInfo details={product.details} price={price} styleName={style}/>
+        <Stars rating={product.reviewsMeta.averageRating}/>
+      </RelatedLib.container>
     </RelatedLib.card>
   )
 }
