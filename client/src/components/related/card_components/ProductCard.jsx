@@ -46,8 +46,12 @@ useEffect(() => {setDefault(product.styles.results)}, [product]);
     removeOutfit(product.details.id);
   }
 
+  const handleCardClick = (product) => {
+    console.log('hand to another function', product);
+  }
+
   return (
-    <RelatedLib.card>
+    <RelatedLib.card onClick={handleCardClick}>
       <RelatedLib.imgContainer>
         {removeBtn ?
         <RelatedLib.times onClick={() => {
@@ -59,8 +63,10 @@ useEffect(() => {setDefault(product.styles.results)}, [product]);
         }}/>}
         <RelatedLib.cardImg src={image} alt='product-image'/>
       </RelatedLib.imgContainer>
-      <ProductInfo details={product.details} price={price} styleName={style}/>
-      <Stars rating={product.reviewsMeta.averageRating}/>
+      <RelatedLib.container>
+        <ProductInfo details={product.details} price={price} styleName={style}/>
+        <Stars rating={product.reviewsMeta.averageRating}/>
+      </RelatedLib.container>
     </RelatedLib.card>
   )
 }
