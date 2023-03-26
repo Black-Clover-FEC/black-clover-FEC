@@ -10,24 +10,34 @@ import ExpandedImage from './expandedImage.jsx';
 import Description from './description.jsx';
 import ProductInfoObject from '../../lib/productInfoObjectTemplate.js';
 
-const OverviewModule = () => {
+const OverviewModule = (props) => {
   const [product, setProduct] = React.useState(ProductInfoObject);
   const [styleList, setStyleList] = React.useState(ProductInfoObject.styles.results);
   const [favorite, setFavorite] = React.useState(false);
   const [openModal, setOpenModal] = React.useState(false);
+  const [currentStyle, setCurrentStyle] = React.useState(ProductInfoObject.styles.results[0]);
 
-  React.useEffect(() => refreshOverviewModule(40399), []);
+  React.useEffect(() => refreshOverviewModule(props.product.id), []);
 
   const refreshOverviewModule = (p_id) => {
     api.collectProductInfo(p_id)
       .then(prod => {
-        // console.log(prod)
+        // console.log(prod);
         setProduct(prod);
-        setStyleList(prod.styles.results)
+        setStyleList(prod.styles.results);
+        var defaultStyle = prod.styles.results[0];
+        for (var i = 0; i < prod.styles.results.length; i++) {
+          if (prod.styles.results[i]['default?']) {
+            defaultStyle = prod.styles.results[i];
+          }
+        }
+        setCurrentStyle(defaultStyle);
         return;
       })
       .catch(err => console.log(err));
   }
+
+
 
   return (
     <div>
@@ -37,8 +47,8 @@ const OverviewModule = () => {
         Product Overview
       </StyleLib.h2>
       <DetailsLib.cols>
-        <Image styleList={styleList} setOpenModal={setOpenModal}/>
-        <ProductInformation product={product} styleList={styleList} favorite={favorite} setFavorite={setFavorite}/>
+        <Image currentStyle={currentStyle} styleList={styleList} setOpenModal={setOpenModal}/>
+        <ProductInformation currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} product={product} styleList={styleList} favorite={favorite} setFavorite={setFavorite}/>
       </DetailsLib.cols>
       <Description product={product} />
     </div>

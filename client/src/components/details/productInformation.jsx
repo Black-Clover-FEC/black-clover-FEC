@@ -8,27 +8,26 @@ import SizeSelector from './sizeSelector.jsx';
 import QuantitySelector from './quantitySelector.jsx';
 import AddToBag from './addToBag.jsx';
 import Favorite from './favorite.jsx';
+import Reviews from './reviews.jsx';
+import StylePrice from './stylePrice.jsx';
 
-const ProductInformation = ({product, styleList, favorite, setFavorite}) => {
+const ProductInformation = ({product, styleList, favorite, setFavorite, currentStyle, setCurrentStyle}) => {
+
   return (
     <DetailsLib.col2>
       <br/>
-      <DetailsLib.rating>
-      <StyleLib.small> Average Rating: </StyleLib.small> <Stars rating={product.reviewsMeta.averageRating} />
-        <DetailsLib.smallUnderline>{'Read All ' + product.reviewsMeta.reviewsCount + ' Reviews'}</DetailsLib.smallUnderline>
-      </DetailsLib.rating>
+      <Reviews product={product}/>
       <br/>
       <StyleLib.small>{product.details.category}</StyleLib.small>
       <br/>
       <br/>
       <StyleLib.h3>{product.details.name}</StyleLib.h3>
       <br/>
-      {/*TODO: take note of sales and include strikethrough if so*/}
-      <StyleLib.small>{'$' + product.details.default_price}</StyleLib.small>
+      <StylePrice currentStyle={currentStyle}/>
       <br/>
       <br/>
       {/*TODO: have styleList have currently selected style have checkmark on it*/}
-      <StyleList styleList={styleList}/>
+      <StyleList currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} styleList={styleList}/>
       <br/>
       <DetailsLib.center>
         {/*TODO: have sizes reflect on currently selected style, quantity depends on size*/}
@@ -45,7 +44,7 @@ const ProductInformation = ({product, styleList, favorite, setFavorite}) => {
       </DetailsLib.center>
 
     </DetailsLib.col2>
-  )
+  );
 }
 
 export default ProductInformation;
