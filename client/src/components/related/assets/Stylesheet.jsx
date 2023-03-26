@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import StyleLib from '../../../assets/Stylesheet.jsx'
-import { FaRegStar, FaArrowLeft, FaArrowRight, FaPlus, FaTimesCircle } from 'react-icons/fa';
+import { FaFileImage, FaRegStar, FaArrowLeft, FaArrowRight, FaPlus, FaTimesCircle } from 'react-icons/fa';
 
 const RelatedLib = {
 
@@ -36,6 +36,9 @@ const RelatedLib = {
   imgContainer: styled.div`
   position: relative;
   width: 230px;
+  `,
+
+  noImage: styled(FaFileImage)`
   `,
 
   card: styled.div`
