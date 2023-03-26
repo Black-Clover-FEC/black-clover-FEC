@@ -4,7 +4,7 @@ import RelatedLib from '../assets/Stylesheet.jsx';
 import ProductInfo from './ProductInformation.jsx';
 import Stars from '../../../assets/Stars.jsx'
 
-const ProductCard = ({product, openComparison, sendToCompare, removeBtn, removeOutfit}) => {
+const ProductCard = ({product, openComparison, sendToCompare, removeBtn, removeOutfit, changeProduct}) => {
   const [image, setImage] = useState('No Image Available');
   const [style, setStyle] = useState('No Style Available');
   const [price, setPrice] = useState('No Price Available');
@@ -47,11 +47,12 @@ useEffect(() => {setDefault(product.styles.results)}, [product]);
   }
 
   const handleCardClick = (product) => {
-    console.log('hand to another function', product);
+    console.log('product sent to change', product.details);
+    changeProduct(product.details);
   }
 
   return (
-    <RelatedLib.card onClick={handleCardClick}>
+    <RelatedLib.card onClick={() => handleCardClick(product)}>
       <RelatedLib.imgContainer>
         {removeBtn ?
         <RelatedLib.times onClick={() => {

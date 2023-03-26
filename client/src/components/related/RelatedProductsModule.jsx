@@ -4,7 +4,7 @@ import YourOutfitList from './lists/YourOutfitList.jsx';
 import api from '../../../../client/src/lib/api.js';
 import ComparisonModal from './ComparisonModal.jsx';
 
-const RelatedProductsModule = ({product}) => {
+const RelatedProductsModule = ({product, changeProduct}) => {
 
   // LISTS
   const [outfits, setOutfits] = useState([{details: {id: 'button'}}]);
@@ -66,6 +66,7 @@ const RelatedProductsModule = ({product}) => {
         relatedItems={relatedItems}
         openComparison={openComparison}
         sendToCompare={sendToCompare}
+        changeProduct={changeProduct}
         />}
       </div>
       <div>
