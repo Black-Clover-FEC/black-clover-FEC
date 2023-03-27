@@ -23,12 +23,10 @@ const FormModal = ({ product, isOpen, onClose, submitFunc, factors }) => {
 
   const handleFilesChange = (e) => {
     const file = e.target.files[0];
-    console.log(file);
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = (e) => {
       let base64File = event.target.result;
-      console.log('base64 file loaded');
       base64File = base64File.replace(/^data:image\/(png|jpg|jpeg|gif|heic|webp);base64,/, '');
       let photoForm = new FormData();
       photoForm.append('image', base64File);
@@ -95,7 +93,7 @@ const FormModal = ({ product, isOpen, onClose, submitFunc, factors }) => {
         {photos.length < 5 && (
           <StyleLib.blockLabel>
             Upload photos:
-            <StyleLib.input name='photos' type='file' accept='image/*' onChange={handleFilesChange} multiple={true} />
+            <StyleLib.input name='photos' type='file' accept='image/*, .heic' onChange={handleFilesChange} multiple={true} />
           </StyleLib.blockLabel>
         )}
 
