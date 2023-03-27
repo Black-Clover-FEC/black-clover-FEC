@@ -6,7 +6,7 @@ const MockFunc = {
 
   default: myMock,
   returnTrue: myMock.mockReturnValueOnce(true),
-  prodArray: myMock.mockReturnValueOnce([ProdMock, ProdMock, ProdMock]),
+  prodArray: myMock.mockReturnValueOnce([ProdMock, ProdMock]),
   num: myMock.mockReturnValueOnce(1),
 
 };

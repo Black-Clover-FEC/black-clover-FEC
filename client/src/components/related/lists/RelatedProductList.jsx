@@ -12,7 +12,7 @@ const RelatedProductList = ({relatedItems, openComparison, sendToCompare,
       <RelatedLib.leftArrow onClick={() => updateindex(relatedViewIndex - 1, relatedItems)}/>
         <RelatedLib.carouselContainer>
         <RelatedLib.content style={{ transform: `translateX(-${relatedViewIndex * 25}%)` }}>
-          {relatedItems.map((product, index) => {
+          {relatedItems.map((product) => {
             return (
               <RelatedLib.carouselItem key={index}>
                 <ProductCard key={product.details.id} product={product}
