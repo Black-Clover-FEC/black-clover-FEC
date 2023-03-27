@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Modal from 'react-modal';
 import api from '../lib/api.js';
 import CharacteristicsInput from '../components/ratings/CharacteristicsInput.jsx';
+import { starsMeaning, factorsMeaning } from '../components/ratings/reviewMeaningsKey.js';
 
 Modal.setAppElement('#root');
 
@@ -13,7 +14,6 @@ const FormModal = ({ product, isOpen, onClose, submitFunc, factors }) => {
   const [starRating, setStarRating] = useState(-1);
   const [photos, setPhotos] = useState([]);
 
-  const starMeaning = ['Poor', 'Fair', 'Average', 'Good', 'Great'];
 
   const formatCharacteristics = (formData) => {
     formData.characteristics = {};
@@ -33,7 +33,7 @@ const FormModal = ({ product, isOpen, onClose, submitFunc, factors }) => {
       let photoForm = new FormData();
       photoForm.append('image', base64File);
       api.postPhotoToImgur(photoForm)
-        .then(res => {setPhotos([...photos, res.data.link])})
+        .then(res => { setPhotos([...photos, res.data.link]) })
         .catch(err => console.error(err));
     }
   }
@@ -70,7 +70,7 @@ const FormModal = ({ product, isOpen, onClose, submitFunc, factors }) => {
         <StyleLib.blockLabel>
           Please rate this product:
           <StarsInput starRating={starRating} handleClick={(index) => setStarRating(index)} />
-          {starRating > -1 && <p>{starMeaning[starRating]}</p>}
+          {starRating > -1 && <p>{starsMeaning[starRating]}</p>}
         </StyleLib.blockLabel>
         <StyleLib.p>Would you recommend this product?
           <StyleLib.blockLabel>
@@ -108,7 +108,7 @@ const FormModal = ({ product, isOpen, onClose, submitFunc, factors }) => {
         <StyleLib.button type='button' onClick={onClose}>Cancel</StyleLib.button>
         <StyleLib.button type='submit'>Submit</StyleLib.button>
       </form>
-    </Modal>
+    </Modal >
   );
 }
 
