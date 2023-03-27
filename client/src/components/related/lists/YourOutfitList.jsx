@@ -4,21 +4,33 @@ import RelatedLib from '../assets/Stylesheet.jsx';
 import AddToOutfitCard from '../card_components/AddToOutfitCard.jsx';
 import ProductCard from '../card_components/ProductCard.jsx';
 
-const YourOutfitList = ({outfits, addOutfit, product, removeOutfit}) => {
+const YourOutfitList = ({outfits, addOutfit, product, removeOutfit, updateindex, outfitViewIndex}) => {
 
   return (
     <section>
       <StyleLib.h2>Your Outfit</StyleLib.h2>
-      <RelatedLib.carousel>
+      <RelatedLib.leftArrow onClick={() => updateindex(outfitViewIndex - 1, outfits)}/>
+      <RelatedLib.carouselContainer>
+      <RelatedLib.content style={{ transform: `translateX(-${outfitViewIndex * 25}%)` }}>
         {outfits.map((outfit, index) => {
           if (outfit.details.id === 'button') {
-            return <AddToOutfitCard key={index} addOutfit={addOutfit} product={product} />
+            return (
+              <RelatedLib.carouselItem key={index}>
+                <AddToOutfitCard key={index} addOutfit={addOutfit} product={product} />
+              </RelatedLib.carouselItem>
+            )
           } else {
-            return <ProductCard key={outfit.details.id} product={outfit}
-            removeBtn={true} removeOutfit={removeOutfit}/>
+            return (
+              <RelatedLib.carouselItem key={index}>
+                <ProductCard key={outfit.details.id} product={outfit}
+                removeBtn={true} removeOutfit={removeOutfit}/>
+              </RelatedLib.carouselItem>
+            )
           }
         })}
-      </RelatedLib.carousel>
+      </RelatedLib.content>
+      </RelatedLib.carouselContainer>
+      <RelatedLib.rightArrow onClick={() => updateindex(outfitViewIndex + 1, outfits)}/>
     </section>
   )
 

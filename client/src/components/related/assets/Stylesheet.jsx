@@ -1,15 +1,44 @@
 import styled from 'styled-components';
 import StyleLib from '../../../assets/Stylesheet.jsx'
-import { FaRegStar } from 'react-icons/fa';
-import { FaPlus } from 'react-icons/fa';
-import { FaTimesCircle } from 'react-icons/fa';
+import { FaFileImage, FaRegStar, FaArrowLeft, FaArrowRight, FaPlus, FaTimesCircle } from 'react-icons/fa';
 
 const RelatedLib = {
 
-  carousel: styled.section`
-  display: block;
-  padding-left: 100px;
-  padding-right: 100px;
+  carouselContainer: styled.section`
+    display: inline-block;
+    width: 80%;
+    overflow: hidden;
+  `,
+
+  content: styled.div`
+  white-space: nowrap;
+  transition: transform 0.3s;
+  `,
+
+  carouselItem: styled.div`
+    display: inline-block;
+    width: 25%;
+    padding-left: 3px;
+  `,
+
+  leftArrow: styled(FaArrowLeft)`
+    position: relative;
+    bottom: 235px;
+    margin-right: 1%;
+    font-size: 40px;
+    &: hover {
+      color: #E7A66C;
+    }
+  `,
+
+  rightArrow: styled(FaArrowRight)`
+    position: relative;
+    bottom: 235px;
+    margin-left: 1%;
+    font-size: 40px;
+    &: hover {
+      color: #E7A66C;
+    }
   `,
 
   container: styled.div`
@@ -22,17 +51,18 @@ const RelatedLib = {
   width: 230px;
   `,
 
+  noImage: styled(FaFileImage)`
+  `,
+
   card: styled.div`
   position: relative;
   display: inline-block;
   vertical-align: top;
-  // background-color: #D5D5D5;
   width: 231.5px;
-  height: 470px;
+  height: 450px;
   border-radius: 10px;
   border: solid;
   border-width: 0.5px;
-  margin: 5px;
   cursor: pointer;
   &: hover {
     background-color: #D5D5D5;
@@ -43,13 +73,16 @@ const RelatedLib = {
   cardImg: styled.img`
   display: block;
   border-radius: 10px;
-  max-width: 230px;
+  width: 100%;
   height: auto;
   `,
 
+  // text overflow not working currently
   productInfo: styled.div`
-    display: block;
-    vertical-align: bottom;
+    overflow: visible;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    padding: 3px;
   `,
 
   plus: styled(FaPlus)`
@@ -61,7 +94,7 @@ const RelatedLib = {
   `,
 
   addOutfitText: styled(StyleLib.blockLabel)`
-    position: absolute;
+    position: relative;
     top: 70%;
     left: 17%;
   `,
@@ -123,6 +156,7 @@ const RelatedLib = {
   text-transform: none;
   padding-bottom: 5px;
   `,
+
 }
 
 export default RelatedLib;
