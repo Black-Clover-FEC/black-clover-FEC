@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Modal from 'react-modal';
 import api from '../lib/api.js';
 import CharacteristicsInput from '../components/ratings/CharacteristicsInput.jsx';
-import { starsMeaning, factorsMeaning } from '../components/ratings/reviewMeaningsKey.js';
+import { starsMeaning } from '../components/ratings/reviewMeaningsKey.js';
 
 Modal.setAppElement('#root');
 
@@ -47,7 +47,6 @@ const FormModal = ({ product, isOpen, onClose, submitFunc, factors }) => {
     formData.recommend = formData.recommend === 'yes';
     formData.photos = photos;
     formatCharacteristics(formData);
-    console.log(formData);
     api.addReview(formData)
       .then(res => console.log('this is the response: ' + res)) // here for now for debugging purposes
       .then(() => {

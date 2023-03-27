@@ -3,15 +3,16 @@ import React from 'react';
 import InputOptions from '../../assets/InputOptions.jsx';
 
 
-const CharacteristicsInput = ({factors}) => {
+const CharacteristicsInput = ({ factors }) => {
 
   return (
     <>
-      {factors.map((factor, index) => (
-        <div key={factor.id}>{factor.name}
-        <InputOptions type='radio' name={factor.id} valueList={[1, 2, 3, 4, 5]} />
-        </div>
-      ))}
+      {factors.map((factor, index) => {
+        console.log(factor)
+        return (
+          <InputOptions key={factor.id} type='radio' factor={factor} valueList={[1, 2, 3, 4, 5]} />
+        );
+      })}
     </>
   );
 }

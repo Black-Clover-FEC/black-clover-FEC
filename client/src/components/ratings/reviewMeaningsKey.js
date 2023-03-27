@@ -2,47 +2,47 @@
   const starsMeaning = ['Poor', 'Fair', 'Average', 'Good', 'Great'];
 
   const factorsMeaning = {
-    size: [
+    Size: [
       'A size too small',
       '½ a size too small',
       'Perfect',
       '½ a size too big',
       'A size too big'
     ],
-    width: [
+    Width: [
       'Too narrow',
       'Slightly narrow',
       'Perfect',
       'Slightly wide',
       'Too wide'
     ],
-    comfort: [
+    Comfort: [
       'Uncomfortable',
       'Slightly uncomfortable',
       'Ok',
       'Comfortable',
       'Perfect'
     ],
-    quality: [
+    Quality: [
       'Poor',
       'Below average',
       'What I expected',
       'Pretty great',
       'Perfect'
     ],
-    length: [
+    Length: [
       'Runs Short',
       'Runs slightly short',
       'Perfect',
       'Runs slightly long',
       'Runs long'
     ],
-    fit: [
+    Fit: [
       'Runs tight',
       'Runs slightly tight',
       'Perfect',
-      'Runs slightly long',
-      'Runs long'
+      'Runs slightly loose',
+      'Runs loose'
     ]
   };
 

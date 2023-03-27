@@ -1,19 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import StyleLib from './Stylesheet.jsx';
+import { factorsMeaning } from '../components/ratings/reviewMeaningsKey.js';
 
 
-const InputOptions = ({type, name, valueList, labelList = valueList}) => {
+const InputOptions = ({type, factor, valueList, labelList = valueList}) => {
+  const [selected, setSelected] = useState(-1);
 
   return (
-    <>
+    <div >{factor.name} - {selected !== -1 && <span>{factorsMeaning[factor.name][selected - 1]}</span>}
     <br/>
       {valueList.map((value, index) => (
         <label key={index}>
           {labelList[index]}
-          <input type={type} value={value} name={name} />
+          <input
+            type={type}
+            value={value}
+            name={factor.id}
+            onChange={(e) => {setSelected(e.target.value)}}
+          />
         </label>
       ))}
-    </>
+    </div>
   );
 }
 
