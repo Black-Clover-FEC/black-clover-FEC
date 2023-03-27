@@ -7,10 +7,10 @@ const Question = ({result}) => {
   const answers = result.answers;
   return (
     <div>
-      Q: <div>{result.question_body}</div>
+      <div>Q: {result.question_body}</div>
       <div>{result.question_date}</div>
       <div>{result.asker_name}</div>
-      <div>{result.question_helpfulness}thumbs up</div>
+      <div>{result.question_helpfulness} thumbs up</div>
       <AnswerList answers={answers} />
     </div>
   )

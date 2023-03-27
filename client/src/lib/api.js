@@ -71,10 +71,10 @@ api.collectProductInfo = (id) => {
 
 // QUESTIONS AND ANSWERS
 api.listQuestions = (params) => {
-  return get('/qa/questions', params);
+  return get('qa/questions', params);
 }
 
-api.listAnswers = (question_id) => {
+api.listAnswers = (question_id, params) => {
   return get(`/qa/questions/${question_id}/answers`, params);
 }
 

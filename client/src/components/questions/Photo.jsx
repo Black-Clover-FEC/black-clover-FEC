@@ -5,7 +5,7 @@ import StyleLib from '../../assets/Stylesheet.jsx';
 const Photo = ({photo}) => {
   return (
     <div>
-      <img src={"'" + {photo} + "'"} alt='photo'/>
+      <img src={photo} style={{height: 70, width:100}} alt='photo'/>
     </div>
   )
 }

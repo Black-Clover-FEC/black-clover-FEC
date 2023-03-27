@@ -10,10 +10,10 @@ const Answer = ({answer}) => {
   }
   return (
     <div>
-      A: <div>{answer.body}</div>
+      <div>A: {answer.body}</div>
       <div>{answer.date}</div>
       <div>{answer.answerer_name}</div>
-      <div>{answer.helpfulness}</div>
+      <div>Helpful? Yes {answer.helpfulness}</div>
       {photos.map((photo, index) => render(photo, index))}
     </div>
   )
