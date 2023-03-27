@@ -109,15 +109,29 @@ const StyleLib = {
 
 
   dropdown: styled.select`
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  text-align: left;
+  color: #424242;
+  text-transform: inherit;
+  background-color: white;
+  border: none;
+  border-bottom: solid;
+  padding-left: 0;
+  `,
+
+  searchBar: styled.input`
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  text-align: center;
+  text-align: left;
   color: #424242;
-  text-transform: uppercase;
+  text-transform: none;
   background-color: white;
   border: solid;
   border-radius: 10px;
-  padding: 10px;
+  padding: 5px;
+  width: 20em;
   `,
 
   spanTrimRight: styled.span`
@@ -129,7 +143,7 @@ const StyleLib = {
   clip-path: inset(0 0 0 ${props => props.percentage}%);
 `,
 
-tile: styled.li`
+  tile: styled.li`
   list-style: none;
   border: none;
   border-bottom-style: solid;
@@ -138,9 +152,35 @@ tile: styled.li`
 
   coloredDiv: styled.div`
   background-color: #2E4552;
-  // border-radius: 20px;
   padding: 15px 20px 15px 20px;
-  `
+  `,
+
+  smallPhoto: styled.img`
+  border: none;
+  border-radius: 10px;
+  height: 4em;
+  margin: 0 .2em 0 .2em;
+  `,
+
+  bigPhoto: styled.img`
+  border: none;
+  height: 40em;
+  `,
+
+  blockLabel: styled.label`
+  display: block;
+  border-bottom: 2px #D5D5D5 solid;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  `,
+
+  input: styled.input`
+  display: block;
+  `,
+
+  textarea: styled.textarea`
+  display: block;
+  `,
 
 };
 

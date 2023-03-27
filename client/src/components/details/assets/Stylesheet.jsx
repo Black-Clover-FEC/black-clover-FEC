@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import StyleLib from '../../../assets/Stylesheet.jsx';
+import { FaExpand, FaSearch, FaStar, FaCheckCircle } from 'react-icons/fa';
 
 const DetailsLib = {
   header: styled.div`
@@ -8,20 +9,27 @@ const DetailsLib = {
   margin-right: auto;
   width: 1fr;
   height: 75px;
-  border: solid #2A9D8F 1px;
-  background-color: #D3D3D3;
-  padding: 10px;
   vertical-align: top;
   `,
 
-  logo: styled.div`
+  logo: styled.img`
   float: left;
+  display: inline-block;
+  height: 75px;
+  width: auto;
+  cursor: pointer;
+  `,
+
+  searchBar: styled.input`
+  float: right;
   display: inline-block;
   `,
 
-  searchBar: styled.div`
+  searchBarButton: styled(FaSearch)`
   float: right;
   display: inline-block;
+  margin-left: 10px;
+  cursor: pointer;
   `,
 
   cols: styled.section`
@@ -31,17 +39,34 @@ const DetailsLib = {
 
   col1: styled.section`
   grid-column: 1;
-  border: solid #2A9D8F 1px;
-  padding: 10px;
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  `,
+
+  defaultImage: styled.img`
+  width: auto;
+  max-height: 500px;
+  display: block;
+  border-radius: 10px;
+  cursor: zoom-in;
+  `,
+
+  openModalBtn: styled(FaExpand)`
+  background-color: white;
+  position: absolute;
+  top: 1%;
+  right: 1%;
+  cursor: pointer;
   `,
 
   col2: styled.section`
   grid-column: 2;
-  border: solid #2A9D8F 1px;
   padding: 10px;
   text-align: left;
-  min-width: 300px;
-  min-height: 500px;
+  width: 325px;
+  height: 500px;
   `,
 
   rating: styled.div`
@@ -52,6 +77,16 @@ const DetailsLib = {
   smallUnderline: styled(StyleLib.p)`
   font-size: x-small;
   text-decoration: underline;
+  cursor: pointer;
+  `,
+
+  salePrice: styled(StyleLib.small)`
+  color: red;
+  `,
+
+  origPriceCrossed: styled(StyleLib.small)`
+  text-decoration: line-through;
+  font-size: 0.6em;
   `,
 
   selectedStyle: styled(StyleLib.h2)`
@@ -59,20 +94,27 @@ const DetailsLib = {
   `,
 
   styleList: styled.div`
+  position: relative;
   display: inline-block;
   padding: 7px;
   `,
 
-  styleListItem: styled.div`
+  styleListItem: styled.img`
   background-color: #fefbd8;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  border: solid #2A9D8F 2px;
-  display: flex;
+  display: block;
   align-items: center;
   text-align: center;
   font-size: small;
+  cursor: pointer;
+  `,
+
+  checkmark: styled(FaCheckCircle)`
+  position: absolute;
+  top: 1%;
+  right: 1%;
   `,
 
   center: styled.div`
@@ -80,23 +122,56 @@ const DetailsLib = {
   `,
 
   quantity: styled(StyleLib.dropdown)`
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  text-align: center;
+  color: #424242;
+  text-transform: uppercase;
+  background-color: white;
+  border: solid;
+  border-radius: 10px;
+  padding: 10px;
   width: 35%;
   float: right;
+  cursor: pointer;
   `,
 
   size: styled(StyleLib.dropdown)`
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  text-align: center;
+  color: #424242;
+  text-transform: uppercase;
+  background-color: white;
+  border: solid;
+  border-radius: 10px;
+  padding: 10px;
   width: 60%;
   float: left;
+  cursor: pointer;
   `,
 
   addToBagButton: styled(StyleLib.button)`
   width: 80%;
   float: left;
+  cursor: pointer;
   `,
 
   favoriteButton: styled(StyleLib.button)`
   width: 15%;
   float: right;
+  cursor: pointer;
+  background-color: #CDCDCD;
+  `,
+
+  faStarNotFavorite: styled(FaStar)`
+  width: 100%;
+  color: white;
+  `,
+
+  faStarFavorite: styled(FaStar)`
+  width: 100%;
+  color: yellow;
   `,
 
   description: styled.div`
@@ -105,7 +180,7 @@ const DetailsLib = {
   margin-right: auto;
   width: 1fr;
   height: 100px;
-  border: solid #2A9D8F 1px;
+
   padding: 10px;
   vertical-align: top;
   `

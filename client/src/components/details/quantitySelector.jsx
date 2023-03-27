@@ -3,15 +3,23 @@ import Stars from '../../assets/Stars.jsx';
 import StyleLib from '../../assets/Stylesheet.jsx';
 import DetailsLib from './assets/Stylesheet.jsx';
 
-const QuantitySelector = () => {
+const QuantitySelector = ({product}) => {
+  // IMPORTANT: INCLUDE WHICH STYLE'S SIZE's QUANTITY WE ARE LOOKING AT. CURRENTLY JUST STYLE 0, SIZE XS
+  var skuArray = [];
+  for (var key in product.styles.results[0].skus) {
+    skuArray.push(product.styles.results[0].skus[key]);
+  }
+
+  var quantityArr = [];
+  for (var i = 0; i < skuArray[0].quantity; i++) {
+    quantityArr.push(i);
+  }
 
   return (
     <DetailsLib.quantity>
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
+        {quantityArr.map((item) => {
+          return <option key={item} value={item}>{item}</option>;
+        })}
     </DetailsLib.quantity>
   )
 }

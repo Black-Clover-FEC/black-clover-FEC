@@ -3,18 +3,17 @@ import StyleLib from '../../assets/Stylesheet.jsx';
 import StyleListItem from './styleListItem.jsx';
 import DetailsLib from './assets/Stylesheet.jsx';
 
-const StyleList = ({styleList}) => {
-
+const StyleList = ({currentStyle, setCurrentStyle, styleList}) => {
   return (
     <div>
       <DetailsLib.selectedStyle>
-        <b>STYLE ></b> SELECTED STYLE
+        <b>STYLE ></b> {currentStyle.name}
       </DetailsLib.selectedStyle>
-      <div>
+      <ul>
         {styleList.map((item, index) => {
-          return <StyleListItem key={item.id} item={item} index={index}/>;
+          return <StyleListItem currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} key={/*item.style_id*/index} item={item}/>;
         })}
-      </div>
+      </ul>
     </div>
   )
 }

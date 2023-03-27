@@ -1,21 +1,31 @@
 import React from 'react';
 import RelatedLib from '../assets/Stylesheet.jsx';
 import StyleLib from '../../../assets/Stylesheet.jsx';
-import RelatedProductCard from '../card_components/RelatedProductCard.jsx';
+import ProductCard from '../card_components/ProductCard.jsx';
 
-const RelatedProductList = ({relatedItems}) => {
-
-  // console.log('related items in list component: ', relatedItems);
+const RelatedProductList = ({relatedItems, openComparison, sendToCompare,
+  changeProduct, updateindex, relatedViewIndex}) => {
 
   return (
-    <RelatedLib.carousel>
+    <section>
       <StyleLib.h2>Related Products</StyleLib.h2>
-      <div>
-        {relatedItems.map((product) => {
-          return <RelatedProductCard key={product.details.id} product={product}/>;
-        })}
-      </div>
-    </RelatedLib.carousel>
+      <RelatedLib.leftArrow onClick={() => updateindex(relatedViewIndex - 1, relatedItems)}/>
+        <RelatedLib.carouselContainer>
+        <RelatedLib.content style={{ transform: `translateX(-${relatedViewIndex * 25}%)` }}>
+          {relatedItems.map((product, index) => {
+            return (
+              <RelatedLib.carouselItem key={index}>
+                <ProductCard key={product.details.id} product={product}
+                openComparison={openComparison} sendToCompare={sendToCompare}
+                changeProduct={changeProduct}
+                />
+            </RelatedLib.carouselItem>
+            )
+          })}
+        </RelatedLib.content>
+        </RelatedLib.carouselContainer>
+        <RelatedLib.rightArrow onClick={() => updateindex(relatedViewIndex + 1, relatedItems)}/>
+    </section>
   )
 }
 
