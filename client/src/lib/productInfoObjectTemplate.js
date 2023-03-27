@@ -61,7 +61,9 @@ const ProductInfoObject = {
         ],
         skus: {
           quantity: 0
-        }
+        },
+        original_price: '0.00',
+        sale_price: null
       }
     ]
   }

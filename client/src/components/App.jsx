@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useLoaderData } from "react-router-dom";
 import api from '../lib/api.js';
 
 import Overview from './details/OverviewModule.jsx';
-import RelatedProducts from './related/RelatedProductsModule.jsx';
+import RelatedProductsModule from './related/RelatedProductsModule.jsx';
 import QA from './questions/QAModule.jsx';
 import Reviews from './ratings/ReviewsModule.jsx';
 
@@ -21,14 +21,19 @@ export async function productLoader({ params }) {
 
 const App = () => {
   const {product} = useLoaderData();
-  console.log(product);
+
+  const [currentProduct, setCurrentProduct] = useState(product);
+
+  const changeProduct = (newProduct) => {
+    setCurrentProduct(newProduct);
+  }
 
   return (
     <StyledDiv>
-      <Overview product={product}/>
-      <RelatedProducts product={product}/>
-      <QA product={product}/>
-      <Reviews product={product}/>
+      <Overview product={currentProduct}/>
+      <RelatedProductsModule product={currentProduct} changeProduct={changeProduct}/>
+      <QA product={currentProduct}/>
+      <Reviews product={currentProduct}/>
     </StyledDiv>
   )
 }

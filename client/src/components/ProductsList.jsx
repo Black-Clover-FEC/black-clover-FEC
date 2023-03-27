@@ -24,7 +24,7 @@ const ProductsList = () => {
         {products.map(product => {
           let path = `/${product.id}`
           return (
-          <StyleLib.tile>
+          <StyleLib.tile key={product.id}>
             <Link to={path}>{product.name}</Link>
             <div>{product.slogan}</div>
             <div>{product.description}</div>
