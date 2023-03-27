@@ -31,7 +31,7 @@ const RelatedProductsModule = ({product, changeProduct}) => {
     return Promise.all(productIds.map(id => api.collectProductInfo(id)));
   }
 
-  useEffect(() => {getAndSetRelatedProducts(product.id)}, []);
+  useEffect(() => {getAndSetRelatedProducts(product.id)}, [product]);
 
   // helper function for Comparison Modal
   const sendToCompare = (selected) => {
@@ -62,16 +62,13 @@ const RelatedProductsModule = ({product, changeProduct}) => {
   // NAVIGATE LISTS
   const [relatedViewIndex, setRelatedViewIndex] = useState(0);
 
-  const navigateRight = () => {
-    // select next product card
-    setRelatedViewIndex(relatedViewIndex + 1)
-    return;
-    // dismount left product card
-  }
-
-  const navigateLeft = () => {
-    // select previous product card
-    // dismount right product card
+  const updateindex = (newIndex) => {
+    if (newIndex < 0) {
+      newIndex = 0;
+    } else if (newIndex >= relatedItems.length) {
+      newIndex = relatedItems.length - 1;
+    }
+    setRelatedViewIndex(newIndex);
   }
 
   return (
@@ -80,6 +77,7 @@ const RelatedProductsModule = ({product, changeProduct}) => {
         {relatedItems.length !== 0 && <RelatedProductList
         relatedItems={relatedItems}
         relatedViewIndex={relatedViewIndex}
+        updateindex={updateindex}
         openComparison={openComparison}
         sendToCompare={sendToCompare}
         changeProduct={changeProduct}
