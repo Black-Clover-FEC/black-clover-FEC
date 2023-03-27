@@ -15,7 +15,6 @@ const ProductInformation = ({product, styleList, favorite, setFavorite, currentS
 
   return (
     <DetailsLib.col2>
-      <br/>
       <Reviews product={product}/>
       <br/>
       <StyleLib.small>{product.details.category}</StyleLib.small>

@@ -97,8 +97,8 @@ const DetailsLib = {
   `,
 
   col2: styled.section`
-  position: absolute;
-  right: 50px;
+  position: relative;
+  left: 30px;
   grid-column: 2;
   padding: 10px;
   text-align: left;
