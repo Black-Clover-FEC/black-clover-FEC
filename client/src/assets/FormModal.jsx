@@ -13,6 +13,8 @@ const FormModal = ({ product, isOpen, onClose, submitFunc, factors }) => {
   const [starRating, setStarRating] = useState(-1);
   const [photos, setPhotos] = useState([]);
 
+  const starMeaning = ['Poor', 'Fair', 'Average', 'Good', 'Great'];
+
   const formatCharacteristics = (formData) => {
     formData.characteristics = {};
     factors.forEach(factor => {
@@ -40,7 +42,6 @@ const FormModal = ({ product, isOpen, onClose, submitFunc, factors }) => {
     e.preventDefault();
     let formData = new FormData(e.target);
     formData = Object.fromEntries(formData.entries()); // converts from fromData object to JSON object.
-
     formData.rating = starRating + 1;
     formData.product_id = product.id;
     formData.recommend = formData.recommend === 'yes';
@@ -69,6 +70,7 @@ const FormModal = ({ product, isOpen, onClose, submitFunc, factors }) => {
         <StyleLib.blockLabel>
           Please rate this product:
           <StarsInput starRating={starRating} handleClick={(index) => setStarRating(index)} />
+          {starRating > -1 && <p>{starMeaning[starRating]}</p>}
         </StyleLib.blockLabel>
         <StyleLib.p>Would you recommend this product?
           <StyleLib.blockLabel>
