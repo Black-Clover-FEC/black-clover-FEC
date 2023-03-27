@@ -1,5 +1,6 @@
 import axios from 'axios';
 import config from '../env/config.js';
+import $ from 'jquery';
 
 
 // This first section contains helper/template functions and constants to keep our other functions
@@ -11,6 +12,7 @@ const api = {};
 const herokuUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/${config.CAMPUS_CODE}`;
 const unsplashOauthUrl = 'https://unsplash.com/oauth/';
 const unsplashApiUrl = 'https://api.unsplash.com/';
+const imgurUrl = 'https://api.imgur.com/3/';
 
 // Headers
 const herokuHeaders = {Authorization: config.AUTH};
@@ -199,11 +201,75 @@ api.getToken = () => {
     .catch(err => console.error(err));
 };
 
-api.postPhoto = (photo) => {
-  return axios.post(`https://api.imgur.com/3/image`, photo, {headers: imgurHeaders})
-    .then(res => console.log(res))
+api.postPhotoToImgur = (photo) => {
+
+  return axios.post(`${imgurUrl}image`, photo, {headers: imgurHeaders})
+    .then(res => res.data)
     .catch(err => console.error(err));
 };
 
+// const axiosApi = axios.create({
+//   baseURL: 'https://api.imgur.com/3'
+// });
+
+// axiosApi.interceptors.request.use(function (config) {
+//   config.headers = {
+//     ...config.headers,
+//     'Authorization': 'Client-ID 5dac72dc38cc903'
+//   };
+//   return config;
+// });
+
+// function postImgur(url, data, params = {}) {
+//   let headers = {};
+
+//   if (params.headers) {
+//     headers = params.headers
+//     delete params.headers;
+//   }
+
+//   return axiosApi
+//     .post(url, data, { params, headers })
+//     .then((res) => console.log(res.data))
+// }
+
+
+// var form = new FormData();
+// form.append("image", "R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
+
+
+//   var settings = {
+//     "url": "https://api.imgur.com/3/image",
+//     "method": "POST",
+//     "timeout": 0,
+//     "headers": {
+//       "Authorization": "Client-ID 5dac72dc38cc903"
+//     },
+//     "processData": false,
+//     "mimeType": "multipart/form-data",
+//     "contentType": false,
+//     "data": form
+//   };
+
+//   $.ajax(settings).done(function (response) {
+//     console.log(response);
+//   });
+
+// let photoForm = new FormData();
+// photoForm.append('image', 'R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
+// api.postPhotoToImgur({image: 'R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'});
+// api.postPhotoToImgur(photoForm);
+
+// const config2 = {
+//   headers: {
+//     'Authorization': 'Client-ID 5dac72dc38cc903'
+//   }
+// }
+
+// axios.get('https://api.imgur.com/3/image/JJubufzjVVoAKaW', config2)
+//   .then(res => console.log(res))
+//   .catch(err => console.error(err));
+
+// console.log('running');
 
 export default api;

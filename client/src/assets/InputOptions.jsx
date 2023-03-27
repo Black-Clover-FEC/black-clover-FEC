@@ -8,9 +8,9 @@ const InputOptions = ({type, name, valueList, labelList = valueList}) => {
     <>
     <br/>
       {valueList.map((value, index) => (
-        <label>
+        <label key={index}>
           {labelList[index]}
-          <input type={type} key={index} value={value} name={name} />
+          <input type={type} value={value} name={name} />
         </label>
       ))}
     </>
