@@ -7,7 +7,6 @@ const RelatedLib = {
   carouselContainer: styled.section`
     display: inline-block;
     width: 80%;
-    // margin: auto;
     overflow: hidden;
   `,
 
@@ -45,7 +44,6 @@ const RelatedLib = {
   container: styled.div`
   width: 100%;
   padding: 5px;
-  // align-items: center;
   `,
 
   imgContainer: styled.div`
@@ -76,7 +74,6 @@ const RelatedLib = {
   display: block;
   border-radius: 10px;
   width: 100%;
-  // max-width: 230px;
   height: auto;
   `,
 

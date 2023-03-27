@@ -3,7 +3,6 @@ import RelatedLib from '../assets/Stylesheet.jsx';
 import StyleLib from '../../../assets/Stylesheet.jsx';
 import ProductCard from '../card_components/ProductCard.jsx';
 
-// TODO - CONVERT TO CAROUSEL
 const RelatedProductList = ({relatedItems, openComparison, sendToCompare,
   changeProduct, updateindex, relatedViewIndex}) => {
 
