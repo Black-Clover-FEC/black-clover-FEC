@@ -11,16 +11,26 @@ const YourOutfitList = ({outfits, addOutfit, product, removeOutfit}) => {
     <section>
       <StyleLib.h2>Your Outfit</StyleLib.h2>
       <RelatedLib.leftArrow/>
-      <RelatedLib.carousel>
+      <RelatedLib.carouselContainer>
+      <RelatedLib.content>
         {outfits.map((outfit, index) => {
           if (outfit.details.id === 'button') {
-            return <AddToOutfitCard key={index} addOutfit={addOutfit} product={product} />
+            return (
+              <RelatedLib.carouselItem key={index}>
+                <AddToOutfitCard key={index} addOutfit={addOutfit} product={product} />
+              </RelatedLib.carouselItem>
+            )
           } else {
-            return <ProductCard key={outfit.details.id} product={outfit}
-            removeBtn={true} removeOutfit={removeOutfit}/>
+            return (
+              <RelatedLib.carouselItem key={index}>
+                <ProductCard key={outfit.details.id} product={outfit}
+                removeBtn={true} removeOutfit={removeOutfit}/>
+              </RelatedLib.carouselItem>
+            )
           }
         })}
-      </RelatedLib.carousel>
+      </RelatedLib.content>
+      </RelatedLib.carouselContainer>
       <RelatedLib.rightArrow/>
     </section>
   )

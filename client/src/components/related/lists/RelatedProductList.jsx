@@ -5,26 +5,27 @@ import ProductCard from '../card_components/ProductCard.jsx';
 
 // TODO - CONVERT TO CAROUSEL
 const RelatedProductList = ({relatedItems, openComparison, sendToCompare,
-  changeProduct, navigateLeft, navigateRight, relatedViewIndex}) => {
+  changeProduct, updateindex, relatedViewIndex}) => {
 
   return (
     <section>
       <StyleLib.h2>Related Products</StyleLib.h2>
-      <RelatedLib.leftArrow onClick={navigateLeft}/>
-      <RelatedLib.carousel>
-        {relatedItems.map((product, index) => {
-          return <RelatedLib.carouselItem style={{transform: `translate(-${relatedViewIndex * 100}%)`}}>
-            Test item {index}
-          </RelatedLib.carouselItem>
-
-          {/* <ProductCard key={product.details.id} product={product}
-          openComparison={openComparison} sendToCompare={sendToCompare}
-          changeProduct={changeProduct}
-          style={{transform: `translate(-${relatedViewIndex * 100}%)`}}
-          />; */}
-        })}
-      </RelatedLib.carousel>
-      <RelatedLib.rightArrow onClick={navigateRight}/>
+      <RelatedLib.leftArrow onClick={() => updateindex(relatedViewIndex - 1)}/>
+        <RelatedLib.carouselContainer>
+        <RelatedLib.content style={{ transform: `translateX(-${relatedViewIndex * 25}%)` }}>
+          {relatedItems.map((product, index) => {
+            return (
+              <RelatedLib.carouselItem key={index}>
+                <ProductCard key={product.details.id} product={product}
+                openComparison={openComparison} sendToCompare={sendToCompare}
+                changeProduct={changeProduct}
+                />
+            </RelatedLib.carouselItem>
+            )
+          })}
+        </RelatedLib.content>
+        </RelatedLib.carouselContainer>
+        <RelatedLib.rightArrow onClick={() => updateindex(relatedViewIndex + 1)}/>
     </section>
   )
 }

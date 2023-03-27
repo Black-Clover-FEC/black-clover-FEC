@@ -4,25 +4,28 @@ import { FaFileImage, FaRegStar, FaArrowLeft, FaArrowRight, FaPlus, FaTimesCircl
 
 const RelatedLib = {
 
-  carousel: styled.section`
-  display: inline-block;
-  padding-left: 50px;
-  padding-right: 50px;
+  carouselContainer: styled.section`
+    display: inline-block;
+    width: 80%;
+    // margin: auto;
+    overflow: hidden;
+  `,
+
+  content: styled.div`
+  white-space: nowrap;
+  transition: transform 0.3s;
   `,
 
   carouselItem: styled.div`
-    display: flex;
-    height: 20rem;
-    min-width: 100%;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    transition: 1s cubic-bezier(0.39, 0.575, 0.565, 1);
+    display: inline-block;
+    width: 25%;
+    padding-left: 3px;
   `,
 
   leftArrow: styled(FaArrowLeft)`
     position: relative;
-    top: 235px;
+    bottom: 235px;
+    margin-right: 1%;
     font-size: 40px;
     &: hover {
       color: #E7A66C;
@@ -31,7 +34,8 @@ const RelatedLib = {
 
   rightArrow: styled(FaArrowRight)`
     position: relative;
-    top: 235px;
+    bottom: 235px;
+    margin-left: 1%;
     font-size: 40px;
     &: hover {
       color: #E7A66C;
@@ -41,6 +45,7 @@ const RelatedLib = {
   container: styled.div`
   width: 100%;
   padding: 5px;
+  // align-items: center;
   `,
 
   imgContainer: styled.div`
@@ -55,13 +60,11 @@ const RelatedLib = {
   position: relative;
   display: inline-block;
   vertical-align: top;
-  // background-color: #D5D5D5;
   width: 231.5px;
-  height: 470px;
+  height: 450px;
   border-radius: 10px;
   border: solid;
   border-width: 0.5px;
-  margin: 5px;
   cursor: pointer;
   &: hover {
     background-color: #D5D5D5;
@@ -72,13 +75,17 @@ const RelatedLib = {
   cardImg: styled.img`
   display: block;
   border-radius: 10px;
-  max-width: 230px;
+  width: 100%;
+  // max-width: 230px;
   height: auto;
   `,
 
+  // text overflow not working currently
   productInfo: styled.div`
-    display: block;
-    vertical-align: bottom;
+    overflow: visible;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    padding: 3px;
   `,
 
   plus: styled(FaPlus)`
@@ -90,7 +97,7 @@ const RelatedLib = {
   `,
 
   addOutfitText: styled(StyleLib.blockLabel)`
-    position: absolute;
+    position: relative;
     top: 70%;
     left: 17%;
   `,
@@ -152,6 +159,7 @@ const RelatedLib = {
   text-transform: none;
   padding-bottom: 5px;
   `,
+
 }
 
 export default RelatedLib;
