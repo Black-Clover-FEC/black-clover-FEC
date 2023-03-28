@@ -7,7 +7,7 @@ import ComparisonModal from './ComparisonModal.jsx';
 const RelatedProductsModule = ({product, changeProduct}) => {
 
   // LISTS
-  const [outfits, setOutfits] = useState([{details: {id: 'button'}}]);
+  const [outfits, setOutfits] = useState(JSON.parse(window.localStorage.getItem('outfits')));
   const [relatedItems, setRelatedItems] = useState([]);
 
   // RELATED ITEMS AND COMPARISON
@@ -19,6 +19,12 @@ const RelatedProductsModule = ({product, changeProduct}) => {
   const [relatedViewIndex, setRelatedViewIndex] = useState(0);
   const [outfitViewIndex, setOutfitViewIndex] = useState(0);
 
+  useEffect(() => {getAndSetRelatedProducts(product.id)}, [product]);
+
+  useEffect(() => {
+    window.localStorage.setItem('outfits', JSON.stringify(outfits));
+  }, [outfits]);
+
   const updateindex = (newIndex, list) => {
     if (newIndex < 0) {
       newIndex = 0;
@@ -26,7 +32,6 @@ const RelatedProductsModule = ({product, changeProduct}) => {
       newIndex = list.length - 1;
     }
     if (list === outfits) {
-      console.log('list was outfits');
       setOutfitViewIndex(newIndex);
     } else {
       setRelatedViewIndex(newIndex);
@@ -49,8 +54,6 @@ const RelatedProductsModule = ({product, changeProduct}) => {
   const getRelatedProducts = (productIds) => {
     return Promise.all(productIds.map(id => api.collectProductInfo(id)));
   }
-
-  useEffect(() => {getAndSetRelatedProducts(product.id)}, [product]);
 
   // helper function for Comparison Modal
   const sendToCompare = (selected) => {
