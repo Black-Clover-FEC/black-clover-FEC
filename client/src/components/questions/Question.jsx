@@ -13,6 +13,13 @@ const Question = ({result, helpfulCB}) => {
       .then(setHelpfulQCount(result.question_helpfulness))
       .catch(err => console.error(err));
   }
+
+  const reportHandler = (e) => {
+    api.reportQuestion(result.question_id)
+      .then(res => helpfulCB())
+      .catch(err => console.error(err));
+  }
+
   return (
     <StyleLib.tile>
       <StyleLib.p>Q: {result.question_body}</StyleLib.p>
@@ -23,6 +30,8 @@ const Question = ({result, helpfulCB}) => {
         </StyleLib.linkButton>
         {helpfulQCount}
       </StyleLib.small>
+      <StyleLib.linkButton onClick={reportHandler}>Report </StyleLib.linkButton>
+
       <AnswerList answers={answers} helpfulCB={helpfulCB}/>
     </StyleLib.tile>
   )

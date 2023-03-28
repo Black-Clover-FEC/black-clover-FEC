@@ -12,6 +12,7 @@ const QAModule = ({product}) => {
   const [numberOfQuestions, setNumberOfQuestions] = useState(2);
   const [displayedResults, setDisplayedResults] = useState([]);
   const [productResults, setProductResults] = useState([]);
+  const [modal, setModal] = useState(false);
 
   // On Render Effects
   useEffect(() => {getQuestions()}, []);
@@ -34,6 +35,8 @@ const QAModule = ({product}) => {
 
   const showMoreHandler = (e) => setNumberOfQuestions(numberOfQuestions + 2);
   const updateDisplayedResults = () => setDisplayedResults(productResults.slice(0, numberOfQuestions));
+  const openModal = () => setModal(true);
+  const closeModal = () => setModal(false);
 
   // Rendered Elements
   return (
@@ -42,7 +45,7 @@ const QAModule = ({product}) => {
       <SearchQA />
       <QuestionList displayedResults={displayedResults} helpfulCB={getQuestions}/>
       <StyleLib.button onClick={showMoreHandler}>More Answered Questions</StyleLib.button>
-      <StyleLib.button>Add A Question</StyleLib.button>
+      <StyleLib.button onClick={openModal}>Add A Question</StyleLib.button>
     </StyleLib.tile>
   )
 }

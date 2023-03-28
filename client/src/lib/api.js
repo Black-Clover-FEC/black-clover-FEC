@@ -92,7 +92,7 @@ api.markQuestionHelpful = (question_id) => {
   return put(`qa/questions/${question_id}/helpful`);
 }
 
-api.reportQuesion = (question_id) => {
+api.reportQuestion = (question_id) => {
   return put(`qa/questions/${question_id}/report`)
 }
 
