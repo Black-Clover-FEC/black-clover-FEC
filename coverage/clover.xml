@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1679960642305" clover="3.2.0">
-  <project timestamp="1679960642305" name="All files">
-    <metrics statements="169" coveredstatements="78" conditionals="17" coveredconditionals="3" methods="69" coveredmethods="8" elements="255" coveredelements="89" complexity="0" loc="169" ncloc="169" packages="6" files="10" classes="10"/>
+<coverage generated="1679960906258" clover="3.2.0">
+  <project timestamp="1679960906258" name="All files">
+    <metrics statements="169" coveredstatements="79" conditionals="17" coveredconditionals="3" methods="69" coveredmethods="9" elements="255" coveredelements="91" complexity="0" loc="169" ncloc="169" packages="6" files="10" classes="10"/>
     <package name="assets">
       <metrics statements="26" coveredstatements="19" conditionals="2" coveredconditionals="1" methods="5" coveredmethods="2"/>
       <file name="Stars.jsx" path="/home/brawoods/hackreactor/senior-phase/black-clover-FEC/client/src/assets/Stars.jsx">
@@ -122,9 +122,9 @@
       </file>
     </package>
     <package name="lib">
-      <metrics statements="92" coveredstatements="38" conditionals="5" coveredconditionals="1" methods="42" coveredmethods="3"/>
+      <metrics statements="92" coveredstatements="39" conditionals="5" coveredconditionals="1" methods="42" coveredmethods="4"/>
       <file name="api.js" path="/home/brawoods/hackreactor/senior-phase/black-clover-FEC/client/src/lib/api.js">
-        <metrics statements="92" coveredstatements="38" conditionals="5" coveredconditionals="1" methods="42" coveredmethods="3"/>
+        <metrics statements="92" coveredstatements="39" conditionals="5" coveredconditionals="1" methods="42" coveredmethods="4"/>
         <line num="8" count="2" type="stmt"/>
         <line num="11" count="2" type="stmt"/>
         <line num="12" count="2" type="stmt"/>
@@ -134,8 +134,8 @@
         <line num="21" count="2" type="stmt"/>
         <line num="25" count="2" type="stmt"/>
         <line num="31" count="2" type="cond" truecount="1" falsecount="0"/>
-        <line num="32" count="1" type="stmt"/>
-        <line num="33" count="1" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
         <line num="37" count="2" type="cond" truecount="0" falsecount="2"/>
         <line num="38" count="0" type="stmt"/>
@@ -146,7 +146,7 @@
         <line num="45" count="0" type="stmt"/>
         <line num="46" count="0" type="stmt"/>
         <line num="54" count="2" type="stmt"/>
-        <line num="55" count="0" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
         <line num="58" count="2" type="stmt"/>
         <line num="59" count="1" type="stmt"/>
         <line num="62" count="2" type="stmt"/>

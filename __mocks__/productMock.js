@@ -53,6 +53,7 @@ const ProductInfoObject = {
     product_id: '',
     results: [
       {
+        "default?": true,
         photos: [
           {
             thumbnail_url: '',
