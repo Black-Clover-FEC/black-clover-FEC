@@ -36,24 +36,24 @@ describe('Does a component render to the page', () => {
     expect(tree).toMatchSnapshot();
   })
 
-  // it('tests to see if the YourOutfitList component renders correctly', () => {
-//   const tree = renderer.create(<YourOutfitList outfits={MockFunc.prodArray} product={ProdMock}
-//     addOutfit={MockFunc.default} removeOutfit={MockFunc.default}
-//     updateindex={MockFunc.default} outfitViewIndex={MockFunc.num}/>).toJSON();
-//   expect(tree).toMatchSnapshot();
-// })
+  it('tests to see if the YourOutfitList component renders correctly', () => {
+  const tree = renderer.create(<YourOutfitList outfits={[{details: {id: 'button'}}, ProdMock]} product={ProdMock}
+    addOutfit={MockFunc.default} removeOutfit={MockFunc.default}
+    updateindex={MockFunc.default} outfitViewIndex={0}/>).toJSON();
+  expect(tree).toMatchSnapshot();
+})
 
-  // it('tests to see if the YourOutfitList component renders correctly', () => {
-  //   const tree = renderer.create(<RelatedProductList
-  //     relatedItems={MockFunc.prodArray}
-  //     relatedViewIndex={MockFunc.num}
-  //     updateindex={MockFunc.default}
-  //     openComparison={MockFunc.default}
-  //     sendToCompare={MockFunc.default}
-  //     changeProduct={MockFunc.default}
-  //     />).toJSON();
-  //   expect(tree).toMatchSnapshot();
-  // })
+  it('tests to see if the YourOutfitList component renders correctly', () => {
+    const tree = renderer.create(<RelatedProductList
+      relatedItems={[ProdMock, ProdMock]}
+      relatedViewIndex={1}
+      updateindex={MockFunc.default}
+      openComparison={MockFunc.default}
+      sendToCompare={MockFunc.default}
+      changeProduct={MockFunc.default}
+      />).toJSON();
+    expect(tree).toMatchSnapshot();
+  })
 })
 
 
