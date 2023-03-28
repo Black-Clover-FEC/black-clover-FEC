@@ -182,6 +182,14 @@ const StyleLib = {
   display: block;
   `,
 
+  hiddenInput: styled.input`
+  display: block;
+  height: 0;
+  width: 0;
+  position: absolute;
+  opacity: 0;
+  `,
+
 };
 
 export default StyleLib;

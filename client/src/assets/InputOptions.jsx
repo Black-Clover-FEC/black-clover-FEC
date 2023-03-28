@@ -15,7 +15,8 @@ const InputOptions = ({type, factor, valueList, labelList = valueList}) => {
           <input
             type={type}
             value={value}
-            name={factor.id}
+            name={factor.name}
+            // required={true}
             onChange={(e) => {setSelected(e.target.value)}}
           />
         </label>
