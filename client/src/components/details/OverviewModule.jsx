@@ -41,13 +41,13 @@ const OverviewModule = (props) => {
 
   return (
     <div>
-      {openModal ? <ExpandedImage openModal={openModal} setOpenModal={setOpenModal}/> : <></>}
+      {openModal ? <ExpandedImage currentStyle={currentStyle} openModal={openModal} setOpenModal={setOpenModal}/> : <></>}
       <Header />
       <StyleLib.h2>
         Product Overview
       </StyleLib.h2>
       <DetailsLib.cols>
-        <Image currentStyle={currentStyle} styleList={styleList} setOpenModal={setOpenModal}/>
+        <Image currentStyle={currentStyle} styleList={styleList} openModal={openModal} setOpenModal={setOpenModal}/>
         <ProductInformation currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} product={product} styleList={styleList} favorite={favorite} setFavorite={setFavorite}/>
       </DetailsLib.cols>
       <Description product={product} />

@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import StyleLib from '../../../assets/Stylesheet.jsx';
-import { FaExpand, FaSearch, FaStar, FaCheckCircle } from 'react-icons/fa';
+import { FaExpand, FaSearch, FaStar, FaCheckCircle, FaWindowClose } from 'react-icons/fa';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 const DetailsLib = {
   header: styled.div`
@@ -40,17 +42,30 @@ const DetailsLib = {
   col1: styled.section`
   grid-column: 1;
   position: relative;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
   `,
 
   defaultImage: styled.img`
   width: auto;
   max-height: 500px;
-  display: block;
+  display: flex;
   border-radius: 10px;
   cursor: zoom-in;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  `,
+
+  imageThumbnail: styled.img`
+  background-color: #fefbd8;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  display: block;
+  align-items: center;
+  text-align: center;
+  font-size: small;
+  cursor: pointer;
+  margin: 5px;
   `,
 
   openModalBtn: styled(FaExpand)`
@@ -61,7 +76,29 @@ const DetailsLib = {
   cursor: pointer;
   `,
 
+  closeModalBtn: styled(FaWindowClose)`
+  background-color: white;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 1%;
+  right: 1%;
+  cursor: pointer;
+  `,
+
+  modalCarouselImg: styled.img`
+  width: auto;
+  height: 590px;
+  display: block;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  `,
+
   col2: styled.section`
+  position: absolute;
+  right: 50px;
   grid-column: 2;
   padding: 10px;
   text-align: left;
