@@ -93,7 +93,8 @@ const RelatedProductsModule = ({product, changeProduct}) => {
       <div>
         <YourOutfitList outfits={outfits} product={product}
         addOutfit={addOutfit} removeOutfit={removeOutfit}
-        updateindex={updateindex} outfitViewIndex={outfitViewIndex}/>
+        updateindex={updateindex} outfitViewIndex={outfitViewIndex}
+        changeProduct={changeProduct}/>
       </div>
       <ComparisonModal
         products={productsToCompare}

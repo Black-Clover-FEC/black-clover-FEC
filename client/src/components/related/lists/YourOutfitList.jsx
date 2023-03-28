@@ -4,7 +4,7 @@ import RelatedLib from '../assets/Stylesheet.jsx';
 import AddToOutfitCard from '../card_components/AddToOutfitCard.jsx';
 import ProductCard from '../card_components/ProductCard.jsx';
 
-const YourOutfitList = ({outfits, addOutfit, product, removeOutfit, updateindex, outfitViewIndex}) => {
+const YourOutfitList = ({outfits, addOutfit, product, removeOutfit, updateindex, outfitViewIndex, changeProduct}) => {
 
   return (
     <section>
@@ -23,7 +23,7 @@ const YourOutfitList = ({outfits, addOutfit, product, removeOutfit, updateindex,
             return (
               <RelatedLib.carouselItem key={index}>
                 <ProductCard key={outfit.details.id} product={outfit}
-                removeBtn={true} removeOutfit={removeOutfit}/>
+                removeBtn={true} removeOutfit={removeOutfit} changeProduct={changeProduct}/>
               </RelatedLib.carouselItem>
             )
           }
