@@ -3,7 +3,7 @@ import Answer from './Answer.jsx';
 import api from '../../lib/api.js';
 import StyleLib from '../../assets/Stylesheet.jsx';
 
-const AnswerList = ({answers}) => {
+const AnswerList = ({answers, helpfulCB}) => {
   const answersArray = Object.keys(answers);
   const [displayedAnswers, setDisplayedAnswers] = useState([]);
   const [numberOfAnswers, setNumberOfAnswers] = useState(2);
@@ -16,7 +16,7 @@ const AnswerList = ({answers}) => {
   }
 
   const render = (answer, index) => {
-    return <Answer answer={answer} key={index}/>
+    return <Answer answer={answer} helpfulCB={helpfulCB} key={index}/>
   }
 
   const updateNumberOfAnswers = (e) => {

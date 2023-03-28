@@ -40,7 +40,7 @@ const QAModule = ({product}) => {
     <StyleLib.tile>
       <StyleLib.h2>Questions and Answers</StyleLib.h2>
       <SearchQA />
-      <QuestionList displayedResults={displayedResults}/>
+      <QuestionList displayedResults={displayedResults} helpfulCB={getQuestions}/>
       <StyleLib.button onClick={showMoreHandler}>More Answered Questions</StyleLib.button>
       <StyleLib.button>Add A Question</StyleLib.button>
     </StyleLib.tile>

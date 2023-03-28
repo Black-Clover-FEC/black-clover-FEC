@@ -3,9 +3,9 @@ import Question from './Question.jsx';
 import api from '../../lib/api.js';
 import StyleLib from '../../assets/Stylesheet.jsx';
 
-const QuestionList = ({displayedResults}) => {
+const QuestionList = ({displayedResults, helpfulCB}) => {
   const render = (result, index) => {
-    return <Question result={result} key={index}/>
+    return <Question result={result} helpfulCB={helpfulCB} key={index}/>
   }
   return (
     <section>
