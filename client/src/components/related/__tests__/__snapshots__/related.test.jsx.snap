@@ -36,6 +36,8 @@ exports[`Does a component render to the page tests to see if the AddToOutfitCard
 </div>
 `;
 
+exports[`Does a component render to the page tests to see if the ComparisonModal component renders correctly 1`] = `null`;
+
 exports[`Does a component render to the page tests to see if the ProductCard component renders correctly 1`] = `
 <div
   className="sc-cyRfQX dReSUJ"
@@ -181,6 +183,127 @@ exports[`Does a component render to the page tests to see if the ProductCard com
 </div>
 `;
 
+exports[`Does a component render to the page tests to see if the ProductInformation component renders correctly 1`] = `
+<div
+  className="sc-iKGpAt eekrUl"
+>
+  <h6
+    className="sc-jTrPJq ggeGuQ"
+  />
+  <p
+    className="sc-gLDzan ZmgyA"
+  >
+     | [object Object]
+  </p>
+  <h4 />
+</div>
+`;
+
+exports[`Does a component render to the page tests to see if the RelatedProductsModule component renders correctly 1`] = `
+<div>
+  <div />
+  <div>
+    <section>
+      <h2
+        className="sc-gueYoa cQcDUV"
+      >
+        Your Outfit
+      </h2>
+      <svg
+        className="sc-dnwKUv hTtsLB"
+        fill="currentColor"
+        height="1em"
+        onClick={[Function]}
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 448 512"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+        />
+      </svg>
+      <section
+        className="sc-ieZDjg fkXfjF"
+      >
+        <div
+          className="sc-dKfzgJ sZsgT"
+          style={
+            {
+              "transform": "translateX(-0%)",
+            }
+          }
+        >
+          <div
+            className="sc-hIqOWS lnCJsQ"
+          >
+            <div
+              className="sc-cyRfQX dReSUJ"
+              onClick={[Function]}
+            >
+              <svg
+                className="sc-gjTGSA fOMnxr"
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 448 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                />
+              </svg>
+              <label
+                className="sc-fmSAUk sc-eACynP fflqNQ jLnhIs"
+              >
+                <h3
+                  className="sc-dmqHEX jScUal"
+                >
+                  Add to Outfit
+                </h3>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+      <svg
+        className="sc-kgKVFY iqDDQN"
+        fill="currentColor"
+        height="1em"
+        onClick={[Function]}
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 448 512"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"
+        />
+      </svg>
+    </section>
+  </div>
+</div>
+`;
+
 exports[`Does a component render to the page tests to see if the YourOutfitList component renders correctly 1`] = `
 <section>
   <h2
@@ -289,7 +412,7 @@ exports[`Does a component render to the page tests to see if the YourOutfitList 
             <img
               alt="product-image"
               className="sc-lnAgIa fsqcVK"
-              src=""
+              src="No Image Available"
             />
           </div>
           <div
@@ -304,10 +427,10 @@ exports[`Does a component render to the page tests to see if the YourOutfitList 
               <p
                 className="sc-gLDzan ZmgyA"
               >
-                 | undefined
+                 | No Style Available
               </p>
               <h4>
-                $0.00
+                No Price Available
               </h4>
             </div>
             <div
@@ -498,7 +621,7 @@ exports[`Does a component render to the page tests to see if the YourOutfitList 
             <img
               alt="product-image"
               className="sc-lnAgIa fsqcVK"
-              src="No Image Available"
+              src=""
             />
           </div>
           <div
@@ -513,10 +636,10 @@ exports[`Does a component render to the page tests to see if the YourOutfitList 
               <p
                 className="sc-gLDzan ZmgyA"
               >
-                 | No Style Available
+                 | undefined
               </p>
               <h4>
-                No Price Available
+                $0.00
               </h4>
             </div>
             <div
@@ -644,7 +767,7 @@ exports[`Does a component render to the page tests to see if the YourOutfitList 
             <img
               alt="product-image"
               className="sc-lnAgIa fsqcVK"
-              src="No Image Available"
+              src=""
             />
           </div>
           <div
@@ -659,10 +782,10 @@ exports[`Does a component render to the page tests to see if the YourOutfitList 
               <p
                 className="sc-gLDzan ZmgyA"
               >
-                 | No Style Available
+                 | undefined
               </p>
               <h4>
-                No Price Available
+                $0.00
               </h4>
             </div>
             <div
