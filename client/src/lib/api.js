@@ -9,19 +9,12 @@ const api = {};
 
 // URLs
 const herokuUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/${config.CAMPUS_CODE}`;
-const unsplashOauthUrl = 'https://unsplash.com/oauth/';
-const unsplashApiUrl = 'https://api.unsplash.com/';
+
+const imgurUrl = 'https://api.imgur.com/3/';
 
 // Headers
 const herokuHeaders = {Authorization: config.AUTH};
-const unsplashHeaders = {
-  'Authorization': `Client-ID ${config.UNSPLASH_ACCESS_KEY}`,
-  'Accept-Version': 'v1'
-};
-const unsplashTokenHeaders = {
-  'Authorization': `Client-ID ${config.UNSPLASH_ACCESS_KEY}, Bearer ${config.UNSPLASH_USER_TOKEN}`,
-  'Accept-Version': 'v1'
-};
+
 const imgurHeaders = {
   'Authorization': `Client-ID ${config.IMGUR_CLIENT_ID}`,
   'Content-Type': 'multipart/form-data'
@@ -166,44 +159,12 @@ api.interact = (params) => {
 };
 
 
-// --------- UNSPLASH --------------
+// IMGUR
+api.postPhotoToImgur = (photo) => {
 
-// oAuth
-
-api.authorizeUser = () => {
-
-  const params = {
-    client_id: config.UNSPLASH_ACCESS_KEY,
-    redirect_uri: 'urn:ietf:wg:oauth:2.0:oob',
-    response_type: 'code',
-    scope: 'public+read_photos+write_photos'
-  };
-
-  return axios.get(`${unsplashOauthUrl}authorize/`, {headers: unsplashHeaders, params: params})
-    .then(res => console.log(res))
+  return axios.post(`${imgurUrl}image`, photo, {headers: imgurHeaders})
+    .then(res => res.data)
     .catch(err => console.error(err));
 };
-
-api.getToken = () => {
-
-  const params = {
-    client_id: config.UNSPLASH_ACCESS_KEY,
-    client_secret: config.UNSPLASH_SECRET_KEY,
-    redirect_uri: 'http://localhost:8080/',
-    code: config.UNSPLASH_USER_AUTH_CODE,
-    grant_type: 'authorization_code'
-  };
-
-  return axios.post(`${unsplashOauthUrl}token/`, params, {headers: unsplashHeaders})
-    .then(res => console.log(res))
-    .catch(err => console.error(err));
-};
-
-api.postPhoto = (photo) => {
-  return axios.post(`https://api.imgur.com/3/image`, photo, {headers: imgurHeaders})
-    .then(res => console.log(res))
-    .catch(err => console.error(err));
-};
-
 
 export default api;

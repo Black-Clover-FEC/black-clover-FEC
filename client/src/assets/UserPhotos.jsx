@@ -17,6 +17,8 @@ const UserPhotos = ({photos}) => {
     openModal();
   }
 
+
+
   return (
     <>
     <ul>
