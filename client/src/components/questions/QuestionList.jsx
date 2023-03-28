@@ -8,9 +8,9 @@ const QuestionList = ({displayedResults}) => {
     return <Question result={result} key={index}/>
   }
   return (
-    <div>
+    <section>
       {displayedResults.map((result, index) => render(result, index))}
-    </div>
+    </section>
   )
 }
 

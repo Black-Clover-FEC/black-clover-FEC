@@ -88,27 +88,27 @@ api.listAnswers = (question_id, params) => {
 }
 
 api.addQuestion = (params) => {
-  return post('/qa/questions', params);
+  return post('qa/questions', params);
 }
 
 api.addAnswer = (question_id) => {
-  return post(`/qa/questions/${question_id}/answers`, params);
+  return post(`qa/questions/${question_id}/answers`, params);
 }
 
 api.markQuestionHelpful = (question_id) => {
-  return put(`/qa/questions/${question_id}/helpful`);
+  return put(`qa/questions/${question_id}/helpful`);
 }
 
 api.reportQuesion = (question_id) => {
-  return put(`/qa/questions/${question_id}/report`)
+  return put(`qa/questions/${question_id}/report`)
 }
 
 api.markAnswerHelpful = (answer_id) => {
-  return put(`/qa/answers/${answer_id}/helpful`)
+  return put(`qa/answers/${answer_id}/helpful`)
 }
 
 api.reportAnswer = (answer_id) => {
-  return put(`/qa/answers/${answer_id}/report`)
+  return put(`qa/answers/${answer_id}/report`)
 }
 
 

@@ -9,13 +9,13 @@ const Answer = ({answer}) => {
     return <Photo photo={photo} key={index}/>
   }
   return (
-    <div>
-      <div>A: {answer.body}</div>
-      <div>{answer.date}</div>
-      <div>{answer.answerer_name}</div>
-      <div>Helpful? Yes {answer.helpfulness}</div>
+    <section>
+      <StyleLib.p>A: {answer.body}</StyleLib.p>
+      <StyleLib.small>{answer.date} </StyleLib.small>
+      <StyleLib.small>{answer.answerer_name} </StyleLib.small>
+      <StyleLib.small>Helpful? Yes {answer.helpfulness}</StyleLib.small>
       {photos.map((photo, index) => render(photo, index))}
-    </div>
+    </section>
   )
 }
 

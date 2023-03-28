@@ -9,14 +9,14 @@ const QAModule = ({product}) => {
   const productID = product.id;
 
   // React Hooks
-  const [numberOfQs, setNumberOfQs] = useState(2);
+  const [numberOfQuestions, setNumberOfQuestions] = useState(2);
   const [displayedResults, setDisplayedResults] = useState([]);
   const [productResults, setProductResults] = useState([]);
 
   // On Render Effects
   useEffect(() => {getQuestions()}, []);
   useEffect(() => {updateDisplayedResults()}, []);
-  useEffect(() => {updateDisplayedResults()}, [numberOfQs]);
+  useEffect(() => {updateDisplayedResults()}, [numberOfQuestions]);
 
   // Helper Functions
   const getQuestions = () => {
@@ -27,23 +27,23 @@ const QAModule = ({product}) => {
     })
       .then(data => {
         setProductResults(data.results)
-        setDisplayedResults(data.results.slice(0, numberOfQs))
+        setDisplayedResults(data.results.slice(0, numberOfQuestions))
       })
       .catch(err => console.error(err))
   }
 
-  const showMoreHandler = (e) => setNumberOfQs(numberOfQs + 2);
-  const updateDisplayedResults = () => setDisplayedResults(productResults.slice(0, numberOfQs));
+  const showMoreHandler = (e) => setNumberOfQuestions(numberOfQuestions + 2);
+  const updateDisplayedResults = () => setDisplayedResults(productResults.slice(0, numberOfQuestions));
 
   // Rendered Elements
   return (
-    <div>
+    <StyleLib.tile>
       <StyleLib.h2>Questions and Answers</StyleLib.h2>
       <SearchQA />
       <QuestionList displayedResults={displayedResults}/>
       <StyleLib.button onClick={showMoreHandler}>More Answered Questions</StyleLib.button>
       <StyleLib.button>Add A Question</StyleLib.button>
-    </div>
+    </StyleLib.tile>
   )
 }
 

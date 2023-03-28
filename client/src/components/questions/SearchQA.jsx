@@ -4,7 +4,7 @@ import React, {useState, useEffect} from 'react';
 
 const SearchQA = () => {
   return (
-  <StyleLib.searchBar></StyleLib.searchBar>
+  <StyleLib.searchBar />
   )
 }
 
