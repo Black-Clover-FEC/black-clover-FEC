@@ -64,11 +64,13 @@ const StyleLib = {
   padding-bottom: 7px;
   `,
 
-  p: styled.p`
+  p: styled.p.attrs(props => ({
+    color: props.color || '#424242'
+  }))`
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   text-align: left;
-  color: #424242;
+  color: ${props => props.color};
   text-transform: none;
   padding-bottom: 5px;
   `,
@@ -172,14 +174,30 @@ const StyleLib = {
   border-bottom: 2px #D5D5D5 solid;
   padding-bottom: 10px;
   padding-top: 10px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  text-align: left;
+  color: #424242;
+  text-transform: none;
   `,
 
   input: styled.input`
   display: block;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  text-align: left;
+  color: #424242;
+  text-transform: none;
   `,
 
   textarea: styled.textarea`
   display: block;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  text-align: left;
+  color: #424242;
+  text-transform: none;
+  padding: 5px;
   `,
 
   hiddenInput: styled.input`
