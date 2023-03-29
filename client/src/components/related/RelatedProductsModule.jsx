@@ -22,7 +22,11 @@ const RelatedProductsModule = ({product, changeProduct}) => {
   useEffect(() => {getAndSetRelatedProducts(product.id)}, [product]);
 
   useEffect(() => {
-    window.localStorage.setItem('outfits', JSON.stringify(outfits));
+    setOutfits(JSON.parse(window.localStorage.getItem('outfits')));
+  }, [])
+
+  useEffect(() => {
+      window.localStorage.setItem('outfits', JSON.stringify(outfits));
   }, [outfits]);
 
   const updateindex = (newIndex, list) => {
@@ -75,7 +79,8 @@ const RelatedProductsModule = ({product, changeProduct}) => {
   const removeOutfit = (product_id) => {
     outfits.forEach((outfit, i) => {
       if (product_id === outfit.details.id) {
-        setOutfits(outfits.splice(i - 1, 1));
+        let newOutfits = outfits.slice(0, i).concat(outfits.slice(i + 1));
+        setOutfits(newOutfits);
         return;
       }
     })
