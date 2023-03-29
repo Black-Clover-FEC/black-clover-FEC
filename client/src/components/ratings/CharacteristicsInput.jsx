@@ -8,7 +8,7 @@ const CharacteristicsInput = ({factors}) => {
   return (
     <>
       {factors.map((factor, index) => (
-        <div>{factor.name}
+        <div key={factor.id}>{factor.name}
         <InputOptions type='radio' name={factor.id} valueList={[1, 2, 3, 4, 5]} />
         </div>
       ))}

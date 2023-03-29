@@ -15,6 +15,25 @@ const RelatedProductsModule = ({product, changeProduct}) => {
   const [comparisonView, setComparisonView] = useState(false);
   const [productsToCompare, setProductsToCompare] = useState([]);
 
+  // NAVIGATE LISTS
+  const [relatedViewIndex, setRelatedViewIndex] = useState(0);
+  const [outfitViewIndex, setOutfitViewIndex] = useState(0);
+
+  const updateindex = (newIndex, list) => {
+    if (newIndex < 0) {
+      newIndex = 0;
+    } else if (newIndex >= list.length) {
+      newIndex = list.length - 1;
+    }
+    if (list === outfits) {
+      console.log('list was outfits');
+      setOutfitViewIndex(newIndex);
+    } else {
+      setRelatedViewIndex(newIndex);
+    }
+  }
+
+  // TOGGLE COMPARISON VIEW
   const openComparison = () => setComparisonView(true);
   const closeComparison = () => setComparisonView(false);
 
@@ -31,7 +50,7 @@ const RelatedProductsModule = ({product, changeProduct}) => {
     return Promise.all(productIds.map(id => api.collectProductInfo(id)));
   }
 
-  useEffect(() => {getAndSetRelatedProducts(product.id)}, []);
+  useEffect(() => {getAndSetRelatedProducts(product.id)}, [product]);
 
   // helper function for Comparison Modal
   const sendToCompare = (selected) => {
@@ -39,7 +58,7 @@ const RelatedProductsModule = ({product, changeProduct}) => {
     setProductsToCompare([current, selected.details]);
   }
 
-  // ADD AND REMOVE OUTFIT
+  // ADD AND REMOVE OUTFITS
   const addOutfit = async (product) => {
     for (let outfit of outfits) {
       if (product.id === outfit.details.id) {
@@ -64,6 +83,8 @@ const RelatedProductsModule = ({product, changeProduct}) => {
       <div>
         {relatedItems.length !== 0 && <RelatedProductList
         relatedItems={relatedItems}
+        relatedViewIndex={relatedViewIndex}
+        updateindex={updateindex}
         openComparison={openComparison}
         sendToCompare={sendToCompare}
         changeProduct={changeProduct}
@@ -71,7 +92,8 @@ const RelatedProductsModule = ({product, changeProduct}) => {
       </div>
       <div>
         <YourOutfitList outfits={outfits} product={product}
-        addOutfit={addOutfit} removeOutfit={removeOutfit}/>
+        addOutfit={addOutfit} removeOutfit={removeOutfit}
+        updateindex={updateindex} outfitViewIndex={outfitViewIndex}/>
       </div>
       <ComparisonModal
         products={productsToCompare}

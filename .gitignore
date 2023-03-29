@@ -2,3 +2,4 @@ node_modules/
 client/dist/
 client/src/env/config.js
 *.DS_Store
+coverage/

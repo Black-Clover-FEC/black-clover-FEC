@@ -9,19 +9,12 @@ const api = {};
 
 // URLs
 const herokuUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/${config.CAMPUS_CODE}`;
-const unsplashOauthUrl = 'https://unsplash.com/oauth/';
-const unsplashApiUrl = 'https://api.unsplash.com/';
+
+const imgurUrl = 'https://api.imgur.com/3/';
 
 // Headers
 const herokuHeaders = {Authorization: config.AUTH};
-const unsplashHeaders = {
-  'Authorization': `Client-ID ${config.UNSPLASH_ACCESS_KEY}`,
-  'Accept-Version': 'v1'
-};
-const unsplashTokenHeaders = {
-  'Authorization': `Client-ID ${config.UNSPLASH_ACCESS_KEY}, Bearer ${config.UNSPLASH_USER_TOKEN}`,
-  'Accept-Version': 'v1'
-};
+
 const imgurHeaders = {
   'Authorization': `Client-ID ${config.IMGUR_CLIENT_ID}`,
   'Content-Type': 'multipart/form-data'
@@ -80,35 +73,35 @@ api.collectProductInfo = async (id) => {
 
 // QUESTIONS AND ANSWERS
 api.listQuestions = (params) => {
-  return get('/qa/questions', params);
+  return get('qa/questions', params);
 }
 
-api.listAnswers = (question_id) => {
+api.listAnswers = (question_id, params) => {
   return get(`/qa/questions/${question_id}/answers`, params);
 }
 
 api.addQuestion = (params) => {
-  return post('/qa/questions', params);
+  return post('qa/questions', params);
 }
 
 api.addAnswer = (question_id) => {
-  return post(`/qa/questions/${question_id}/answers`, params);
+  return post(`qa/questions/${question_id}/answers`, params);
 }
 
 api.markQuestionHelpful = (question_id) => {
-  return put(`/qa/questions/${question_id}/helpful`);
+  return put(`qa/questions/${question_id}/helpful`);
 }
 
-api.reportQuesion = (question_id) => {
-  return put(`/qa/questions/${question_id}/report`)
+api.reportQuestion = (question_id) => {
+  return put(`qa/questions/${question_id}/report`)
 }
 
 api.markAnswerHelpful = (answer_id) => {
-  return put(`/qa/answers/${answer_id}/helpful`)
+  return put(`qa/answers/${answer_id}/helpful`)
 }
 
 api.reportAnswer = (answer_id) => {
-  return put(`/qa/answers/${answer_id}/report`)
+  return put(`qa/answers/${answer_id}/report`)
 }
 
 
@@ -166,44 +159,12 @@ api.interact = (params) => {
 };
 
 
-// --------- UNSPLASH --------------
+// IMGUR
+api.postPhotoToImgur = (photo) => {
 
-// oAuth
-
-api.authorizeUser = () => {
-
-  const params = {
-    client_id: config.UNSPLASH_ACCESS_KEY,
-    redirect_uri: 'urn:ietf:wg:oauth:2.0:oob',
-    response_type: 'code',
-    scope: 'public+read_photos+write_photos'
-  };
-
-  return axios.get(`${unsplashOauthUrl}authorize/`, {headers: unsplashHeaders, params: params})
-    .then(res => console.log(res))
+  return axios.post(`${imgurUrl}image`, photo, {headers: imgurHeaders})
+    .then(res => res.data)
     .catch(err => console.error(err));
 };
-
-api.getToken = () => {
-
-  const params = {
-    client_id: config.UNSPLASH_ACCESS_KEY,
-    client_secret: config.UNSPLASH_SECRET_KEY,
-    redirect_uri: 'http://localhost:8080/',
-    code: config.UNSPLASH_USER_AUTH_CODE,
-    grant_type: 'authorization_code'
-  };
-
-  return axios.post(`${unsplashOauthUrl}token/`, params, {headers: unsplashHeaders})
-    .then(res => console.log(res))
-    .catch(err => console.error(err));
-};
-
-api.postPhoto = (photo) => {
-  return axios.post(`https://api.imgur.com/3/image`, photo, {headers: imgurHeaders})
-    .then(res => console.log(res))
-    .catch(err => console.error(err));
-};
-
 
 export default api;

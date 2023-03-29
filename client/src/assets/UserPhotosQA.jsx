@@ -21,15 +21,14 @@ const UserPhotos = ({photos}) => {
 
   return (
     <>
-    <ul>
-      {photos.map(photo => <StyleLib.smallPhoto key={photo.id} src={photo.url} onClick={(e) => expandImage(photo.url)} />)}
-    </ul>
-    <Modal
-    isOpen={modalIsOpen}
-    onRequestClose={closeModal}
-    contentLabel='Please complete the form to review this product'
-    image={image}
-  ><StyleLib.bigPhoto src={image} /></Modal>
+      <ul>
+        {photos.map((photo, index) => <StyleLib.smallPhoto key={index} src={photo} onClick={(e) => expandImage(photo)} />)}
+      </ul>
+      <Modal
+      isOpen={modalIsOpen}
+      onRequestClose={closeModal}
+      image={image}
+      ><StyleLib.bigPhoto src={image} /></Modal>
     </>
   );
 }
