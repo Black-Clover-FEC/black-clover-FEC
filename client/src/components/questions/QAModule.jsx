@@ -3,7 +3,6 @@ import StyleLib from '../../assets/Stylesheet.jsx';
 import api from '../../lib/api.js';
 import ReviewAndQuestionList from '../../assets/ReviewAndQuestionList.jsx';
 import QuestionList from './QuestionList.jsx';
-import SearchQA from './SearchQA.jsx';
 import FormModalQ from '../../assets/FormModalQ.jsx'
 
 const QAModule = ({product}) => {
