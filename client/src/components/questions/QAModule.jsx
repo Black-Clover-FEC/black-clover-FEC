@@ -4,6 +4,7 @@ import api from '../../lib/api.js';
 import ReviewAndQuestionList from '../../assets/ReviewAndQuestionList.jsx';
 import QuestionList from './QuestionList.jsx';
 import SearchQA from './SearchQA.jsx';
+import FormModalQ from '../../assets/FormModalQ.jsx'
 
 const QAModule = ({product}) => {
   const productID = product.id;
@@ -40,13 +41,22 @@ const QAModule = ({product}) => {
 
   // Rendered Elements
   return (
-    <StyleLib.tile>
-      <StyleLib.h2>Questions and Answers</StyleLib.h2>
-      <SearchQA />
-      <QuestionList displayedResults={displayedResults} helpfulCB={getQuestions}/>
-      <StyleLib.button onClick={showMoreHandler}>More Answered Questions</StyleLib.button>
-      <StyleLib.button onClick={openModal}>Add A Question</StyleLib.button>
-    </StyleLib.tile>
+    <section>
+      <StyleLib.tile>
+        <StyleLib.h2>Questions and Answers</StyleLib.h2>
+        <SearchQA />
+        <QuestionList displayedResults={displayedResults} helpfulCB={getQuestions} product={product}/>
+        <StyleLib.button onClick={showMoreHandler}>More Answered Questions</StyleLib.button>
+        <StyleLib.button onClick={openModal}>Add A Question</StyleLib.button>
+      </StyleLib.tile>
+
+      <FormModalQ
+        product={product}
+        isOpen={modal}
+        onClose={closeModal}
+        submitFunc={getQuestions}
+         />
+    </section>
   )
 }
 
