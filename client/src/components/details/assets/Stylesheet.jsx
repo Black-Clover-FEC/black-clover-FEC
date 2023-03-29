@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import StyleLib from '../../../assets/Stylesheet.jsx';
 import { FaExpand, FaSearch, FaStar, FaCheckCircle, FaWindowClose } from 'react-icons/fa';
+import { GiPlainCircle } from 'react-icons/gi'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
@@ -94,6 +95,15 @@ const DetailsLib = {
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
+  `,
+
+  modalCarouselThumbnail: styled(GiPlainCircle)`
+  background-color: grey;
+  display: block;
+  margin: 3px;
+  border-radius: 50%;
+  padding: 1px;
+  cursor: pointer;
   `,
 
   col2: styled.section`

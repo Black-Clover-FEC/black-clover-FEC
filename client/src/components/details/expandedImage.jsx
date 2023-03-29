@@ -6,6 +6,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 import ExpandedImageCard from './expandedImageCard.jsx';
+import ExpandedImageThumbnail from './expandedImageThumbnail.jsx';
 import Image from './image.jsx';
 
 const ExpandedImage = ({currentStyle, openModal, setOpenModal}) => {
@@ -36,6 +37,7 @@ const ExpandedImage = ({currentStyle, openModal, setOpenModal}) => {
       <Carousel
       draggable={false}
       showDots={true}
+      customDot={<ExpandedImageThumbnail />}
       responsive={responsive}
       infinite={false}
       keyBoardControl={true}

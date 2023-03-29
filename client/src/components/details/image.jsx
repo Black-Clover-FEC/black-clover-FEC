@@ -8,7 +8,6 @@ import ImageCard from './imageCard.jsx';
 import ImageThumbnail from './imageThumbnail.jsx';
 
 const Image = ({currentStyle, openModal, setOpenModal}) => {
-
   const responsive = {
     desktop: {
       breakpoint: { max: 4000, min: 0 },
