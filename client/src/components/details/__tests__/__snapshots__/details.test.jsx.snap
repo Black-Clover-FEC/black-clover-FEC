@@ -1,0 +1,395 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Does a component render to the page tests to see if the AddToBagButton component renders correctly 1`] = `
+<button
+  className="sc-fsQiph sc-iVFRtF beTiCm kFPyWE"
+>
+  Add To Bag
+</button>
+`;
+
+exports[`Does a component render to the page tests to see if the Description component renders correctly 1`] = `
+<div
+  className="sc-jMAIzZ hVVKhZ"
+>
+  <div>
+    <strong />
+    <br />
+    <small
+      className="sc-iAEyYk kbAVNF"
+    />
+  </div>
+</div>
+`;
+
+exports[`Does a component render to the page tests to see if the ExpandedImageCard component renders correctly 1`] = `
+<img
+  className="sc-iKGpAt fmoGpb"
+  src=""
+/>
+`;
+
+exports[`Does a component render to the page tests to see if the Favorite component renders correctly 1`] = `
+<button
+  className="sc-fsQiph sc-iCmkLe beTiCm kXqsbW"
+  onClick={[Function]}
+>
+  <svg
+    className="sc-cRZddA dHoNOm"
+    fill="currentColor"
+    height="1em"
+    stroke="currentColor"
+    strokeWidth="0"
+    style={
+      {
+        "color": undefined,
+      }
+    }
+    viewBox="0 0 576 512"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"
+    />
+  </svg>
+</button>
+`;
+
+exports[`Does a component render to the page tests to see if the Header component renders correctly 1`] = `
+<div
+  className="sc-ieZDjg kNvOCv"
+>
+  <img
+    className="sc-dKfzgJ fa-daAr"
+    src="https://images.unsplash.com/photo-1679638561023-b27271e07e52?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2826&q=80"
+  />
+  <svg
+    className="sc-dnwKUv foHXJZ"
+    fill="currentColor"
+    height="1em"
+    stroke="currentColor"
+    strokeWidth="0"
+    style={
+      {
+        "color": undefined,
+      }
+    }
+    viewBox="0 0 512 512"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+    />
+  </svg>
+  <input
+    className="sc-hIqOWS dVCECr"
+    placeholder="Search..."
+  />
+</div>
+`;
+
+exports[`Does a component render to the page tests to see if the ImageThumbnail component renders correctly 1`] = `
+<img
+  className="sc-ivnCJf ifKIAE active"
+  onClick={[Function]}
+  src=""
+  style={
+    {
+      "border": "2px solid grey",
+    }
+  }
+/>
+`;
+
+exports[`Does a component render to the page tests to see if the ProductInformation component renders correctly 1`] = `
+<section
+  className="sc-gjTGSA kxayGo"
+>
+  <br />
+  <div
+    className="sc-eACynP ECSmj"
+  >
+    <small
+      className="sc-iAEyYk kbAVNF"
+    />
+    <p
+      className="sc-gLDzan sc-bZPPFW ZmgyA dPlKoZ"
+    />
+  </div>
+  <br />
+  <small
+    className="sc-iAEyYk kbAVNF"
+  />
+  <br />
+  <br />
+  <h3
+    className="sc-dmqHEX jScUal"
+  />
+  <br />
+  <small
+    className="sc-iAEyYk kbAVNF"
+  >
+    $0.00
+  </small>
+  <br />
+  <br />
+  <div>
+    <h2
+      className="sc-gueYoa sc-jItqcz cQcDUV iezsMv"
+    >
+      <b>
+        STYLE &gt;
+      </b>
+       
+    </h2>
+    <ul>
+      <div
+        className="sc-hhGHuG gXTwkx"
+      >
+        <img
+          className="sc-gXSCqU chhlug"
+          onClick={[Function]}
+          src=""
+        />
+        <svg
+          className="sc-cCYyox kxCVYS"
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 512 512"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+          />
+        </svg>
+      </div>
+    </ul>
+  </div>
+  <br />
+  <div
+    className="sc-cjERFW kALWip"
+  >
+    <select
+      className="sc-jsMahE sc-cbelXg dbwVGH xyedU"
+    >
+      <option
+        value="xs"
+      >
+        XS
+      </option>
+      <option
+        value="s"
+      >
+        S
+      </option>
+      <option
+        value="m"
+      >
+        M
+      </option>
+      <option
+        value="l"
+      >
+        L
+      </option>
+      <option
+        value="xl"
+      >
+        XL
+      </option>
+      <option
+        value="xxl"
+      >
+        XXL
+      </option>
+    </select>
+    <select
+      className="sc-jsMahE sc-jegxcv dbwVGH ysfAl"
+    />
+  </div>
+  <br />
+  <br />
+  <br />
+  <div
+    className="sc-cjERFW kALWip"
+  >
+    <button
+      className="sc-fsQiph sc-iVFRtF beTiCm kFPyWE"
+    >
+      Add To Bag
+    </button>
+    <button
+      className="sc-fsQiph sc-iCmkLe beTiCm kXqsbW"
+      onClick={[Function]}
+    >
+      <svg
+        className="sc-cRZddA dHoNOm"
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 576 512"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"
+        />
+      </svg>
+    </button>
+  </div>
+</section>
+`;
+
+exports[`Does a component render to the page tests to see if the QuantitySelector component renders correctly 1`] = `
+<select
+  className="sc-jsMahE sc-jegxcv dbwVGH ysfAl"
+/>
+`;
+
+exports[`Does a component render to the page tests to see if the Reviews component renders correctly 1`] = `
+<div
+  className="sc-eACynP ECSmj"
+>
+  <small
+    className="sc-iAEyYk kbAVNF"
+  />
+  <p
+    className="sc-gLDzan sc-bZPPFW ZmgyA dPlKoZ"
+  />
+</div>
+`;
+
+exports[`Does a component render to the page tests to see if the SizeSelector component renders correctly 1`] = `
+<select
+  className="sc-jsMahE sc-cbelXg dbwVGH xyedU"
+>
+  <option
+    value="xs"
+  >
+    XS
+  </option>
+  <option
+    value="s"
+  >
+    S
+  </option>
+  <option
+    value="m"
+  >
+    M
+  </option>
+  <option
+    value="l"
+  >
+    L
+  </option>
+  <option
+    value="xl"
+  >
+    XL
+  </option>
+  <option
+    value="xxl"
+  >
+    XXL
+  </option>
+</select>
+`;
+
+exports[`Does a component render to the page tests to see if the StyleList component renders correctly 1`] = `
+<div>
+  <h2
+    className="sc-gueYoa sc-jItqcz cQcDUV iezsMv"
+  >
+    <b>
+      STYLE &gt;
+    </b>
+     
+  </h2>
+  <ul>
+    <div
+      className="sc-hhGHuG gXTwkx"
+    >
+      <img
+        className="sc-gXSCqU chhlug"
+        onClick={[Function]}
+        src=""
+      />
+      <svg
+        className="sc-cCYyox kxCVYS"
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 512 512"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+        />
+      </svg>
+    </div>
+  </ul>
+</div>
+`;
+
+exports[`Does a component render to the page tests to see if the StyleListItem component renders correctly 1`] = `
+<div
+  className="sc-hhGHuG gXTwkx"
+>
+  <img
+    className="sc-gXSCqU chhlug"
+    onClick={[Function]}
+    src=""
+  />
+  <svg
+    className="sc-cCYyox kxCVYS"
+    fill="currentColor"
+    height="1em"
+    stroke="currentColor"
+    strokeWidth="0"
+    style={
+      {
+        "color": undefined,
+      }
+    }
+    viewBox="0 0 512 512"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Does a component render to the page tests to see if the StylePrice component renders correctly 1`] = `
+<small
+  className="sc-iAEyYk kbAVNF"
+>
+  $0.00
+</small>
+`;
