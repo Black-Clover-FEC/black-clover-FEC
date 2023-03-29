@@ -85,7 +85,6 @@ api.addQuestion = (params) => {
 }
 
 api.addAnswer = (question_id, params) => {
-  console.log(params);
   return post(`qa/questions/${question_id}/answers`, params, null);
 }
 
