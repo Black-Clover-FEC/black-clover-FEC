@@ -27,7 +27,7 @@ const Answer = ({answer, helpfulCB}) => {
   // }
   return (
     <>
-    {!reportStatus && <section>
+    {!reportStatus && answer && <section>
       <StyleLib.p>A: {answer.body}</StyleLib.p>
       <StyleLib.small>{answer.answerer_name} </StyleLib.small>
       <StyleLib.small>{(new Date(answer.date)).toDateString()} </StyleLib.small>

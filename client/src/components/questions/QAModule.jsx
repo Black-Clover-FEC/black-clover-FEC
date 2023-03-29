@@ -14,11 +14,14 @@ const QAModule = ({product}) => {
   const [displayedResults, setDisplayedResults] = useState([]);
   const [productResults, setProductResults] = useState([]);
   const [modal, setModal] = useState(false);
+  const [input, setInput] = useState(null);
+  const [search, setSearch] = useState([]);
 
   // On Render Effects
   useEffect(() => {getQuestions()}, []);
   useEffect(() => {updateDisplayedResults()}, []);
-  useEffect(() => {updateDisplayedResults()}, [numberOfQuestions]);
+  useEffect(() => {updateDisplayedResults()}, [numberOfQuestions, search]);
+  useEffect(() => {filterResults()}, [input]);
 
   // Helper Functions
   const getQuestions = () => {
@@ -29,13 +32,26 @@ const QAModule = ({product}) => {
     })
       .then(data => {
         setProductResults(data.results)
+
         setDisplayedResults(data.results.slice(0, numberOfQuestions))
       })
       .catch(err => console.error(err))
   }
 
+  const inputTracker = (e) => {
+    if (e.target.value.length >= 3) {
+      setInput(e.target.value);
+    } else {
+      setInput('');
+    }
+  }
+
+  const filterResults = () => {
+    setSearch(productResults.filter(product => product.question_body.includes(input)));
+  }
+
   const showMoreHandler = (e) => setNumberOfQuestions(numberOfQuestions + 2);
-  const updateDisplayedResults = () => setDisplayedResults(productResults.slice(0, numberOfQuestions));
+  const updateDisplayedResults = () => setDisplayedResults(search ? search.slice(0, numberOfQuestions) : productResults.slice(0, numberOfQuestions));
   const openModal = () => setModal(true);
   const closeModal = () => setModal(false);
 
@@ -44,9 +60,9 @@ const QAModule = ({product}) => {
     <section>
       <StyleLib.tile>
         <StyleLib.h2>Questions and Answers</StyleLib.h2>
-        <SearchQA />
+        <StyleLib.searchBar placeholder={"Have a question? Search for answers…"} onChange={(e) => inputTracker(e)}/>
         <QuestionList displayedResults={displayedResults} helpfulCB={getQuestions} product={product}/>
-        <StyleLib.button onClick={showMoreHandler}>More Answered Questions</StyleLib.button>
+        {((displayedResults.length < productResults.length) && (displayedResults.length < search.length)) && <StyleLib.button onClick={showMoreHandler}>More Answered Questions</StyleLib.button> }
         <StyleLib.button onClick={openModal}>Add A Question</StyleLib.button>
       </StyleLib.tile>
 
