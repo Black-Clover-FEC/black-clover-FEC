@@ -7,7 +7,7 @@ import ComparisonModal from './ComparisonModal.jsx';
 const RelatedProductsModule = ({product, changeProduct}) => {
 
   // LISTS
-  const [outfits, setOutfits] = useState(JSON.parse(window.localStorage.getItem('outfits')));
+  const [outfits, setOutfits] = useState([]);
   const [relatedItems, setRelatedItems] = useState([]);
 
   // RELATED ITEMS AND COMPARISON
@@ -21,12 +21,20 @@ const RelatedProductsModule = ({product, changeProduct}) => {
 
   useEffect(() => {getAndSetRelatedProducts(product.id)}, [product]);
 
+  // console.log('outfits: ', outfits);
+
   useEffect(() => {
-    setOutfits(JSON.parse(window.localStorage.getItem('outfits')));
+      let storage = JSON.parse(window.localStorage.getItem('outfits'));
+      if (!storage || storage.length === 0) {
+        window.localStorage.setItem('outfits', JSON.stringify([{details: {id: 'button'}}]));
+      }
+      setOutfits(JSON.parse(window.localStorage.getItem('outfits')));
   }, [])
 
   useEffect(() => {
-      window.localStorage.setItem('outfits', JSON.stringify(outfits));
+      setTimeout(() => {
+        window.localStorage.setItem('outfits', JSON.stringify(outfits));
+      }, 500);
   }, [outfits]);
 
   const updateindex = (newIndex, list) => {
