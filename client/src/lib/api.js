@@ -84,8 +84,8 @@ api.addQuestion = (params) => {
   return post('qa/questions', params);
 }
 
-api.addAnswer = (question_id) => {
-  return post(`qa/questions/${question_id}/answers`, params);
+api.addAnswer = (question_id, params) => {
+  return post(`qa/questions/${question_id}/answers`, params, null);
 }
 
 api.markQuestionHelpful = (question_id) => {
