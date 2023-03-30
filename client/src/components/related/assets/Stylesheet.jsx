@@ -46,7 +46,6 @@ const RelatedLib = {
   width: 100%;
   height: 100%;
   // padding-left: 5%;
-  background-color: red;
   `,
 
   container: styled.div`
