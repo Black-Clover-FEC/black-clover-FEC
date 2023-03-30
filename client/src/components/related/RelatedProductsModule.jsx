@@ -24,7 +24,6 @@ const RelatedProductsModule = ({product, changeProduct}) => {
   // console.log('outfits: ', outfits);
 
   useEffect(() => {
-
       let storage = JSON.parse(window.localStorage.getItem('outfits'));
       if (!storage || storage.length === 0) {
         window.localStorage.setItem('outfits', JSON.stringify([{details: {id: 'button'}}]));
