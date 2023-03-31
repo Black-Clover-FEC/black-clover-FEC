@@ -10,27 +10,12 @@ const ProductCard = ({product, openComparison, sendToCompare, removeBtn, removeO
   const [style, setStyle] = useState('No Style Available');
   const [price, setPrice] = useState('No Price Available');
 
-  const findDefault = (style) => {
-    if (style['default?']) {
-      return true;
-    }
-  }
-
-  const returnDefaultStyle = (styles) => {
-    for (let i = 0; i < styles.length; i++) {
-      if (findDefault(styles[i])) {
-        return styles[i];
-      }
-    }
-    return styles[0];
-  }
-
   const setDefault = (styles) => {
-    let defaultStyle = returnDefaultStyle(styles);
+    let defaultStyle = product.styles.default;
     setImage(defaultStyle.photos[0].thumbnail_url);
     setStyle(defaultStyle.name);
     setPrice(formatPrice(defaultStyle));
-    console.log('image:', image);
+    // console.log('image:', image);
   }
 
 useEffect(() => {setDefault(product.styles.results)}, [product]);

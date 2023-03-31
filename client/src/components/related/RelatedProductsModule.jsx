@@ -5,7 +5,7 @@ import YourOutfitList from './lists/YourOutfitList.jsx';
 import api from '../../../../client/src/lib/api.js';
 import ComparisonModal from './ComparisonModal.jsx';
 
-const RelatedProductsModule = ({product}) => {
+const RelatedProductsModule = ({product, currentStyle}) => {
 
   // LISTS
   const [outfits, setOutfits] = useState([]);

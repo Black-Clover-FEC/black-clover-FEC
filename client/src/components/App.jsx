@@ -20,14 +20,17 @@ export async function productLoader({ params }) {
 };
 
 const App = () => {
+
   const {product} = useLoaderData();
+  const [currentStyle, setCurrentStyle] = useState(product.styles.default);
+  useEffect(() => {setCurrentStyle(product.styles.default)}, [product]);
 
   return (
     <StyledDiv>
-      <Overview product={product}/>
-      <RelatedProductsModule product={product}/>
+      <Overview product={product} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} />
+      <RelatedProductsModule product={product} currentStyle={currentStyle} />
       <QA product={product.details}/>
-      <Reviews product={product.details}/>
+      <Reviews product={product.details} reviewsMeta={product.reviewsMeta}/>
     </StyledDiv>
   )
 }
