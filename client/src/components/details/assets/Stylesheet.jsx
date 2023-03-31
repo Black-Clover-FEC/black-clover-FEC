@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import StyleLib from '../../../assets/Stylesheet.jsx';
-import { FaExpand, FaSearch, FaStar, FaCheckCircle, FaWindowClose } from 'react-icons/fa';
+import { FaExpand, FaSearch, FaStar, FaCheckCircle, FaWindowClose, FaFacebook, FaTwitter, FaPinterest } from 'react-icons/fa';
+import { GiPlainCircle } from 'react-icons/gi'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
@@ -94,11 +95,21 @@ const DetailsLib = {
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
+  cursor: zoom-in;
+  `,
+
+  modalCarouselThumbnail: styled(GiPlainCircle)`
+  background-color: grey;
+  display: block;
+  margin: 3px;
+  border-radius: 50%;
+  padding: 1px;
+  cursor: pointer;
   `,
 
   col2: styled.section`
-  position: absolute;
-  right: 50px;
+  position: relative;
+  left: 30px;
   grid-column: 2;
   padding: 10px;
   text-align: left;
@@ -115,6 +126,9 @@ const DetailsLib = {
   font-size: x-small;
   text-decoration: underline;
   cursor: pointer;
+  &:hover {
+    animation: ${StyleLib.popOut} 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
   `,
 
   salePrice: styled(StyleLib.small)`
@@ -146,6 +160,9 @@ const DetailsLib = {
   text-align: center;
   font-size: small;
   cursor: pointer;
+  &:hover {
+    animation: ${StyleLib.popOut} 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
   `,
 
   checkmark: styled(FaCheckCircle)`
@@ -171,6 +188,9 @@ const DetailsLib = {
   width: 35%;
   float: right;
   cursor: pointer;
+  &:hover {
+    animation: ${StyleLib.buttonHover} 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
   `,
 
   size: styled(StyleLib.dropdown)`
@@ -186,10 +206,13 @@ const DetailsLib = {
   width: 60%;
   float: left;
   cursor: pointer;
+  &:hover {
+    animation: ${StyleLib.buttonHover} 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
   `,
 
   addToBagButton: styled(StyleLib.button)`
-  width: 80%;
+  width: 75%;
   float: left;
   cursor: pointer;
   `,
@@ -198,7 +221,7 @@ const DetailsLib = {
   width: 15%;
   float: right;
   cursor: pointer;
-  background-color: #CDCDCD;
+  background-color: #9D9D9D;
   `,
 
   faStarNotFavorite: styled(FaStar)`
@@ -213,13 +236,58 @@ const DetailsLib = {
 
   description: styled.div`
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 1fr;
-  height: 100px;
-
+  width: 600px;
+  height: 130px;
   padding: 10px;
   vertical-align: top;
+  `,
+
+  facebook: styled(FaFacebook)`
+  width: 30px;
+  height: 30px;
+  padding: 2px;
+  border-radius: 50%;
+  display: inline-block;
+  align-items: center;
+  text-align: center;
+  font-size: small;
+  cursor: pointer;
+  color: blue;
+  &:hover {
+    animation: ${StyleLib.popOut} 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+  `,
+
+  twitter: styled(FaTwitter)`
+  width: 30px;
+  height: 30px;
+  padding: 2px;
+  border-radius: 50%;
+  display: inline-block;
+  align-items: center;
+  text-align: center;
+  font-size: small;
+  cursor: pointer;
+  color: #87CEEB;
+  &:hover {
+    animation: ${StyleLib.popOut} 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+  `,
+
+  pinterest: styled(FaPinterest)`
+  width: 30px;
+  height: 30px;
+  padding: 2px;
+  border-radius: 50%;
+  display: inline-block;
+  align-items: center;
+  text-align: center;
+  font-size: small;
+  cursor: pointer;
+  color: red;
+  &:hover {
+    animation: ${StyleLib.popOut} 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
   `
 }
 
