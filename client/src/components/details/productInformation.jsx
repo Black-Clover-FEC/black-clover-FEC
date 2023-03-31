@@ -12,7 +12,8 @@ import Reviews from './reviews.jsx';
 import StylePrice from './stylePrice.jsx';
 
 const ProductInformation = ({product, styleList, favorite, setFavorite, currentStyle, setCurrentStyle}) => {
-
+  const [currentSize, setCurrentSize] = React.useState('S');
+  console.log(currentStyle);
   return (
     <DetailsLib.col2>
       <Reviews product={product}/>
@@ -25,13 +26,12 @@ const ProductInformation = ({product, styleList, favorite, setFavorite, currentS
       <StylePrice currentStyle={currentStyle}/>
       <br/>
       <br/>
-      {/*TODO: have styleList have currently selected style have checkmark on it*/}
       <StyleList currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} styleList={styleList}/>
       <br/>
       <DetailsLib.center>
         {/*TODO: have sizes reflect on currently selected style, quantity depends on size*/}
-        <SizeSelector />
-        <QuantitySelector product={product}/>
+        <SizeSelector currentStyle={currentStyle}/>
+        <QuantitySelector product={product} currentSize={currentSize}/>
       </DetailsLib.center>
       <br/>
       <br/>

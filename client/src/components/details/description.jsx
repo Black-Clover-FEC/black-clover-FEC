@@ -6,13 +6,16 @@ const Description = ({product}) => {
 
   return (
     <DetailsLib.description>
-      <div>
-        <strong>{product.details.slogan}</strong>
-        <br/>
-        <StyleLib.small>
-          {product.details.description}
-        </StyleLib.small>
-      </div>
+      <strong>{product.details.slogan}</strong>
+      <br/>
+      <StyleLib.small>
+        {product.details.description}
+      </StyleLib.small>
+      <br/>
+      <br/>
+      <DetailsLib.pinterest />
+      <DetailsLib.twitter />
+      <DetailsLib.facebook />
     </DetailsLib.description>
   )
 }
