@@ -62,7 +62,8 @@ const ReviewStyles = {
   `,
 
   slideGauge: styled.div`
-  padding: 0.5em 0 0.5em 0;
+  // padding: 0.5em 0 0.5em 0;
+  padding: 0.5em;
   cursor: default;
   `,
 
@@ -99,6 +100,8 @@ const ReviewStyles = {
   grid-column: 2;
   display: flex;
   justify-content: center;
+  text-align: center;
+  white-space: nowrap;
   `,
 
   factorsGridCol3: styled.span`

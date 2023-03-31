@@ -11,7 +11,7 @@ import FactorsList from './FactorsList.jsx';
 import api from '../../lib/api.js';
 
 
-const ReviewsModule = ({product}) => {
+const ReviewsModule = ({product, reviewsMeta}) => {
   const p_id = product.id;
 
   // REACT HOOKS
@@ -37,7 +37,7 @@ const ReviewsModule = ({product}) => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
   // effects:
-  useEffect(() => refreshReviewData(), [product]);
+  useEffect(() => refreshReviewData(), [product, reviewsMeta]);
   useEffect(() => getSortedReviews(), [sortBy]);
   useEffect(() => filterReviews(), [sorted, filterBy]);
   useEffect(() => displayReviews(), [filtered, displayCount]);
@@ -46,7 +46,7 @@ const ReviewsModule = ({product}) => {
   // HELPER FUNCTIONS
   const refreshReviewData = () => {
     getSortedReviews(p_id, sortBy);
-    getMetaData(p_id);
+    setMetaData(p_id);
   }
 
   const getSortedReviews = () => {
@@ -61,16 +61,12 @@ const ReviewsModule = ({product}) => {
       .catch(err => console.error(err));
   }
 
-  const getMetaData = () => {
-    api.getReviewsMetadata({ product_id: p_id })
-      .then(data => {
-        setReviewsCount(data.reviewsCount);
-        setAverageRating(data.averageRating);
-        setRatingBreakdown(Object.values(data.ratings).map(value => parseInt(value)));
-        setPercentRecommended(100 * data.recRate);
-        setCharacteristics(Object.entries(data.characteristics));
-      })
-      .catch(err => console.error(err));
+  const setMetaData = () => {
+    setReviewsCount(reviewsMeta.reviewsCount);
+    setAverageRating(reviewsMeta.averageRating);
+    setRatingBreakdown(Object.values(reviewsMeta.ratings).map(value => parseInt(value)));
+    setPercentRecommended(100 * reviewsMeta.recRate);
+    setCharacteristics(Object.entries(reviewsMeta.characteristics));
   }
 
   const filterReviews = () => setFiltered(sorted.filter(review => filterBy[review.rating - 1]));

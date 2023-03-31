@@ -6,6 +6,9 @@ import DetailsLib from './assets/Stylesheet.jsx';
 const QuantitySelector = ({product}) => {
   // IMPORTANT: INCLUDE WHICH STYLE'S SIZE's QUANTITY WE ARE LOOKING AT. CURRENTLY JUST STYLE 0, SIZE XS
   var skuArray = [];
+  if (!product || !product.styles || !product.styles.results || !product.styles.results[0].skus) {
+    return (<></>);
+  }
   for (var key in product.styles.results[0].skus) {
     skuArray.push(product.styles.results[0].skus[key]);
   }
