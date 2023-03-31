@@ -1,5 +1,4 @@
 import React, {useState, useEffect, Profiler} from 'react';
-import { Link } from 'react-router-dom';
 import RelatedProductList from './lists/RelatedProductList.jsx';
 import YourOutfitList from './lists/YourOutfitList.jsx';
 import api from '../../../../client/src/lib/api.js';
