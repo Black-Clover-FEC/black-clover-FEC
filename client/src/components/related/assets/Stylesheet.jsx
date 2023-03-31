@@ -79,6 +79,8 @@ const RelatedLib = {
   vertical-align: top;
   width: 100%;
   height: auto;
+  min-height: 53vh;
+  // max-height: 70vh;
   border-radius: 10px;
   border: solid;
   border-width: 0.5px;
@@ -102,8 +104,8 @@ const RelatedLib = {
     // overflow: visible;
     // overflow-wrap: break-word;
     // word-break: break-all;
-    font-size: min(1em, 25px);
-    padding: 3px;
+    // font-size: min(1em, 25px);
+    padding: 8px;
   `,
 
   plus: styled(FaPlus)`
@@ -117,10 +119,14 @@ const RelatedLib = {
 
   `,
 
-  addOutfitText: styled(StyleLib.blockLabel)`
+  addOutfitText: styled.div`
     position: relative;
-    top: 70%;
     left: 17%;
+    width: auto;
+    height: 100%;
+    margin: auto;
+    margin-bottom: 85px;
+
   `,
 
   times: styled(FaTimesCircle)`
