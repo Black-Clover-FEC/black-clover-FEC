@@ -19,7 +19,7 @@ const RelatedProductsModule = ({product, changeProduct, currentStyle}) => {
   const [relatedViewIndex, setRelatedViewIndex] = useState(0);
   const [outfitViewIndex, setOutfitViewIndex] = useState(0);
 
-  useEffect(() => {getAndSetRelatedProducts(product.id)}, [product]);
+  useEffect(() => {getAndSetRelatedProducts(product.details.id)}, [product]);
 
   // console.log('outfits: ', outfits);
 
@@ -77,12 +77,12 @@ const RelatedProductsModule = ({product, changeProduct, currentStyle}) => {
   const addOutfit = async (product) => {
     console.log('product data for add outfit: ', product);
     for (let outfit of outfits) {
-      if (product.id === outfit.details.id) {
+      if (product.details.id === outfit.details.id) {
         return;
       }
     }
-    let outfit = await api.collectProductInfo(product.id);
-    setOutfits(outfits.concat(outfit));
+    // let outfit = await api.collectProductInfo(product.id);
+    setOutfits(outfits.concat(product));
   }
 
   const removeOutfit = (product_id) => {

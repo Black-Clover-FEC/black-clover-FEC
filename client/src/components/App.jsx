@@ -46,7 +46,7 @@ const App = () => {
   return (
     <StyledDiv>
       <Overview product={currentProduct} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle}/>
-      <RelatedProductsModule product={currentProduct.details} changeProduct={changeProduct} currentStyle={currentStyle}/>
+      <RelatedProductsModule product={currentProduct} changeProduct={changeProduct} currentStyle={currentStyle}/>
       <QA product={currentProduct.details}/>
       <Reviews product={currentProduct.details}/>
     </StyledDiv>
