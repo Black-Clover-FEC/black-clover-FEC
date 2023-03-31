@@ -4,7 +4,7 @@ import YourOutfitList from './lists/YourOutfitList.jsx';
 import api from '../../../../client/src/lib/api.js';
 import ComparisonModal from './ComparisonModal.jsx';
 
-const RelatedProductsModule = ({product, changeProduct}) => {
+const RelatedProductsModule = ({product, changeProduct, currentStyle}) => {
 
   // LISTS
   const [outfits, setOutfits] = useState([]);
@@ -75,6 +75,7 @@ const RelatedProductsModule = ({product, changeProduct}) => {
 
   // ADD AND REMOVE OUTFITS
   const addOutfit = async (product) => {
+    console.log('product data for add outfit: ', product);
     for (let outfit of outfits) {
       if (product.id === outfit.details.id) {
         return;

@@ -15,40 +15,40 @@ const OverviewModule = (props) => {
   const [styleList, setStyleList] = React.useState(ProductInfoObject.styles.results);
   const [favorite, setFavorite] = React.useState(false);
   const [openModal, setOpenModal] = React.useState(false);
-  const [currentStyle, setCurrentStyle] = React.useState(ProductInfoObject.styles.results[0]);
+  // const [currentStyle, setCurrentStyle] = React.useState(ProductInfoObject.styles.results[0]);
 
-  React.useEffect(() => refreshOverviewModule(props.product.id), [props]);
+  React.useEffect(() => refreshOverviewModule(props.product), [props]);
 
-  const refreshOverviewModule = (p_id) => {
-    api.collectProductInfo(p_id)
-      .then(prod => {
+  const refreshOverviewModule = (prod) => {
+    // api.collectProductInfo(p_id)
+    //   .then(prod => {
         // console.log(prod);
         setProduct(prod);
         setStyleList(prod.styles.results);
-        var defaultStyle = prod.styles.results[0];
-        for (var i = 0; i < prod.styles.results.length; i++) {
-          if (prod.styles.results[i]['default?']) {
-            defaultStyle = prod.styles.results[i];
-          }
-        }
-        setCurrentStyle(defaultStyle);
-        return;
-      })
-      .catch(err => console.log(err));
+        // var defaultStyle = prod.styles.results[0];
+        // for (var i = 0; i < prod.styles.results.length; i++) {
+        //   if (prod.styles.results[i]['default?']) {
+        //     defaultStyle = prod.styles.results[i];
+        //   }
+        // }
+        // setCurrentStyle(defaultStyle);
+        // return;
+      // })
+      // .catch(err => console.log(err));
   }
 
 
 
   return (
     <div>
-      {openModal ? <ExpandedImage currentStyle={currentStyle} openModal={openModal} setOpenModal={setOpenModal}/> : <></>}
+      {openModal ? <ExpandedImage currentStyle={props.currentStyle} openModal={openModal} setOpenModal={setOpenModal}/> : <></>}
       <Header />
       <StyleLib.h2>
         Product Overview
       </StyleLib.h2>
       <DetailsLib.cols>
-        <Image currentStyle={currentStyle} styleList={styleList} openModal={openModal} setOpenModal={setOpenModal}/>
-        <ProductInformation currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} product={product} styleList={styleList} favorite={favorite} setFavorite={setFavorite}/>
+        <Image currentStyle={props.currentStyle} styleList={styleList} openModal={openModal} setOpenModal={setOpenModal}/>
+        <ProductInformation currentStyle={props.currentStyle} setCurrentStyle={props.setCurrentStyle} product={product} styleList={styleList} favorite={favorite} setFavorite={setFavorite}/>
       </DetailsLib.cols>
       <Description product={product} />
     </div>
