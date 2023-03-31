@@ -75,13 +75,14 @@ const RelatedProductsModule = ({product, currentStyle}) => {
 
   // ADD AND REMOVE OUTFITS
   const addOutfit = async (product) => {
+    // console.log('currentStyle: ', currentStyle);
+    // console.log('product passed for add outfit: ', product);
     for (let outfit of outfits) {
-      if (product.id === outfit.details.id) {
+      if (product.details.id === outfit.details.id) {
         return;
       }
     }
-    let outfit = await api.collectProductInfo(product.id);
-    setOutfits(outfits.concat(outfit));
+    setOutfits(outfits.concat(product));
   }
 
   const removeOutfit = (product_id) => {
@@ -106,7 +107,7 @@ const RelatedProductsModule = ({product, currentStyle}) => {
         />}
       </div>
       <div>
-        <YourOutfitList outfits={outfits} product={product.details}
+        <YourOutfitList outfits={outfits} product={product}
         addOutfit={addOutfit} removeOutfit={removeOutfit}
         updateindex={updateindex} outfitViewIndex={outfitViewIndex}
         />

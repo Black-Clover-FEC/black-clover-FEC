@@ -23,21 +23,32 @@ const RelatedLib = {
 
   leftArrow: styled(FaArrowLeft)`
     position: relative;
-    bottom: 235px;
+    width: 3%;
+    height: 100%;
+    margin: auto;
     margin-right: 1%;
     font-size: 40px;
+    margin-bottom: 20%;
+    color: #424242;
     &: hover {
       color: #E7A66C;
+      cursor: pointer;
     }
   `,
 
   rightArrow: styled(FaArrowRight)`
     position: relative;
-    bottom: 235px;
+    width: 3%;
+    height: 100%;
+    bottom: 50%;
+    margin: auto;
     margin-left: 1%;
+    margin-bottom: 20%;
     font-size: 40px;
+    color: #424242;
     &: hover {
       color: #E7A66C;
+      cursor: pointer;
     }
   `,
 
@@ -45,22 +56,18 @@ const RelatedLib = {
   position: relative;
   width: 100%;
   height: 100%;
-  // padding-left: 5%;
   `,
 
   container: styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  // top: 75%;
-  // padding: 5px;
-  // background-color: blue;
   `,
 
   iconContainer: styled.div`
     position: absolute;
-    left: 82%;
-    top: 1em;
+    left: 83%;
+    top: 4%;
     width: 10%;
   `,
 
@@ -68,9 +75,17 @@ const RelatedLib = {
   position: relative;
   width: 100%;
   height: 100%;
+  min-height: 53vh;
+  text-align: center;
   `,
 
   noImage: styled(FaFileImage)`
+  position: relative;
+  width: 50%;
+  height: auto;
+  margin: auto;
+  padding-top: 50%;
+  color: #E7A66C;
   `,
 
   card: styled.div`
@@ -79,13 +94,16 @@ const RelatedLib = {
   vertical-align: top;
   width: 100%;
   height: auto;
+  min-height: 53vh;
+  // max-height: 70vh;
   border-radius: 10px;
   border: solid;
   border-width: 0.5px;
+  border-color: #A9A9A9;
   cursor: pointer;
   &: hover {
-    background-color: #D5D5D5;
-    border-color: #D87659;
+    animation: ${StyleLib.popOutMore} 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
   }
   `,
 
@@ -99,32 +117,35 @@ const RelatedLib = {
 
   // text overflow not working currently
   productInfo: styled.div`
-    overflow: visible;
-    overflow-wrap: break-word;
-    word-break: break-all;
-    padding: 3px;
+    padding: 8px;
+
   `,
 
   plus: styled(FaPlus)`
-  position: absolute;
-  color: black;
-  width: 100%;
-  height: 10%;
-  top: 40%;
+  position: relative;
+  color: #424242;
+  width: 20%;
+  height: auto;
+  margin: auto;
+  margin-top: 75%;
+  // top: 40%;
+
   `,
 
-  addOutfitText: styled(StyleLib.blockLabel)`
+  addOutfitText: styled.div`
     position: relative;
-    top: 70%;
     left: 17%;
+    width: auto;
+    height: 100%;
+    margin: auto;
+    margin-bottom: 85px;
+
   `,
 
   times: styled(FaTimesCircle)`
   position: absolute;
-  width: 10%;
+  width: 100%;
   height: 20px;
-  left: 85%;
-  top: 15px;
   color: #E7A66C;
   cursor: pointer;
   &: hover {
@@ -133,16 +154,13 @@ const RelatedLib = {
   `,
 
   compareStar: styled(FaRegStar)`
-  color: #E2C577;
-  // position: absolute;
+  color: #D87659;
   position: relative;
   width: 100%;
   height: 20px;
-  // left: 85%;
-  // top: 15px;
   cursor: pointer;
   &: hover {
-    color: yellow;
+    color: #E2C577;
   }
   `,
 
@@ -154,7 +172,6 @@ const RelatedLib = {
   border: 1px solid;
   border-color: #D5D5D5;
   margin-bottom: 5px;
-  // background-color: #D5D5D5;
 `,
 
   // Apply StyledLib.h6 to th elements

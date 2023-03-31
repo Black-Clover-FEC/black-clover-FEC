@@ -15,7 +15,6 @@ const ProductCard = ({product, openComparison, sendToCompare, removeBtn, removeO
     setImage(defaultStyle.photos[0].thumbnail_url);
     setStyle(defaultStyle.name);
     setPrice(formatPrice(defaultStyle));
-    // console.log('image:', image);
   }
 
 useEffect(() => {setDefault(product.styles.results)}, [product]);
@@ -28,7 +27,6 @@ useEffect(() => {setDefault(product.styles.results)}, [product]);
       return '$' + style.original_price;
     }
   }
-
   const handleRemove = (product) => {
     removeOutfit(product.details.id);
   }
@@ -38,15 +36,15 @@ useEffect(() => {setDefault(product.styles.results)}, [product]);
   return (
     <RelatedLib.cardContainer>
       <StyleLib.routerLink to={path}>
-      <RelatedLib.card >
-        <RelatedLib.imgContainer>
-          <RelatedLib.cardImg src={image} alt='product-image'/>
-        </RelatedLib.imgContainer>
-        <RelatedLib.container>
-          <ProductInfo details={product.details} price={price} styleName={style}/>
-          <Stars rating={product.reviewsMeta.averageRating}/>
-        </RelatedLib.container>
-      </RelatedLib.card>
+        <RelatedLib.card >
+          <RelatedLib.imgContainer>
+            {image ? <RelatedLib.cardImg src={image} alt='product-image'/> : <RelatedLib.noImage/>}
+          </RelatedLib.imgContainer>
+          <RelatedLib.container>
+            <ProductInfo details={product.details} price={price} styleName={style}/>
+            <Stars rating={product.reviewsMeta.averageRating}/>
+          </RelatedLib.container>
+        </RelatedLib.card>
       </StyleLib.routerLink>
       <RelatedLib.iconContainer>
         {removeBtn ?

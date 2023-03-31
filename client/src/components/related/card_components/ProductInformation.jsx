@@ -7,7 +7,8 @@ const ProductInfo = ({details, price, styleName}) => {
   return (
     <RelatedLib.productInfo>
       <StyleLib.h6>{details.category}</StyleLib.h6>
-      <StyleLib.p>{details.name + ' | ' + styleName}</StyleLib.p>
+      <StyleLib.p>{details.name}</StyleLib.p>
+      <StyleLib.p>{styleName}</StyleLib.p>
       <h4>{price}</h4>
     </RelatedLib.productInfo>
   )
