@@ -75,7 +75,7 @@ const RelatedProductsModule = ({product, changeProduct, currentStyle}) => {
 
   // ADD AND REMOVE OUTFITS
   const addOutfit = async (product) => {
-    console.log('product data for add outfit: ', product);
+    console.log('currentStyle: ', currentStyle);
     for (let outfit of outfits) {
       if (product.details.id === outfit.details.id) {
         return;
