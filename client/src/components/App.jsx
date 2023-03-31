@@ -26,8 +26,8 @@ const App = () => {
     <StyledDiv>
       <Overview product={product}/>
       <RelatedProductsModule product={product}/>
-      <QA product={product}/>
-      <Reviews product={product}/>
+      <QA product={product.details}/>
+      <Reviews product={product.details}/>
     </StyledDiv>
   )
 }
