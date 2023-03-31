@@ -9,13 +9,13 @@ const Answer = ({answer, helpfulCB}) => {
 
   const [reportStatus, setReportStatus] = useState(false);
 
-  const helpfulHandler = (e) => {
+  const helpfulHandler2 = (e) => {
     api.markAnswerHelpful(answer.id)
       .then(res => helpfulCB())
       .catch(err => console.error(err));
   }
 
-  const reportHandler = (e) => {
+  const reportHandler2 = (e) => {
     api.reportAnswer(answer.id)
       .then(res => helpfulCB())
       .then(setReportStatus(true))
@@ -27,14 +27,14 @@ const Answer = ({answer, helpfulCB}) => {
   // }
   return (
     <>
-    {!reportStatus && <section>
+    {!reportStatus && answer && <section>
       <StyleLib.p>A: {answer.body}</StyleLib.p>
       <StyleLib.small>{answer.answerer_name} </StyleLib.small>
       <StyleLib.small>{(new Date(answer.date)).toDateString()} </StyleLib.small>
       <StyleLib.small>Helpful? </StyleLib.small>
-      <StyleLib.linkButton onClick={helpfulHandler}>Yes </StyleLib.linkButton>
+      <StyleLib.linkButton data-testid={'helpfulHandler'} onClick={helpfulHandler2}>Yes </StyleLib.linkButton>
       <StyleLib.small>{answer.helpfulness} </StyleLib.small>
-      <StyleLib.linkButton onClick={reportHandler}>Report</StyleLib.linkButton>
+      <StyleLib.linkButton data-testid={'reportHandler'} onClick={reportHandler2}>Report</StyleLib.linkButton>
       {answer.photos ? <UserPhotos photos={answer.photos}/> : null}
     </section>}
     </>

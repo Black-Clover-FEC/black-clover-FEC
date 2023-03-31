@@ -30,4 +30,14 @@ describe('Can an API call send and recieve data', () => {
     expect(JSON.stringify(data)).toBe(result);
   })
 
+  it('gets a list of questions for the product with id 40344 from the API', async () => {
+    const data = await api.listQuestions(40344);
+    expect(data.results).toHaveLength(5);
+  })
+
+  it('gets a list of answers for the question with the id 645043 from the API', async () => {
+    const data = await api.listAnswers(645043);
+    expect(data.results).toHaveLength(3);
+  })
+
   })

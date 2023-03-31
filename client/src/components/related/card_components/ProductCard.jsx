@@ -29,6 +29,7 @@ const ProductCard = ({product, openComparison, sendToCompare, removeBtn, removeO
     setImage(defaultStyle.photos[0].thumbnail_url);
     setStyle(defaultStyle.name);
     setPrice(formatPrice(defaultStyle));
+    console.log('image:', image);
   }
 
 useEffect(() => {setDefault(product.styles.results)}, [product]);
@@ -51,8 +52,17 @@ useEffect(() => {setDefault(product.styles.results)}, [product]);
   }
 
   return (
-    <RelatedLib.card onClick={() => handleCardClick(product)}>
-      <RelatedLib.imgContainer>
+    <RelatedLib.cardContainer>
+      <RelatedLib.card onClick={() => handleCardClick(product)}>
+        <RelatedLib.imgContainer>
+          <RelatedLib.cardImg src={image} alt='product-image'/>
+        </RelatedLib.imgContainer>
+        <RelatedLib.container>
+          <ProductInfo details={product.details} price={price} styleName={style}/>
+          <Stars rating={product.reviewsMeta.averageRating}/>
+        </RelatedLib.container>
+      </RelatedLib.card>
+      <RelatedLib.iconContainer>
         {removeBtn ?
         <RelatedLib.times onClick={() => {
           handleRemove(product)
@@ -61,13 +71,9 @@ useEffect(() => {setDefault(product.styles.results)}, [product]);
           sendToCompare(product);
           openComparison();
         }}/>}
-        <RelatedLib.cardImg src={image} alt='product-image'/>
-      </RelatedLib.imgContainer>
-      <RelatedLib.container>
-        <ProductInfo details={product.details} price={price} styleName={style}/>
-        <Stars rating={product.reviewsMeta.averageRating}/>
-      </RelatedLib.container>
-    </RelatedLib.card>
+      </RelatedLib.iconContainer>
+    </RelatedLib.cardContainer>
+
   )
 }
 
