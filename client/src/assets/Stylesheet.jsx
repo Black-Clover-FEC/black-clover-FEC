@@ -226,6 +226,18 @@ const StyleLib = {
   }
   `,
 
+  popOutMore: keyframes`
+  from {
+  transform: translateZ(0);
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+
+  to {
+  transform: translateZ(100px);
+  box-shadow: 0 0 30px 0px rgba(0, 0, 0, 0.5);
+}
+`,
+
   buttonHover: keyframes`
   from {
     border-radius: 10px;

@@ -23,21 +23,32 @@ const RelatedLib = {
 
   leftArrow: styled(FaArrowLeft)`
     position: relative;
-    bottom: 235px;
+    width: 3%;
+    height: 100%;
+    margin: auto;
     margin-right: 1%;
     font-size: 40px;
+    margin-bottom: 20%;
+    color: #424242;
     &: hover {
       color: #E7A66C;
+      cursor: pointer;
     }
   `,
 
   rightArrow: styled(FaArrowRight)`
     position: relative;
-    bottom: 235px;
+    width: 3%;
+    height: 100%;
+    bottom: 50%;
+    margin: auto;
     margin-left: 1%;
+    margin-bottom: 20%;
     font-size: 40px;
+    color: #424242;
     &: hover {
       color: #E7A66C;
+      cursor: pointer;
     }
   `,
 
@@ -45,7 +56,6 @@ const RelatedLib = {
   position: relative;
   width: 100%;
   height: 100%;
-  // padding-left: 5%;
   `,
 
   container: styled.div`
@@ -56,8 +66,8 @@ const RelatedLib = {
 
   iconContainer: styled.div`
     position: absolute;
-    left: 82%;
-    top: 1rem;
+    left: 83%;
+    top: 4%;
     width: 10%;
   `,
 
@@ -67,7 +77,6 @@ const RelatedLib = {
   height: 100%;
   min-height: 53vh;
   text-align: center;
-  vertical
   `,
 
   noImage: styled(FaFileImage)`
@@ -90,10 +99,11 @@ const RelatedLib = {
   border-radius: 10px;
   border: solid;
   border-width: 0.5px;
+  border-color: #A9A9A9;
   cursor: pointer;
   &: hover {
-    background-color: #D5D5D5;
-    border-color: #D87659;
+    animation: ${StyleLib.popOutMore} 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
   }
   `,
 
@@ -107,16 +117,13 @@ const RelatedLib = {
 
   // text overflow not working currently
   productInfo: styled.div`
-    // overflow: visible;
-    // overflow-wrap: break-word;
-    // word-break: break-all;
-    // font-size: min(1em, 25px);
     padding: 8px;
+
   `,
 
   plus: styled(FaPlus)`
   position: relative;
-  color: black;
+  color: #424242;
   width: 20%;
   height: auto;
   margin: auto;
@@ -147,13 +154,13 @@ const RelatedLib = {
   `,
 
   compareStar: styled(FaRegStar)`
-  color: #E2C577;
+  color: #D87659;
   position: relative;
   width: 100%;
   height: 20px;
   cursor: pointer;
   &: hover {
-    color: yellow;
+    color: #E2C577;
   }
   `,
 
