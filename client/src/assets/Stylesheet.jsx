@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
+import { Link } from "react-router-dom";
 
 const StyleLib = {
 
@@ -82,6 +83,7 @@ const StyleLib = {
   text-align: left;
   color: #424242;
   text-transform: none;
+  visibility: ${props => props.visibility || 'visible'};
   `,
 
   button: styled.button`
@@ -94,6 +96,8 @@ const StyleLib = {
   border: solid;
   border-radius: 10px;
   padding: 10px;
+  cursor: pointer;
+  margin: 0.5em;
   `,
 
   linkButton: styled.button`
@@ -107,6 +111,7 @@ const StyleLib = {
   text-decoration: underline;
   margin-left: 5px;
   margin-right: 5px;
+  cursor: pointer;
   `,
 
 
@@ -121,6 +126,7 @@ const StyleLib = {
   border: none;
   border-bottom: solid;
   padding-left: 0;
+  cursor: pointer;
   `,
 
   searchBar: styled.input`
@@ -145,10 +151,15 @@ const StyleLib = {
   clip-path: inset(0 0 0 ${props => props.percentage}%);
 `,
 
+  vertPaddedList: styled.ul`
+  list-style: none;
+  padding: 1em 0 1em 0;
+  `,
+
   tile: styled.li`
   list-style: none;
   border: none;
-  border-bottom-style: solid;
+  border-bottom: solid #A9A9A9;
   padding: 20px;
   `,
 
@@ -208,6 +219,36 @@ const StyleLib = {
   opacity: 0;
   `,
 
+  routerLink: styled(Link)`
+  color: inherit;
+  text-decoration: inherit;
+  `,
+
+  module: styled.section`
+  padding: 2em 0 2em 0;
+  `,
+
+  popOut: keyframes`
+  from {
+    transform: translateZ(0);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+
+  to {
+    transform: translateZ(50px);
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+  }
+  `
+
 };
+
+
+
+StyleLib.linkTile = styled(StyleLib.tile)`
+    &:hover {
+      // background-color: #D5D5D5;
+      animation: ${StyleLib.popOut} 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+  `;
 
 export default StyleLib;

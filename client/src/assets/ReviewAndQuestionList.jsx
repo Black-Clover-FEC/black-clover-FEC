@@ -5,9 +5,9 @@ import ReviewAndQuestionTile from './ReviewAndQuestionTile.jsx';
 
 const ReviewAndQuestionList = ({reviews, helpReportCB}) => {
   return (
-    <ul>
+    <StyleLib.vertPaddedList>
       {reviews.map(review => <ReviewAndQuestionTile key={review.review_id} review={review} helpReportCB={helpReportCB} />)}
-    </ul>
+    </StyleLib.vertPaddedList>
   );
 }
 

@@ -116,6 +116,12 @@ api.getReviewsMetadata = (params) => {
     .then(data => {
       let totalCount = 0;
       let totalScore = 0;
+      let ratingScoresList = Object.keys(data.ratings);
+      for (let i = 1; i < 6; i++) {
+        if (!data.ratings[i]) {
+          data.ratings[i] = '0';
+        }
+      }
       for (let rating in data.ratings) {
         const count = parseInt(data.ratings[rating]);
         totalCount += count;

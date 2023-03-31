@@ -1,26 +1,9 @@
 import React from 'react';
 import StyleLib from '../../assets/Stylesheet.jsx';
-import styled from 'styled-components';
+import ReviewStyles from './assets/ReviewStyles.jsx';
+import FactorsMeaning from './FactorsMeaning.jsx';
 
 const maxScore = 5;
-
-const StyledDiv = styled.div`
-background-color: #D5D5D5;
-height: 0.7em;
-width: 80%;
-position: relative;
-`
-
-const StyledSpan = styled.span.attrs(props => ({
-  left: props.left || '0'
-}))`
-color: black;
-position: absolute;
-left: ${props => props.left}%;
-bottom: 40%;
-transform: translateX(-50%);
-`
-
 
 const Factor = ({factor, value}) => {
 
@@ -28,12 +11,13 @@ const Factor = ({factor, value}) => {
   const left = Math.round((value / maxScore) * 100);
 
   return (
-    <div>
-      {factor}: {value}
-      <StyledDiv>
-        <StyledSpan left={left}>⌄</StyledSpan>
-      </StyledDiv>
-    </div>
+    <ReviewStyles.slideGauge>
+      <StyleLib.p>{factor}</StyleLib.p>
+      <ReviewStyles.slideGaugeBG>
+        <ReviewStyles.slideGaugeIndicator left={left}>⌄</ReviewStyles.slideGaugeIndicator>
+      </ReviewStyles.slideGaugeBG>
+      <FactorsMeaning factor={factor} />
+    </ReviewStyles.slideGauge>
   );
 }
 
