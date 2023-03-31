@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import StyleLib from '../../../assets/Stylesheet.jsx';
 import api from '../../../../../client/src/lib/api.js';
 import RelatedLib from '../assets/Stylesheet.jsx';
 import ProductInfo from './ProductInformation.jsx';
@@ -37,7 +37,7 @@ useEffect(() => {setDefault(product.styles.results)}, [product]);
 
   return (
     <RelatedLib.cardContainer>
-      <Link to={path}>
+      <StyleLib.routerLink to={path}>
       <RelatedLib.card >
         <RelatedLib.imgContainer>
           <RelatedLib.cardImg src={image} alt='product-image'/>
@@ -47,7 +47,7 @@ useEffect(() => {setDefault(product.styles.results)}, [product]);
           <Stars rating={product.reviewsMeta.averageRating}/>
         </RelatedLib.container>
       </RelatedLib.card>
-      </Link>
+      </StyleLib.routerLink>
       <RelatedLib.iconContainer>
         {removeBtn ?
         <RelatedLib.times onClick={() => {
