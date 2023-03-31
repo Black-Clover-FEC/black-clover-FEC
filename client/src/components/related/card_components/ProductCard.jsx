@@ -10,6 +10,8 @@ const ProductCard = ({product, openComparison, sendToCompare, removeBtn, removeO
   const [style, setStyle] = useState('No Style Available');
   const [price, setPrice] = useState('No Price Available');
 
+  console.log('product: ', product);
+
   const setDefault = (styles) => {
     let defaultStyle = product.styles.default;
     setImage(defaultStyle.photos[0].thumbnail_url);

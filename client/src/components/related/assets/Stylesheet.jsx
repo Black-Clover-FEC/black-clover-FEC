@@ -52,15 +52,12 @@ const RelatedLib = {
   position: relative;
   width: 100%;
   height: 100%;
-  // top: 75%;
-  // padding: 5px;
-  // background-color: blue;
   `,
 
   iconContainer: styled.div`
     position: absolute;
     left: 82%;
-    top: 1em;
+    top: 1rem;
     width: 10%;
   `,
 
@@ -68,6 +65,9 @@ const RelatedLib = {
   position: relative;
   width: 100%;
   height: 100%;
+  min-height: 53vh;
+  text-align: center;
+  vertical
   `,
 
   noImage: styled(FaFileImage)`
@@ -99,18 +99,22 @@ const RelatedLib = {
 
   // text overflow not working currently
   productInfo: styled.div`
-    overflow: visible;
-    overflow-wrap: break-word;
-    word-break: break-all;
+    // overflow: visible;
+    // overflow-wrap: break-word;
+    // word-break: break-all;
+    font-size: min(1em, 25px);
     padding: 3px;
   `,
 
   plus: styled(FaPlus)`
-  position: absolute;
+  position: relative;
   color: black;
-  width: 100%;
-  height: 10%;
+  width: 20%;
+  height: auto;
+  margin: auto;
+  margin-top: 75%;
   top: 40%;
+
   `,
 
   addOutfitText: styled(StyleLib.blockLabel)`
@@ -121,10 +125,8 @@ const RelatedLib = {
 
   times: styled(FaTimesCircle)`
   position: absolute;
-  width: 10%;
+  width: 100%;
   height: 20px;
-  left: 85%;
-  top: 15px;
   color: #E7A66C;
   cursor: pointer;
   &: hover {
@@ -134,12 +136,9 @@ const RelatedLib = {
 
   compareStar: styled(FaRegStar)`
   color: #E2C577;
-  // position: absolute;
   position: relative;
   width: 100%;
   height: 20px;
-  // left: 85%;
-  // top: 15px;
   cursor: pointer;
   &: hover {
     color: yellow;
@@ -154,7 +153,6 @@ const RelatedLib = {
   border: 1px solid;
   border-color: #D5D5D5;
   margin-bottom: 5px;
-  // background-color: #D5D5D5;
 `,
 
   // Apply StyledLib.h6 to th elements

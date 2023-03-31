@@ -7,7 +7,9 @@ const AddToOutfitCard = ({addOutfit, product}) => {
 
   return (
     <RelatedLib.card onClick={() => addOutfit(product)}>
-      <RelatedLib.plus></RelatedLib.plus>
+      <RelatedLib.imgContainer>
+        <RelatedLib.plus/>
+      </RelatedLib.imgContainer>
       <RelatedLib.addOutfitText>
         <StyleLib.h3>Add to Outfit</StyleLib.h3>
       </RelatedLib.addOutfitText>
