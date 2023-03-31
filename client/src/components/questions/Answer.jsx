@@ -4,18 +4,25 @@ import StyleLib from '../../assets/Stylesheet.jsx';
 import UserPhotos from '../../assets/UserPhotosQA.jsx';
 
 
-const Answer = ({answer, sortAnswers, question, helpfulCB}) => {
+const Answer = ({answer, answersArray, result, sortAnswers, product, question, helpfulCB}) => {
   // const photos = answer.photos;
-  console.log('Answer: question', question);
   const [reportStatus, setReportStatus] = useState(false);
   const [helpfulACount, setHelpfulACount] = useState(answer.helpfulness);
 
+  useEffect(() => {sortAnswers}, [helpfulACount]);
+
   const helpfulHandler2 = (e) => {
     api.markAnswerHelpful(answer.id)
-      .then(res => api.listAnswers(question))
-        .then(data => setHelpfulACount(data.results[answer.id].helpfulness))
-        .then(console.log(helpfulACount))
-        .then(console.log(answer.helpfulness))
+      .then(res => api.listQuestions({
+        product_id: product.id,
+        page: 1,
+        count: 900
+      }))
+        .then(data => {
+          setHelpfulACount(data.results.filter(datum => datum.question_id === question)[0].answers[answer.id].helpfulness)
+          console.log('data helpful count', data.results.filter(datum => datum.question_id === question)[0].answers[answer.id].helpfulness)
+          console.log('helpfulACount', helpfulACount)
+        })
       .catch(err => console.error(err));
   }
 
@@ -29,11 +36,10 @@ const Answer = ({answer, sortAnswers, question, helpfulCB}) => {
   const combinedFunc = (e) => {
     helpfulHandler2(e);
     sortAnswers();
+    console.log(answersArray);
+    console.log(answer.helpfulness)
   }
 
-  // const render = (photo, index) => {
-  //   return <Photo photo={photo} key={index}/>
-  // }
   return (
     <>
     {!reportStatus && answer && <section>
@@ -41,8 +47,8 @@ const Answer = ({answer, sortAnswers, question, helpfulCB}) => {
       <StyleLib.small>{answer.answerer_name} </StyleLib.small>
       <StyleLib.small>{(new Date(answer.date)).toDateString()} </StyleLib.small>
       <StyleLib.small>Helpful? </StyleLib.small>
-      <StyleLib.linkButton data-testid={'helpfulHandler'} onClick={helpfulHandler2} >Yes </StyleLib.linkButton>
-      <StyleLib.small>{answer.helpfulness} </StyleLib.small>
+      <StyleLib.linkButton data-testid={'helpfulHandler'} onClick={combinedFunc} >Yes </StyleLib.linkButton>
+      <StyleLib.small>{helpfulACount} </StyleLib.small>
       <StyleLib.linkButton data-testid={'reportHandler'} onClick={reportHandler2}>Report</StyleLib.linkButton>
       {answer.photos ? <UserPhotos photos={answer.photos}/> : null}
     </section>}

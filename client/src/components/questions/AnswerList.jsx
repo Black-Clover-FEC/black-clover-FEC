@@ -3,8 +3,7 @@ import Answer from './Answer.jsx';
 import api from '../../lib/api.js';
 import StyleLib from '../../assets/Stylesheet.jsx';
 
-const AnswerList = ({answers, question, helpfulCB}) => {
-  console.log('AnswerList: question', question);
+const AnswerList = ({answers, result, product, question, helpfulCB}) => {
   const answersIDArray = Object.keys(answers);
   const answersArray = [];
   for (var i = 0; i < answersIDArray.length; i++ ) {
@@ -15,9 +14,9 @@ const AnswerList = ({answers, question, helpfulCB}) => {
   const [numberOfAnswers, setNumberOfAnswers] = useState(2);
   const [buttonText, setButtonText] = useState('');
 
-  useEffect(() => {setDisplayedAnswers(sortedAnswersArray.slice(0, 2)), console.log('answers array', answersArray), console.log('sorted answers array', sortedAnswersArray)}, []);
+  useEffect(() => {setDisplayedAnswers(sortedAnswersArray.slice(0, 2))}, []);
   useEffect(() => {sortAnswers()}, []);
-
+  useEffect(() => {sortAnswers()}, [numberOfAnswers])
   useEffect(() => {
     updateDisplayedAnswers();
   }, [numberOfAnswers]);
@@ -27,7 +26,7 @@ const AnswerList = ({answers, question, helpfulCB}) => {
   }, [displayedAnswers]);
 
   const render = (answer, index) => {
-    return <Answer answer={answer} sortAnswers={sortAnswers} question={question} helpfulCB={helpfulCB} key={index}/>
+    return <Answer answer={answer} answersArray={answersArray} sortAnswers={sortAnswers} result={result} product={product} question={question} helpfulCB={helpfulCB} key={index}/>
   }
 
   const sortAnswers = () => {
@@ -44,7 +43,6 @@ const AnswerList = ({answers, question, helpfulCB}) => {
     } else {
       setNumberOfAnswers(2);
     };
-
   };
 
   const buttonTextHelper = () => {
