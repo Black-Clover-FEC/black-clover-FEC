@@ -1,5 +1,5 @@
 node_modules/
-client/dist/
+# client/dist/
 client/src/env/config.js
 *.DS_Store
 coverage/
