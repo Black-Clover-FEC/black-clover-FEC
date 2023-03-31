@@ -3,13 +3,20 @@ import Answer from './Answer.jsx';
 import api from '../../lib/api.js';
 import StyleLib from '../../assets/Stylesheet.jsx';
 
-const AnswerList = ({answers, helpfulCB}) => {
-  const answersArray = Object.keys(answers);
+const AnswerList = ({answers, question, helpfulCB}) => {
+  console.log('AnswerList: question', question);
+  const answersIDArray = Object.keys(answers);
+  const answersArray = [];
+  for (var i = 0; i < answersIDArray.length; i++ ) {
+    answersArray.push(answers[answersIDArray[i]]);
+  }
   const [displayedAnswers, setDisplayedAnswers] = useState([]);
+  const [sortedAnswersArray, setSortedAnswersArray] = useState(answersArray.sort((a, b) => b.helpfulness - a.helpfulness));
   const [numberOfAnswers, setNumberOfAnswers] = useState(2);
   const [buttonText, setButtonText] = useState('');
 
-  useEffect(() => {setDisplayedAnswers(answersArray.slice(0, 2))}, []);
+  useEffect(() => {setDisplayedAnswers(sortedAnswersArray.slice(0, 2)), console.log('answers array', answersArray), console.log('sorted answers array', sortedAnswersArray)}, []);
+  useEffect(() => {sortAnswers()}, []);
 
   useEffect(() => {
     updateDisplayedAnswers();
@@ -20,11 +27,15 @@ const AnswerList = ({answers, helpfulCB}) => {
   }, [displayedAnswers]);
 
   const render = (answer, index) => {
-    return <Answer answer={answer} helpfulCB={helpfulCB} key={index}/>
+    return <Answer answer={answer} sortAnswers={sortAnswers} question={question} helpfulCB={helpfulCB} key={index}/>
+  }
+
+  const sortAnswers = () => {
+    setSortedAnswersArray(answersArray.sort((a, b) => b.helpfulness - a.helpfulness));
   }
 
   const updateDisplayedAnswers = () => {
-    setDisplayedAnswers(answersArray.slice(0, numberOfAnswers));
+    setDisplayedAnswers(sortedAnswersArray.slice(0, numberOfAnswers));
   }
 
   const updateNumberOfAnswers = (e) => {
@@ -47,7 +58,7 @@ const AnswerList = ({answers, helpfulCB}) => {
 
   return (
     <section>
-      {displayedAnswers.map((answer, index) => render(answers[answer], index))}
+      {displayedAnswers.map((answer, index) => render(answer, index))}
       {answersArray.length > 2 && <StyleLib.button onClick={updateNumberOfAnswers}>{buttonText}</StyleLib.button>}
     </section>
   )
