@@ -16,7 +16,7 @@ const OverviewModule = ({product, currentStyle, setCurrentStyle}) => {
 
   return (
     <div>
-      {openModal ? <ExpandedImage currentStyle={props.currentStyle} openModal={openModal} setOpenModal={setOpenModal}/> : <></>}
+      {openModal ? <ExpandedImage currentStyle={currentStyle} openModal={openModal} setOpenModal={setOpenModal}/> : <></>}
       <Header />
       <StyleLib.h2>
         Product Overview

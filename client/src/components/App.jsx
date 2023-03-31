@@ -7,7 +7,6 @@ import Overview from './details/OverviewModule.jsx';
 import RelatedProductsModule from './related/RelatedProductsModule.jsx';
 import QA from './questions/QAModule.jsx';
 import Reviews from './ratings/ReviewsModule.jsx';
-import prodMock from '../../../__mocks__/productMock.js';
 
 const StyledDiv = styled.div`
 width: 80%;

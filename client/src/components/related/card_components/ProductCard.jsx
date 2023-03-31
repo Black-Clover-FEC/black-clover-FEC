@@ -11,14 +11,10 @@ const ProductCard = ({product, openComparison, sendToCompare, removeBtn, removeO
   const [price, setPrice] = useState('No Price Available');
 
   const setDefault = (styles) => {
-    // if currentStyle true
-    // use currentStyle
-
     let defaultStyle = product.styles.default;
     setImage(defaultStyle.photos[0].thumbnail_url);
     setStyle(defaultStyle.name);
     setPrice(formatPrice(defaultStyle));
-    console.log('image:', image);
   }
 
 useEffect(() => {setDefault(product.styles.results)}, [product]);
@@ -31,7 +27,6 @@ useEffect(() => {setDefault(product.styles.results)}, [product]);
       return '$' + style.original_price;
     }
   }
-
   const handleRemove = (product) => {
     removeOutfit(product.details.id);
   }
@@ -43,8 +38,7 @@ useEffect(() => {setDefault(product.styles.results)}, [product]);
       <StyleLib.routerLink to={path}>
         <RelatedLib.card >
           <RelatedLib.imgContainer>
-            {image ?
-            <RelatedLib.cardImg src={image} alt='product-image'/> : <RelatedLib.noImage/>}
+            {image ? <RelatedLib.cardImg src={image} alt='product-image'/> : <RelatedLib.noImage/>}
           </RelatedLib.imgContainer>
           <RelatedLib.container>
             <ProductInfo details={product.details} price={price} styleName={style}/>
