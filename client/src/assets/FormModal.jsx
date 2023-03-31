@@ -93,24 +93,28 @@ const FormModal = ({ product, isOpen, onClose, submitFunc, factors }) => {
           <StyleLib.hiddenInput type='number' required={true} value={starRating} onChange={(e) => setStarRating(e.target.value)} min={0} />
         </StyleLib.blockLabel>
 
-        <StyleLib.p>
+        <StyleLib.recommendBlock>
           Would you recommend this product?
-          <StyleLib.blockLabel>
-            <input name='recommend' value='yes' type='radio' required={true} />Yes
-          </StyleLib.blockLabel>
-          <StyleLib.blockLabel>
-            <input name='recommend' value='no' type='radio' required={true} />No
-          </StyleLib.blockLabel>
-        </StyleLib.p>
+          <StyleLib.inputsFlex>
+            <StyleLib.inputOptionLabel>
+              Yes
+              <input name='recommend' value='yes' type='radio' required={true} />
+            </StyleLib.inputOptionLabel>
+            <StyleLib.inputOptionLabel>
+              No
+              <input name='recommend' value='no' type='radio' required={true} />
+            </StyleLib.inputOptionLabel>
+          </StyleLib.inputsFlex>
+        </StyleLib.recommendBlock>
 
-        <div>
+        <StyleLib.factorLabel>
           Characteristics:
           <CharacteristicsInput factors={factors} />
-        </div>
+        </StyleLib.factorLabel>
 
         <StyleLib.blockLabel>
           Review summary:
-          <StyleLib.input name='summary' maxLength={60} />
+          <StyleLib.input name='summary' maxLength={60} width={'100%'} />
         </StyleLib.blockLabel>
 
         <StyleLib.blockLabel>
@@ -147,12 +151,12 @@ const FormModal = ({ product, isOpen, onClose, submitFunc, factors }) => {
 
         <StyleLib.blockLabel>
           Your nickname:
-          <StyleLib.input name='name' maxLength={60} required={true} />
+          <StyleLib.input name='name' maxLength={60} required={true} width={'100%'} />
         </StyleLib.blockLabel>
 
         <StyleLib.blockLabel>
           Your email:
-          <StyleLib.input type='email' name='email' maxLength={60} required={true} />
+          <StyleLib.input type='email' name='email' maxLength={60} required={true} width={'100%'} />
         </StyleLib.blockLabel>
 
         <StyleLib.button

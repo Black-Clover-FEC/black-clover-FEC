@@ -100,6 +100,8 @@ const ReviewStyles = {
   grid-column: 2;
   display: flex;
   justify-content: center;
+  text-align: center;
+  white-space: nowrap;
   `,
 
   factorsGridCol3: styled.span`

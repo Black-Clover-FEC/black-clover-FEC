@@ -187,6 +187,16 @@ const StyleLib = {
   text-transform: none;
   `,
 
+  // blockLabel: styled.label`
+  // display: flex;
+  // justify-content: space-
+  // font-family: 'Quicksand', sans-serif;
+  // font-weight: 500;
+  // text-align: left;
+  // color: #424242;
+  // text-transform: none;
+  // `,
+
   input: styled.input`
   display: block;
   font-family: 'Quicksand', sans-serif;
@@ -194,6 +204,44 @@ const StyleLib = {
   text-align: left;
   color: #424242;
   text-transform: none;
+  width: ${props => props.width === undefined ? 'auto' : props.width};
+  `,
+
+  factorBlock: styled.li`
+  list-style: none;
+  border: none;
+  border-bottom: 2px #D5D5D5 solid;
+  padding-bottom: 0.3em;
+  `,
+
+  recommendBlock: styled.div`
+  border: none;
+  border-bottom: 2px #D5D5D5 solid;
+  padding-bottom: 0.3em;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  text-align: left;
+  color: #424242;
+  text-transform: none;
+  padding-top: 0.5em;
+  padding-bottom: 0.25em;
+  `,
+
+  inputsFlex: styled.div`
+  border: none;
+  display: flex;
+  flex-direction: row
+  align-items: start;
+  justify-content: space-between;
+  width: 5em;
+  `,
+
+  starsInput: styled.span`
+  font-size: 2em;
+  color: #E7A66C;
   `,
 
   textarea: styled.textarea`
@@ -204,6 +252,8 @@ const StyleLib = {
   color: #424242;
   text-transform: none;
   padding: 5px;
+  width: 100%;
+  resize: none;
   `,
 
   hiddenInput: styled.input`
@@ -212,6 +262,41 @@ const StyleLib = {
   width: 0;
   position: absolute;
   opacity: 0;
+  `,
+
+  inputOptionFlex: styled.div`
+  display: flex;
+  flex-direction: ${props => props.direction || 'row'};
+  height: ${props => props.height || 'auto'};
+  align-items: ${props => props.alignItems || 'normal'};
+  justify-content: space-between;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  text-align: center;
+  color: #424242;
+  text-transform: none;
+  padding-top: 0.5em;
+  padding-bottom: 0.25em;
+  `,
+
+  inputOptionLabel: styled.label`
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  text-align: center;
+  color: #424242;
+  text-transform: none;
+  `,
+
+  factorLabel: styled.div`
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  text-align: left;
+  color: #424242;
+  text-transform: none;
+  padding-top: 1em;
   `,
 
   routerLink: styled(Link)`
