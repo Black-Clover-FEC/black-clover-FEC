@@ -6,9 +6,9 @@ import Factor from './Factor.jsx';
 const FactorsList = ({characteristics}) => {
 
   return (
-    <ul>
+    <StyleLib.vertPaddedList>
       {characteristics.map(([factor, data]) => <Factor key={data.id} factor={factor} value={data.value} />)}
-    </ul>
+    </StyleLib.vertPaddedList>
   );
 }
 

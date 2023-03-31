@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import StyleLib from '../../assets/Stylesheet.jsx';
+import ReviewStyles from './assets/ReviewStyles.jsx';
 import Stars from '../../assets/Stars.jsx';
 import ReviewAndQuestionList from '../../assets/ReviewAndQuestionList.jsx';
 import FormModal from '../../assets/FormModal.jsx';
@@ -9,33 +10,8 @@ import RatingFiltersList from './RatingFiltersList.jsx';
 import FactorsList from './FactorsList.jsx';
 import api from '../../lib/api.js';
 
-// COMPONENTS STYLING
-const AvgRating = styled.span`
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  font-size: 6em;
-  text-align: left;
-  // color: #2E4552;
-  color: #E7A66C;
-  text-transform: none;
-`
 
-const GridContainer = styled.section`
-display: grid;
-grid-template-columns: 2fr 5fr;
-`
-
-const GridCol1 = styled.aside`
-grid-column: 1;
-`
-
-const GridCol2 = styled.section`
-grid-column: 2;
-`
-
-
-const ReviewsModule = ({product}) => {
-  // productInfo = { p_id: 40399, productName: 'Ultradark shades' };
+const ReviewsModule = ({product, reviewsMeta}) => {
   const p_id = product.id;
 
   // REACT HOOKS
@@ -61,7 +37,7 @@ const ReviewsModule = ({product}) => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
   // effects:
-  useEffect(() => refreshReviewData(), [product]);
+  useEffect(() => refreshReviewData(), [product, reviewsMeta]);
   useEffect(() => getSortedReviews(), [sortBy]);
   useEffect(() => filterReviews(), [sorted, filterBy]);
   useEffect(() => displayReviews(), [filtered, displayCount]);
@@ -70,7 +46,7 @@ const ReviewsModule = ({product}) => {
   // HELPER FUNCTIONS
   const refreshReviewData = () => {
     getSortedReviews(p_id, sortBy);
-    getMetaData(p_id);
+    setMetaData(p_id);
   }
 
   const getSortedReviews = () => {
@@ -85,16 +61,12 @@ const ReviewsModule = ({product}) => {
       .catch(err => console.error(err));
   }
 
-  const getMetaData = () => {
-    api.getReviewsMetadata({ product_id: p_id })
-      .then(data => {
-        setReviewsCount(data.reviewsCount);
-        setAverageRating(data.averageRating);
-        setRatingBreakdown(Object.values(data.ratings).map(value => parseInt(value)));
-        setPercentRecommended(100 * data.recRate);
-        setCharacteristics(Object.entries(data.characteristics));
-      })
-      .catch(err => console.error(err));
+  const setMetaData = () => {
+    setReviewsCount(reviewsMeta.reviewsCount);
+    setAverageRating(reviewsMeta.averageRating);
+    setRatingBreakdown(Object.values(reviewsMeta.ratings).map(value => parseInt(value)));
+    setPercentRecommended(100 * reviewsMeta.recRate);
+    setCharacteristics(Object.entries(reviewsMeta.characteristics));
   }
 
   const filterReviews = () => setFiltered(sorted.filter(review => filterBy[review.rating - 1]));
@@ -128,24 +100,29 @@ const ReviewsModule = ({product}) => {
 
   // RENDER IT!
   return (
-    <section>
+    <StyleLib.module>
       <StyleLib.h2>Ratings and Reviews</StyleLib.h2>
-      <GridContainer>
-        <GridCol1>
+      <ReviewStyles.gridContainer>
+        <ReviewStyles.gridCol1>
 
-          <AvgRating>{averageRating.toFixed(1)}</AvgRating>
+          <ReviewStyles.avgRating>{averageRating.toFixed(1)}</ReviewStyles.avgRating>
 
           <Stars rating={averageRating} />
 
           <StyleLib.p>{percentRecommended.toFixed(0)}% recommend this product</StyleLib.p>
 
+          <StyleLib.small visibility={filterBy.includes(false) ? 'visible' : 'hidden'}>
+            Showing only {[1, 2, 3, 4, 5].filter((rating, index) => filterBy[index]).join(', ')} star reviews.
+            <StyleLib.linkButton onClick={(e) => setFilterBy(new Array(5).fill(true))}>Reset</StyleLib.linkButton>
+          </StyleLib.small>
+
           <RatingFiltersList ratings={ratingBreakdown} handleClick={handleFilterClick} />
 
           <FactorsList characteristics={characteristics} />
 
-        </GridCol1>
+        </ReviewStyles.gridCol1>
 
-        <GridCol2>
+        <ReviewStyles.gridCol2>
 
           <StyleLib.h4>{reviewsCount} reviews, sorted by
             <StyleLib.dropdown name='sort' onChange={handleSortChange} value={sortBy}>
@@ -167,8 +144,8 @@ const ReviewsModule = ({product}) => {
             Add a Review
           </StyleLib.button>
 
-        </GridCol2>
-      </GridContainer>
+        </ReviewStyles.gridCol2>
+      </ReviewStyles.gridContainer>
 
       <FormModal
         product={product}
@@ -180,7 +157,7 @@ const ReviewsModule = ({product}) => {
           name: factorName
           })
         )} />
-    </section>
+    </StyleLib.module>
   )
 }
 

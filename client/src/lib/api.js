@@ -22,18 +22,21 @@ const imgurHeaders = {
 
 // Atelier helper functions
 const get = (endpoint, params = {}) => {
+  // console.log('get ' + endpoint);
   return axios.get(`${herokuUrl}/${endpoint}/`, {headers: herokuHeaders, params: params})
     .then(results => results.data)
     .catch(err => console.error(`Error getting ${endpoint} from server:  ${err}`));
 }
 
 const post = (endpoint, data = {}, params = {}) => {
+  // console.log('post ' + endpoint);
   return axios.post(`${herokuUrl}/${endpoint}/`, data, {headers: herokuHeaders, params: params})
     .then(results => results.data)
     .catch(err => console.error(`Error posting ${endpoint} to server:  ${err}`));
 }
 
 const put = (endpoint, data = {}, params = {}) => {
+  // console.log('put ' + endpoint);
   return axios.put(`${herokuUrl}/${endpoint}/`, data, {headers: herokuHeaders, params: params})
     .then(results => results.data)
     .catch(err => console.error(`Error updating ${endpoint} on server:  ${err}`));
@@ -48,12 +51,22 @@ api.listProducts = (params) => {
   return get('products', params);
 };
 
-api.getProductId = (product_id) => {
+api.getProductById = (product_id) => {
   return get(`products/${product_id}`);
 }
 
 api.getProductStyles = (product_id) => {
-  return get(`products/${product_id}/styles`);
+  return get(`products/${product_id}/styles`)
+    .then((styles) => {
+      let styleList = styles.results;
+      styles.default = styleList[0];
+      for (var i = 0; i < styleList.length; i++) {
+        if (styleList[i]['default?']) {
+          styles.default = styleList[i];
+        }
+      }
+      return styles;
+    });
 }
 
 api.getRelatedProducts = (product_id) => {
@@ -65,7 +78,7 @@ api.getRelatedProducts = (product_id) => {
 
 api.collectProductInfo = async (id) => {
   let product = {};
-  product.details = await api.getProductId(id)
+  product.details = await api.getProductById(id)
   product.styles = await api.getProductStyles(id);
   product.reviewsMeta = await api.getReviewsMetadata({product_id: id});
   return product;
@@ -84,8 +97,8 @@ api.addQuestion = (params) => {
   return post('qa/questions', params);
 }
 
-api.addAnswer = (question_id) => {
-  return post(`qa/questions/${question_id}/answers`, params);
+api.addAnswer = (question_id, params) => {
+  return post(`qa/questions/${question_id}/answers`, params, null);
 }
 
 api.markQuestionHelpful = (question_id) => {
@@ -116,6 +129,12 @@ api.getReviewsMetadata = (params) => {
     .then(data => {
       let totalCount = 0;
       let totalScore = 0;
+      let ratingScoresList = Object.keys(data.ratings);
+      for (let i = 1; i < 6; i++) {
+        if (!data.ratings[i]) {
+          data.ratings[i] = '0';
+        }
+      }
       for (let rating in data.ratings) {
         const count = parseInt(data.ratings[rating]);
         totalCount += count;

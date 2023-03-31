@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const StyleLib = {
 
@@ -64,11 +65,13 @@ const StyleLib = {
   padding-bottom: 7px;
   `,
 
-  p: styled.p`
+  p: styled.p.attrs(props => ({
+    color: props.color || '#424242'
+  }))`
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   text-align: left;
-  color: #424242;
+  color: ${props => props.color};
   text-transform: none;
   padding-bottom: 5px;
   `,
@@ -80,18 +83,7 @@ const StyleLib = {
   text-align: left;
   color: #424242;
   text-transform: none;
-  `,
-
-  button: styled.button`
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  text-align: center;
-  color: #424242;
-  text-transform: uppercase;
-  background-color: white;
-  border: solid;
-  border-radius: 10px;
-  padding: 10px;
+  visibility: ${props => props.visibility || 'visible'};
   `,
 
   linkButton: styled.button`
@@ -105,6 +97,7 @@ const StyleLib = {
   text-decoration: underline;
   margin-left: 5px;
   margin-right: 5px;
+  cursor: pointer;
   `,
 
 
@@ -119,6 +112,7 @@ const StyleLib = {
   border: none;
   border-bottom: solid;
   padding-left: 0;
+  cursor: pointer;
   `,
 
   searchBar: styled.input`
@@ -143,10 +137,15 @@ const StyleLib = {
   clip-path: inset(0 0 0 ${props => props.percentage}%);
 `,
 
+  vertPaddedList: styled.ul`
+  list-style: none;
+  padding: 1em 0 1em 0;
+  `,
+
   tile: styled.li`
   list-style: none;
   border: none;
-  border-bottom-style: solid;
+  border-bottom: solid #A9A9A9;
   padding: 20px;
   `,
 
@@ -172,16 +171,100 @@ const StyleLib = {
   border-bottom: 2px #D5D5D5 solid;
   padding-bottom: 10px;
   padding-top: 10px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  text-align: left;
+  color: #424242;
+  text-transform: none;
   `,
 
   input: styled.input`
   display: block;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  text-align: left;
+  color: #424242;
+  text-transform: none;
   `,
 
   textarea: styled.textarea`
   display: block;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  text-align: left;
+  color: #424242;
+  text-transform: none;
+  padding: 5px;
+  `,
+
+  hiddenInput: styled.input`
+  display: block;
+  height: 0;
+  width: 0;
+  position: absolute;
+  opacity: 0;
+  `,
+
+  routerLink: styled(Link)`
+  color: inherit;
+  text-decoration: inherit;
+  `,
+
+  module: styled.section`
+  padding: 2em 0 2em 0;
+  `,
+
+  popOut: keyframes`
+  from {
+    transform: translateZ(0);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+
+  to {
+    transform: translateZ(50px);
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+  }
+  `,
+
+  buttonHover: keyframes`
+  from {
+    border-radius: 10px;
+    background-color: white;
+  }
+
+  to {
+    border-radius: 30px;
+    background-color: #2A9D8F;
+    color: white;
+  }
   `,
 
 };
+
+
+StyleLib.linkTile = styled(StyleLib.tile)`
+  &:hover {
+    animation: ${StyleLib.popOut} 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+`;
+
+
+StyleLib.button = styled.button`
+font-family: 'Quicksand', sans-serif;
+font-weight: 500;
+text-align: center;
+color: #424242;
+text-transform: uppercase;
+background-color: white;
+border: solid;
+border-radius: 10px;
+padding: 10px;
+cursor: pointer;
+margin: 0.5em;
+&:hover {
+  animation: ${StyleLib.buttonHover} 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+`;
+
 
 export default StyleLib;

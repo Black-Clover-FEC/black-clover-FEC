@@ -41,14 +41,33 @@ const RelatedLib = {
     }
   `,
 
-  container: styled.div`
+  cardContainer: styled.div`
+  position: relative;
   width: 100%;
-  padding: 5px;
+  height: 100%;
+  // padding-left: 5%;
+  `,
+
+  container: styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  // top: 75%;
+  // padding: 5px;
+  // background-color: blue;
+  `,
+
+  iconContainer: styled.div`
+    position: absolute;
+    left: 82%;
+    top: 1em;
+    width: 10%;
   `,
 
   imgContainer: styled.div`
   position: relative;
-  width: 230px;
+  width: 100%;
+  height: 100%;
   `,
 
   noImage: styled(FaFileImage)`
@@ -58,8 +77,8 @@ const RelatedLib = {
   position: relative;
   display: inline-block;
   vertical-align: top;
-  width: 231.5px;
-  height: 450px;
+  width: 100%;
+  height: auto;
   border-radius: 10px;
   border: solid;
   border-width: 0.5px;
@@ -72,7 +91,8 @@ const RelatedLib = {
 
   cardImg: styled.img`
   display: block;
-  border-radius: 10px;
+  position: relative;
+  border-radius: 9px;
   width: 100%;
   height: auto;
   `,
@@ -114,11 +134,12 @@ const RelatedLib = {
 
   compareStar: styled(FaRegStar)`
   color: #E2C577;
-  position: absolute;
-  width: 10%;
+  // position: absolute;
+  position: relative;
+  width: 100%;
   height: 20px;
-  left: 85%;
-  top: 15px;
+  // left: 85%;
+  // top: 15px;
   cursor: pointer;
   &: hover {
     color: yellow;

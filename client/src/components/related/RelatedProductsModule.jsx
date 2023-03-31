@@ -4,10 +4,10 @@ import YourOutfitList from './lists/YourOutfitList.jsx';
 import api from '../../../../client/src/lib/api.js';
 import ComparisonModal from './ComparisonModal.jsx';
 
-const RelatedProductsModule = ({product, changeProduct}) => {
+const RelatedProductsModule = ({product, currentStyle}) => {
 
   // LISTS
-  const [outfits, setOutfits] = useState([{details: {id: 'button'}}]);
+  const [outfits, setOutfits] = useState([]);
   const [relatedItems, setRelatedItems] = useState([]);
 
   // RELATED ITEMS AND COMPARISON
@@ -19,6 +19,24 @@ const RelatedProductsModule = ({product, changeProduct}) => {
   const [relatedViewIndex, setRelatedViewIndex] = useState(0);
   const [outfitViewIndex, setOutfitViewIndex] = useState(0);
 
+  useEffect(() => {getAndSetRelatedProducts(product.details.id)}, [product]);
+
+  // console.log('outfits: ', outfits);
+
+  useEffect(() => {
+      let storage = JSON.parse(window.localStorage.getItem('outfits'));
+      if (!storage || storage.length === 0) {
+        window.localStorage.setItem('outfits', JSON.stringify([{details: {id: 'button'}}]));
+      }
+      setOutfits(JSON.parse(window.localStorage.getItem('outfits')));
+  }, [])
+
+  useEffect(() => {
+      setTimeout(() => {
+        window.localStorage.setItem('outfits', JSON.stringify(outfits));
+      }, 500);
+  }, [outfits]);
+
   const updateindex = (newIndex, list) => {
     if (newIndex < 0) {
       newIndex = 0;
@@ -26,7 +44,6 @@ const RelatedProductsModule = ({product, changeProduct}) => {
       newIndex = list.length - 1;
     }
     if (list === outfits) {
-      console.log('list was outfits');
       setOutfitViewIndex(newIndex);
     } else {
       setRelatedViewIndex(newIndex);
@@ -50,11 +67,9 @@ const RelatedProductsModule = ({product, changeProduct}) => {
     return Promise.all(productIds.map(id => api.collectProductInfo(id)));
   }
 
-  useEffect(() => {getAndSetRelatedProducts(product.id)}, [product]);
-
   // helper function for Comparison Modal
   const sendToCompare = (selected) => {
-    let current = product;
+    let current = product.details;
     setProductsToCompare([current, selected.details]);
   }
 
@@ -72,7 +87,8 @@ const RelatedProductsModule = ({product, changeProduct}) => {
   const removeOutfit = (product_id) => {
     outfits.forEach((outfit, i) => {
       if (product_id === outfit.details.id) {
-        setOutfits(outfits.splice(i - 1, 1));
+        let newOutfits = outfits.slice(0, i).concat(outfits.slice(i + 1));
+        setOutfits(newOutfits);
         return;
       }
     })
@@ -87,13 +103,13 @@ const RelatedProductsModule = ({product, changeProduct}) => {
         updateindex={updateindex}
         openComparison={openComparison}
         sendToCompare={sendToCompare}
-        changeProduct={changeProduct}
         />}
       </div>
       <div>
-        <YourOutfitList outfits={outfits} product={product}
+        <YourOutfitList outfits={outfits} product={product.details}
         addOutfit={addOutfit} removeOutfit={removeOutfit}
-        updateindex={updateindex} outfitViewIndex={outfitViewIndex}/>
+        updateindex={updateindex} outfitViewIndex={outfitViewIndex}
+        />
       </div>
       <ComparisonModal
         products={productsToCompare}

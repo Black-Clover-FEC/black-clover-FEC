@@ -4,11 +4,10 @@ import RatingFilter from './RatingFilter.jsx';
 
 
 const RatingFiltersList = ({ratings, handleClick}) => {
-
   const max = Math.max(...ratings);
 
   return (
-    <ul>
+    <StyleLib.vertPaddedList>
       {ratings.map((count, index) => (
       <RatingFilter
         key={index}
@@ -18,7 +17,7 @@ const RatingFiltersList = ({ratings, handleClick}) => {
         handleClick={(e) => handleClick(index)} />)
         ).reverse()
       }
-    </ul>
+    </StyleLib.vertPaddedList>
   );
 }
 

@@ -23,7 +23,7 @@ const YourOutfitList = ({outfits, addOutfit, product, removeOutfit, updateindex,
             return (
               <RelatedLib.carouselItem key={index}>
                 <ProductCard key={outfit.details.id} product={outfit}
-                removeBtn={true} removeOutfit={removeOutfit}/>
+                removeBtn={true} removeOutfit={removeOutfit} />
               </RelatedLib.carouselItem>
             )
           }

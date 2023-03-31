@@ -15,25 +15,22 @@ margin: auto;
 `
 
 export async function productLoader({ params }) {
-  const product = await api.getProductId(params.productId);
+  const product = await api.collectProductInfo(params.productId);
   return { product };
 };
 
 const App = () => {
+
   const {product} = useLoaderData();
-
-  const [currentProduct, setCurrentProduct] = useState(product);
-
-  const changeProduct = (newProduct) => {
-    setCurrentProduct(newProduct);
-  }
+  const [currentStyle, setCurrentStyle] = useState(product.styles.default);
+  useEffect(() => {setCurrentStyle(product.styles.default)}, [product]);
 
   return (
     <StyledDiv>
-      <Overview product={currentProduct}/>
-      <RelatedProductsModule product={currentProduct} changeProduct={changeProduct}/>
-      <QA product={currentProduct}/>
-      <Reviews product={currentProduct}/>
+      <Overview product={product} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} />
+      <RelatedProductsModule product={product} currentStyle={currentStyle} />
+      <QA product={product.details}/>
+      <Reviews product={product.details} reviewsMeta={product.reviewsMeta}/>
     </StyledDiv>
   )
 }

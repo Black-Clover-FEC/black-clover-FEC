@@ -1,0 +1,222 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Does a component render to the page tests to see if Answer component renders correctly 1`] = `null`;
+
+exports[`Does a component render to the page tests to see if AnswerList component renders correctly 1`] = `
+<section>
+  <button
+    className="sc-fsQiph beTiCm"
+    onClick={[Function]}
+  />
+</section>
+`;
+
+exports[`Does a component render to the page tests to see if FormModalA component renders correctly 1`] = `null`;
+
+exports[`Does a component render to the page tests to see if FormModalQ component renders correctly 1`] = `null`;
+
+exports[`Does a component render to the page tests to see if Question component renders correctly 1`] = `
+<li
+  className="sc-fbJfA fZxUVg"
+>
+  <p
+    className="sc-gLDzan ZmgyA"
+  >
+    Q: 
+    Is this LEGIT?
+  </p>
+  <small
+    className="sc-iAEyYk kbAVNF"
+  >
+    Thu Mar 23 2023
+     
+  </small>
+  <small
+    className="sc-iAEyYk kbAVNF"
+  >
+    Helpful?
+    <button
+      className="sc-qRumB krmTCT"
+      onClick={[Function]}
+    >
+      Yes
+    </button>
+    4
+  </small>
+  <button
+    className="sc-qRumB krmTCT"
+    onClick={[Function]}
+  >
+    Report 
+  </button>
+  <button
+    className="sc-qRumB krmTCT"
+    onClick={[Function]}
+  >
+    Add Answer
+  </button>
+  <section>
+    <section>
+      <p
+        className="sc-gLDzan ZmgyA"
+      >
+        A: 
+        a
+      </p>
+      <small
+        className="sc-iAEyYk kbAVNF"
+      >
+        nickynickyjam
+         
+      </small>
+      <small
+        className="sc-iAEyYk kbAVNF"
+      >
+        Thu Mar 23 2023
+         
+      </small>
+      <small
+        className="sc-iAEyYk kbAVNF"
+      >
+        Helpful? 
+      </small>
+      <button
+        className="sc-qRumB krmTCT"
+        data-testid="helpfulHandler"
+        onClick={[Function]}
+      >
+        Yes 
+      </button>
+      <small
+        className="sc-iAEyYk kbAVNF"
+      >
+        6
+         
+      </small>
+      <button
+        className="sc-qRumB krmTCT"
+        data-testid="reportHandler"
+        onClick={[Function]}
+      >
+        Report
+      </button>
+      <ul>
+        <img
+          className="sc-ktEKTO cwglxa"
+          onClick={[Function]}
+          src="https://orioledogclub.files.wordpress.com/2014/07/construction-dog.jpg"
+        />
+      </ul>
+    </section>
+    <section>
+      <p
+        className="sc-gLDzan ZmgyA"
+      >
+        A: 
+        Of course!
+      </p>
+      <small
+        className="sc-iAEyYk kbAVNF"
+      >
+        Seller
+         
+      </small>
+      <small
+        className="sc-iAEyYk kbAVNF"
+      >
+        Fri Mar 24 2023
+         
+      </small>
+      <small
+        className="sc-iAEyYk kbAVNF"
+      >
+        Helpful? 
+      </small>
+      <button
+        className="sc-qRumB krmTCT"
+        data-testid="helpfulHandler"
+        onClick={[Function]}
+      >
+        Yes 
+      </button>
+      <small
+        className="sc-iAEyYk kbAVNF"
+      >
+        9
+         
+      </small>
+      <button
+        className="sc-qRumB krmTCT"
+        data-testid="reportHandler"
+        onClick={[Function]}
+      >
+        Report
+      </button>
+      <ul />
+    </section>
+    <button
+      className="sc-fsQiph beTiCm"
+      onClick={[Function]}
+    >
+      See More Answers
+    </button>
+  </section>
+</li>
+`;
+
+exports[`Does a component render to the page tests to see if QuestionList component renders correctly 1`] = `
+<section>
+  <li
+    className="sc-fbJfA fZxUVg"
+  >
+    <p
+      className="sc-gLDzan ZmgyA"
+    >
+      Q: 
+      Is this LEGIT?
+    </p>
+    <small
+      className="sc-iAEyYk kbAVNF"
+    >
+      Thu Mar 23 2023
+       
+    </small>
+    <small
+      className="sc-iAEyYk kbAVNF"
+    >
+      Helpful?
+      <button
+        className="sc-qRumB krmTCT"
+        onClick={[Function]}
+      >
+        Yes
+      </button>
+      4
+    </small>
+    <button
+      className="sc-qRumB krmTCT"
+      onClick={[Function]}
+    >
+      Report 
+    </button>
+    <button
+      className="sc-qRumB krmTCT"
+      onClick={[Function]}
+    >
+      Add Answer
+    </button>
+    <section>
+      <button
+        className="sc-fsQiph beTiCm"
+        onClick={[Function]}
+      />
+    </section>
+  </li>
+</section>
+`;
+
+exports[`Does a component render to the page tests to see if StyleLib.searchBar component renders correctly 1`] = `
+<input
+  className="sc-kFuwaP ekhEca"
+/>
+`;
