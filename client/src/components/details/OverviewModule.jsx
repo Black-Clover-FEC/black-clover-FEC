@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import StyleLib from '../../assets/Stylesheet.jsx';
 import DetailsLib from './assets/Stylesheet.jsx';
 import api from '../../lib/api.js';
@@ -11,16 +11,21 @@ import Description from './description.jsx';
 import ProductInfoObject from '../../lib/productInfoObjectTemplate.js';
 
 const OverviewModule = ({product}) => {
-  const [styleList, setStyleList] = React.useState(product.styles.results);
-  const [favorite, setFavorite] = React.useState(false);
-  const [openModal, setOpenModal] = React.useState(false);
-  const [currentStyle, setCurrentStyle] = React.useState(product.styles.results[0]);
+  console.log(product.details.id);
+  const [favorite, setFavorite] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
-  for (var i = 0; i < product.styles.results.length; i++) {
-    if (product.styles.results[i]['default?']) {
-      setCurrentStyle(product.styles.results[i]);
+  let styleList = product.styles.results;
+  let defaultStyle = product.styles.results[0]
+
+  for (var i = 0; i < styleList.length; i++) {
+    if (styleList[i]['default?']) {
+      defaultStyle = styleList[i];
     }
   }
+  const [currentStyle, setCurrentStyle] = useState(defaultStyle);
+
+  useEffect(() => {setCurrentStyle(defaultStyle)}, [product])
 
   return (
     <div>

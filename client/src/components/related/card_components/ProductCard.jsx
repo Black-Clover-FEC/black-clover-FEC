@@ -5,7 +5,7 @@ import RelatedLib from '../assets/Stylesheet.jsx';
 import ProductInfo from './ProductInformation.jsx';
 import Stars from '../../../assets/Stars.jsx'
 
-const ProductCard = ({product, openComparison, sendToCompare, removeBtn, removeOutfit, changeProduct}) => {
+const ProductCard = ({product, openComparison, sendToCompare, removeBtn, removeOutfit}) => {
   const [image, setImage] = useState('No Image Available');
   const [style, setStyle] = useState('No Style Available');
   const [price, setPrice] = useState('No Price Available');
@@ -48,18 +48,12 @@ useEffect(() => {setDefault(product.styles.results)}, [product]);
     removeOutfit(product.details.id);
   }
 
-  const handleCardClick = (product) => {
-    console.log(product)
-    changeProduct(product.details);
-  }
-
   let path = `../${product.details.id}`;
 
   return (
     <RelatedLib.cardContainer>
       <Link to={path}>
       <RelatedLib.card >
-      {/* <RelatedLib.card onClick={() => handleCardClick(product)}> */}
         <RelatedLib.imgContainer>
           <RelatedLib.cardImg src={image} alt='product-image'/>
         </RelatedLib.imgContainer>
