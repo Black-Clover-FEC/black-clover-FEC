@@ -48,7 +48,7 @@ useEffect(() => {setDefault(product.styles.results)}, [product]);
   }
 
   const handleCardClick = (product) => {
-    changeProduct(product.details);
+    changeProduct(product);
   }
 
   return (
