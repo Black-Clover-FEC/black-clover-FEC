@@ -4,7 +4,7 @@ import YourOutfitList from './lists/YourOutfitList.jsx';
 import api from '../../../../client/src/lib/api.js';
 import ComparisonModal from './ComparisonModal.jsx';
 
-const RelatedProductsModule = ({product, changeProduct}) => {
+const RelatedProductsModule = ({product, currentStyle}) => {
 
   // LISTS
   const [outfits, setOutfits] = useState([]);
@@ -19,7 +19,7 @@ const RelatedProductsModule = ({product, changeProduct}) => {
   const [relatedViewIndex, setRelatedViewIndex] = useState(0);
   const [outfitViewIndex, setOutfitViewIndex] = useState(0);
 
-  useEffect(() => {getAndSetRelatedProducts(product.id)}, [product]);
+  useEffect(() => {getAndSetRelatedProducts(product.details.id)}, [product]);
 
   // console.log('outfits: ', outfits);
 
@@ -69,7 +69,7 @@ const RelatedProductsModule = ({product, changeProduct}) => {
 
   // helper function for Comparison Modal
   const sendToCompare = (selected) => {
-    let current = product;
+    let current = product.details;
     setProductsToCompare([current, selected.details]);
   }
 
@@ -103,14 +103,13 @@ const RelatedProductsModule = ({product, changeProduct}) => {
         updateindex={updateindex}
         openComparison={openComparison}
         sendToCompare={sendToCompare}
-        changeProduct={changeProduct}
         />}
       </div>
       <div>
-        <YourOutfitList outfits={outfits} product={product}
+        <YourOutfitList outfits={outfits} product={product.details}
         addOutfit={addOutfit} removeOutfit={removeOutfit}
         updateindex={updateindex} outfitViewIndex={outfitViewIndex}
-        changeProduct={changeProduct}/>
+        />
       </div>
       <ComparisonModal
         products={productsToCompare}
