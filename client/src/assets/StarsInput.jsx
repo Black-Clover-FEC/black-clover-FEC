@@ -21,7 +21,7 @@ const StarsInput = ({starRating, handleClick}) => {
   return (
     <div>
       {stars.map((star, index) => (
-        <span key={index} onClick={(e) => handleClick(index)} >{star}</span>
+        <StyleLib.starsInput key={index} onClick={(e) => handleClick(index)} >{star}</StyleLib.starsInput>
       ))}
     </div>
   );

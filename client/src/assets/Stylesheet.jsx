@@ -1,7 +1,14 @@
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
+import Modal from 'react-modal';
 
 const StyleLib = {
+
+  appDiv: styled.div`
+  width: 80%;
+  max-width: 1500px;
+  margin: auto;
+  `,
 
   h1: styled.h1`
   font-family: 'Playfair Display', serif;
@@ -163,7 +170,9 @@ const StyleLib = {
 
   bigPhoto: styled.img`
   border: none;
-  height: 40em;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   `,
 
   blockLabel: styled.label`
@@ -178,6 +187,16 @@ const StyleLib = {
   text-transform: none;
   `,
 
+  // blockLabel: styled.label`
+  // display: flex;
+  // justify-content: space-
+  // font-family: 'Quicksand', sans-serif;
+  // font-weight: 500;
+  // text-align: left;
+  // color: #424242;
+  // text-transform: none;
+  // `,
+
   input: styled.input`
   display: block;
   font-family: 'Quicksand', sans-serif;
@@ -185,6 +204,44 @@ const StyleLib = {
   text-align: left;
   color: #424242;
   text-transform: none;
+  width: ${props => props.width === undefined ? 'auto' : props.width};
+  `,
+
+  factorBlock: styled.li`
+  list-style: none;
+  border: none;
+  border-bottom: 2px #D5D5D5 solid;
+  padding-bottom: 0.3em;
+  `,
+
+  recommendBlock: styled.div`
+  border: none;
+  border-bottom: 2px #D5D5D5 solid;
+  padding-bottom: 0.3em;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  text-align: left;
+  color: #424242;
+  text-transform: none;
+  padding-top: 0.5em;
+  padding-bottom: 0.25em;
+  `,
+
+  inputsFlex: styled.div`
+  border: none;
+  display: flex;
+  flex-direction: row
+  align-items: start;
+  justify-content: space-between;
+  width: 5em;
+  `,
+
+  starsInput: styled.span`
+  font-size: 2em;
+  color: #E7A66C;
   `,
 
   textarea: styled.textarea`
@@ -195,6 +252,8 @@ const StyleLib = {
   color: #424242;
   text-transform: none;
   padding: 5px;
+  width: 100%;
+  resize: none;
   `,
 
   hiddenInput: styled.input`
@@ -205,6 +264,41 @@ const StyleLib = {
   opacity: 0;
   `,
 
+  inputOptionFlex: styled.div`
+  display: flex;
+  flex-direction: ${props => props.direction || 'row'};
+  height: ${props => props.height || 'auto'};
+  align-items: ${props => props.alignItems || 'normal'};
+  justify-content: space-between;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  text-align: center;
+  color: #424242;
+  text-transform: none;
+  padding-top: 0.5em;
+  padding-bottom: 0.25em;
+  `,
+
+  inputOptionLabel: styled.label`
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  text-align: center;
+  color: #424242;
+  text-transform: none;
+  `,
+
+  factorLabel: styled.div`
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  text-align: left;
+  color: #424242;
+  text-transform: none;
+  padding-top: 1em;
+  `,
+
   routerLink: styled(Link)`
   color: inherit;
   text-decoration: inherit;
@@ -212,6 +306,11 @@ const StyleLib = {
 
   module: styled.section`
   padding: 2em 0 2em 0;
+  `,
+
+  form: styled.form`
+  // width: 50%;
+  // height: 80%;
   `,
 
   popOut: keyframes`
@@ -251,6 +350,19 @@ const StyleLib = {
   }
   `,
 
+  cancelHover: keyframes`
+  from {
+    border-radius: 10px;
+    background-color: white;
+  }
+
+  to {
+    border-radius: 30px;
+    background-color: #D87659;
+    color: white;
+  }
+  `,
+
 };
 
 
@@ -274,9 +386,10 @@ padding: 10px;
 cursor: pointer;
 margin: 0.5em;
 &:hover {
-  animation: ${StyleLib.buttonHover} 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: ${props => props.cancel ? StyleLib.cancelHover : StyleLib.buttonHover} 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 `;
+
 
 
 export default StyleLib;

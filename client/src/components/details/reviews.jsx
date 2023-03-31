@@ -4,7 +4,7 @@ import StyleLib from '../../assets/Stylesheet.jsx';
 import DetailsLib from './assets/Stylesheet.jsx';
 
 const Reviews = ({product}) => {
-  const hasReviews = product.reviewsMeta.reviewsCount > 0;
+  const hasReviews = product && product.reviewsMeta && product.reviewsMeta.reviewsCount > 0;
   return (
     hasReviews
     ?
