@@ -1,4 +1,4 @@
-import styled, {keyframes} from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Link } from "react-router-dom";
 
 const StyleLib = {
@@ -84,20 +84,6 @@ const StyleLib = {
   color: #424242;
   text-transform: none;
   visibility: ${props => props.visibility || 'visible'};
-  `,
-
-  button: styled.button`
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  text-align: center;
-  color: #424242;
-  text-transform: uppercase;
-  background-color: white;
-  border: solid;
-  border-radius: 10px;
-  padding: 10px;
-  cursor: pointer;
-  margin: 0.5em;
   `,
 
   linkButton: styled.button`
@@ -238,17 +224,47 @@ const StyleLib = {
     transform: translateZ(50px);
     box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
   }
-  `
+  `,
+
+  buttonHover: keyframes`
+  from {
+    border-radius: 10px;
+    background-color: white;
+  }
+
+  to {
+    border-radius: 30px;
+    background-color: #2A9D8F;
+    color: white;
+  }
+  `,
 
 };
 
 
-
 StyleLib.linkTile = styled(StyleLib.tile)`
-    &:hover {
-      // background-color: #D5D5D5;
-      animation: ${StyleLib.popOut} 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    }
-  `;
+  &:hover {
+    animation: ${StyleLib.popOut} 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+`;
+
+
+StyleLib.button = styled.button`
+font-family: 'Quicksand', sans-serif;
+font-weight: 500;
+text-align: center;
+color: #424242;
+text-transform: uppercase;
+background-color: white;
+border: solid;
+border-radius: 10px;
+padding: 10px;
+cursor: pointer;
+margin: 0.5em;
+&:hover {
+  animation: ${StyleLib.buttonHover} 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+`;
+
 
 export default StyleLib;
