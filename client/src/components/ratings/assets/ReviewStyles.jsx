@@ -62,7 +62,8 @@ const ReviewStyles = {
   `,
 
   slideGauge: styled.div`
-  padding: 0.5em 0 0.5em 0;
+  // padding: 0.5em 0 0.5em 0;
+  padding: 0.5em;
   cursor: default;
   `,
 

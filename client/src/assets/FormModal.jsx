@@ -7,7 +7,17 @@ import api from '../lib/api.js';
 import CharacteristicsInput from '../components/ratings/CharacteristicsInput.jsx';
 import { starsMeaning } from '../components/ratings/reviewMeaningsKey.js';
 
+// StyleLib.formModal.setAppElement('#root');
 Modal.setAppElement('#root');
+const formStyle = {
+  content: {
+    top: '5%',
+    left: '35%',
+    right: '35%',
+    bottom: '5%',
+    padding: '3em'
+  }
+}
 
 const FormModal = ({ product, isOpen, onClose, submitFunc, factors }) => {
 
@@ -67,6 +77,7 @@ const FormModal = ({ product, isOpen, onClose, submitFunc, factors }) => {
       isOpen={isOpen}
       onRequestClose={onClose}
       contentLabel='Please complete the form to review this product'
+      style={formStyle}
     >
       <StyleLib.h2>Write your review</StyleLib.h2>
       <StyleLib.h5>about {product.name}</StyleLib.h5>
@@ -116,9 +127,9 @@ const FormModal = ({ product, isOpen, onClose, submitFunc, factors }) => {
           />
           {bodyText.length < 50 && (
             <StyleLib.p color={charCountError ? '#D87659' : '#424242'}>
-            Please tell us more! You need at least {50 - bodyText.length} more characters to submit.
+              Please tell us more! You need at least {50 - bodyText.length} more characters to submit.
             </StyleLib.p>
-            )}
+          )}
         </StyleLib.blockLabel>
 
         {photos.length < 5 && (
@@ -147,12 +158,13 @@ const FormModal = ({ product, isOpen, onClose, submitFunc, factors }) => {
         <StyleLib.button
           type='button'
           onClick={onClose}
-          >
-            Cancel
-          </StyleLib.button>
+          cancel={true}
+        >
+          Cancel
+        </StyleLib.button >
 
         <StyleLib.button
-        type='submit'
+          type='submit'
         >
           Submit
         </StyleLib.button>

@@ -1,7 +1,14 @@
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
+import Modal from 'react-modal';
 
 const StyleLib = {
+
+  appDiv: styled.div`
+  width: 80%;
+  max-width: 1500px;
+  margin: auto;
+  `,
 
   h1: styled.h1`
   font-family: 'Playfair Display', serif;
@@ -163,7 +170,9 @@ const StyleLib = {
 
   bigPhoto: styled.img`
   border: none;
-  height: 40em;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   `,
 
   blockLabel: styled.label`
@@ -214,6 +223,11 @@ const StyleLib = {
   padding: 2em 0 2em 0;
   `,
 
+  form: styled.form`
+  // width: 50%;
+  // height: 80%;
+  `,
+
   popOut: keyframes`
   from {
     transform: translateZ(0);
@@ -235,6 +249,19 @@ const StyleLib = {
   to {
     border-radius: 30px;
     background-color: #2A9D8F;
+    color: white;
+  }
+  `,
+
+  cancelHover: keyframes`
+  from {
+    border-radius: 10px;
+    background-color: white;
+  }
+
+  to {
+    border-radius: 30px;
+    background-color: #D87659;
     color: white;
   }
   `,
@@ -262,9 +289,10 @@ padding: 10px;
 cursor: pointer;
 margin: 0.5em;
 &:hover {
-  animation: ${StyleLib.buttonHover} 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: ${props => props.cancel ? StyleLib.cancelHover : StyleLib.buttonHover} 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 `;
+
 
 
 export default StyleLib;
