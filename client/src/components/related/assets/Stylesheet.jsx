@@ -71,6 +71,12 @@ const RelatedLib = {
   `,
 
   noImage: styled(FaFileImage)`
+  position: relative;
+  width: 50%;
+  height: auto;
+  margin: auto;
+  padding-top: 50%;
+  color: #E7A66C;
   `,
 
   card: styled.div`
@@ -115,7 +121,7 @@ const RelatedLib = {
   height: auto;
   margin: auto;
   margin-top: 75%;
-  top: 40%;
+  // top: 40%;
 
   `,
 

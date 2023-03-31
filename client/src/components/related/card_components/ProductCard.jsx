@@ -10,14 +10,15 @@ const ProductCard = ({product, openComparison, sendToCompare, removeBtn, removeO
   const [style, setStyle] = useState('No Style Available');
   const [price, setPrice] = useState('No Price Available');
 
-  console.log('product: ', product);
-
   const setDefault = (styles) => {
+    // if currentStyle true
+    // use currentStyle
+
     let defaultStyle = product.styles.default;
     setImage(defaultStyle.photos[0].thumbnail_url);
     setStyle(defaultStyle.name);
     setPrice(formatPrice(defaultStyle));
-    // console.log('image:', image);
+    console.log('image:', image);
   }
 
 useEffect(() => {setDefault(product.styles.results)}, [product]);
@@ -42,7 +43,8 @@ useEffect(() => {setDefault(product.styles.results)}, [product]);
       <StyleLib.routerLink to={path}>
       <RelatedLib.card >
         <RelatedLib.imgContainer>
-          <RelatedLib.cardImg src={image} alt='product-image'/>
+          {image ? <RelatedLib.cardImg src={image} alt='product-image'/> : <RelatedLib.noImage/>}
+          {/* <RelatedLib.cardImg src={image} alt='product-image'/> */}
         </RelatedLib.imgContainer>
         <RelatedLib.container>
           <ProductInfo details={product.details} price={price} styleName={style}/>
