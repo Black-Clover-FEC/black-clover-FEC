@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import StyleLib from '../assets/Stylesheet.jsx';
 import { useLoaderData } from "react-router-dom";
 import api from '../lib/api.js';
 
@@ -7,12 +7,6 @@ import Overview from './details/OverviewModule.jsx';
 import RelatedProductsModule from './related/RelatedProductsModule.jsx';
 import QA from './questions/QAModule.jsx';
 import Reviews from './ratings/ReviewsModule.jsx';
-
-const StyledDiv = styled.div`
-width: 80%;
-max-width: 1500px;
-margin: auto;
-`
 
 export async function productLoader({ params }) {
   const product = await api.collectProductInfo(params.productId);
@@ -26,12 +20,12 @@ const App = () => {
   useEffect(() => {setCurrentStyle(product.styles.default)}, [product]);
 
   return (
-    <StyledDiv>
+    <StyleLib.appDiv>
       <Overview product={product} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} />
       <RelatedProductsModule product={product} currentStyle={currentStyle} />
       <QA product={product.details}/>
       <Reviews product={product.details} reviewsMeta={product.reviewsMeta}/>
-    </StyledDiv>
+    </StyleLib.appDiv>
   )
 }
 
