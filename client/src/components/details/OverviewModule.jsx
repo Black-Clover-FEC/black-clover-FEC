@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import StyleLib from '../../assets/Stylesheet.jsx';
 import DetailsLib from './assets/Stylesheet.jsx';
 import api from '../../lib/api.js';
@@ -10,18 +10,9 @@ import ExpandedImage from './expandedImage.jsx';
 import Description from './description.jsx';
 import ProductInfoObject from '../../lib/productInfoObjectTemplate.js';
 
-const OverviewModule = (props) => {
-  const [product, setProduct] = React.useState(ProductInfoObject);
-  const [styleList, setStyleList] = React.useState(ProductInfoObject.styles.results);
-  const [favorite, setFavorite] = React.useState(false);
-  const [openModal, setOpenModal] = React.useState(false);
-
-  React.useEffect(() => refreshOverviewModule(props.product), [props]);
-
-  const refreshOverviewModule = (prod) => {
-        setProduct(prod);
-        setStyleList(prod.styles.results);
-  }
+const OverviewModule = ({product, currentStyle, setCurrentStyle}) => {
+  const [favorite, setFavorite] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   return (
     <div>
@@ -31,8 +22,8 @@ const OverviewModule = (props) => {
         Product Overview
       </StyleLib.h2>
       <DetailsLib.cols>
-        <Image currentStyle={props.currentStyle} styleList={styleList} openModal={openModal} setOpenModal={setOpenModal}/>
-        <ProductInformation currentStyle={props.currentStyle} setCurrentStyle={props.setCurrentStyle} product={product} styleList={styleList} favorite={favorite} setFavorite={setFavorite}/>
+        <Image currentStyle={currentStyle} styleList={product.styles.results} openModal={openModal} setOpenModal={setOpenModal}/>
+        <ProductInformation currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} product={product} styleList={product.styles.results} favorite={favorite} setFavorite={setFavorite}/>
       </DetailsLib.cols>
       <Description product={product} />
     </div>

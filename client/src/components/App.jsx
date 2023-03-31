@@ -21,34 +21,17 @@ export async function productLoader({ params }) {
 };
 
 const App = () => {
+
   const {product} = useLoaderData();
-
-  const [currentProduct, setCurrentProduct] = useState(product);
-  const [currentStyle, setCurrentStyle] = useState(product.styles.results[0]);
-
-  useEffect(() => {getDefaultStyle(currentProduct)}, [currentProduct]);
-
-  const getDefaultStyle = (prod) => {
-    var defaultStyle = prod.styles.results[0];
-    for (var i = 0; i < prod.styles.results.length; i++) {
-      if (prod.styles.results[i]['default?']) {
-        defaultStyle = prod.styles.results[i];
-      }
-    }
-    setCurrentStyle(defaultStyle);
-    return;
-  }
-
-  const changeProduct = (newProduct) => {
-    setCurrentProduct(newProduct);
-  }
+  const [currentStyle, setCurrentStyle] = useState(product.styles.default);
+  useEffect(() => {setCurrentStyle(product.styles.default)}, [product]);
 
   return (
     <StyledDiv>
-      <Overview product={currentProduct} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle}/>
-      <RelatedProductsModule product={currentProduct} changeProduct={changeProduct} currentStyle={currentStyle}/>
-      <QA product={currentProduct.details}/>
-      <Reviews product={currentProduct.details}/>
+      <Overview product={product} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} />
+      <RelatedProductsModule product={product} currentStyle={currentStyle} />
+      <QA product={product.details}/>
+      <Reviews product={product.details} reviewsMeta={product.reviewsMeta}/>
     </StyledDiv>
   )
 }
