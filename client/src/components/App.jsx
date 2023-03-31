@@ -15,25 +15,19 @@ margin: auto;
 `
 
 export async function productLoader({ params }) {
-  const product = await api.getProductId(params.productId);
+  const product = await api.collectProductInfo(params.productId);
   return { product };
 };
 
 const App = () => {
   const {product} = useLoaderData();
 
-  const [currentProduct, setCurrentProduct] = useState(product);
-
-  const changeProduct = (newProduct) => {
-    setCurrentProduct(newProduct);
-  }
-
   return (
     <StyledDiv>
-      <Overview product={currentProduct}/>
-      <RelatedProductsModule product={currentProduct} changeProduct={changeProduct}/>
-      <QA product={currentProduct}/>
-      <Reviews product={currentProduct}/>
+      <Overview product={product}/>
+      <RelatedProductsModule product={product}/>
+      <QA product={product}/>
+      <Reviews product={product}/>
     </StyledDiv>
   )
 }

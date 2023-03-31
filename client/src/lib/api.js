@@ -22,18 +22,21 @@ const imgurHeaders = {
 
 // Atelier helper functions
 const get = (endpoint, params = {}) => {
+  console.log('get ' + endpoint);
   return axios.get(`${herokuUrl}/${endpoint}/`, {headers: herokuHeaders, params: params})
     .then(results => results.data)
     .catch(err => console.error(`Error getting ${endpoint} from server:  ${err}`));
 }
 
 const post = (endpoint, data = {}, params = {}) => {
+  console.log('post ' + endpoint);
   return axios.post(`${herokuUrl}/${endpoint}/`, data, {headers: herokuHeaders, params: params})
     .then(results => results.data)
     .catch(err => console.error(`Error posting ${endpoint} to server:  ${err}`));
 }
 
 const put = (endpoint, data = {}, params = {}) => {
+  console.log('put ' + endpoint);
   return axios.put(`${herokuUrl}/${endpoint}/`, data, {headers: herokuHeaders, params: params})
     .then(results => results.data)
     .catch(err => console.error(`Error updating ${endpoint} on server:  ${err}`));
@@ -48,7 +51,7 @@ api.listProducts = (params) => {
   return get('products', params);
 };
 
-api.getProductId = (product_id) => {
+api.getProductById = (product_id) => {
   return get(`products/${product_id}`);
 }
 
@@ -65,7 +68,7 @@ api.getRelatedProducts = (product_id) => {
 
 api.collectProductInfo = async (id) => {
   let product = {};
-  product.details = await api.getProductId(id)
+  product.details = await api.getProductById(id)
   product.styles = await api.getProductStyles(id);
   product.reviewsMeta = await api.getReviewsMetadata({product_id: id});
   return product;

@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import api from '../../../../../client/src/lib/api.js';
 import RelatedLib from '../assets/Stylesheet.jsx';
 import ProductInfo from './ProductInformation.jsx';
@@ -48,12 +49,17 @@ useEffect(() => {setDefault(product.styles.results)}, [product]);
   }
 
   const handleCardClick = (product) => {
+    console.log(product)
     changeProduct(product.details);
   }
 
+  let path = `../${product.details.id}`;
+
   return (
     <RelatedLib.cardContainer>
-      <RelatedLib.card onClick={() => handleCardClick(product)}>
+      <Link to={path}>
+      <RelatedLib.card >
+      {/* <RelatedLib.card onClick={() => handleCardClick(product)}> */}
         <RelatedLib.imgContainer>
           <RelatedLib.cardImg src={image} alt='product-image'/>
         </RelatedLib.imgContainer>
@@ -62,6 +68,7 @@ useEffect(() => {setDefault(product.styles.results)}, [product]);
           <Stars rating={product.reviewsMeta.averageRating}/>
         </RelatedLib.container>
       </RelatedLib.card>
+      </Link>
       <RelatedLib.iconContainer>
         {removeBtn ?
         <RelatedLib.times onClick={() => {

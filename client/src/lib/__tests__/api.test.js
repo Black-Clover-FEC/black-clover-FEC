@@ -11,7 +11,7 @@ describe('Can an API call send and recieve data', () => {
   })
 
   it('gets a product number 40344 from the API', async () => {
-    const data = await api.getProductId(40344);
+    const data = await api.getProductById(40344);
     const result = JSON.stringify({
       id: 40344,
       campus: 'hr-rfp',
