@@ -93,21 +93,6 @@ const StyleLib = {
   visibility: ${props => props.visibility || 'visible'};
   `,
 
-  linkButton: styled.button`
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 300;
-  text-align: center;
-  color: #424242;
-  text-transform: capitalize;
-  background-color: inherit;
-  border: none;
-  text-decoration: underline;
-  margin-left: 5px;
-  margin-right: 5px;
-  cursor: pointer;
-  `,
-
-
   dropdown: styled.select`
   font-family: inherit;
   font-weight: inherit;
@@ -166,6 +151,7 @@ const StyleLib = {
   border-radius: 10px;
   height: 4em;
   margin: 0 .2em 0 .2em;
+  cursor: pointer;
   `,
 
   bigPhoto: styled.img`
@@ -186,16 +172,6 @@ const StyleLib = {
   color: #424242;
   text-transform: none;
   `,
-
-  // blockLabel: styled.label`
-  // display: flex;
-  // justify-content: space-
-  // font-family: 'Quicksand', sans-serif;
-  // font-weight: 500;
-  // text-align: left;
-  // color: #424242;
-  // text-transform: none;
-  // `,
 
   input: styled.input`
   display: block;
@@ -363,6 +339,19 @@ const StyleLib = {
   }
   `,
 
+  text3D: keyframes`
+  from {
+    transform: translateY(0);
+    transform-origin: 50% 50%;
+  }
+
+  to {
+    transform: translateY(-50px);
+    transform-origin: 50% 50%;
+    text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+  }
+  `,
+
 };
 
 
@@ -388,6 +377,23 @@ margin: 0.5em;
 &:hover {
   animation: ${props => props.cancel ? StyleLib.cancelHover : StyleLib.buttonHover} 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
+`;
+
+StyleLib.linkButton = styled.button`
+font-family: 'Quicksand', sans-serif;
+font-weight: 300;
+text-align: center;
+color: #424242;
+text-transform: capitalize;
+background-color: inherit;
+border: none;
+text-decoration: underline;
+margin-left: 5px;
+margin-right: 5px;
+cursor: pointer;
+// &:active {
+//   animation: ${StyleLib.text3D} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+// }
 `;
 
 

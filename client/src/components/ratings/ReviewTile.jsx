@@ -1,11 +1,11 @@
 import React from 'react';
 import {faCheck} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import StyleLib from './Stylesheet.jsx';
+import StyleLib from '../../assets/Stylesheet.jsx';
 import UserPhotos from './UserPhotos.jsx';
 import Stars from './Stars.jsx';
 import styled from 'styled-components';
-import api from '../lib/api.js';
+import api from '../../lib/api.js';
 
 
 const ResponseText = styled(StyleLib.p)`
@@ -22,7 +22,7 @@ const Response = ({response}) => (
 )
 
 
-const ReviewAndQuestionTile = ({review, helpReportCB}) => {
+const ReviewTile = ({review, helpReportCB}) => {
 
   const handleHelpful = (e) => {
     return api.markReviewHelpful(review.review_id)
@@ -53,4 +53,4 @@ const ReviewAndQuestionTile = ({review, helpReportCB}) => {
   );
 }
 
-export default ReviewAndQuestionTile;
+export default ReviewTile;

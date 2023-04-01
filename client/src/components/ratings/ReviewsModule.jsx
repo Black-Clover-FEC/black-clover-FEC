@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 import StyleLib from '../../assets/Stylesheet.jsx';
 import ReviewStyles from './assets/ReviewStyles.jsx';
-import Stars from '../../assets/Stars.jsx';
-import ReviewAndQuestionList from '../../assets/ReviewAndQuestionList.jsx';
-import FormModal from '../../assets/FormModal.jsx';
+import Stars from '../ratings/Stars.jsx';
+import ReviewsList from './ReviewsList.jsx';
+import FormModal from './FormModal.jsx';
 import RatingFiltersList from './RatingFiltersList.jsx';
 import FactorsList from './FactorsList.jsx';
 import api from '../../lib/api.js';
@@ -134,7 +134,7 @@ const ReviewsModule = ({product, reviewsMeta}) => {
 
           <StyleLib.searchBar placeholder='Search reviews' />
 
-          {displayed.length !== 0 && <ReviewAndQuestionList reviews={displayed} helpReportCB={getSortedReviews} />}
+          {displayed.length !== 0 && <ReviewsList reviews={displayed} helpReportCB={getSortedReviews} />}
 
           <StyleLib.button onClick={handleShowMoreClick}>
             More Reviews

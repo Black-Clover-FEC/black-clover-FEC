@@ -1,7 +1,7 @@
 import React from 'react';
 import {faStar} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import StyleLib from './Stylesheet.jsx';
+import StyleLib from '../../assets/Stylesheet.jsx';
 import styled from 'styled-components';
 
 

@@ -3,7 +3,7 @@ import StyleLib from '../../../assets/Stylesheet.jsx';
 import api from '../../../../../client/src/lib/api.js';
 import RelatedLib from '../assets/Stylesheet.jsx';
 import ProductInfo from './ProductInformation.jsx';
-import Stars from '../../../assets/Stars.jsx'
+import Stars from '../../ratings/Stars.jsx'
 
 const ProductCard = ({product, openComparison, sendToCompare, removeBtn, removeOutfit}) => {
   const [image, setImage] = useState('No Image Available');

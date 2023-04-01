@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import StyleLib from '../../assets/Stylesheet.jsx';
 import api from '../../lib/api.js';
-import ReviewAndQuestionList from '../../assets/ReviewAndQuestionList.jsx';
 import QuestionList from './QuestionList.jsx';
-import FormModalQ from '../../assets/FormModalQ.jsx'
+import FormModalQ from './FormModalQ.jsx'
 
 const QAModule = ({product}) => {
   const productID = product.id;

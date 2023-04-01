@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import StyleLib from './Stylesheet.jsx';
+import StyleLib from '../../assets/Stylesheet.jsx';
 import StarsInput from './StarsInput.jsx';
 import styled from 'styled-components';
 import Modal from 'react-modal';
-import api from '../lib/api.js';
-import CharacteristicsInput from '../components/ratings/CharacteristicsInput.jsx';
-import { starsMeaning } from '../components/ratings/reviewMeaningsKey.js';
+import api from '../../lib/api.js';
+import CharacteristicsInput from './CharacteristicsInput.jsx';
+import { starsMeaning } from './reviewMeaningsKey.js';
 
 // StyleLib.formModal.setAppElement('#root');
 Modal.setAppElement('#root');

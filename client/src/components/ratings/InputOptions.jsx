@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import StyleLib from './Stylesheet.jsx';
-import { factorsMeaning } from '../components/ratings/reviewMeaningsKey.js';
-import FactorsMeaning from '../components/ratings/FactorsMeaning.jsx';
+import StyleLib from '../../assets/Stylesheet.jsx';
+import { factorsMeaning } from './reviewMeaningsKey.js';
+import FactorsMeaning from './FactorsMeaning.jsx';
 
 
 const InputOptions = ({type, factor, valueList, labelList = valueList}) => {
