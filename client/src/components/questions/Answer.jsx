@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import api from '../../lib/api.js';
 import StyleLib from '../../assets/Stylesheet.jsx';
-import UserPhotos from '../../assets/UserPhotosQA.jsx';
+import UserPhotos from '../ratings/UserPhotos.jsx';
 
 
 const Answer = ({answer, answersArray, result, sortAnswers, product, question, helpfulCB}) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import StyleLib from './Stylesheet.jsx';
+import StyleLib from '../../assets/Stylesheet.jsx';
 import styled from 'styled-components';
 
 

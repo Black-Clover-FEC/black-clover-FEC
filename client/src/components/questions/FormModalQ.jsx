@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import StyleLib from './Stylesheet.jsx';
+import StyleLib from '../../assets/Stylesheet.jsx';
 import styled from 'styled-components';
 import Modal from 'react-modal';
-import api from '../lib/api.js';
+import api from '../../lib/api.js';
 
 Modal.setAppElement('#root');
 
