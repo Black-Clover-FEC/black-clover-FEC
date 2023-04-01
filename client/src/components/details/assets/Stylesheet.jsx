@@ -43,6 +43,7 @@ const DetailsLib = {
   col1: styled.section`
   grid-column: 1;
   position: relative;
+  height: 500px;
   `,
 
   defaultImage: styled.img`

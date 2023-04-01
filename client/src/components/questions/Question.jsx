@@ -5,9 +5,10 @@ import StyleLib from '../../assets/Stylesheet.jsx';
 import FormModalA from './FormModalA.jsx';
 
 const Question = ({result, product, helpfulCB}) => {
-  const answers = result.answers;
+  const [answers, setAnswers] = useState(result.answers);
   const [helpfulQCount, setHelpfulQCount] = useState(result.question_helpfulness);
   const [modal, setModal] = useState(false);
+
 
   const helpfulHandler = (e) => {
     api.markQuestionHelpful(result.question_id)
@@ -34,12 +35,12 @@ const Question = ({result, product, helpfulCB}) => {
         <StyleLib.linkButton onClick={helpfulHandler}>
           Yes
         </StyleLib.linkButton>
-        {helpfulQCount}
+        {result.question_helpfulness}
       </StyleLib.small>
       <StyleLib.linkButton onClick={reportHandler}>Report </StyleLib.linkButton>
       <StyleLib.linkButton onClick={openModal}>Add Answer</StyleLib.linkButton>
 
-      <AnswerList answers={answers} helpfulCB={helpfulCB}/>
+      <AnswerList answers={answers} question={result.question_id} product={product} result={result} helpfulCB={helpfulCB}/>
     </StyleLib.tile>
 
     <FormModalA
@@ -47,7 +48,8 @@ const Question = ({result, product, helpfulCB}) => {
     question={result}
     isOpen={modal}
     onClose={closeModal}
-    submitFunc={helpfulCB}
+    answers={answers}
+    setAnswers={setAnswers}
     />
     </>
   )

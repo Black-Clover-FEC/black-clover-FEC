@@ -15,6 +15,32 @@ exports[`Does a component render to the page tests to see if FormModalA componen
 
 exports[`Does a component render to the page tests to see if FormModalQ component renders correctly 1`] = `null`;
 
+exports[`Does a component render to the page tests to see if QAModule component renders correctly 1`] = `
+<section>
+  <li
+    className="sc-fbJfA fZxUVg"
+  >
+    <h2
+      className="sc-gueYoa cQcDUV"
+    >
+      Questions and Answers
+    </h2>
+    <input
+      className="sc-kFuwaP ekhEca"
+      onChange={[Function]}
+      placeholder="Have a question? Search for answers…"
+    />
+    <section />
+    <button
+      className="sc-fsQiph beTiCm"
+      onClick={[Function]}
+    >
+      Add A Question
+    </button>
+  </li>
+</section>
+`;
+
 exports[`Does a component render to the page tests to see if Question component renders correctly 1`] = `
 <li
   className="sc-fbJfA fZxUVg"

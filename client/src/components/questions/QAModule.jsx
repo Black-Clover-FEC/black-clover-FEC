@@ -12,13 +12,13 @@ const QAModule = ({product}) => {
   const [displayedResults, setDisplayedResults] = useState([]);
   const [productResults, setProductResults] = useState([]);
   const [modal, setModal] = useState(false);
-  const [input, setInput] = useState(null);
+  const [input, setInput] = useState('');
   const [search, setSearch] = useState([]);
 
   // On Render Effects
   useEffect(() => {getQuestions()}, []);
   useEffect(() => {updateDisplayedResults()}, []);
-  useEffect(() => {updateDisplayedResults()}, [numberOfQuestions, search]);
+  useEffect(() => {updateDisplayedResults(), sortResults()}, [numberOfQuestions, search]);
   useEffect(() => {filterResults()}, [input]);
 
   // Helper Functions
@@ -30,10 +30,14 @@ const QAModule = ({product}) => {
     })
       .then(data => {
         setProductResults(data.results)
-
+        setSearch(data.results.filter(product => product.question_body.includes(input)))
         setDisplayedResults(data.results.slice(0, numberOfQuestions))
       })
       .catch(err => console.error(err))
+  }
+
+  const sortResults = () => {
+    setSearch(search.sort((a, b) => b.helpfulness - a.helpfulness))
   }
 
   const inputTracker = (e) => {
@@ -60,7 +64,7 @@ const QAModule = ({product}) => {
         <StyleLib.h2>Questions and Answers</StyleLib.h2>
         <StyleLib.searchBar placeholder={"Have a question? Search for answers…"} onChange={(e) => inputTracker(e)}/>
         <QuestionList displayedResults={displayedResults} helpfulCB={getQuestions} product={product}/>
-        {((displayedResults.length < productResults.length) && (displayedResults.length < search.length)) && <StyleLib.button onClick={showMoreHandler}>More Answered Questions</StyleLib.button> }
+        {(search ? (displayedResults.length < search.length) : (displayedResults.lenght < productResults.length)) && <StyleLib.button onClick={showMoreHandler}>More Answered Questions</StyleLib.button> }
         <StyleLib.button onClick={openModal}>Add A Question</StyleLib.button>
       </StyleLib.tile>
 
