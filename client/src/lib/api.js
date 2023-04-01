@@ -90,7 +90,7 @@ api.listQuestions = (params) => {
 }
 
 api.listAnswers = (question_id, params) => {
-  return get(`/qa/questions/${question_id}/answers`, params);
+  return get(`qa/questions/${question_id}/answers`, params);
 }
 
 api.addQuestion = (params) => {

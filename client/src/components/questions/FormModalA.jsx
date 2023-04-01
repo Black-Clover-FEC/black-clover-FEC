@@ -6,7 +6,7 @@ import api from '../../lib/api.js';
 
 Modal.setAppElement('#root');
 
-const FormModal = ({ product, question, isOpen, onClose, submitFunc }) => {
+const FormModal = ({ product, question, answers, isOpen, onClose, setAnswers }) => {
 
   const [photos, setPhotos] = useState([]);
 
@@ -25,17 +25,28 @@ const FormModal = ({ product, question, isOpen, onClose, submitFunc }) => {
   //   }
   // }
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let formData = new FormData(e.target);
     formData = Object.fromEntries(formData.entries()); // converts from fromData object to JSON object.
 
-    console.log(formData);
     api.addAnswer(question.question_id, formData)
       .then(res => console.log('this is the response: ' + res)) // here for now for debugging purposes
       .then(() => {
-        onClose();
-        submitFunc();
+        api.listAnswers(question.question_id, {
+          page: 1,
+          count: 1000
+        })
+          .then(data => {
+            setAnswers(data.results)
+            console.log('data.results', data.results)
+            console.log('data', data)
+            console.log('answers', answers)
+          })
+        .catch(err => console.error(err));
+        onClose()
+        console.log(answers)
       })
       .catch(err => console.error(err));
   }

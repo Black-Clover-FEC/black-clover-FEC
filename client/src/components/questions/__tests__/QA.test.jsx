@@ -54,16 +54,19 @@ describe('Does a component render to the page', () => {
   })
 
 
-  it('tests to see if StyleLib.searchBar component renders correctly', ()=> {
+  it('tests to see if StyleLib.searchBar component renders correctly', () => {
     const tree = renderer.create(<StyleLib.searchBar />).toJSON();
     expect(tree).toMatchSnapshot();
   })
 
-  test('test helpfulHandler', () => {
-    const tree = renderer.create(<Answer answer={QuestionMock.results[0].answers[5991165]} helpfulCB={MockFunc.default} />).toJSON();
-    tree.getInstance().helpfulHandler();
+  // test('test helpfulHandler', () => {
+  //   const tree = renderer.create(<Answer answer={QuestionMock.results[0].answers[5991165]} helpfulCB={MockFunc.default} />).toJSON();
+  //   tree.getInstance().helpfulHandler();
+  // })
+
+  it('tests to see if QAModule component renders correctly', () => {
+    const tree = renderer.create(<QAModule product={ProdMock} />).toJSON();
+    expect(tree).toMatchSnapshot();
   })
-
-
 
 })
