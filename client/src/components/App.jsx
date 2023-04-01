@@ -3,6 +3,7 @@ import StyleLib from '../assets/Stylesheet.jsx';
 import { useLoaderData } from "react-router-dom";
 import api from '../lib/api.js';
 
+import Header from './details/header.jsx';
 import Overview from './details/OverviewModule.jsx';
 import RelatedProductsModule from './related/RelatedProductsModule.jsx';
 import QA from './questions/QAModule.jsx';
@@ -20,12 +21,15 @@ const App = () => {
   useEffect(() => {setCurrentStyle(product.styles.default)}, [product]);
 
   return (
+    <>
+    <Header />
     <StyleLib.appDiv>
       <Overview product={product} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} />
       <RelatedProductsModule product={product} currentStyle={currentStyle} />
       <QA product={product.details}/>
       <Reviews product={product.details} reviewsMeta={product.reviewsMeta}/>
     </StyleLib.appDiv>
+    </>
   )
 }
 

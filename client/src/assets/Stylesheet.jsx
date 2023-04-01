@@ -26,6 +26,26 @@ const StyleLib = {
   margin: auto;
   `,
 
+  header: styled.div`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2em;
+  width: 100%;
+  vertical-align: center;
+  background-color: #2E4552;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  `,
+
+  logo: styled.div`
+  font-family: 'Chonburi', cursive;
+  font-size: 3.5em;
+  text-align: left;
+  display: block;
+  color: #2A9D8F;
+  `,
+
   h1: styled.h1`
   font-family: 'Playfair Display', serif;
   font-weight: 700;

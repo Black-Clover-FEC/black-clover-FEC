@@ -24,7 +24,7 @@ const ReviewsModule = ({product, reviewsMeta}) => {
   // list variables:
   const [sortBy, setSortBy] = useState('relevant');
   const [filterBy, setFilterBy] = useState(new Array(5).fill(true));
-  const [displayCount, setDisplayCount] = useState(2);
+  const [displayCount, setDisplayCount] = useState(6);
 
   // summary and metadata:
   const [reviewsCount, setReviewsCount] = useState(0);

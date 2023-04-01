@@ -3,7 +3,6 @@ import StyleLib from '../../assets/Stylesheet.jsx';
 import DetailsLib from './assets/Stylesheet.jsx';
 import api from '../../lib/api.js';
 
-import Header from './header.jsx';
 import ProductInformation from './productInformation.jsx';
 import Image from './image.jsx';
 import ExpandedImage from './expandedImage.jsx';
@@ -16,7 +15,6 @@ const OverviewModule = ({product, currentStyle, setCurrentStyle}) => {
   return (
     <div>
       {openModal ? <ExpandedImage currentStyle={currentStyle} openModal={openModal} setOpenModal={setOpenModal}/> : <></>}
-      <Header />
       <StyleLib.h2>
         Product Overview
       </StyleLib.h2>
