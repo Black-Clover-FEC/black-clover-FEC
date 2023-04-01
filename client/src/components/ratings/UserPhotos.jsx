@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import StyleLib from './Stylesheet.jsx';
-import ReviewAndQuestionTile from './ReviewAndQuestionTile.jsx';
+import StyleLib from '../../assets/Stylesheet.jsx';
 import Modal from 'react-modal';
 
 
@@ -27,7 +26,7 @@ const UserPhotos = ({photos}) => {
     <Modal
     isOpen={modalIsOpen}
     onRequestClose={closeModal}
-    contentLabel='Please complete the form to review this product'
+    contentLabel='An enlarged image'
     image={image}
   ><StyleLib.bigPhoto src={image} /></Modal>
     </>

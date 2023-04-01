@@ -1,6 +1,6 @@
 import React from 'react';
 // import StyleLib from './Stylesheet.jsx';
-import InputOptions from '../../assets/InputOptions.jsx';
+import InputOptions from './InputOptions.jsx';
 
 
 const CharacteristicsInput = ({ factors }) => {

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import AnswerList from './AnswerList.jsx';
 import api from '../../lib/api.js';
 import StyleLib from '../../assets/Stylesheet.jsx';
-import FormModalA from '../../assets/FormModalA.jsx';
+import FormModalA from './FormModalA.jsx';
 
 const Question = ({result, product, helpfulCB}) => {
   const answers = result.answers;
