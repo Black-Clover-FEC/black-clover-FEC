@@ -53,7 +53,7 @@ const StyleLib = {
   text-align: left;
   color: #2E4552;
   text-transform: capitalize;
-  padding-top: 2rem;
+  padding-top: .75rem;
   padding-bottom: 1rem;
   `,
 
@@ -76,7 +76,7 @@ const StyleLib = {
   text-align: left;
   color: #2E4552;
   text-transform: capitalize;
-  padding-top: 2rem;
+  padding-top: 1rem;
   padding-bottom: 1rem;
   `,
 
@@ -87,7 +87,7 @@ const StyleLib = {
   text-align: left;
   color: #2E4552;
   text-transform: none;
-  padding-top: 2rem;
+  padding-top: 1rem;
   padding-bottom: 1rem;
   `,
 
@@ -99,7 +99,7 @@ const StyleLib = {
   text-align: left;
   color: #2A9D8F;
   text-transform: uppercase;
-  padding-top: 2rem;
+  padding-top: 1rem;
   padding-bottom: 1rem;
   `,
 
@@ -111,7 +111,7 @@ const StyleLib = {
   color: #E7A66C;
   text-transform: none;
   padding-bottom: 1rem;
-  padding-top: 2rem;
+  padding-top: 1rem;
   `,
 
   p: styled.p.attrs(props => ({
@@ -147,6 +147,7 @@ const StyleLib = {
   border-bottom: solid;
   padding-left: 0;
   cursor: pointer;
+  margin: 0.5em;
   `,
 
   searchBar: styled.input`
@@ -421,7 +422,10 @@ margin: 0.5em;
 }
 `;
 
-StyleLib.linkButton = styled.button`
+StyleLib.linkButton = styled.button.attrs(props => ({
+vMargin: props.vMargin === undefined ? '0' : props.vMargin,
+hMargin: props.hMargin === undefined ? '5px' : props.hMargin,
+}))`
 font-family: 'Quicksand', sans-serif;
 font-weight: 300;
 text-align: center;
@@ -430,8 +434,7 @@ text-transform: capitalize;
 background-color: inherit;
 border: none;
 text-decoration: underline;
-margin-left: 5px;
-margin-right: 5px;
+margin: ${props => `${props.vMargin} ${props.hMargin};`}
 cursor: pointer;
 `;
 

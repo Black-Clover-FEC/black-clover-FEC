@@ -19,7 +19,7 @@ const ProductInformation = ({product, styleList, favorite, setFavorite, currentS
       <Reviews product={product}/>
       <br/>
       <StyleLib.small><b>{'Category > '}</b> {product.details.category}</StyleLib.small>
-      <StyleLib.h3>{product.details.name}</StyleLib.h3>
+      <StyleLib.h1>{product.details.name}</StyleLib.h1>
       <StylePrice currentStyle={currentStyle}/>
       <StyleList currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} styleList={styleList}/>
       <DetailsLib.center>
@@ -27,9 +27,6 @@ const ProductInformation = ({product, styleList, favorite, setFavorite, currentS
         <SizeSelector currentStyle={currentStyle}/>
         <QuantitySelector product={product} currentSize={currentSize}/>
       </DetailsLib.center>
-      <br/>
-      <br/>
-      <br/>
       <DetailsLib.center>
         {/*TODO: connect favorite with outfit, then figure out what addtobag does*/}
         <AddToBag />

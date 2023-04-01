@@ -61,6 +61,7 @@ const DetailsLib = {
   width: 30px;
   height: 30px;
   border-radius: 5px;
+  object-fit: cover;
   display: block;
   align-items: center;
   text-align: center;
@@ -122,9 +123,8 @@ const DetailsLib = {
   justify-content: space-between;
   `,
 
-  smallUnderline: styled(StyleLib.p)`
-  font-size: x-small;
-  text-decoration: underline;
+  smallUnderline: styled(StyleLib.linkButton)`
+  font-size: 0.75em;
   cursor: pointer;
   &:hover {
     animation: ${StyleLib.popOut} 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -141,7 +141,8 @@ const DetailsLib = {
   `,
 
   selectedStyle: styled(StyleLib.h2)`
-  font-size: small;
+  font-size: 0.8em;
+  padding-top: 1rem;
   `,
 
   styleList: styled.div`
@@ -173,7 +174,9 @@ const DetailsLib = {
   `,
 
   center: styled.div`
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  // text-align: center;
   `,
 
   quantity: styled(StyleLib.dropdown)`
