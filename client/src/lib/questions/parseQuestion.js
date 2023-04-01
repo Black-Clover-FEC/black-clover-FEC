@@ -1,1 +1,0 @@
-// example library function to remove spaces in question inputs

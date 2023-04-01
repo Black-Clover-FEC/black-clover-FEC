@@ -8,7 +8,6 @@ import ProductInformation from './productInformation.jsx';
 import Image from './image.jsx';
 import ExpandedImage from './expandedImage.jsx';
 import Description from './description.jsx';
-import ProductInfoObject from '../../lib/productInfoObjectTemplate.js';
 
 const OverviewModule = ({product, currentStyle, setCurrentStyle}) => {
   const [favorite, setFavorite] = useState(false);

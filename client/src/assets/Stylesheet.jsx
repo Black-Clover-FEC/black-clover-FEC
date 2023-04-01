@@ -1,8 +1,24 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, createGlobalStyle } from 'styled-components';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
 
+
 const StyleLib = {
+
+  GlobalStyle: createGlobalStyle`
+  html {
+    box-sizing: border-box;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  `,
 
   appDiv: styled.div`
   width: 80%;
@@ -391,9 +407,6 @@ text-decoration: underline;
 margin-left: 5px;
 margin-right: 5px;
 cursor: pointer;
-// &:active {
-//   animation: ${StyleLib.text3D} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-// }
 `;
 
 
