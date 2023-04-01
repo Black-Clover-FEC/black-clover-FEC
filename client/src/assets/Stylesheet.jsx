@@ -30,7 +30,7 @@ const StyleLib = {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   width: 100%;
   vertical-align: center;
   background-color: #2E4552;
