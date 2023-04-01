@@ -160,6 +160,7 @@ const DetailsLib = {
   text-align: center;
   font-size: small;
   cursor: pointer;
+  object-fit: cover;
   &:hover {
     animation: ${StyleLib.popOut} 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   }

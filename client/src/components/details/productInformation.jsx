@@ -18,16 +18,10 @@ const ProductInformation = ({product, styleList, favorite, setFavorite, currentS
     <DetailsLib.col2>
       <Reviews product={product}/>
       <br/>
-      <StyleLib.small>{product.details.category}</StyleLib.small>
-      <br/>
-      <br/>
+      <StyleLib.small><b>{'Category > '}</b> {product.details.category}</StyleLib.small>
       <StyleLib.h3>{product.details.name}</StyleLib.h3>
-      <br/>
       <StylePrice currentStyle={currentStyle}/>
-      <br/>
-      <br/>
       <StyleList currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} styleList={styleList}/>
-      <br/>
       <DetailsLib.center>
         {/*TODO: have sizes reflect on currently selected style, quantity depends on size*/}
         <SizeSelector currentStyle={currentStyle}/>

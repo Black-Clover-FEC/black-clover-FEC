@@ -53,7 +53,8 @@ const StyleLib = {
   text-align: left;
   color: #2E4552;
   text-transform: capitalize;
-  padding-bottom: 7px;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
   `,
 
   h2: styled.h2`
@@ -64,7 +65,8 @@ const StyleLib = {
   text-align: left;
   color: #2A9D8F;
   text-transform: uppercase;
-  padding-bottom: 7px;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
   `,
 
   h3: styled.h3`
@@ -74,7 +76,8 @@ const StyleLib = {
   text-align: left;
   color: #2E4552;
   text-transform: capitalize;
-  padding-bottom: 7px;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
   `,
 
   h4: styled.h4`
@@ -84,7 +87,8 @@ const StyleLib = {
   text-align: left;
   color: #2E4552;
   text-transform: none;
-  padding-bottom: 7px;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
   `,
 
   h5: styled.h5`
@@ -95,7 +99,8 @@ const StyleLib = {
   text-align: left;
   color: #2A9D8F;
   text-transform: uppercase;
-  padding-bottom: 7px;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
   `,
 
   h6: styled.h6`
@@ -105,7 +110,8 @@ const StyleLib = {
   text-align: left;
   color: #E7A66C;
   text-transform: none;
-  padding-bottom: 7px;
+  padding-bottom: 1rem;
+  padding-top: 2rem;
   `,
 
   p: styled.p.attrs(props => ({
