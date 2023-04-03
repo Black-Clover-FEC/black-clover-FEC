@@ -1,71 +1,86 @@
-# Overview: black-clover-FEC #
-## Table of Contents #
-1. [Description][1]
-    * [Features][1.1]
-2. [Installation][2]
-3. [Usage][3]
-4. [Additional Information][4]
-    * [Related Projects][4.1]
-    * [Future Enhancements][4.2]
-    * [Team Members][4.3]
+# Overview: black-clover-FEC
+
+
+
+## Table of Contents
+<!-- QUESTIONING IF WE WANT THIS.. makes it look like the readme is longer than it is, which might discourage acutally reading it. -->
+1. [Description](https://github.com/Black-Clover-FEC/black-clover-FEC#description)
+2. [Authors](https://github.com/Black-Clover-FEC/black-clover-FEC#authors)
+3. [Modules](https://github.com/Black-Clover-FEC/black-clover-FEC#modules)
+   * [Product Index](https://github.com/Black-Clover-FEC/black-clover-FEC#product-index)
+   * [Product Overview Module](https://github.com/Black-Clover-FEC/black-clover-FEC#product-overview-module)
+   * [Related Products Module](https://github.com/Black-Clover-FEC/black-clover-FEC#Related-Products-Module)
+   * [Q&A Module](https://github.com/Black-Clover-FEC/black-clover-FEC#Q%26A-Module)
+   * [Ratings and Reviews Module](https://github.com/Black-Clover-FEC/black-clover-FEC#Ratings-and-Reviews-Module)
+4. [Usage](https://github.com/Black-Clover-FEC/black-clover-FEC#usage)
+5. [Additional Information](https://github.com/Black-Clover-FEC/black-clover-FEC#additional-information)
+   * [Future Enhancements](https://github.com/Black-Clover-FEC/black-clover-FEC#future-enhancements)
 
 ---
 
-## Description #
-This project is a client-facing retail web-portal that is designed to allow a user to interact with a retail application.
+## Description
+An aesthetic and responsive e-commerce product page for retailers.
 
-### Features #
-* Allows user to view prices, styles, stock of products\
-`<< insert screen capture of this feature here >>`
-* Allows user to view and post reviews, ratings\
-`<< insert screen capture of this feature here >>`
-* Allows user to view and post Q&As\
-`<< insert screen capture of this feature here >>`
-* Allows user to explore related items and compare products\
-`<< insert screen capture of this feature here >>`
-* Allows user to create a list of products that will be grouped together as an `outfit`\
-`<< insert screen capture of this feature here >>`
+## Tech Stack
+<!-- REPLACE THESE WITH BADGES
+* Javascript (ES5/ES6)
+* HTML5
+* CSS3
+* React-Router
+* Styled-Components
+* Express
+* Axios
+* AWS EC2
+-->
 
-***This application does not allow for checkout and several other key features necessary for a functioning front-end web portal. Find improvements deferred for future release [here][4]:***
+## Authors
+* [Yale Yang] (https://github.com/yaleyang5)
+* [Brandon Woods] (https://github.com/brawoods)
+* [Noah Clouthier] (https://github.com/noahboa75)
+* [Johnathan Simeroth] (https://github.com/johnsimeroth)
 
-## Installation #
-`Include some kind of instructions to fork+clone, as well as install dependencies`\
-This project uses [Webpack][webpack], the bundler for components in React. This allows the program to serve a bundled file that contains all of our components, so that we reduce multiple request cycles. 
-Before getting your server started, get Webpack up and running by executing the `npm start` script provided.
-This installs Webpack, saves executables locally into node_modules/.bin, and runs Webpack to automatically listen for inputs.
-## Usage #
-This project is meant to update outdated client-facing retail web-portals. It uses the following libraries, with how-tos linked respectively:\
-`<< list libraries here >>`
+## Modules
+### Product Index - DRI: Johnathan Simeroth
+#### Key Features
+* Provides simple navigation with clean UI
+*This module was not in the original project scope, but was added to improve overall dev-user experience*
+<!-- insert gif of this feature in use here -->
 
+### Product Overview Module - DRI: Yale Yang
+#### Key Features
+* Boasts a gallery of style-specific product images in a carousel
+* Responsive style, size, and quantity selection
+<!-- insert gif of this feature in use here -->
 
----
+### Related Products Module - DRI: Brandon Woods
+#### Key Features
+* Displays a list of related products in a beautiful, from-scratch carousel
+* Comparison of related products feature-by-feature
+* Persistent memory of user-saved products in their "outfit"
+<!-- insert gif of this feature in use here -->
 
-## Additional Information
+### Q&A Module - DRI: Noah Clouthier
+#### Key Features
+* Lists product-specific questions and answers
+* Enables users to add their own questions and answers
+<!-- insert gif of this feature in use here -->
+
+### Ratings and Reviews Module - DRI: Johnathan Simeroth
+#### Key Features
+* Lists product-specific reviews
+* Clean UI display of product review meta-data
+* Enables users to sort reviews and stack multiple filters
+* Modal form allows users to add their own reviews
+* Integration with Imgur API enables user photo uploads
+<!-- insert gif of this feature in use here -->
+
+## Installation
+To get started with the dev version of this repo, follow these steps:
+1. Fork / Clone the repo
+2. Replace config.example.js in the env folder with a config.js file, filling out the required tokens and keys.
+3. <<npm install>>
+4. <<npm run server-dev>>
+5. Navigate to localhost:8080 and start shopping!
 
 ### Related Projects
 * [white-clover-FEC](https://youtu.be/dQw4w9WgXcQ)
-
-### Future Enhancements
-* Internal portals
-* Catalog search improvements
-* Homepage and Search page
-* Checkout/Cart page
-
-
-### Team Members
-* Project Manager: *Brandon Woods*
-* Excalidraw Expert: *Johnathan Simeroth*
-* Global State Manager: *Noah Clouthier*
-* ReadMe Author: *Yale Yang*
-
-
-
-[1]: https://github.com/Black-Clover-FEC/black-clover-FEC/edit/main/README.md#description
-[1.1]: https://github.com/Black-Clover-FEC/black-clover-FEC/edit/main/README.md#features
-[2]: https://github.com/Black-Clover-FEC/black-clover-FEC/edit/main/README.md#installation
-[3]: https://github.com/Black-Clover-FEC/black-clover-FEC/edit/main/README.md#usage
-[4]: https://github.com/Black-Clover-FEC/black-clover-FEC/edit/main/README.md#additional-information
-[4.1]: https://github.com/Black-Clover-FEC/black-clover-FEC/edit/main/README.md#related-projects
-[4.2]: https://github.com/Black-Clover-FEC/black-clover-FEC/edit/main/README.md#future-enhancements
-[4.3]: https://github.com/Black-Clover-FEC/black-clover-FEC/edit/main/README.md#team-members
-[webpack]: https://webpack.js.org/
