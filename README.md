@@ -12,9 +12,7 @@
    * [Related Products Module](https://github.com/Black-Clover-FEC/black-clover-FEC#Related-Products-Module)
    * [Q&A Module](https://github.com/Black-Clover-FEC/black-clover-FEC#Q%26A-Module)
    * [Ratings and Reviews Module](https://github.com/Black-Clover-FEC/black-clover-FEC#Ratings-and-Reviews-Module)
-4. [Usage](https://github.com/Black-Clover-FEC/black-clover-FEC#usage)
-5. [Additional Information](https://github.com/Black-Clover-FEC/black-clover-FEC#additional-information)
-   * [Future Enhancements](https://github.com/Black-Clover-FEC/black-clover-FEC#future-enhancements)
+4. [Installation](https://github.com/Black-Clover-FEC/black-clover-FEC#installation)
 
 ---
 
@@ -81,6 +79,3 @@ To get started with the dev version of this repo, follow these steps:
 3. <<npm install>>
 4. <<npm run server-dev>>
 5. Navigate to localhost:8080 and start shopping!
-
-### Related Projects
-* [white-clover-FEC](https://youtu.be/dQw4w9WgXcQ)
