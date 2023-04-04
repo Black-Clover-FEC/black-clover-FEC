@@ -9,8 +9,12 @@ const Reviews = ({product}) => {
     hasReviews
     ?
     <DetailsLib.rating>
-    <StyleLib.small> Average Rating: </StyleLib.small> <Stars rating={product.reviewsMeta.averageRating} />
-      <DetailsLib.smallUnderline>{'Read All ' + product.reviewsMeta.reviewsCount + ' Reviews'}</DetailsLib.smallUnderline>
+    <StyleLib.small >
+      Average Rating: <Stars rating={product.reviewsMeta.averageRating} />
+      <DetailsLib.smallUnderline >
+        {'Read All ' + product.reviewsMeta.reviewsCount + ' Reviews'}
+      </DetailsLib.smallUnderline>
+      </StyleLib.small>
     </DetailsLib.rating>
     :
     <DetailsLib.rating>

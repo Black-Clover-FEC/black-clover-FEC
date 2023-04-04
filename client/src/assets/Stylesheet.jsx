@@ -1,13 +1,49 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, createGlobalStyle } from 'styled-components';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
 
+
 const StyleLib = {
+
+  GlobalStyle: createGlobalStyle`
+  html {
+    box-sizing: border-box;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  `,
 
   appDiv: styled.div`
   width: 80%;
   max-width: 1500px;
   margin: auto;
+  `,
+
+  header: styled.div`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+  width: 100%;
+  vertical-align: center;
+  background-color: #2E4552;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  `,
+
+  logo: styled.div`
+  font-family: 'Chonburi', cursive;
+  font-size: 3.5em;
+  text-align: left;
+  display: block;
+  color: #2A9D8F;
   `,
 
   h1: styled.h1`
@@ -17,7 +53,8 @@ const StyleLib = {
   text-align: left;
   color: #2E4552;
   text-transform: capitalize;
-  padding-bottom: 7px;
+  padding-top: .75rem;
+  padding-bottom: 1rem;
   `,
 
   h2: styled.h2`
@@ -28,7 +65,8 @@ const StyleLib = {
   text-align: left;
   color: #2A9D8F;
   text-transform: uppercase;
-  padding-bottom: 7px;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
   `,
 
   h3: styled.h3`
@@ -38,7 +76,8 @@ const StyleLib = {
   text-align: left;
   color: #2E4552;
   text-transform: capitalize;
-  padding-bottom: 7px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   `,
 
   h4: styled.h4`
@@ -48,7 +87,8 @@ const StyleLib = {
   text-align: left;
   color: #2E4552;
   text-transform: none;
-  padding-bottom: 7px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   `,
 
   h5: styled.h5`
@@ -59,7 +99,8 @@ const StyleLib = {
   text-align: left;
   color: #2A9D8F;
   text-transform: uppercase;
-  padding-bottom: 7px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   `,
 
   h6: styled.h6`
@@ -69,7 +110,8 @@ const StyleLib = {
   text-align: left;
   color: #E7A66C;
   text-transform: none;
-  padding-bottom: 7px;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
   `,
 
   p: styled.p.attrs(props => ({
@@ -105,6 +147,7 @@ const StyleLib = {
   border-bottom: solid;
   padding-left: 0;
   cursor: pointer;
+  margin: 0.5em;
   `,
 
   searchBar: styled.input`
@@ -379,7 +422,10 @@ margin: 0.5em;
 }
 `;
 
-StyleLib.linkButton = styled.button`
+StyleLib.linkButton = styled.button.attrs(props => ({
+vMargin: props.vMargin === undefined ? '0' : props.vMargin,
+hMargin: props.hMargin === undefined ? '5px' : props.hMargin,
+}))`
 font-family: 'Quicksand', sans-serif;
 font-weight: 300;
 text-align: center;
@@ -388,12 +434,8 @@ text-transform: capitalize;
 background-color: inherit;
 border: none;
 text-decoration: underline;
-margin-left: 5px;
-margin-right: 5px;
+margin: ${props => `${props.vMargin} ${props.hMargin};`}
 cursor: pointer;
-// &:active {
-//   animation: ${StyleLib.text3D} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-// }
 `;
 
 

@@ -7,7 +7,7 @@ const StyleList = ({currentStyle, setCurrentStyle, styleList}) => {
   return (
     <div>
       <DetailsLib.selectedStyle>
-        <b>STYLE ></b> {currentStyle.name}
+        <b>{'STYLE >'}</b> {currentStyle.name}
       </DetailsLib.selectedStyle>
       <ul>
         {styleList.map((item, index) => {

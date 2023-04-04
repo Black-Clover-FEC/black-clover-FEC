@@ -10,10 +10,13 @@ const ReviewStyles = {
     border-radius: 0;
     border: none;
     background: #D5D5D5;
+    // background: #2E4552;
   }
 
   ::-webkit-meter-optimum-value	{
     background-color: #E7A66C;
+    // background-color: #2A9D8F;
+
   }
   `,
 
@@ -62,7 +65,6 @@ const ReviewStyles = {
   `,
 
   slideGauge: styled.div`
-  // padding: 0.5em 0 0.5em 0;
   padding: 0.5em;
   cursor: default;
   `,
@@ -77,10 +79,10 @@ const ReviewStyles = {
   slideGaugeIndicator: styled.span.attrs(props => ({
     left: props.left || '0'
   }))`
-  color: black;
+  color: #424242;
   position: absolute;
   left: ${props => props.left}%;
-  bottom: 40%;
+  bottom: -30%;
   transform: translateX(-50%);
   `,
 
