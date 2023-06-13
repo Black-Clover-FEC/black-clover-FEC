@@ -82,6 +82,7 @@ const RelatedLib = {
 
   noImgContainer: styled.div`
     position: relative;
+    display: inline-block;
     width: 100%;
     height: 225px;
     text-align: center;
@@ -92,7 +93,7 @@ const RelatedLib = {
     width: 50%;
     height: auto;
     margin: auto;
-    padding-top: 50%;
+    padding-top: 50px;
     color: #e7a66c;
   `,
 
