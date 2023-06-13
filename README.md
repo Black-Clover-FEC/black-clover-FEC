@@ -39,7 +39,7 @@ An aesthetic and responsive e-commerce product page for retailers.
 ### Product Index - DRI: Johnathan Simeroth
 #### Key Features
 * Provides simple navigation with clean UI
-*This module was not in the original project scope, but was added to improve overall dev-user experience*
+* *This module was not in the original project scope, but was added to improve overall dev-user experience*
 <!-- insert gif of this feature in use here -->
 
 ### Product Overview Module - DRI: Yale Yang
@@ -74,6 +74,6 @@ An aesthetic and responsive e-commerce product page for retailers.
 To get started with the dev version of this repo, follow these steps:
 1. Fork / Clone the repo
 2. Replace config.example.js in the env folder with a config.js file, filling out the required tokens and keys.
-3. <<npm install>>
-4. <<npm run server-dev>>
+3. `npm install`
+4. `npm run server-dev`
 5. Navigate to localhost:8080 and start shopping!
