@@ -1,7 +1,5 @@
 # Overview: black-clover-FEC
 
-
-
 ## Table of Contents
 <!-- QUESTIONING IF WE WANT THIS.. makes it look like the readme is longer than it is, which might discourage acutally reading it. -->
 1. [Description](https://github.com/Black-Clover-FEC/black-clover-FEC#description)
