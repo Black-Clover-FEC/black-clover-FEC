@@ -63,10 +63,10 @@ An aesthetic and responsive e-commerce product page for retailers.
 * Modal form allows users to add their own reviews
 * Integration with Imgur API enables user photo uploads (as a stopgap until the client's backend adds support for image storage) <br>
 
-Filter and sort demo:
+Filter and sort demo:<br>
 <img alt="reviews filter and sort demo" src="https://github.com/Black-Clover-FEC/black-clover-FEC/blob/main/Demos/3reviewsFilterAndSort.gif?raw=true" width="800">
 
-Add review, vote helpful, and report reviews demo:
+Add review, vote helpful, and report reviews demo:<br>
 <img alt="reviews add vote and report demo" src="https://github.com/Black-Clover-FEC/black-clover-FEC/blob/main/Demos/3reviewsAddVoteReport.gif?raw=true" width="800">
 
 ### Q&A Module - DRI: Noah Clouthier
