@@ -40,20 +40,20 @@ An aesthetic and responsive e-commerce product page for retailers.
 #### Key Features
 * Provides basic navigation to all products in the catalog
 * *This module was not in the original project scope, but was added to improve overall dev-user experience*
-<!-- insert gif of this feature in use here -->
+<img alt="product index demo" src="https://github.com/Black-Clover-FEC/black-clover-FEC/blob/main/Demos/0productIndex.gif?raw=true" width="800">
 
 ### Product Overview Module - DRI: Yale Yang
 #### Key Features
 * Boasts a gallery of style-specific product images in a carousel
 * Responsive style, size, and quantity selection
-<!-- insert gif of this feature in use here -->
+<img alt="product overview demo" src="https://github.com/Black-Clover-FEC/black-clover-FEC/blob/main/Demos/1productOverview.gif?raw=true" width="800">
 
 ### Related Products Module - DRI: Brandon Woods
 #### Key Features
 * Displays a list of related products in a custom carousel
 * Comparison of related products feature-by-feature
 * Persistent memory of user-saved products in their "outfit"
-<!-- insert gif of this feature in use here -->
+<img alt="related products demo" src="https://github.com/Black-Clover-FEC/black-clover-FEC/blob/main/Demos/2relatedProducts.gif?raw=true" width="800">
 
 ### Ratings and Reviews Module - DRI: Johnathan Simeroth
 #### Key Features
@@ -62,13 +62,16 @@ An aesthetic and responsive e-commerce product page for retailers.
 * Enables users to sort reviews and stack multiple filters
 * Modal form allows users to add their own reviews
 * Integration with Imgur API enables user photo uploads (as a stopgap until the client's backend adds support for image storage)
-<!-- insert gif of this feature in use here -->
+Filter and sort demo:
+<img alt="reviews filter and sort demo" src="https://github.com/Black-Clover-FEC/black-clover-FEC/blob/main/Demos/3reviewsFilterAndSort.gif?raw=true" width="800">
+
+Add review, vote helpful, and report reviews demo:
+<img alt="reviews add vote and report demo" src="https://github.com/Black-Clover-FEC/black-clover-FEC/blob/main/Demos/3reviewsAddVoteReport.gif?raw=true" width="800">
 
 ### Q&A Module - DRI: Noah Clouthier
 #### Key Features
 * Lists product-specific questions and answers
 * Enables users to add their own questions and answers
-<!-- insert gif of this feature in use here -->
 
 
 ## Installation
