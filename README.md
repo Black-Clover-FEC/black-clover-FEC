@@ -61,7 +61,8 @@ An aesthetic and responsive e-commerce product page for retailers.
 * Displays product review meta-data
 * Enables users to sort reviews and stack multiple filters
 * Modal form allows users to add their own reviews
-* Integration with Imgur API enables user photo uploads (as a stopgap until the client's backend adds support for image storage)
+* Integration with Imgur API enables user photo uploads (as a stopgap until the client's backend adds support for image storage) <br>
+
 Filter and sort demo:
 <img alt="reviews filter and sort demo" src="https://github.com/Black-Clover-FEC/black-clover-FEC/blob/main/Demos/3reviewsFilterAndSort.gif?raw=true" width="800">
 
